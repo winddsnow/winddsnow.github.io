@@ -1,7 +1,11 @@
 ---
 title: Vim用法简记
 date: 2022-02-10 21:23:42
-tags: 工具用法
+categories:
+- 工具用法
+tags:
+- vim
+- 编辑器之神
 ---
 # 简述
 Vim是从 vi 发展出来的一个文本编辑器。主流linux均自带vi编辑器，在这里简单记录vim用法，vi也基本相同，只是有些功能没有vim丰富。

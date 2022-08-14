@@ -1,6 +1,10 @@
 ---
 title: Hello World
-tags: 1
+categories:
+-  编程
+tags:
+- 42
+- helloworld
 ---
 这是用GitHub的站点，百度了一番教程，做出来的静态blog。用hexo驱动，主题是 hexo官网里的archer。在本地编写md文件后，由hexo编译，再上传到GitHub上，完成博文更新。
 

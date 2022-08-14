@@ -1,7 +1,11 @@
 ---
 title: Dead Line--2021总结
 date: 2021-12-20 20:16:44
-tags: 年终总结
+categories:
+-  个人生活
+tags:
+- 年终总结
+- 碎语
 ---
 
 # Dead Line--2021总结

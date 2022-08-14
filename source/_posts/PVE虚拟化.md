@@ -1,7 +1,11 @@
 ---
 title: PVE虚拟化
 date: 2021-05-04 10:20:07
-tags: 虚拟化
+categories:
+-  计算机基础架构
+tags:
+- 虚拟化
+- Proxmox VE
 ---
 
 #### Proxmox VE

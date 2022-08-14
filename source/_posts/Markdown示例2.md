@@ -1,7 +1,10 @@
 ---
 title: Markdown示例2
 date: 2022-02-10 20:46:46
-tags: 工具用法
+categories:
+-  工具用法
+tags:
+- Markdown
 ---
 
 # 标题
