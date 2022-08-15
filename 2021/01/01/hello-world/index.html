@@ -19,18 +19,24 @@
         <meta name="keywords" content="hexo,hexo-theme,hexo-blog">
     
     <meta name="description" content="">
-    <meta property="og:type" content="website">
-<meta property="og:title" content="WinddSnow">
-<meta property="og:url" content="https://winddsnow.github.io/tags/%E5%8E%9F%E7%90%86/index.html">
+    <meta name="description" content="这是用GitHub的站点，百度了一番教程，做出来的静态blog。用hexo驱动，主题是 hexo官网里的archer。在本地编写md文件后，由hexo编译，再上传到GitHub上，完成博文更新。 1. 环境准备 hexo基于nodejs，所以需要nodejs环境 python–如果没有，安装nodejs时可以通过npm自动安装 git  nodejs官网npm下载慢的话也可以下载淘宝下载源cnpm">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hello World">
+<meta property="og:url" content="https://winddsnow.github.io/2021/01/01/hello-world/index.html">
 <meta property="og:site_name" content="WinddSnow">
+<meta property="og:description" content="这是用GitHub的站点，百度了一番教程，做出来的静态blog。用hexo驱动，主题是 hexo官网里的archer。在本地编写md文件后，由hexo编译，再上传到GitHub上，完成博文更新。 1. 环境准备 hexo基于nodejs，所以需要nodejs环境 python–如果没有，安装nodejs时可以通过npm自动安装 git  nodejs官网npm下载慢的话也可以下载淘宝下载源cnpm">
 <meta property="og:locale">
+<meta property="article:published_time" content="2020-12-31T16:00:00.000Z">
+<meta property="article:modified_time" content="2022-08-15T03:12:06.289Z">
 <meta property="article:author" content="WinddSnow">
+<meta property="article:tag" content="42">
+<meta property="article:tag" content="helloworld">
 <meta name="twitter:card" content="summary">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <link rel="icon" href="/assets/favicon.ico">
     
-    <title>WinddSnow</title>
+    <title>Hello World · WinddSnow</title>
     <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
 /* This file is meant as a standalone workflow for
 - testing support for link[rel=preload]
@@ -217,6 +223,8 @@
         }
     </script>
     
+        <body class="post-body">
+    
         <!-- header -->
         <header class="header header-mobile">
     <!-- top read progress line -->
@@ -246,6 +254,17 @@
     </div>
     <!-- toggle banner for post layout -->
     
+        
+            <div class="banner">
+        
+            <div class="blog-title header-element">
+                <a href="/">WinddSnow</a>
+            </div>
+            <div class="post-title header-element">
+                <a href="#" class="post-name">Hello World</a>
+            </div>
+        </div>
+    
 </header>
 
         <!-- fixed footer -->
@@ -272,24 +291,81 @@
 
 
 
+    height:50vh;
+
 ">
     
     <!-- 主页  -->
+    
+        
+    <!-- 404页  -->
             
     <div class="site-intro-placeholder"></div>
-    <div class="site-intro-img" style="background-image: url(/)"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/post-bg.jpg)"></div>
     <div class="site-intro-meta">
         <!-- 标题  -->
         <h1 class="intro-title">
             <!-- 主页  -->
+            
+                Hello World
+            <!-- 404 -->
             
         </h1>
         <!-- 副标题 -->
         <p class="intro-subtitle">
             <!-- 主页副标题  -->
             
+                
+            <!-- 404 -->
+            
         </p>
         <!-- 文章页 meta -->
+        
+            <div class="post-intros">
+                <!-- 文章页标签  -->
+                
+                    <div class= post-intro-tags >
+    
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="42">42</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="helloworld">helloworld</a>
+    
+</div>
+
+                
+                
+                    <div class="post-intro-read">
+                        <span>字数统计: <span class="post-count word-count">493</span>阅读时长: <span class="post-count reading-time">2 min</span></span>
+                    </div>
+                
+                <div class="post-intro-meta">
+                    <!-- 撰写日期 -->
+                    <span class="iconfont-archer post-intro-calander">&#xe676;</span>
+                    <span class="post-intro-time">2021/01/01</span>
+                    <!-- busuanzi -->
+                    
+                        <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                            <span class="iconfont-archer post-intro-busuanzi">&#xe602;</span>
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    
+                    <!-- 文章分享 -->
+                    <span class="share-wrapper">
+                        <span class="iconfont-archer share-icon">&#xe71d;</span>
+                        <span class="share-text">Share</span>
+                        <ul class="share-list">
+                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                                <div class="share-qrcode"></div>
+                            </li>
+                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
         
     </div>
 </div>
@@ -419,52 +495,101 @@
 
             <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
             <div class="container container-unloaded">
-                <main class="main index-page">
-    
-        
-        
-        
-        
-            
-        
-        <article class="index-post">
-            <a class="abstract-title" href="/2022/08/14/HashMap%E5%8E%9F%E7%90%86/">
-                
-                <span class="abstract-title-text">HashMap原理</span>
-            </a>
-            <div class="abstract-content">
-                HashMap原理
-HashMap内部是基于哈希表实现的键值对存储，继承 AbstractMap 并且实现了 Map 接口。
-HashMap基于hashing原理，我们通过put()和get()方法储存和获取对象。
-当我们将键值对传递给put()方法时，它调用键对象的hashCode()方法来计算hashcode，让后找到bucket位置来储存值对象。
-当获取对象时，通过键对象的equals()方法找到正确的键值对，然后返回值对象。
-HashMap使用LinkedList来解决碰撞问题，当发生碰撞了，对象将会储存在LinkedList的下一个节点中。 
-当两个不同的键对象的hashcod...
-            </div>
-            <!-- read more -->
-            
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2022/08/14">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2022/08/14</span>
-                </div>
-                <!-- tags -->
-                
-                    <div class= abstract-tags >
-    
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="Java">Java</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="原理">原理</a>
-    
-</div>
+                <main class="main post-page">
+    <article class="article-entry">
+        <p>这是用GitHub的站点，百度了一番教程，做出来的静态blog。用hexo驱动，主题是 hexo官网里的archer。在本地编写md文件后，由hexo编译，再上传到GitHub上，完成博文更新。</p>
+<h2 id="1-环境准备"><a href="#1-环境准备" class="headerlink" title="1. 环境准备"></a>1. 环境准备</h2><ul>
+<li>hexo基于nodejs，所以需要nodejs环境</li>
+<li>python–如果没有，安装nodejs时可以通过npm自动安装</li>
+<li>git</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://nodejs.org/en/">nodejs官网</a><br>npm下载慢的话也可以下载淘宝下载源cnpm</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g cnpm --registry=https://registry.npm.taobao.org</span><br></pre></td></tr></table></figure>
 
-                
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
+<ol>
+<li>安装hexo<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br><span class="line">或者</span><br><span class="line">cnpm install -g hexo-cli</span><br><span class="line"></span><br><span class="line">hexo的上传插件deploy-git</span><br></pre></td></tr></table></figure></li>
+<li>部署所需插件：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnpm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure></li>
+<li>本文章使用的是Archer 主题<br>Archer 主题依赖于 hexo-generator-json-content 和 hexo-wordcount，因此需要在 Hexo 根目录执行以下命令：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm和cnpm看个人网络自行选择</span><br><span class="line">cnpm install hexo-generator-json-content --save</span><br><span class="line">cnpm install hexo-wordcount --save</span><br></pre></td></tr></table></figure></li>
+<li>依赖安装完成后，拉取 Archer 主题到 themes&#x2F;archer 目录，在 Hexo 根目录执行下面的命令：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">这里是下载主题，可以自行查看下载文件夹</span><br><span class="line">git clone https://github.com/fi3ework/hexo-theme-archer.git themes/archer --depth=1</span><br></pre></td></tr></table></figure></li>
+<li>设置主题，主题也有github，可以自行去查看文档<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">修改 Hexo 根目录下的 _config.yml 文件中的 theme 字段为 archer：</span><br><span class="line">theme: archer</span><br><span class="line">主题GitHub地址：https://github.com/fi3ework/hexo-theme-archer</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="2-快速开始"><a href="#2-快速开始" class="headerlink" title="2. 快速开始"></a>2. 快速开始</h2><ul>
+<li>新建一篇文章</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>启动hexo用于调试测试</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>生成静态页面</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>部署到服务端</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<h2 id="3-日常更新文章"><a href="#3-日常更新文章" class="headerlink" title="3. 日常更新文章"></a>3. 日常更新文章</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">#以下操作均在hexo根目录下使用gitbash命令行操作</span><br><span class="line">#新建文章标题</span><br><span class="line">hexo new &quot;新文章标题&quot;</span><br><span class="line">#打开hexo根目录\source\_posts---找到新建md文件，书写文章</span><br><span class="line">#生成静态页面</span><br><span class="line">hexo g</span><br><span class="line">#部署--这里前提是已经在配置文件_config.yml中完成相关配置，未配置的，可自行查看hexo官网配置</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
+<p>部署完成后，查看网站效果：<br><a href="https://winddsnow.github.io/">https://winddsnow.github.io</a></p>
+
+    </article>
+    <!-- license -->
     
-    <!-- paginator  -->
+        <div class="license-wrapper">
+            <p>原文作者：<a href="https://winddsnow.github.io">WinddSnow</a>
+            <p>原文链接：<a href="https://winddsnow.github.io/2021/01/01/hello-world/">https://winddsnow.github.io/2021/01/01/hello-world/</a>
+            <p>发表日期：<a href="https://winddsnow.github.io/2021/01/01/hello-world/">January 1st 2021, 12:00:00 am</a>
+            <p>更新日期：<a href="https://winddsnow.github.io/2021/01/01/hello-world/">August 15th 2022, 11:12:06 am</a>
+            <p>版权声明：本文采用<a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
+        </div>
+    
+    <!-- paginator -->
+    <ul class="post-paginator">
+        <li class="next">
+            
+                <div class="nextSlogan">Next Post</div>
+                <a href="/2021/05/03/%E6%9D%82%E8%B0%88%E6%9C%8D%E5%8A%A1%E5%99%A8/" title="杂谈服务器">
+                    <div class="nextTitle">杂谈服务器</div>
+                </a>
+            
+        </li>
+        <li class="previous">
+            
+        </li>
+    </ul>
+    <!-- comment -->
+    
+        <div class="post-comment">
+            <!-- 来必力 City 版安装代码 -->
+
+
+            
+
+            
+
+            
+
+            <!-- utteranc评论 -->
+
+
+            <!-- partial('_partial/comment/changyan') -->
+            <!--PC版-->
+
+
+            
+            
+
+            
+
+        </div>
+    
+    <!-- timeliness note -->
+    <!-- idea from: https://hexo.fluid-dev.com/posts/hexo-injector/#%E6%96%87%E7%AB%A0%E6%97%B6%E6%95%88%E6%80%A7%E6%8F%90%E7%A4%BA -->
+    
+    <!-- Mathjax -->
     
 </main>
 
@@ -555,6 +680,23 @@ HashMap使用LinkedList来解决碰撞问题，当发生碰撞了，对象将会
 
         </div>
         <!-- toc -->
+        
+            <div class="toc-wrapper toc-wrapper-loding" style=
+
+
+
+
+
+
+
+    top:50vh;
+
+>
+                <div class="toc-catalog">
+                    <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+                </div>
+                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E7%8E%AF%E5%A2%83%E5%87%86%E5%A4%87"><span class="toc-number">1.</span> <span class="toc-text">1. 环境准备</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%BF%AB%E9%80%9F%E5%BC%80%E5%A7%8B"><span class="toc-number">2.</span> <span class="toc-text">2. 快速开始</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E6%97%A5%E5%B8%B8%E6%9B%B4%E6%96%B0%E6%96%87%E7%AB%A0"><span class="toc-number">3.</span> <span class="toc-text">3. 日常更新文章</span></a></li></ol>
+            </div>
         
         <!-- sidebar -->
         <div class="sidebar sidebar-hide">
@@ -952,6 +1094,8 @@ HashMap使用LinkedList来解决碰撞问题，当发生碰撞了，对象将会
         <!-- CNZZ -->
         
         <!-- async load share.js -->
+        
+            <script src="/scripts/share.js?v=20211217" async></script>
         
         <!-- mermaid -->
         
