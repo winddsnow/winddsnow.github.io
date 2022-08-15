@@ -428,9 +428,185 @@
             
         
         <article class="index-post">
-            <a class="abstract-title" href="/2022/08/14/Java%E9%9D%A2%E8%AF%95%E9%A2%98%E9%9B%86%E5%90%88/">
+            <a class="abstract-title" href="/2022/08/15/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B-%E5%B9%B6%E5%8F%91%E2%91%A1/">
                 
-                <span class="abstract-title-text">Java面试题集合</span>
+                <span class="abstract-title-text">Java多线程-并发②</span>
+            </a>
+            <div class="abstract-content">
+                多线程-并发②16. 数据并发操作可能的问题?
+丢失的修改
+不可重复读,读第二次,数据就不对了
+读脏数据
+幻影读
+
+17. 消息等待通知wait&#x2F;notify具体的应用
+一个线程修改了一个对象的值，另外一个线程需要感知到这个变化
+Java中我们使用的对象锁以及wait&#x2F;notify方法进行线程通信
+等待方遵循的原则：
+
+
+获取对象的锁
+不满足条件 就调用wait()方法
+条件满足继续执行
+
+
+通知方原则：
+
+
+获取对象的锁
+改变条件， 然后notify
+
+18. 线程池中 submit() 和 execute() 方法有什么区别？
+execute() 参数 Runna...
+            </div>
+            <!-- read more -->
+            
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2022/08/15">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2022/08/15</span>
+                </div>
+                <!-- tags -->
+                
+                    <div class= abstract-tags >
+    
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="Java">Java</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="面试题">面试题</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="多线程">多线程</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="并发">并发</a>
+    
+</div>
+
+                
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+    
+        
+        
+        
+        
+            
+        
+        <article class="index-post">
+            <a class="abstract-title" href="/2022/08/15/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B-%E5%B9%B6%E5%8F%91%E2%91%A0/">
+                
+                <span class="abstract-title-text">Java多线程-并发</span>
+            </a>
+            <div class="abstract-content">
+                多线程-并发①1.Java中的锁
+乐观锁&#x2F;悲观锁
+共享锁&#x2F;独享锁
+公平锁&#x2F;非公平锁
+互斥锁&#x2F;读写锁
+可重入锁
+自旋锁
+分段锁
+偏向锁&#x2F;轻量级锁&#x2F;重量级锁
+
+2. Java线程的状态|生命周期
+Java的线程状态被定义在公共枚举类java.lang.Thread.state中。一种有六种状态
+
+
+新建（NEW）：表示线程新建出来还没有被启动的状态，比如：Thread t &#x3D; new MyThread();
+就绪&#x2F;运行（RUNNABLE）：该状态包含了经典线程模型的两种状态：就绪(Ready)、运行(Runnin...
+            </div>
+            <!-- read more -->
+            
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2022/08/15">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2022/08/15</span>
+                </div>
+                <!-- tags -->
+                
+                    <div class= abstract-tags >
+    
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="Java">Java</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="面试题">面试题</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="多线程">多线程</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="并发">并发</a>
+    
+</div>
+
+                
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+    
+        
+        
+        
+        
+            
+        
+        <article class="index-post">
+            <a class="abstract-title" href="/2022/08/15/Java%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
+                
+                <span class="abstract-title-text">Java算法基础-数据结构-设计模式</span>
+            </a>
+            <div class="abstract-content">
+                Java算法基础-数据结构-设计模式1. 动态代理有几种实现？
+java的动态代理技术的实现主要有两种方式：
+
+
+JDK原生动态代理
+CGLIB动态代理
+
+
+JDK原生动态代理是Java原生支持的，不需要任何外部依赖，但是它只能基于接口进行代理（需要代理的对象必须实现于某个接口）
+CGLIB通过继承的方式进行代理（让需要代理的类成为Enhancer的父类），无论目标对象有没有实现接口都可以代理，但是无法处理final的情况。
+
+2. 堆和栈的区别?
+栈内存
+
+
+栈内存首先是一片内存区域，存储的都是局部变量
+凡是定义在方法中的都是局部变量（方法外的是全局变量），for循环内部定义的也是局部...
+            </div>
+            <!-- read more -->
+            
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2022/08/15">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2022/08/15</span>
+                </div>
+                <!-- tags -->
+                
+                    <div class= abstract-tags >
+    
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="Java">Java</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="面试题">面试题</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="数据结构">数据结构</a>
+    
+</div>
+
+                
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+    
+        
+        
+        
+        
+            
+        
+        <article class="index-post">
+            <a class="abstract-title" href="/2022/08/15/Java%E6%95%B0%E7%BB%84%E5%9F%BA%E7%A1%80/">
+                
+                <span class="abstract-title-text">Java数组基础</span>
             </a>
             <div class="abstract-content">
                 数组基础1.ArrayList和LinkedList区别?
@@ -447,8 +623,8 @@ ArrayList每次扩容是原来的1.5倍。
             
             <div class="abstract-post-meta">
                 <!-- date -->
-                <div class="abstract-date" title="Last updated: 2022/08/14">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2022/08/14</span>
+                <div class="abstract-date" title="Last updated: 2022/08/15">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2022/08/15</span>
                 </div>
                 <!-- tags -->
                 
@@ -458,6 +634,8 @@ ArrayList每次扩容是原来的1.5倍。
         <a class="post-tag" href="javascript:void(0);" data-tags="Java">Java</a>
     
         <a class="post-tag" href="javascript:void(0);" data-tags="面试题">面试题</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="数组基础">数组基础</a>
     
 </div>
 
@@ -624,7 +802,48 @@ ArrayList每次扩容是原来的1.5倍。
         
         
         
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
     
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         
         
         
@@ -683,7 +902,7 @@ ArrayList每次扩容是原来的1.5倍。
     
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 11
+        Total : 14
         </div>
         <!-- search  -->
         
@@ -699,8 +918,26 @@ ArrayList每次扩容是原来的1.5倍。
             
         
         <li class="archive-post-item">
-            <span class="archive-post-date">08/14</span>
-            <a class="archive-post-title" href="/2022/08/14/Java%E9%9D%A2%E8%AF%95%E9%A2%98%E9%9B%86%E5%90%88/">Java面试题集合</a>
+            <span class="archive-post-date">08/15</span>
+            <a class="archive-post-title" href="/2022/08/15/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B-%E5%B9%B6%E5%8F%91%E2%91%A0/">Java多线程-并发</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/15</span>
+            <a class="archive-post-title" href="/2022/08/15/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B-%E5%B9%B6%E5%8F%91%E2%91%A1/">Java多线程-并发②</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/15</span>
+            <a class="archive-post-title" href="/2022/08/15/Java%E6%95%B0%E7%BB%84%E5%9F%BA%E7%A1%80/">Java数组基础</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/15</span>
+            <a class="archive-post-title" href="/2022/08/15/Java%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">Java算法基础-数据结构-设计模式</a>
         </li>
     
         
@@ -880,6 +1117,26 @@ ArrayList每次扩容是原来的1.5倍。
             <span class="sidebar-tag-name" data-tags="数据库操作">
                 <span class="iconfont-archer">&#xe606;</span>
                 数据库操作
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="多线程">
+                <span class="iconfont-archer">&#xe606;</span>
+                多线程
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="并发">
+                <span class="iconfont-archer">&#xe606;</span>
+                并发
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="数组基础">
+                <span class="iconfont-archer">&#xe606;</span>
+                数组基础
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="数据结构">
+                <span class="iconfont-archer">&#xe606;</span>
+                数据结构
             </span>
         
     </div>

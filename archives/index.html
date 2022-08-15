@@ -428,9 +428,185 @@
             
         
         <article class="index-post">
-            <a class="abstract-title" href="/2022/08/14/Java%E9%9D%A2%E8%AF%95%E9%A2%98%E9%9B%86%E5%90%88/">
+            <a class="abstract-title" href="/2022/08/15/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B-%E5%B9%B6%E5%8F%91%E2%91%A1/">
                 
-                <span class="abstract-title-text">Java面试题集合</span>
+                <span class="abstract-title-text">Java多线程-并发②</span>
+            </a>
+            <div class="abstract-content">
+                多线程-并发②16. 数据并发操作可能的问题?
+丢失的修改
+不可重复读,读第二次,数据就不对了
+读脏数据
+幻影读
+
+17. 消息等待通知wait&#x2F;notify具体的应用
+一个线程修改了一个对象的值，另外一个线程需要感知到这个变化
+Java中我们使用的对象锁以及wait&#x2F;notify方法进行线程通信
+等待方遵循的原则：
+
+
+获取对象的锁
+不满足条件 就调用wait()方法
+条件满足继续执行
+
+
+通知方原则：
+
+
+获取对象的锁
+改变条件， 然后notify
+
+18. 线程池中 submit() 和 execute() 方法有什么区别？
+execute() 参数 Runna...
+            </div>
+            <!-- read more -->
+            
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2022/08/15">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2022/08/15</span>
+                </div>
+                <!-- tags -->
+                
+                    <div class= abstract-tags >
+    
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="Java">Java</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="面试题">面试题</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="多线程">多线程</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="并发">并发</a>
+    
+</div>
+
+                
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+    
+        
+        
+        
+        
+            
+        
+        <article class="index-post">
+            <a class="abstract-title" href="/2022/08/15/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B-%E5%B9%B6%E5%8F%91%E2%91%A0/">
+                
+                <span class="abstract-title-text">Java多线程-并发</span>
+            </a>
+            <div class="abstract-content">
+                多线程-并发①1.Java中的锁
+乐观锁&#x2F;悲观锁
+共享锁&#x2F;独享锁
+公平锁&#x2F;非公平锁
+互斥锁&#x2F;读写锁
+可重入锁
+自旋锁
+分段锁
+偏向锁&#x2F;轻量级锁&#x2F;重量级锁
+
+2. Java线程的状态|生命周期
+Java的线程状态被定义在公共枚举类java.lang.Thread.state中。一种有六种状态
+
+
+新建（NEW）：表示线程新建出来还没有被启动的状态，比如：Thread t &#x3D; new MyThread();
+就绪&#x2F;运行（RUNNABLE）：该状态包含了经典线程模型的两种状态：就绪(Ready)、运行(Runnin...
+            </div>
+            <!-- read more -->
+            
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2022/08/15">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2022/08/15</span>
+                </div>
+                <!-- tags -->
+                
+                    <div class= abstract-tags >
+    
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="Java">Java</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="面试题">面试题</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="多线程">多线程</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="并发">并发</a>
+    
+</div>
+
+                
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+    
+        
+        
+        
+        
+            
+        
+        <article class="index-post">
+            <a class="abstract-title" href="/2022/08/15/Java%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
+                
+                <span class="abstract-title-text">Java算法基础-数据结构-设计模式</span>
+            </a>
+            <div class="abstract-content">
+                Java算法基础-数据结构-设计模式1. 动态代理有几种实现？
+java的动态代理技术的实现主要有两种方式：
+
+
+JDK原生动态代理
+CGLIB动态代理
+
+
+JDK原生动态代理是Java原生支持的，不需要任何外部依赖，但是它只能基于接口进行代理（需要代理的对象必须实现于某个接口）
+CGLIB通过继承的方式进行代理（让需要代理的类成为Enhancer的父类），无论目标对象有没有实现接口都可以代理，但是无法处理final的情况。
+
+2. 堆和栈的区别?
+栈内存
+
+
+栈内存首先是一片内存区域，存储的都是局部变量
+凡是定义在方法中的都是局部变量（方法外的是全局变量），for循环内部定义的也是局部...
+            </div>
+            <!-- read more -->
+            
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2022/08/15">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2022/08/15</span>
+                </div>
+                <!-- tags -->
+                
+                    <div class= abstract-tags >
+    
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="Java">Java</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="面试题">面试题</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="数据结构">数据结构</a>
+    
+</div>
+
+                
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+    
+        
+        
+        
+        
+            
+        
+        <article class="index-post">
+            <a class="abstract-title" href="/2022/08/15/Java%E6%95%B0%E7%BB%84%E5%9F%BA%E7%A1%80/">
+                
+                <span class="abstract-title-text">Java数组基础</span>
             </a>
             <div class="abstract-content">
                 数组基础1.ArrayList和LinkedList区别?
@@ -447,8 +623,8 @@ ArrayList每次扩容是原来的1.5倍。
             
             <div class="abstract-post-meta">
                 <!-- date -->
-                <div class="abstract-date" title="Last updated: 2022/08/14">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2022/08/14</span>
+                <div class="abstract-date" title="Last updated: 2022/08/15">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2022/08/15</span>
                 </div>
                 <!-- tags -->
                 
@@ -458,6 +634,8 @@ ArrayList每次扩容是原来的1.5倍。
         <a class="post-tag" href="javascript:void(0);" data-tags="Java">Java</a>
     
         <a class="post-tag" href="javascript:void(0);" data-tags="面试题">面试题</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="数组基础">数组基础</a>
     
 </div>
 
@@ -713,134 +891,6 @@ Nginx是由伊戈尔·赛索耶夫为俄罗斯访问量第二的Rambler.ru站点
         </article>
         <div class="index-post-divider"></div>
     
-        
-        
-        
-        
-            
-        
-        <article class="index-post">
-            <a class="abstract-title" href="/2021/05/04/PVE%E8%99%9A%E6%8B%9F%E5%8C%96/">
-                
-                <span class="abstract-title-text">PVE虚拟化</span>
-            </a>
-            <div class="abstract-content">
-                Proxmox VEProxmox VE（PVE），开源虚拟化解决方案，如果觉得VMware的ESXI过于庞大复杂，可以尝试以下，普通PC就可安装，支持分布式。据说基于KVM，操作系统是万能的Debian。
-官网：https://www.proxmox.com/en/
-中文社区：https://www.proxmox.wiki/
-很多资料都可以在社区找到，安装也及其简单快捷，只需下载镜像，刻录到U盘，在需要安装的主机引导U盘启动，安装镜像的安装指导，一步一步安装即可，安装成功后，在界面会有管理网址弹出，直接web访问管理网址即可。目前的版本是6.4，开源产品，迭代还是很快的，据说是采用的...
-            </div>
-            <!-- read more -->
-            
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2022/08/14">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2021/05/04</span>
-                </div>
-                <!-- tags -->
-                
-                    <div class= abstract-tags >
-    
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="虚拟化">虚拟化</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="Proxmox VE">Proxmox VE</a>
-    
-</div>
-
-                
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
-    
-        
-        
-        
-        
-            
-        
-        <article class="index-post">
-            <a class="abstract-title" href="/2021/05/03/Markdown%E8%AF%AD%E6%B3%95%E8%AE%B0%E5%BD%95/">
-                
-                <span class="abstract-title-text">Markdown语法记录</span>
-            </a>
-            <div class="abstract-content">
-                使用Markdown语法写文章这是从掘金抄的。一份简要的 Markdown 引导指南，希望可以帮助您顺利的开始使用 Markdown 编辑器。
-丰富的快捷键本 Markdown 编辑器支持丰富的格式快捷键，可以非常便捷、轻松的使用 Markdown 语言，形成优美的排版和内容格式。
-支持的快捷键有：
-
-加粗： Ctrl/Cmd + B
-标题： Ctrl/Cmd + H
-插入链接： Ctrl/Cmd + K
-插入代码： Ctrl/Cmd + Shift + C
-行内代码： Ctrl/Cmd + Shift + K
-插入图片： Ctrl/Cmd + Shift + I
-无序列表： Ctrl/...
-            </div>
-            <!-- read more -->
-            
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2022/08/14">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2021/05/03</span>
-                </div>
-                <!-- tags -->
-                
-                    <div class= abstract-tags >
-    
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="Markdown">Markdown</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="掘金">掘金</a>
-    
-</div>
-
-                
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
-    
-        
-        
-        
-        
-            
-        
-        <article class="index-post">
-            <a class="abstract-title" href="/2021/05/03/%E6%9D%82%E8%B0%88%E6%9C%8D%E5%8A%A1%E5%99%A8/">
-                
-                <span class="abstract-title-text">杂谈服务器</span>
-            </a>
-            <div class="abstract-content">
-                服务器本质上也是就是加强版的计算机，服务器主要对外提供服务。但这有什么好谈论的呢？现代网络条件下，随着物联网的进一步发展，万物互联成为了趋势，那这一切服务的背后，是无数的服务器的支撑。
-我曾经一度很好奇，各种云厂商，如阿里云等，巨量的服务器是如何运维的？他们的服务器安装的是什么系统，不同的架构（如X86或ARM）对前端服务有何影响？网上资料很少，我的见解也是一知半解，只当记录，留作参考。
-磁盘阵列RAID谈论服务器绕不开磁盘阵列，本质上磁盘阵列是硬盘的一种冗余方式，从接触的服务器来看，大多服务器自带raid卡，可以进行硬件层面的磁盘阵列，牺牲性价比的raid1，两个磁盘互备，损失一半容量...
-            </div>
-            <!-- read more -->
-            
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2022/08/14">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2021/05/03</span>
-                </div>
-                <!-- tags -->
-                
-                    <div class= abstract-tags >
-    
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="碎语">碎语</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="42">42</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="计算机的世界">计算机的世界</a>
-    
-</div>
-
-                
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
-    
     <!-- paginator  -->
     
         <nav class="page-nav">
@@ -1003,7 +1053,48 @@ Nginx是由伊戈尔·赛索耶夫为俄罗斯访问量第二的Rambler.ru站点
         
         
         
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
     
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         
         
         
@@ -1062,7 +1153,7 @@ Nginx是由伊戈尔·赛索耶夫为俄罗斯访问量第二的Rambler.ru站点
     
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 11
+        Total : 14
         </div>
         <!-- search  -->
         
@@ -1078,8 +1169,26 @@ Nginx是由伊戈尔·赛索耶夫为俄罗斯访问量第二的Rambler.ru站点
             
         
         <li class="archive-post-item">
-            <span class="archive-post-date">08/14</span>
-            <a class="archive-post-title" href="/2022/08/14/Java%E9%9D%A2%E8%AF%95%E9%A2%98%E9%9B%86%E5%90%88/">Java面试题集合</a>
+            <span class="archive-post-date">08/15</span>
+            <a class="archive-post-title" href="/2022/08/15/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B-%E5%B9%B6%E5%8F%91%E2%91%A0/">Java多线程-并发</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/15</span>
+            <a class="archive-post-title" href="/2022/08/15/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B-%E5%B9%B6%E5%8F%91%E2%91%A1/">Java多线程-并发②</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/15</span>
+            <a class="archive-post-title" href="/2022/08/15/Java%E6%95%B0%E7%BB%84%E5%9F%BA%E7%A1%80/">Java数组基础</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/15</span>
+            <a class="archive-post-title" href="/2022/08/15/Java%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">Java算法基础-数据结构-设计模式</a>
         </li>
     
         
@@ -1259,6 +1368,26 @@ Nginx是由伊戈尔·赛索耶夫为俄罗斯访问量第二的Rambler.ru站点
             <span class="sidebar-tag-name" data-tags="数据库操作">
                 <span class="iconfont-archer">&#xe606;</span>
                 数据库操作
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="多线程">
+                <span class="iconfont-archer">&#xe606;</span>
+                多线程
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="并发">
+                <span class="iconfont-archer">&#xe606;</span>
+                并发
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="数组基础">
+                <span class="iconfont-archer">&#xe606;</span>
+                数组基础
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="数据结构">
+                <span class="iconfont-archer">&#xe606;</span>
+                数据结构
             </span>
         
     </div>

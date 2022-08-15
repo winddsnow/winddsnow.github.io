@@ -19,18 +19,25 @@
         <meta name="keywords" content="hexo,hexo-theme,hexo-blog">
     
     <meta name="description" content="">
-    <meta property="og:type" content="website">
-<meta property="og:title" content="WinddSnow">
-<meta property="og:url" content="https://winddsnow.github.io/page/2/index.html">
+    <meta name="description" content="数组基础1.ArrayList和LinkedList区别? 都是List接口的实现类 ArrayList基于数组，LinkedList基于链表 ArrayList3.1 查询快，增删慢3.2 往数组尾部添加元素的效率高，也就是调用add(obj)，但是还是比LinkedList慢。 LinkedList4.1 数据添加删除效率高，只需要改变指针指向即可4.2 查询数据的平均效率低，需要对链表进行遍">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java数组基础">
+<meta property="og:url" content="https://winddsnow.github.io/2022/08/15/Java%E6%95%B0%E7%BB%84%E5%9F%BA%E7%A1%80/index.html">
 <meta property="og:site_name" content="WinddSnow">
+<meta property="og:description" content="数组基础1.ArrayList和LinkedList区别? 都是List接口的实现类 ArrayList基于数组，LinkedList基于链表 ArrayList3.1 查询快，增删慢3.2 往数组尾部添加元素的效率高，也就是调用add(obj)，但是还是比LinkedList慢。 LinkedList4.1 数据添加删除效率高，只需要改变指针指向即可4.2 查询数据的平均效率低，需要对链表进行遍">
 <meta property="og:locale">
+<meta property="article:published_time" content="2022-08-15T09:08:18.000Z">
+<meta property="article:modified_time" content="2022-08-15T09:54:05.372Z">
 <meta property="article:author" content="WinddSnow">
+<meta property="article:tag" content="Java">
+<meta property="article:tag" content="面试题">
+<meta property="article:tag" content="数组基础">
 <meta name="twitter:card" content="summary">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <link rel="icon" href="/assets/favicon.ico">
     
-    <title>WinddSnow</title>
+    <title>Java数组基础 · WinddSnow</title>
     <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
 /* This file is meant as a standalone workflow for
 - testing support for link[rel=preload]
@@ -217,10 +224,10 @@
         }
     </script>
     
-        <body class="home-body">
+        <body class="post-body">
     
         <!-- header -->
-        <header class="header header-mobile index-header">
+        <header class="header header-mobile">
     <!-- top read progress line -->
     <div class="header-element">
         <div class="read-progress"></div>
@@ -248,10 +255,21 @@
     </div>
     <!-- toggle banner for post layout -->
     
+        
+            <div class="banner">
+        
+            <div class="blog-title header-element">
+                <a href="/">WinddSnow</a>
+            </div>
+            <div class="post-title header-element">
+                <a href="#" class="post-name">Java数组基础</a>
+            </div>
+        </div>
+    
 </header>
 
         <!-- fixed footer -->
-        <footer class="footer-fixed index-footer-fixed">
+        <footer class="footer-fixed">
     <!-- back to top button -->
     <div class="footer-fixed-element">
         
@@ -281,17 +299,17 @@
     <!-- 主页  -->
     
         
-    <!-- 文章页  -->
+    <!-- 404页  -->
             
     <div class="site-intro-placeholder"></div>
-    <div class="site-intro-img" style="background-image: url(https://source.unsplash.com/random)"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/post-bg.jpg)"></div>
     <div class="site-intro-meta">
         <!-- 标题  -->
         <h1 class="intro-title">
             <!-- 主页  -->
             
-                WinddSnow
-            <!-- 文章页  -->
+                Java数组基础
+            <!-- 404 -->
             
         </h1>
         <!-- 副标题 -->
@@ -299,12 +317,58 @@
             <!-- 主页副标题  -->
             
                 
-                    所有的如果，都没有意义。
-                
-            <!-- 文章页  -->
+            <!-- 404 -->
             
         </p>
         <!-- 文章页 meta -->
+        
+            <div class="post-intros">
+                <!-- 文章页标签  -->
+                
+                    <div class= post-intro-tags >
+    
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="Java">Java</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="面试题">面试题</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="数组基础">数组基础</a>
+    
+</div>
+
+                
+                
+                    <div class="post-intro-read">
+                        <span>字数统计: <span class="post-count word-count">1.9k</span>阅读时长: <span class="post-count reading-time">7 min</span></span>
+                    </div>
+                
+                <div class="post-intro-meta">
+                    <!-- 撰写日期 -->
+                    <span class="iconfont-archer post-intro-calander">&#xe676;</span>
+                    <span class="post-intro-time">2022/08/15</span>
+                    <!-- busuanzi -->
+                    
+                        <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                            <span class="iconfont-archer post-intro-busuanzi">&#xe602;</span>
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    
+                    <!-- 文章分享 -->
+                    <span class="share-wrapper">
+                        <span class="iconfont-archer share-icon">&#xe71d;</span>
+                        <span class="share-text">Share</span>
+                        <ul class="share-list">
+                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                                <div class="share-qrcode"></div>
+                            </li>
+                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
         
     </div>
 </div>
@@ -434,297 +498,173 @@
 
             <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
             <div class="container container-unloaded">
-                <main class="main index-page">
-    
-        
-        
-        
-        
-            
-        
-        <article class="index-post">
-            <a class="abstract-title" href="/2021/05/04/PVE%E8%99%9A%E6%8B%9F%E5%8C%96/">
-                
-                <span class="abstract-title-text">PVE虚拟化</span>
-            </a>
-            <div class="abstract-content">
-                Proxmox VEProxmox VE（PVE），开源虚拟化解决方案，如果觉得VMware的ESXI过于庞大复杂，可以尝试以下，普通PC就可安装，支持分布式。据说基于KVM，操作系统是万能的Debian。
-官网：https://www.proxmox.com/en/
-中文社区：https://www.proxmox.wiki/
-很多资料都可以在社区找到，安装也及其简单快捷，只需下载镜像，刻录到U盘，在需要安装的主机引导U盘启动，安装镜像的安装指导，一步一步安装即可，安装成功后，在界面会有管理网址弹出，直接web访问管理网址即可。目前的版本是6.4，开源产品，迭代还是很快的，据说是采用的...
-            </div>
-            <!-- read more -->
-            
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2022/08/14">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2021/05/04</span>
-                </div>
-                <!-- tags -->
-                
-                    <div class= abstract-tags >
-    
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="虚拟化">虚拟化</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="Proxmox VE">Proxmox VE</a>
-    
-</div>
+                <main class="main post-page">
+    <article class="article-entry">
+        <h1 id="数组基础"><a href="#数组基础" class="headerlink" title="数组基础"></a>数组基础</h1><h2 id="1-ArrayList和LinkedList区别"><a href="#1-ArrayList和LinkedList区别" class="headerlink" title="1.ArrayList和LinkedList区别?"></a>1.ArrayList和LinkedList区别?</h2><ol>
+<li>都是List接口的实现类</li>
+<li>ArrayList基于数组，LinkedList基于链表</li>
+<li>ArrayList<br>3.1 查询快，增删慢<br>3.2 往数组尾部添加元素的效率高，也就是调用add(obj)，但是还是比LinkedList慢。</li>
+<li>LinkedList<br>4.1 数据添加删除效率高，只需要改变指针指向即可<br>4.2 查询数据的平均效率低，需要对链表进行遍历</li>
+</ol>
+<h2 id="2-ArrayList扩容机制怎样？"><a href="#2-ArrayList扩容机制怎样？" class="headerlink" title="2.ArrayList扩容机制怎样？"></a>2.ArrayList扩容机制怎样？</h2><ol>
+<li>ArrayList每次扩容是原来的1.5倍。</li>
+<li>数组进行扩容时，会将老数组中的元素重新拷贝一份到新的数组中，每次数组容量的增长大约是其原容量的1.5倍。</li>
+<li>代价是很高的，因此在实际使用时，我们应该尽量避免数组容量的扩张。尽可能，就指定其容量，以避免数组扩容的发生。</li>
+<li>创建方式方式不同，容量不同</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>初始化方式</th>
+<th>容量</th>
+<th>数量变化</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>List arrayList &#x3D; new ArrayList();</td>
+<td><strong>初始数组容量为10</strong>,当真正对数组进行添加时，才真正分配容量</td>
+<td>10-&gt;15-&gt;22-&gt;33-&gt;49-&gt;74-&gt;…</td>
+</tr>
+<tr>
+<td>List arrayList &#x3D; new ArrayList(4)；</td>
+<td>4</td>
+<td>4-&gt;6-&gt;9-&gt;13-&gt;19-&gt;…</td>
+</tr>
+</tbody></table>
+<p>断点看扩容情况1:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">List</span> <span class="variable">arrayList</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ArrayList</span>();</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">TestArrayList</span> &#123;</span><br><span class="line">	 <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">	 	List&lt;Integer&gt; list = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">	 	</span><br><span class="line">	 	<span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>; i &lt;= <span class="number">20</span>; i++) &#123;</span><br><span class="line">	 		<span class="keyword">if</span> (i == <span class="number">1</span>) &#123;</span><br><span class="line">                System.out.println(<span class="string">&quot;断点位置 没添加元素时候容量 0&quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            list.add(i);</span><br><span class="line">            <span class="keyword">if</span> (i == <span class="number">1</span>) &#123;</span><br><span class="line">                System.out.println(<span class="string">&quot;断点位置 第一次添加元素 容量 10&quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (i == <span class="number">11</span>) &#123;</span><br><span class="line">                System.out.println(<span class="string">&quot;断点位置 第1次扩容 容量 15&quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (i == <span class="number">16</span>) &#123;</span><br><span class="line">                System.out.println(<span class="string">&quot;断点位置 第2次扩容 容量15*1.5= 22.5,22 or 23 &quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br><span class="line">            </span><br></pre></td></tr></table></figure>
 
-                
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
-    
-        
-        
-        
-        
-            
-        
-        <article class="index-post">
-            <a class="abstract-title" href="/2021/05/03/Markdown%E8%AF%AD%E6%B3%95%E8%AE%B0%E5%BD%95/">
-                
-                <span class="abstract-title-text">Markdown语法记录</span>
-            </a>
-            <div class="abstract-content">
-                使用Markdown语法写文章这是从掘金抄的。一份简要的 Markdown 引导指南，希望可以帮助您顺利的开始使用 Markdown 编辑器。
-丰富的快捷键本 Markdown 编辑器支持丰富的格式快捷键，可以非常便捷、轻松的使用 Markdown 语言，形成优美的排版和内容格式。
-支持的快捷键有：
+<p>断点看扩容情况2:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">TestArrayList1</span>  &#123;</span><br><span class="line">	 <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">	 	List&lt;Integer&gt; list = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;(<span class="number">4</span>);</span><br><span class="line">	 	</span><br><span class="line">	 	<span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>; i &lt;= <span class="number">20</span>; i++) &#123;</span><br><span class="line">	 		<span class="keyword">if</span> (i == <span class="number">1</span>) &#123;</span><br><span class="line">                System.out.println(<span class="string">&quot;断点位置 没添加元素时候容量 4&quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            list.add(i);</span><br><span class="line">            <span class="keyword">if</span> (i == <span class="number">1</span>) &#123;</span><br><span class="line">                System.out.println(<span class="string">&quot;断点位置 第一次添加元素 容量 10&quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (i == <span class="number">5</span>) &#123;</span><br><span class="line">                System.out.println(<span class="string">&quot;断点位置 第一次扩容 容量 6 &quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (i == <span class="number">7</span>) &#123;</span><br><span class="line">                System.out.println(<span class="string">&quot;断点位置 第二次扩容 容量9 &quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-加粗： Ctrl/Cmd + B
-标题： Ctrl/Cmd + H
-插入链接： Ctrl/Cmd + K
-插入代码： Ctrl/Cmd + Shift + C
-行内代码： Ctrl/Cmd + Shift + K
-插入图片： Ctrl/Cmd + Shift + I
-无序列表： Ctrl/...
-            </div>
-            <!-- read more -->
-            
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2022/08/14">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2021/05/03</span>
-                </div>
-                <!-- tags -->
-                
-                    <div class= abstract-tags >
-    
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="Markdown">Markdown</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="掘金">掘金</a>
-    
-</div>
+<h2 id="3-HashMap和HashTable的区别"><a href="#3-HashMap和HashTable的区别" class="headerlink" title="3.HashMap和HashTable的区别"></a>3.HashMap和HashTable的区别</h2><ol>
+<li>HashMap采用了数组+链表的数据结构，能在查询和修改方便继承了数组的线性查找和链表的寻址修改</li>
+<li>HashMap是非synchronized，所以HashMap比HashTable更快</li>
+<li>HashMap可以接受null键和值，而Hashtable则不能（原因就是equlas()方法需要对象，因为HashMap是后出的API经过处理才可以）</li>
+</ol>
+<h2 id="4-HashMap的工作原理（wait-publish）"><a href="#4-HashMap的工作原理（wait-publish）" class="headerlink" title="4.HashMap的工作原理（wait publish）"></a>4.HashMap的工作原理（wait publish）</h2><ol>
+<li>HashMap 的存储机制<br>1.1 在 Java 1.8 中，如果链表的长度超过了 8 ，那么链表将转化为红黑树；链表长度低于6，就把红黑树转回链表;</li>
+<li>Java 1.8 中 HashMap 的不同<br>2.1 在 Java 1.8 中，如果链表的长度超过了 8 ，那么链表将转化为红黑树；链表长度低于6，就把红黑树转回链表;<br>2.2 发生 hash 碰撞时，Java 1.7 会在链表头部插入，而 Java 1.8 会在链表尾部插入<br>2.3 在 Java 1.8 中，Entry 被 Node 代替（换了一个马甲）<br>3.put过程<br>3.1 对Key求Hash值，然后再计算下标<br>3.2 如果没有碰撞，直接放入桶中（碰撞的意思是计算得到的Hash值相同，需要放到同一个bucket中<br>3.3 如果碰撞了，以链表的方式链接到后面<br>3.4 如果链表长度超过阀值( TREEIFY THRESHOLD&#x3D;&#x3D;8)，就把链表转成红黑树，链表长度低于6，就把红黑树转回链表<br>3.5 如果节点已经存在就替换旧值<br>3.6 如果桶满了(容量16乘以加载因子0.75)，就需要 resize（扩容2倍后重排）</li>
+<li>get过程<br>4.1 当我们调用get()方法，HashMap会使用键对象的hashcode找到bucket位置<br>4.2 找到bucket位置之后，会调用keys.equals()方法去找到链表中正确的节点<br>4.3 最终找到要找的值对象</li>
+</ol>
+<h2 id="5-List、Set、Map三个接口的区别以及常见子类？"><a href="#5-List、Set、Map三个接口的区别以及常见子类？" class="headerlink" title="5. List、Set、Map三个接口的区别以及常见子类？"></a>5. List、Set、Map三个接口的区别以及常见子类？</h2><ol>
+<li>List、Set单列，Map是双列的键值对</li>
+<li>List可重复，set不可重复</li>
+<li>List有序的，set是无序</li>
+<li>List中最常用的两个子类：ArrayList（基于数组，查询快）和LinkedList（基于链表，增删快</li>
+<li>Set中最常用的两个子类：HashSet和TreeSet</li>
+<li>Map中最常用的两个子类：HashMap和TreeMa</li>
+</ol>
+<ul>
+<li><p>是否了解ConcurrentHashMap</p>
+</li>
+<li><p>经常了解HashMap和HashTable的区别</p>
+</li>
+<li><p>是否了解LinkedHashMap</p>
+</li>
+<li><p>是否了解CopyOnWriteArrayList</p>
+</li>
+<li><p>是否了解ConcurrentModificationException异常</p>
+</li>
+</ul>
+<h2 id="6-抽象类接口的区别？"><a href="#6-抽象类接口的区别？" class="headerlink" title="6. 抽象类接口的区别？"></a>6. 抽象类接口的区别？</h2><ul>
+<li>抽象类</li>
+</ul>
+<p>1.抽象类使用abstract修饰；<br>2.抽象类不能实例化，即不能使用new关键字来实例化对象；<br>3.含有抽象方法（使用abstract关键字修饰的方法）的类是抽象类，必须使用abstract关键字修饰；<br>4.抽象类可以含有抽象方法，也可以不包含抽象方法，抽象类中可以有具体的方法；<br>5.如果一个子类实现了父类（抽象类）的所有抽象方法，那么该子类可以不必是抽象类，否则就是抽象类；<br>6.抽象类中的抽象方法只有方法体，没有具体实现；</p>
+<ul>
+<li>接口</li>
+</ul>
+<ol>
+<li>接口使用interface修饰；</li>
+<li>接口不能被实例化；</li>
+<li>一个类只能继承一个类，但是可以实现多个接口；</li>
+<li><strong>接口中方法均为抽象方法</strong>；</li>
+<li>接口中不能包含实例域或静态方法（静态方法必须实现，接口中方法是抽象方法，不能实现）</li>
+</ol>
+<ul>
+<li>区别</li>
+</ul>
+<ol>
+<li><strong>抽象类可以提供成员方法的实现细节</strong>，而接口中没有；但是JDK1.8之后，在接口里面可以定义default方法，default方法里面是可以具备方法体的。</li>
+<li>抽象类中的成员变量可以是<strong>各种类型的</strong>，而接口中的成员变量只能是<strong>public static final</strong>类型；</li>
+<li>接口中每一个方法也是隐式指定为 public abstract，不能含有静态代码块以及静态方法，而抽象类可以有<strong>静态代码块和静态方法</strong>；</li>
+<li>一个类只能继承<strong>一个</strong>抽象类，而一个类却可以实现<strong>多个</strong>接口。</li>
+</ol>
+<h2 id="7-ConcurrentHashMap"><a href="#7-ConcurrentHashMap" class="headerlink" title="7. ConcurrentHashMap"></a>7. ConcurrentHashMap</h2><ol>
+<li>在ConcurrentHashMap中，无论是读操作还是写操作都能保证很高的性能，是Java中的一个<code>线程安全且高效</code>的HashMap实现</li>
+<li>在进行读操作时(几乎)不需要加锁，而在写操作时通过锁分段技术只对所操作的段加锁而不影响客户端对其它段的访问。</li>
+<li>在理想状态下，ConcurrentHashMap 可支持16个线程执行并发写操作，及任意数量线程的读操作。</li>
+</ol>
+<ul>
+<li>关于它的存储结构</li>
+<li>JDK 1.7 中ConcurrentHashMap由Segment 数组+HashEntry 组成，也就是数组+链表。使用分段锁（ReentrantLock + Segment + HashEntry），相当于把一个 HashMap 分成多个段，每段分配一把锁，这样支持多线程访问。锁粒度：基于 Segment，包含多个 HashEntry。</li>
+<li>JDK 1.8 中使用 CAS + synchronized + Node + 红黑树。锁粒度：Node（首结点）（实现 Map.Entry&lt;K,V&gt;）。锁粒度降低了。将HashEntry改为了Node，和 1.8 HashMap 结构类似，当链表节点数超过指定阈值的话，转换成<code>红黑树</code>。</li>
+</ul>
 
-                
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
+    </article>
+    <!-- license -->
     
-        
-        
-        
-        
+        <div class="license-wrapper">
+            <p>原文作者：<a href="https://winddsnow.github.io">WinddSnow</a>
+            <p>原文链接：<a href="https://winddsnow.github.io/2022/08/15/Java%E6%95%B0%E7%BB%84%E5%9F%BA%E7%A1%80/">https://winddsnow.github.io/2022/08/15/Java%E6%95%B0%E7%BB%84%E5%9F%BA%E7%A1%80/</a>
+            <p>发表日期：<a href="https://winddsnow.github.io/2022/08/15/Java%E6%95%B0%E7%BB%84%E5%9F%BA%E7%A1%80/">August 15th 2022, 5:08:18 pm</a>
+            <p>更新日期：<a href="https://winddsnow.github.io/2022/08/15/Java%E6%95%B0%E7%BB%84%E5%9F%BA%E7%A1%80/">August 15th 2022, 5:54:05 pm</a>
+            <p>版权声明：本文采用<a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
+        </div>
+    
+    <!-- paginator -->
+    <ul class="post-paginator">
+        <li class="next">
             
-        
-        <article class="index-post">
-            <a class="abstract-title" href="/2021/05/03/%E6%9D%82%E8%B0%88%E6%9C%8D%E5%8A%A1%E5%99%A8/">
-                
-                <span class="abstract-title-text">杂谈服务器</span>
-            </a>
-            <div class="abstract-content">
-                服务器本质上也是就是加强版的计算机，服务器主要对外提供服务。但这有什么好谈论的呢？现代网络条件下，随着物联网的进一步发展，万物互联成为了趋势，那这一切服务的背后，是无数的服务器的支撑。
-我曾经一度很好奇，各种云厂商，如阿里云等，巨量的服务器是如何运维的？他们的服务器安装的是什么系统，不同的架构（如X86或ARM）对前端服务有何影响？网上资料很少，我的见解也是一知半解，只当记录，留作参考。
-磁盘阵列RAID谈论服务器绕不开磁盘阵列，本质上磁盘阵列是硬盘的一种冗余方式，从接触的服务器来看，大多服务器自带raid卡，可以进行硬件层面的磁盘阵列，牺牲性价比的raid1，两个磁盘互备，损失一半容量...
-            </div>
-            <!-- read more -->
+                <div class="nextSlogan">Next Post</div>
+                <a href="/2022/08/15/Java%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" title="Java算法基础-数据结构-设计模式">
+                    <div class="nextTitle">Java算法基础-数据结构-设计模式</div>
+                </a>
             
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2022/08/14">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2021/05/03</span>
-                </div>
-                <!-- tags -->
-                
-                    <div class= abstract-tags >
-    
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="碎语">碎语</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="42">42</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="计算机的世界">计算机的世界</a>
-    
-</div>
-
-                
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
-    
-        
-        
-        
-        
+        </li>
+        <li class="previous">
             
-        
-        <article class="index-post">
-            <a class="abstract-title" href="/1970/01/01/hello-world/">
-                
-                <span class="abstract-title-text">Hello World</span>
-            </a>
-            <div class="abstract-content">
-                这是用GitHub的站点，百度了一番教程，做出来的静态blog。用hexo驱动，主题是 hexo官网里的archer。在本地编写md文件后，由hexo编译，再上传到GitHub上，完成博文更新。
-1. 环境准备
-hexo基于nodejs，所以需要nodejs环境
-python–如果没有，安装nodejs时可以通过npm自动安装
-git
-
-nodejs官网npm下载慢的话也可以下载淘宝下载源cnpm
-1npm install -g cnpm --registry=https://registry.npm.taobao.org
+                <div class="prevSlogan">Previous Post</div>
+                <a href="/2022/08/14/HashMap%E5%8E%9F%E7%90%86/" title="HashMap原理">
+                    <div class="prevTitle">HashMap原理</div>
+                </a>
+            
+        </li>
+    </ul>
+    <!-- comment -->
+    
+        <div class="post-comment">
+            <!-- 来必力 City 版安装代码 -->
 
 
-安装hexo12345npm install -g hexo...
-            </div>
-            <!-- read more -->
             
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2022/08/15">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">1970/01/01</span>
-                </div>
-                <!-- tags -->
-                
-                    <div class= abstract-tags >
-    
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="42">42</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="helloworld">helloworld</a>
-    
-</div>
 
-                
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
+            
+
+            
+
+            <!-- utteranc评论 -->
+
+
+            <!-- partial('_partial/comment/changyan') -->
+            <!--PC版-->
+
+
+            
+            
+
+            
+
+        </div>
     
-    <!-- paginator  -->
+    <!-- timeliness note -->
+    <!-- idea from: https://hexo.fluid-dev.com/posts/hexo-injector/#%E6%96%87%E7%AB%A0%E6%97%B6%E6%95%88%E6%80%A7%E6%8F%90%E7%A4%BA -->
     
-        <nav class="page-nav">
-            <a class="extend prev" rel="prev" href="/">&lt; PREV</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
-        </nav>
+    <!-- Mathjax -->
     
 </main>
 
                 <!-- profile -->
-                
-                    <div class="profile">
-    <img class="profile-avatar" alt="avatar" src= https://source.unsplash.com/random />
-    <div class="profile-name">WinddSnow</div>
-    
-        <div class="profile-signature">
-            Simple is best.
-        </div>
-    
-    
-        <div class="profile-social">
-            
-    
-        
-            
-                <a href="mailto:winddsnow@163.com" class="iconfont-archer email" title=email ></a>
-            
-        
-    
-        
-            
-                <a href="//github.com/Winddsnow" class="iconfont-archer github" target="_blank" title=github></a>
-            
-        
-    
-        
-            
-                <span class="iconfont-archer wechat" title=wechat>
-                    
-                    <img class="profile-qr" src="/assets/example_qr.png" />
-                </span>
-            
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-
-
-        </div>
-    
-    
-        <div class="friends">
-            <div>
-                
-                FRIENDS
-            </div>
-            
-                
-                    <span>
-                        <a href="//www.baidu.com" target="_black">friendA</a>
-                    </span>
-                
-            
-                
-                    <span>
-                        <a href="//www.google.com" target="_black">friendB</a>
-                    </span>
-                
-            
-        </div>
-    
-    
-        <div class="profile-link-item">
-            <a href="/about" class="about-me">
-                
-                ABOUT ME
-            </a>
-        </div>
-    
-    
-    
-</div>
-
                 
             </div>
             <footer class="footer footer-unloaded">
@@ -811,6 +751,23 @@ nodejs官网npm下载慢的话也可以下载淘宝下载源cnpm
 
         </div>
         <!-- toc -->
+        
+            <div class="toc-wrapper toc-wrapper-loding" style=
+
+
+
+
+
+
+
+    top:50vh;
+
+>
+                <div class="toc-catalog">
+                    <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+                </div>
+                <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%95%B0%E7%BB%84%E5%9F%BA%E7%A1%80"><span class="toc-number">1.</span> <span class="toc-text">数组基础</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-ArrayList%E5%92%8CLinkedList%E5%8C%BA%E5%88%AB"><span class="toc-number">1.1.</span> <span class="toc-text">1.ArrayList和LinkedList区别?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-ArrayList%E6%89%A9%E5%AE%B9%E6%9C%BA%E5%88%B6%E6%80%8E%E6%A0%B7%EF%BC%9F"><span class="toc-number">1.2.</span> <span class="toc-text">2.ArrayList扩容机制怎样？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-HashMap%E5%92%8CHashTable%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">1.3.</span> <span class="toc-text">3.HashMap和HashTable的区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-HashMap%E7%9A%84%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86%EF%BC%88wait-publish%EF%BC%89"><span class="toc-number">1.4.</span> <span class="toc-text">4.HashMap的工作原理（wait publish）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-List%E3%80%81Set%E3%80%81Map%E4%B8%89%E4%B8%AA%E6%8E%A5%E5%8F%A3%E7%9A%84%E5%8C%BA%E5%88%AB%E4%BB%A5%E5%8F%8A%E5%B8%B8%E8%A7%81%E5%AD%90%E7%B1%BB%EF%BC%9F"><span class="toc-number">1.5.</span> <span class="toc-text">5. List、Set、Map三个接口的区别以及常见子类？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E6%8A%BD%E8%B1%A1%E7%B1%BB%E6%8E%A5%E5%8F%A3%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="toc-number">1.6.</span> <span class="toc-text">6. 抽象类接口的区别？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-ConcurrentHashMap"><span class="toc-number">1.7.</span> <span class="toc-text">7. ConcurrentHashMap</span></a></li></ol></li></ol>
+            </div>
         
         <!-- sidebar -->
         <div class="sidebar sidebar-hide">
@@ -1296,6 +1253,8 @@ nodejs官网npm下载慢的话也可以下载淘宝下载源cnpm
         <!-- CNZZ -->
         
         <!-- async load share.js -->
+        
+            <script src="/scripts/share.js?v=20211217" async></script>
         
         <!-- mermaid -->
         

@@ -19,24 +19,26 @@
         <meta name="keywords" content="hexo,hexo-theme,hexo-blog">
     
     <meta name="description" content="">
-    <meta name="description" content="这是用GitHub的站点，百度了一番教程，做出来的静态blog。用hexo驱动，主题是 hexo官网里的archer。在本地编写md文件后，由hexo编译，再上传到GitHub上，完成博文更新。 1. 环境准备 hexo基于nodejs，所以需要nodejs环境 python–如果没有，安装nodejs时可以通过npm自动安装 git  nodejs官网npm下载慢的话也可以下载淘宝下载源cnpm">
+    <meta name="description" content="多线程-并发①1.Java中的锁 乐观锁&#x2F;悲观锁 共享锁&#x2F;独享锁 公平锁&#x2F;非公平锁 互斥锁&#x2F;读写锁 可重入锁 自旋锁 分段锁 偏向锁&#x2F;轻量级锁&#x2F;重量级锁  2. Java线程的状态|生命周期 Java的线程状态被定义在公共枚举类java.lang.Thread.state中。一种有六种状态   新建（NEW）：表示线程新建出来还没有被启动">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="https://winddsnow.github.io/1970/01/01/hello-world/index.html">
+<meta property="og:title" content="Java多线程-并发">
+<meta property="og:url" content="https://winddsnow.github.io/2022/08/15/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B-%E5%B9%B6%E5%8F%91%E2%91%A0/index.html">
 <meta property="og:site_name" content="WinddSnow">
-<meta property="og:description" content="这是用GitHub的站点，百度了一番教程，做出来的静态blog。用hexo驱动，主题是 hexo官网里的archer。在本地编写md文件后，由hexo编译，再上传到GitHub上，完成博文更新。 1. 环境准备 hexo基于nodejs，所以需要nodejs环境 python–如果没有，安装nodejs时可以通过npm自动安装 git  nodejs官网npm下载慢的话也可以下载淘宝下载源cnpm">
+<meta property="og:description" content="多线程-并发①1.Java中的锁 乐观锁&#x2F;悲观锁 共享锁&#x2F;独享锁 公平锁&#x2F;非公平锁 互斥锁&#x2F;读写锁 可重入锁 自旋锁 分段锁 偏向锁&#x2F;轻量级锁&#x2F;重量级锁  2. Java线程的状态|生命周期 Java的线程状态被定义在公共枚举类java.lang.Thread.state中。一种有六种状态   新建（NEW）：表示线程新建出来还没有被启动">
 <meta property="og:locale">
-<meta property="article:published_time" content="1970-01-01T00:00:00.000Z">
-<meta property="article:modified_time" content="2022-08-15T03:22:03.514Z">
+<meta property="article:published_time" content="2022-08-15T09:14:31.000Z">
+<meta property="article:modified_time" content="2022-08-15T09:36:03.473Z">
 <meta property="article:author" content="WinddSnow">
-<meta property="article:tag" content="42">
-<meta property="article:tag" content="helloworld">
+<meta property="article:tag" content="Java">
+<meta property="article:tag" content="面试题">
+<meta property="article:tag" content="多线程">
+<meta property="article:tag" content="并发">
 <meta name="twitter:card" content="summary">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <link rel="icon" href="/assets/favicon.ico">
     
-    <title>Hello World · WinddSnow</title>
+    <title>Java多线程-并发 · WinddSnow</title>
     <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
 /* This file is meant as a standalone workflow for
 - testing support for link[rel=preload]
@@ -261,7 +263,7 @@
                 <a href="/">WinddSnow</a>
             </div>
             <div class="post-title header-element">
-                <a href="#" class="post-name">Hello World</a>
+                <a href="#" class="post-name">Java多线程-并发</a>
             </div>
         </div>
     
@@ -307,7 +309,7 @@
         <h1 class="intro-title">
             <!-- 主页  -->
             
-                Hello World
+                Java多线程-并发
             <!-- 404 -->
             
         </h1>
@@ -327,22 +329,26 @@
                     <div class= post-intro-tags >
     
     
-        <a class="post-tag" href="javascript:void(0);" data-tags="42">42</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="Java">Java</a>
     
-        <a class="post-tag" href="javascript:void(0);" data-tags="helloworld">helloworld</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="面试题">面试题</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="多线程">多线程</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="并发">并发</a>
     
 </div>
 
                 
                 
                     <div class="post-intro-read">
-                        <span>字数统计: <span class="post-count word-count">493</span>阅读时长: <span class="post-count reading-time">2 min</span></span>
+                        <span>字数统计: <span class="post-count word-count">3.9k</span>阅读时长: <span class="post-count reading-time">14 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
                     <!-- 撰写日期 -->
                     <span class="iconfont-archer post-intro-calander">&#xe676;</span>
-                    <span class="post-intro-time">1970/01/01</span>
+                    <span class="post-intro-time">2022/08/15</span>
                     <!-- busuanzi -->
                     
                         <span id="busuanzi_container_page_pv" class="busuanzi-pv">
@@ -497,52 +503,266 @@
             <div class="container container-unloaded">
                 <main class="main post-page">
     <article class="article-entry">
-        <p>这是用GitHub的站点，百度了一番教程，做出来的静态blog。用hexo驱动，主题是 hexo官网里的archer。在本地编写md文件后，由hexo编译，再上传到GitHub上，完成博文更新。</p>
-<h2 id="1-环境准备"><a href="#1-环境准备" class="headerlink" title="1. 环境准备"></a>1. 环境准备</h2><ul>
-<li>hexo基于nodejs，所以需要nodejs环境</li>
-<li>python–如果没有，安装nodejs时可以通过npm自动安装</li>
-<li>git</li>
-</ul>
-<p><a target="_blank" rel="noopener" href="https://nodejs.org/en/">nodejs官网</a><br>npm下载慢的话也可以下载淘宝下载源cnpm</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g cnpm --registry=https://registry.npm.taobao.org</span><br></pre></td></tr></table></figure>
-
-<ol>
-<li>安装hexo<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br><span class="line">或者</span><br><span class="line">cnpm install -g hexo-cli</span><br><span class="line"></span><br><span class="line">hexo的上传插件deploy-git</span><br></pre></td></tr></table></figure></li>
-<li>部署所需插件：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnpm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure></li>
-<li>本文章使用的是Archer 主题<br>Archer 主题依赖于 hexo-generator-json-content 和 hexo-wordcount，因此需要在 Hexo 根目录执行以下命令：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm和cnpm看个人网络自行选择</span><br><span class="line">cnpm install hexo-generator-json-content --save</span><br><span class="line">cnpm install hexo-wordcount --save</span><br></pre></td></tr></table></figure></li>
-<li>依赖安装完成后，拉取 Archer 主题到 themes&#x2F;archer 目录，在 Hexo 根目录执行下面的命令：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">这里是下载主题，可以自行查看下载文件夹</span><br><span class="line">git clone https://github.com/fi3ework/hexo-theme-archer.git themes/archer --depth=1</span><br></pre></td></tr></table></figure></li>
-<li>设置主题，主题也有github，可以自行去查看文档<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">修改 Hexo 根目录下的 _config.yml 文件中的 theme 字段为 archer：</span><br><span class="line">theme: archer</span><br><span class="line">主题GitHub地址：https://github.com/fi3ework/hexo-theme-archer</span><br></pre></td></tr></table></figure></li>
+        <h1 id="多线程-并发①"><a href="#多线程-并发①" class="headerlink" title="多线程-并发①"></a>多线程-并发①</h1><h2 id="1-Java中的锁"><a href="#1-Java中的锁" class="headerlink" title="1.Java中的锁"></a>1.Java中的锁</h2><ol>
+<li>乐观锁&#x2F;悲观锁</li>
+<li>共享锁&#x2F;独享锁</li>
+<li>公平锁&#x2F;非公平锁</li>
+<li>互斥锁&#x2F;读写锁</li>
+<li>可重入锁</li>
+<li>自旋锁</li>
+<li>分段锁</li>
+<li>偏向锁&#x2F;轻量级锁&#x2F;重量级锁</li>
 </ol>
-<h2 id="2-快速开始"><a href="#2-快速开始" class="headerlink" title="2. 快速开始"></a>2. 快速开始</h2><ul>
-<li>新建一篇文章</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
+<h2 id="2-Java线程的状态-生命周期"><a href="#2-Java线程的状态-生命周期" class="headerlink" title="2. Java线程的状态|生命周期"></a>2. Java线程的状态|生命周期</h2><ol>
+<li>Java的线程状态被定义在公共枚举类java.lang.Thread.state中。一种有<strong>六种状态</strong></li>
+</ol>
 <ul>
-<li>启动hexo用于调试测试</li>
+<li>新建（NEW）：表示线程新建出来还没有被启动的状态，比如：Thread t &#x3D; new MyThread();</li>
+<li>就绪&#x2F;运行（RUNNABLE）：该状态包含了经典线程模型的两种状态：就绪(Ready)、运行(Running)：</li>
+<li>阻塞（BLOCKED）：通常与锁有关系，表示线程正在获取有锁控制的资源，比如进入synchronized代码块，获取ReentryLock等；发起阻塞式IO也会阻塞，比如字符流字节流操作。</li>
+<li>等待（WAITING）：线程在等待某种资源就绪。</li>
+<li>超时等待（TIMED_WAIT）：线程进入条件和等待类似，但是它调用的是带有超时时间的方法。</li>
+<li>终止（TERMINATED）：线程正常退出或异常退出后，就处于终结状态。也可以叫线程的死亡。</li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
+<ol start="2">
+<li>经典线程模型包含5种状态，：新建、就绪、运行、等待、退出</li>
+<li>经典线程的就绪、运行，在java里面统一叫RUNNABLE</li>
+<li>Java的BLOCKED、WAITING、TIMED_WAITING都属于传统模型的等待状态</li>
+</ol>
+<p>哪些情况或者方法可以进入等待状态？</p>
 <ul>
-<li>生成静态页面</li>
+<li>当一个线程执行了Object.wait()的时候，它一定在等待另一个线程执行Object.notify()或者Object.notifyAll()。</li>
+<li>一个线程thread，其在主线程中被执行了thread.join()的时候，主线程即会等待该线程执行完成。</li>
+<li>当一个线程执行了LockSupport.park()的时候，其在等待执行LockSupport.unpark(thread)。</li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
+<p>哪些情况或者方法可以进入超时等待状态？</p>
 <ul>
-<li>部署到服务端</li>
+<li>该状态不同于WAITING，它可以在指定的时间后自行返回</li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<h2 id="3-日常更新文章"><a href="#3-日常更新文章" class="headerlink" title="3. 日常更新文章"></a>3. 日常更新文章</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">#以下操作均在hexo根目录下使用gitbash命令行操作</span><br><span class="line">#新建文章标题</span><br><span class="line">hexo new &quot;新文章标题&quot;</span><br><span class="line">#打开hexo根目录\source\_posts---找到新建md文件，书写文章</span><br><span class="line">#生成静态页面</span><br><span class="line">hexo g</span><br><span class="line">#部署--这里前提是已经在配置文件_config.yml中完成相关配置，未配置的，可自行查看hexo官网配置</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
-<p>部署完成后，查看网站效果：<br><a href="https://winddsnow.github.io/">https://winddsnow.github.io</a></p>
+<ol>
+<li>Object.wait(long)</li>
+<li>Thread.join(long)</li>
+<li>LockSupport.parkNanos()</li>
+<li>LockSupport.parkUntil()</li>
+<li>Thread.sleep(long)</li>
+</ol>
+<h2 id="3-synchronized-与lock区别？"><a href="#3-synchronized-与lock区别？" class="headerlink" title="3. synchronized 与lock区别？"></a>3. synchronized 与lock区别？</h2><ol>
+<li>lock是一个接口，而synchronized是java的一个关键字</li>
+<li>synchronized异常会释放锁，lock异常不会释放，所以一般try catch包起来，finally中写入unlock，避免死锁。</li>
+<li>Lock可以提高多个线程进行读操作的效率</li>
+<li>synchronized关键字，可以放代码块，实例方法，静态方法，类上</li>
+<li>lock一般使用ReentrantLock类做为锁，配合lock()和unlock()方法。在finally块中写unlock()以防死锁。</li>
+<li>jdk1.6之前synchronized低效。jdk1.6之后synchronized高效。</li>
+</ol>
+<h2 id="4-synchronized-与ReentrantLock区别？"><a href="#4-synchronized-与ReentrantLock区别？" class="headerlink" title="4. synchronized 与ReentrantLock区别？"></a>4. synchronized 与ReentrantLock区别？</h2><ol>
+<li>synchronized依赖JVM实现，ReentrantLock是JDK实现的。synchronized是内置锁，只要在代码开始的地方加synchronized，代码结束会自动释放。Lock必须手动加锁，手动释</li>
+<li>ReenTrantLock比synchronized增加了一些高级功能。synchronized代码量少，自动化，但扩展性低，不够灵活；ReentrantLock扩展性好，灵活，但代码量相对多。</li>
+<li>两者都是可重入锁。都是互斥锁。</li>
+<li>synchronized是非公平锁，ReentrantLock可以指定是公平锁还是非公平锁。</li>
+</ol>
+<h2 id="5-synchronized-与ThreadLocal区别？"><a href="#5-synchronized-与ThreadLocal区别？" class="headerlink" title="5. synchronized 与ThreadLocal区别？"></a>5. synchronized 与ThreadLocal区别？</h2><ol>
+<li>都是为了解决多线程中相同变量的访问冲突问题。</li>
+<li>Synchronized同步机制，提供一份变量，让不同的线程排队访问。</li>
+<li>ThreadLocal关键字，为每一个线程都提供了一份变量，因此可以同时访问而互不影响。</li>
+<li>ThreadLocal比直接使用synchronized同步机制解决线程安全问题更简单，更方便，且结果程序拥有更高的并发性。</li>
+</ol>
+<ul>
+<li><p>ThreadLocal</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ConnectionUtil</span> &#123;</span><br><span class="line">     <span class="keyword">private</span> <span class="keyword">static</span> ThreadLocal&lt;Connection&gt; tl = <span class="keyword">new</span> <span class="title class_">ThreadLocal</span>&lt;Connection&gt;();</span><br><span class="line">     <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">Connection</span> <span class="variable">initConn</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">     <span class="keyword">static</span> &#123;</span><br><span class="line">         <span class="keyword">try</span> &#123;</span><br><span class="line">             initConn = DriverManager.getConnection(<span class="string">&quot;url, name and password&quot;</span>);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (SQLException e) &#123;</span><br><span class="line">             e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">     </span><br><span class="line">     <span class="keyword">public</span> Connection <span class="title function_">getConn</span><span class="params">()</span> &#123;</span><br><span class="line">         <span class="type">Connection</span> <span class="variable">c</span> <span class="operator">=</span> tl.get();</span><br><span class="line">         <span class="keyword">if</span>(<span class="literal">null</span> == c) tl.set(initConn);</span><br><span class="line">         <span class="keyword">return</span> tl.get();</span><br><span class="line">    &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>synchronized</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ConnectionUtil</span> &#123;</span><br><span class="line">     <span class="keyword">private</span> <span class="keyword">static</span> DBOPool instance=<span class="literal">null</span>;</span><br><span class="line">     <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">synchronized</span> Connection <span class="title function_">getInstance</span><span class="params">()</span>&#123;</span><br><span class="line">         <span class="keyword">if</span>(instance==<span class="literal">null</span>)</span><br><span class="line">             instance=<span class="keyword">new</span> <span class="title class_">DBOPool</span>();</span><br><span class="line">         <span class="keyword">return</span> instance.getConnection();</span><br><span class="line">    &#125;          </span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="6-synchronized-与volatile区别？"><a href="#6-synchronized-与volatile区别？" class="headerlink" title="6. synchronized 与volatile区别？"></a>6. synchronized 与volatile区别？</h2><ol>
+<li>volatile是一个类型修饰符（type specifier）。</li>
+<li>volatile，它能够使变量在值发生改变时能尽快地让其他线程知道。</li>
+<li>关键字volatile是线程同步的轻量级实现，所以volatile性能肯定比synchronized要好，并且只能修改变量，而synchronized可以修饰方法，以及代码块。</li>
+<li>多线程访问volatile不会发生阻塞，而synchronized会出现阻塞</li>
+<li>volatile能保证数据的可见性，但不能保证原子性；而synchronized可以保证原子性，也可以间接保证可见性，因为它会将私有内存和公共内存中的数据做同步</li>
+<li>关键字volatile解决的下变量在多线程之间的可见性；而synchronized解决的是多线程之间资源同步问题</li>
+</ol>
+<h2 id="7-Thread类中的start-和run-方法有什么区别"><a href="#7-Thread类中的start-和run-方法有什么区别" class="headerlink" title="7. Thread类中的start()和run()方法有什么区别?"></a>7. Thread类中的start()和run()方法有什么区别?</h2><ol>
+<li>通过调用线程类的start()方法来启动一个线程，使线程处于就绪状态，即可以被JVM来调度执行，在调度过程中，JVM通过调用线程类的run()方法来完成实际的业务逻辑，当run()方法结束后，此线程就会终止。</li>
+<li>如果直接调用线程类的run()方法，会被当作一个普通的函数调用，程序中仍然只有主线程这一个线程。即start()方法能够异步的调用run()方法，但是直接调用run()方法却是同步的，无法达到多线程的目的。</li>
+<li>因此，只用通过调用线程类的start()方法才能达到多线程的目的。</li>
+</ol>
+<h2 id="8-事务的隔离级别及引发的问题"><a href="#8-事务的隔离级别及引发的问题" class="headerlink" title="8. 事务的隔离级别及引发的问题"></a>8. 事务的隔离级别及引发的问题</h2><ol>
+<li>四个隔离级别</li>
+</ol>
+<ul>
+<li>读未提交（READ UNCOMMITTED），事务中的修改，即使没有提交，对其它事务也是可见的。</li>
+<li>读已提交（READ COMMITTED），一个事务能读取已经提交的事务所做的修改，不能读取未提交的事务所做的修改。也就是事务未提交之前，对其他事务不可见。</li>
+<li>可重复读（REPEATABLE READ），保证在同一个事务中多次读取同样数据的结果是一样的。</li>
+<li>串行化（SERIALIZABLE），强制事务串行执行。</li>
+</ul>
+<ol start="2">
+<li>读已提交是sql server，Oracle的默认隔离级别。</li>
+<li>可重复读是mysql的默认隔离级别。</li>
+<li>各个隔离级别引起的问题</li>
+</ol>
+<ul>
+<li>读未提交：可能出现脏读、不可重复度、幻读；</li>
+<li>读已提交：可能出现不可重复度、幻读；</li>
+<li>串行化：都没问题；</li>
+</ul>
+<ol start="5">
+<li>理解脏读、不可重复读、幻读</li>
+</ol>
+<ul>
+<li>脏读：读到未提交的数据。</li>
+<li>不可重复读：重点是修改，同样的条件, 你读取过的数据, 再次读取出来发现值不一样了。</li>
+<li>幻读：重点在于新增或者删除，同样的条件, 第1次和第2次读出来的记录数不一样。</li>
+</ul>
+<h2 id="9-什么是线程安全，Java如何保证线程安全？"><a href="#9-什么是线程安全，Java如何保证线程安全？" class="headerlink" title="9. 什么是线程安全，Java如何保证线程安全？"></a>9. 什么是线程安全，Java如何保证线程安全？</h2><ol>
+<li>在多线程环境中，能永远保证程序的正确性。执行结果不存在二义性。说白了，运行多少次结果都是一致的。</li>
+<li>换种说法，当多个线程访问某一个类（对象或方法）时，这个类始终都能表现心正确的行为，那么这个类（对象或方法）就是线程安全的。</li>
+<li>使用synchronized关键字和使用锁。</li>
+</ol>
+<h2 id="10-线程池介绍"><a href="#10-线程池介绍" class="headerlink" title="10. 线程池介绍"></a>10. 线程池介绍</h2><ol>
+<li>线程池就是预先创建一些线程，它们的集合称为线程池。</li>
+<li>线程池可以很好地提高性能，在系统启动时即创建大量空闲的线程，程序将一个task给到线程池，线程池就会启动一条线程来执行这个任务，执行结束后，该线程不会死亡，而是再次返回线程池中成为空闲状态，等待执行下一个任务。</li>
+<li>线程的创建和销毁比较消耗时间，线程池可以避免这个问题。</li>
+<li>Executors是jdk1.5之后的一个新类，提供了一些静态方法，帮助我们方便的生成一些常见的线程池</li>
+</ol>
+<ul>
+<li>newSingleThreadExecutor：创建一个单线程化的Executor。</li>
+<li>newFixedThreadPool：创建一个固定大小的线程池。</li>
+<li>newCachedThreadPool：创建一个可缓存的线程池</li>
+<li>newScheduleThreadPool：创建一个定长的线程池，可以周期性执行任务。</li>
+</ul>
+<ol start="5">
+<li>我们还可以使用ThreadPoolExecutor自己定义线程池，弄懂它的构造参数即可</li>
+</ol>
+<ul>
+<li>int corePoolSize，&#x2F;&#x2F;核心池的大小</li>
+<li>int maximumPoolSize，&#x2F;&#x2F;线程池最大线程数</li>
+<li>long keepAliveTime，&#x2F;&#x2F;保持时间&#x2F;额外线程的存活时间</li>
+<li>TimeUnit unit，&#x2F;&#x2F;时间单位</li>
+<li>BlockingQueue<Runnable> workQueue，&#x2F;&#x2F;任务队列</li>
+<li>ThreadFactory threadFactory，&#x2F;&#x2F;线程工厂</li>
+<li>RejectedExecutionHandler handler &#x2F;&#x2F;异常的捕捉器</li>
+</ul>
+<p>常见的线程池有哪些？</p>
+<ol>
+<li>Executors是jdk1.5之后的一个新类，提供了一些静态方法，帮助我们方便的生成一些常见的线程池</li>
+<li>单线程线程池，通过newSingleThreadExecutor()创建</li>
+<li>可缓存的线程池，通过newCachedThreadPool()创建</li>
+<li>可周期性执行任务的线程池，通过newScheduleThreadPool()创建</li>
+</ol>
+<p>几个线程的区别？</p>
+<ol>
+<li>newCachedThreadPool<br>创建一个可缓存线程池，如果线程池长度超过处理需要，可灵活回收空闲线程，若无可回收，则新建线程。特点：</li>
+</ol>
+<ul>
+<li>工作线程的创建数量几乎没有限制(其实也有限制的,数目为Interger. MAX_VALUE), 这样可灵活的往线程池中添加线程。</li>
+<li>如果长时间没有往线程池中提交任务，即如果工作线程空闲了指定的时间(默认为1分钟)，则该工作线程将自动终止。终止后，如果你又提交了新的任务，则线程池重新创建一个工作线程。</li>
+<li>在使用CachedThreadPool时，一定要注意控制任务的数量，否则，由于大量线程同时运行，很有会造成系统瘫痪。</li>
+</ul>
+<ol start="2">
+<li>newFixedThreadPool<br>创建一个指定工作线程数量的线程池。每当提交一个任务就创建一个工作线程，如果工作线程数量达到线程池初始的最大数，则将提交的任务存入到池队列中。</li>
+</ol>
+<ul>
+<li>FixedThreadPool是一个典型且优秀的线程池，它具有线程池提高程序效率和节省创建线程时所耗的开销的优点。但是，在线程池空闲时，即线程池中没有可运行任务时，它不会释放工作线程，还会占用一定的系统资源。</li>
+</ul>
+<ol start="3">
+<li>newSingleThreadExecutor</li>
+</ol>
+<ul>
+<li>创建一个单线程化的Executor，即只创建唯一的工作者线程来执行任务，它只会用唯一的工作线程来执行任务，保证所有任务按照指定顺序(FIFO, LIFO, 优先级)执行。如果这个线程异常结束，会有另一个取代它，保证顺序执行。单工作线程最大的特点是可保证顺序地执行各个任务，并且在任意给定的时间不会有多个线程是活动的。</li>
+</ul>
+<ol start="4">
+<li>newScheduleThreadPool</li>
+</ol>
+<ul>
+<li>创建一个定长的线程池，而且支持定时的以及周期性的任务执行，支持定时及周期性任务执行</li>
+</ul>
+<h2 id="11-同步和异步有何异同？"><a href="#11-同步和异步有何异同？" class="headerlink" title="11.  同步和异步有何异同？"></a>11.  同步和异步有何异同？</h2><ol>
+<li>同步发了指令，会等待返回，然后再发送下一个。</li>
+<li>异步发了指令，不会等待返回，随时可以再发送下一个请求</li>
+<li>同步可以避免出现死锁，读脏数据的发生</li>
+<li>异步则是可以提高效率</li>
+<li>实现同步的机制主要有临界区、互斥、信号量和事件</li>
+</ol>
+<h2 id="12-哪些集合是线程安全的？"><a href="#12-哪些集合是线程安全的？" class="headerlink" title="12. 哪些集合是线程安全的？"></a>12. 哪些集合是线程安全的？</h2><ol>
+<li>Vector：就比Arraylist多了个同步化机制（线程安全）。</li>
+<li>Hashtable：就比Hashmap多了个线程安全。</li>
+<li>ConcurrentHashMap:是一种高效但是线程安全的集合。</li>
+</ol>
+<h2 id="13-如何异步获取多线程返回的数据？"><a href="#13-如何异步获取多线程返回的数据？" class="headerlink" title="13. 如何异步获取多线程返回的数据？"></a>13. 如何异步获取多线程返回的数据？</h2><ul>
+<li>说一下Callable这个接口的理解？</li>
+<li>说一下Future接口的理解？</li>
+<li>说一下FutureTask类的理解？</li>
+<li>说一下CompletionService接口的理解？</li>
+</ul>
+<ol>
+<li>通过Callable+Future，Callable负责执行返回，Future负责接收。Callable接口对象可以交给ExecutorService的submit方法去执行。</li>
+<li>通过Callable+FutureTask，Callable负责执行返回，FutureTask负责接收。FutureTask同时实现了Runnable和Callable接口，可以给到ExecutorService的submit方法和Thread去执行。</li>
+<li>通过CompletionService，jdk1.8之后提供了完成服务CompletionService，可以实现这样的需求。</li>
+<li>注意，实现Runnable接口任务执行结束后无法获取执行结果。Callable有返回值，Runnable没有返回值</li>
+</ol>
+<h2 id="14-如何自定义线程池？"><a href="#14-如何自定义线程池？" class="headerlink" title="14. 如何自定义线程池？"></a>14. 如何自定义线程池？</h2><ol>
+<li>通过ThreadPoolExecutor创建</li>
+<li>弄懂它的7个构造参数即可</li>
+</ol>
+<ul>
+<li>int corePoolSize，&#x2F;&#x2F;核心池的大小</li>
+<li>默认情况下，在创建了线程池之后，线程池中的线程数为0</li>
+<li>当有任务到来后，如果线程池中存活的线程数小于corePoolSize，则创建一个线程。</li>
+<li>int maximumPoolSize，&#x2F;&#x2F;线程池最大线程数</li>
+<li>线程池中允许的最大线程数，这个参数表示了线程池中最多能创建的线程数量。</li>
+<li>当任务数量比corePoolSize大时，任务添加到workQueue</li>
+<li>当workQueue满了，将继续创建线程以处理任务。</li>
+<li>maximumPoolSize表示当wordQueue满了，线程池中最多可以创建的线程数量。</li>
+<li>long keepAliveTime，&#x2F;&#x2F;保持时间&#x2F;额外线程的存活时间</li>
+<li>当线程池处于空闲状态时，超过keepAliveTime时间之后，空闲的线程会被终止。</li>
+<li>只有当线程池中的线程数大于corePoolSize时，这个参数才会起作用，但是如果调用了allowCoreThreadTimeOut(boolean)方法，在线程池中的线程数不大于corePoolSize时，keepAliveTime参数也会起作用，直到线程池中的线程数为0；</li>
+<li>当线程数大于corePoolSize时，如果一个线程的空闲时间达到keepAliveTime，则会终止，直到线程池中的线程数不超过corePoolSize。</li>
+<li>TimeUnit unit，&#x2F;&#x2F;时间单位</li>
+<li>TimeUnit.DAYS; &#x2F;&#x2F;天</li>
+<li>TimeUnit.HOURS; &#x2F;&#x2F;小时</li>
+<li>TimeUnit.MINUTES; &#x2F;&#x2F;分钟</li>
+<li>TimeUnit.SECONDS; &#x2F;&#x2F;秒</li>
+<li>TimeUnit.MILLISECONDS; &#x2F;&#x2F;毫秒</li>
+<li>TimeUnit.MICROSECONDS; &#x2F;&#x2F;微妙</li>
+<li>TimeUnit.NANOSECONDS; &#x2F;&#x2F;纳秒</li>
+<li>BlockingQueue<Runnable> workQueue，&#x2F;&#x2F;任务队列-阻塞队列，存储提交的等待任务。常见子类有</li>
+<li>ArrayBlockingQueue;</li>
+<li>LinkedBlockingQueue</li>
+<li>SynchronousQueue;</li>
+<li>ThreadFactory threadFactory，&#x2F;&#x2F;线程工厂</li>
+<li>RejectedExecutionHandler handler &#x2F;&#x2F;异常的捕捉器- 任务队列添加异常的捕捉器，当任务超出线程池范围和队列容量时，采取何种拒绝策略。参考 RejectedExecutionHandler，常见实现类。</li>
+<li>ThreadPoolExecutor.AbortPolicy:丢弃任务并抛出RejectedExecutionException异常。</li>
+<li>ThreadPoolExecutor.DiscardPolicy：也是丢弃任务，但是不抛出异常。</li>
+<li>ThreadPoolExecutor.DiscardOldestPolicy：丢弃队列最前面的任务，然后重新尝试执行任务（重复此过程）</li>
+<li>ThreadPoolExecutor.CallerRunsPolicy：由调用线程处理该任务</li>
+</ul>
+<h2 id="15-工作中哪些地方使用了多线程？"><a href="#15-工作中哪些地方使用了多线程？" class="headerlink" title="15. 工作中哪些地方使用了多线程？"></a>15. 工作中哪些地方使用了多线程？</h2><ol>
+<li>一般业务，web层–&gt; service层 –&gt;dao –&gt; sql基本用不到多线程</li>
+<li>数据量很大（1000w级别、TB级别）的I&#x2F;O操作，可以考虑多线程</li>
+<li>例子：</li>
+</ol>
+<ul>
+<li>自己做并发测试的时候，假如想写想模拟3000个并发请求。</li>
+<li>多线程下单抢单，假如支持5000人的并发下单。</li>
+<li>多线程写入mysql，假如有1000w条数据要入库。</li>
+<li>多线程写入redis，假如有1000w的数据要存入redis。</li>
+<li>多线程导入ES索引，假如有1000w的数据要添加到ES索引。</li>
+<li>poi多线程导出，假如xls里面有10w的数据需要导出。</li>
+<li>poi多线程导入，假如有10w条数据需要导入到xls。</li>
+<li>多线程发送邮件，假如有10w用户需要发送邮件。</li>
+<li>多线程发送短信，假如有10w用户需要发送邮件。</li>
+<li>多线程备份日志，假如10tb日志文件要备份。</li>
+<li>多线程验证数据，比如验证url是否存在，假如有100w个url。</li>
+</ul>
 
     </article>
     <!-- license -->
     
         <div class="license-wrapper">
             <p>原文作者：<a href="https://winddsnow.github.io">WinddSnow</a>
-            <p>原文链接：<a href="https://winddsnow.github.io/1970/01/01/hello-world/">https://winddsnow.github.io/1970/01/01/hello-world/</a>
-            <p>发表日期：<a href="https://winddsnow.github.io/1970/01/01/hello-world/">January 1st 1970, 8:00:00 am</a>
-            <p>更新日期：<a href="https://winddsnow.github.io/1970/01/01/hello-world/">August 15th 2022, 11:22:03 am</a>
+            <p>原文链接：<a href="https://winddsnow.github.io/2022/08/15/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B-%E5%B9%B6%E5%8F%91%E2%91%A0/">https://winddsnow.github.io/2022/08/15/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B-%E5%B9%B6%E5%8F%91%E2%91%A0/</a>
+            <p>发表日期：<a href="https://winddsnow.github.io/2022/08/15/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B-%E5%B9%B6%E5%8F%91%E2%91%A0/">August 15th 2022, 5:14:31 pm</a>
+            <p>更新日期：<a href="https://winddsnow.github.io/2022/08/15/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B-%E5%B9%B6%E5%8F%91%E2%91%A0/">August 15th 2022, 5:36:03 pm</a>
             <p>版权声明：本文采用<a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
         </div>
     
@@ -551,12 +771,17 @@
         <li class="next">
             
                 <div class="nextSlogan">Next Post</div>
-                <a href="/2021/05/03/%E6%9D%82%E8%B0%88%E6%9C%8D%E5%8A%A1%E5%99%A8/" title="杂谈服务器">
-                    <div class="nextTitle">杂谈服务器</div>
+                <a href="/2022/08/15/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B-%E5%B9%B6%E5%8F%91%E2%91%A1/" title="Java多线程-并发②">
+                    <div class="nextTitle">Java多线程-并发②</div>
                 </a>
             
         </li>
         <li class="previous">
+            
+                <div class="prevSlogan">Previous Post</div>
+                <a href="/2022/08/15/Java%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" title="Java算法基础-数据结构-设计模式">
+                    <div class="prevTitle">Java算法基础-数据结构-设计模式</div>
+                </a>
             
         </li>
     </ul>
@@ -695,7 +920,7 @@
                 <div class="toc-catalog">
                     <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
                 </div>
-                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E7%8E%AF%E5%A2%83%E5%87%86%E5%A4%87"><span class="toc-number">1.</span> <span class="toc-text">1. 环境准备</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%BF%AB%E9%80%9F%E5%BC%80%E5%A7%8B"><span class="toc-number">2.</span> <span class="toc-text">2. 快速开始</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E6%97%A5%E5%B8%B8%E6%9B%B4%E6%96%B0%E6%96%87%E7%AB%A0"><span class="toc-number">3.</span> <span class="toc-text">3. 日常更新文章</span></a></li></ol>
+                <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%A4%9A%E7%BA%BF%E7%A8%8B-%E5%B9%B6%E5%8F%91%E2%91%A0"><span class="toc-number">1.</span> <span class="toc-text">多线程-并发①</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-Java%E4%B8%AD%E7%9A%84%E9%94%81"><span class="toc-number">1.1.</span> <span class="toc-text">1.Java中的锁</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Java%E7%BA%BF%E7%A8%8B%E7%9A%84%E7%8A%B6%E6%80%81-%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="toc-number">1.2.</span> <span class="toc-text">2. Java线程的状态|生命周期</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-synchronized-%E4%B8%8Elock%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="toc-number">1.3.</span> <span class="toc-text">3. synchronized 与lock区别？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-synchronized-%E4%B8%8EReentrantLock%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="toc-number">1.4.</span> <span class="toc-text">4. synchronized 与ReentrantLock区别？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-synchronized-%E4%B8%8EThreadLocal%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="toc-number">1.5.</span> <span class="toc-text">5. synchronized 与ThreadLocal区别？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-synchronized-%E4%B8%8Evolatile%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="toc-number">1.6.</span> <span class="toc-text">6. synchronized 与volatile区别？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-Thread%E7%B1%BB%E4%B8%AD%E7%9A%84start-%E5%92%8Crun-%E6%96%B9%E6%B3%95%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB"><span class="toc-number">1.7.</span> <span class="toc-text">7. Thread类中的start()和run()方法有什么区别?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-%E4%BA%8B%E5%8A%A1%E7%9A%84%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB%E5%8F%8A%E5%BC%95%E5%8F%91%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-number">1.8.</span> <span class="toc-text">8. 事务的隔离级别及引发的问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-%E4%BB%80%E4%B9%88%E6%98%AF%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8%EF%BC%8CJava%E5%A6%82%E4%BD%95%E4%BF%9D%E8%AF%81%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8%EF%BC%9F"><span class="toc-number">1.9.</span> <span class="toc-text">9. 什么是线程安全，Java如何保证线程安全？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10-%E7%BA%BF%E7%A8%8B%E6%B1%A0%E4%BB%8B%E7%BB%8D"><span class="toc-number">1.10.</span> <span class="toc-text">10. 线程池介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#11-%E5%90%8C%E6%AD%A5%E5%92%8C%E5%BC%82%E6%AD%A5%E6%9C%89%E4%BD%95%E5%BC%82%E5%90%8C%EF%BC%9F"><span class="toc-number">1.11.</span> <span class="toc-text">11.  同步和异步有何异同？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#12-%E5%93%AA%E4%BA%9B%E9%9B%86%E5%90%88%E6%98%AF%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8%E7%9A%84%EF%BC%9F"><span class="toc-number">1.12.</span> <span class="toc-text">12. 哪些集合是线程安全的？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#13-%E5%A6%82%E4%BD%95%E5%BC%82%E6%AD%A5%E8%8E%B7%E5%8F%96%E5%A4%9A%E7%BA%BF%E7%A8%8B%E8%BF%94%E5%9B%9E%E7%9A%84%E6%95%B0%E6%8D%AE%EF%BC%9F"><span class="toc-number">1.13.</span> <span class="toc-text">13. 如何异步获取多线程返回的数据？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#14-%E5%A6%82%E4%BD%95%E8%87%AA%E5%AE%9A%E4%B9%89%E7%BA%BF%E7%A8%8B%E6%B1%A0%EF%BC%9F"><span class="toc-number">1.14.</span> <span class="toc-text">14. 如何自定义线程池？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#15-%E5%B7%A5%E4%BD%9C%E4%B8%AD%E5%93%AA%E4%BA%9B%E5%9C%B0%E6%96%B9%E4%BD%BF%E7%94%A8%E4%BA%86%E5%A4%9A%E7%BA%BF%E7%A8%8B%EF%BC%9F"><span class="toc-number">1.15.</span> <span class="toc-text">15. 工作中哪些地方使用了多线程？</span></a></li></ol></li></ol>
             </div>
         
         <!-- sidebar -->
