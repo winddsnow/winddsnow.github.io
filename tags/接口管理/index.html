@@ -21,7 +21,7 @@
     <meta name="description" content="">
     <meta property="og:type" content="website">
 <meta property="og:title" content="WinddSnow">
-<meta property="og:url" content="https://winddsnow.github.io/tags/Java/index.html">
+<meta property="og:url" content="https://winddsnow.github.io/tags/%E6%8E%A5%E5%8F%A3%E7%AE%A1%E7%90%86/index.html">
 <meta property="og:site_name" content="WinddSnow">
 <meta property="og:locale">
 <meta property="article:author" content="WinddSnow">
@@ -428,42 +428,30 @@
             
         
         <article class="index-post">
-            <a class="abstract-title" href="/2022/08/15/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B-%E5%B9%B6%E5%8F%91%E2%91%A1/">
+            <a class="abstract-title" href="/2022/08/15/Yapi%E9%83%A8%E7%BD%B2%E4%B8%8E%E4%BD%BF%E7%94%A8/">
                 
-                <span class="abstract-title-text">Java多线程-并发②</span>
+                <span class="abstract-title-text">Yapi部署与使用</span>
             </a>
             <div class="abstract-content">
-                多线程-并发②16. 数据并发操作可能的问题?
-丢失的修改
-不可重复读,读第二次,数据就不对了
-读脏数据
-幻影读
+                Yapi部署与使用1. 环境依赖，部署环境准备
+Yapi依赖：
 
-17. 消息等待通知wait&#x2F;notify具体的应用
-一个线程修改了一个对象的值，另外一个线程需要感知到这个变化
-Java中我们使用的对象锁以及wait&#x2F;notify方法进行线程通信
-等待方遵循的原则：
+nodejs（7.6+)–nodejs版本有大问题！一定不能太新，Yapi已经一年没有更新了，新版本不兼容！
 
+mongodb（2.6+）
 
-获取对象的锁
-不满足条件 就调用wait()方法
-条件满足继续执行
+git
 
+这里使用Debian11来部署，单机部署
 
-通知方原则：
-
-
-获取对象的锁
-改变条件， 然后notify
-
-18. 线程池中 submit() 和 execute() 方法有什么区别？
-execute() 参数 Runna...
+注意！注意！注意！这里nodois版本选择v8.17.0！！！使用nvm安装
+1234567891011121314151617181920212223242526//依赖nodejs，安装nodejs，这里安装还有点麻烦，需要官网下载nodejs二进制的包，解压安装#mkdir /usr/local/nodejs#//nodej...
             </div>
             <!-- read more -->
             
             <div class="abstract-post-meta">
                 <!-- date -->
-                <div class="abstract-date" title="Last updated: 2022/08/15">
+                <div class="abstract-date" title="Last updated: 2022/08/17">
                     <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2022/08/15</span>
                 </div>
                 <!-- tags -->
@@ -471,214 +459,11 @@ execute() 参数 Runna...
                     <div class= abstract-tags >
     
     
-        <a class="post-tag" href="javascript:void(0);" data-tags="Java">Java</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="前端">前端</a>
     
-        <a class="post-tag" href="javascript:void(0);" data-tags="面试题">面试题</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="Yapi">Yapi</a>
     
-        <a class="post-tag" href="javascript:void(0);" data-tags="多线程">多线程</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="并发">并发</a>
-    
-</div>
-
-                
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
-    
-        
-        
-        
-        
-            
-        
-        <article class="index-post">
-            <a class="abstract-title" href="/2022/08/15/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B-%E5%B9%B6%E5%8F%91%E2%91%A0/">
-                
-                <span class="abstract-title-text">Java多线程-并发</span>
-            </a>
-            <div class="abstract-content">
-                多线程-并发①1.Java中的锁
-乐观锁&#x2F;悲观锁
-共享锁&#x2F;独享锁
-公平锁&#x2F;非公平锁
-互斥锁&#x2F;读写锁
-可重入锁
-自旋锁
-分段锁
-偏向锁&#x2F;轻量级锁&#x2F;重量级锁
-
-2. Java线程的状态|生命周期
-Java的线程状态被定义在公共枚举类java.lang.Thread.state中。一种有六种状态
-
-
-新建（NEW）：表示线程新建出来还没有被启动的状态，比如：Thread t &#x3D; new MyThread();
-就绪&#x2F;运行（RUNNABLE）：该状态包含了经典线程模型的两种状态：就绪(Ready)、运行(Runnin...
-            </div>
-            <!-- read more -->
-            
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2022/08/15">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2022/08/15</span>
-                </div>
-                <!-- tags -->
-                
-                    <div class= abstract-tags >
-    
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="Java">Java</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="面试题">面试题</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="多线程">多线程</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="并发">并发</a>
-    
-</div>
-
-                
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
-    
-        
-        
-        
-        
-            
-        
-        <article class="index-post">
-            <a class="abstract-title" href="/2022/08/15/Java%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
-                
-                <span class="abstract-title-text">Java算法基础-数据结构-设计模式</span>
-            </a>
-            <div class="abstract-content">
-                Java算法基础-数据结构-设计模式1. 动态代理有几种实现？
-java的动态代理技术的实现主要有两种方式：
-
-
-JDK原生动态代理
-CGLIB动态代理
-
-
-JDK原生动态代理是Java原生支持的，不需要任何外部依赖，但是它只能基于接口进行代理（需要代理的对象必须实现于某个接口）
-CGLIB通过继承的方式进行代理（让需要代理的类成为Enhancer的父类），无论目标对象有没有实现接口都可以代理，但是无法处理final的情况。
-
-2. 堆和栈的区别?
-栈内存
-
-
-栈内存首先是一片内存区域，存储的都是局部变量
-凡是定义在方法中的都是局部变量（方法外的是全局变量），for循环内部定义的也是局部...
-            </div>
-            <!-- read more -->
-            
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2022/08/15">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2022/08/15</span>
-                </div>
-                <!-- tags -->
-                
-                    <div class= abstract-tags >
-    
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="Java">Java</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="面试题">面试题</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="数据结构">数据结构</a>
-    
-</div>
-
-                
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
-    
-        
-        
-        
-        
-            
-        
-        <article class="index-post">
-            <a class="abstract-title" href="/2022/08/15/Java%E6%95%B0%E7%BB%84%E5%9F%BA%E7%A1%80/">
-                
-                <span class="abstract-title-text">Java数组基础</span>
-            </a>
-            <div class="abstract-content">
-                数组基础1.ArrayList和LinkedList区别?
-都是List接口的实现类
-ArrayList基于数组，LinkedList基于链表
-ArrayList3.1 查询快，增删慢3.2 往数组尾部添加元素的效率高，也就是调用add(obj)，但是还是比LinkedList慢。
-LinkedList4.1 数据添加删除效率高，只需要改变指针指向即可4.2 查询数据的平均效率低，需要对链表进行遍历
-
-2.ArrayList扩容机制怎样？
-ArrayList每次扩容是原来的1.5倍。
-数组进行扩容时，会将老数组中的元素重新拷贝一份到新的数组中，每次数组容量的增长大约是其原容量的1.5倍。...
-            </div>
-            <!-- read more -->
-            
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2022/08/15">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2022/08/15</span>
-                </div>
-                <!-- tags -->
-                
-                    <div class= abstract-tags >
-    
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="Java">Java</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="面试题">面试题</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="数组基础">数组基础</a>
-    
-</div>
-
-                
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
-    
-        
-        
-        
-        
-            
-        
-        <article class="index-post">
-            <a class="abstract-title" href="/2022/08/14/HashMap%E5%8E%9F%E7%90%86/">
-                
-                <span class="abstract-title-text">HashMap原理</span>
-            </a>
-            <div class="abstract-content">
-                HashMap原理
-HashMap内部是基于哈希表实现的键值对存储，继承 AbstractMap 并且实现了 Map 接口。
-HashMap基于hashing原理，我们通过put()和get()方法储存和获取对象。
-当我们将键值对传递给put()方法时，它调用键对象的hashCode()方法来计算hashcode，让后找到bucket位置来储存值对象。
-当获取对象时，通过键对象的equals()方法找到正确的键值对，然后返回值对象。
-HashMap使用LinkedList来解决碰撞问题，当发生碰撞了，对象将会储存在LinkedList的下一个节点中。 
-当两个不同的键对象的hashcod...
-            </div>
-            <!-- read more -->
-            
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2022/08/14">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2022/08/14</span>
-                </div>
-                <!-- tags -->
-                
-                    <div class= abstract-tags >
-    
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="Java">Java</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="原理">原理</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="接口管理">接口管理</a>
     
 </div>
 
