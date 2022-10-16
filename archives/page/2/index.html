@@ -428,340 +428,6 @@
             
         
         <article class="index-post">
-            <a class="abstract-title" href="/2022/08/15/Java%E6%95%B0%E7%BB%84%E5%9F%BA%E7%A1%80/">
-                
-                <span class="abstract-title-text">Java数组基础</span>
-            </a>
-            <div class="abstract-content">
-                数组基础1.ArrayList和LinkedList区别?
-都是List接口的实现类
-ArrayList基于数组，LinkedList基于链表
-ArrayList3.1 查询快，增删慢3.2 往数组尾部添加元素的效率高，也就是调用add(obj)，但是还是比LinkedList慢。
-LinkedList4.1 数据添加删除效率高，只需要改变指针指向即可4.2 查询数据的平均效率低，需要对链表进行遍历
-
-2.ArrayList扩容机制怎样？
-ArrayList每次扩容是原来的1.5倍。
-数组进行扩容时，会将老数组中的元素重新拷贝一份到新的数组中，每次数组容量的增长大约是其原容量的1.5倍。...
-            </div>
-            <!-- read more -->
-            
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2022/08/15">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2022/08/15</span>
-                </div>
-                <!-- tags -->
-                
-                    <div class= abstract-tags >
-    
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="Java">Java</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="面试题">面试题</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="数组基础">数组基础</a>
-    
-</div>
-
-                
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
-    
-        
-        
-        
-        
-            
-        
-        <article class="index-post">
-            <a class="abstract-title" href="/2022/08/14/HashMap%E5%8E%9F%E7%90%86/">
-                
-                <span class="abstract-title-text">HashMap原理</span>
-            </a>
-            <div class="abstract-content">
-                HashMap原理
-HashMap内部是基于哈希表实现的键值对存储，继承 AbstractMap 并且实现了 Map 接口。
-HashMap基于hashing原理，我们通过put()和get()方法储存和获取对象。
-当我们将键值对传递给put()方法时，它调用键对象的hashCode()方法来计算hashcode，让后找到bucket位置来储存值对象。
-当获取对象时，通过键对象的equals()方法找到正确的键值对，然后返回值对象。
-HashMap使用LinkedList来解决碰撞问题，当发生碰撞了，对象将会储存在LinkedList的下一个节点中。 
-当两个不同的键对象的hashcod...
-            </div>
-            <!-- read more -->
-            
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2022/08/14">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2022/08/14</span>
-                </div>
-                <!-- tags -->
-                
-                    <div class= abstract-tags >
-    
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="Java">Java</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="原理">原理</a>
-    
-</div>
-
-                
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
-    
-        
-        
-        
-        
-            
-        
-        <article class="index-post">
-            <a class="abstract-title" href="/2022/08/14/nginx%E7%AE%80%E4%BB%8B%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%BF%9B%E9%98%B6/">
-                
-                <span class="abstract-title-text">nginx简介及使用进阶</span>
-            </a>
-            <div class="abstract-content">
-                1. nginx介绍
-Nginx是一款轻量级的Web服务器&#x2F;反向代理服务器及电子邮件（IMAP&#x2F;POP3）代理服务器。其特点是占有内存少，并发能力强，事实上nginx的并发能力在同类型的网页服务器中表现较好，中国大陆使用nginx的网站有：百度、京东、新浪、网易、腾讯、淘宝等。
-Nginx是由伊戈尔·赛索耶夫为俄罗斯访问量第二的Rambler.ru站点（俄文：Рамблер）开发的，第一个公开版本0.1.0发布于2004年10月4日。nginx官网
-
-2. 安装一般推荐安装在linux服务器，其他操作系统可查看官网网站
-2.1 联网使用包管理器安装方式最简单即使用包管...
-            </div>
-            <!-- read more -->
-            
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2022/08/14">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2022/08/14</span>
-                </div>
-                <!-- tags -->
-                
-                    <div class= abstract-tags >
-    
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="nginx">nginx</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="http服务器">http服务器</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="高并发">高并发</a>
-    
-</div>
-
-                
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
-    
-        
-        
-        
-        
-            
-        
-        <article class="index-post">
-            <a class="abstract-title" href="/2022/08/14/mysql%E8%AF%BB%E5%86%99%E5%88%86%E7%A6%BB-%E4%B8%BB%E4%BB%8E%E5%A4%8D%E5%88%B6%E5%8F%8Asharing-jdbc%E4%BD%BF%E7%94%A8/">
-                
-                <span class="abstract-title-text">mysql读写分离-主从复制及sharing-jdbc使用</span>
-            </a>
-            <div class="abstract-content">
-                1. Mysql主从复制介绍MySQL主从复制是一个异步的复制过程，底层是基于Mysql数据库自带的二进制日志功能。就是一台或多台MySQL数据库（slave，即从库）从另一台MySQL数据库（master，即主库）进行日志的复制然后再解析日志并应用到自身，最终实现从库的数据和主库的数据保持一致。MySQL主从复制是MySQL数据库自带功能，无需借助第三方工具。
-
-二进制日志： 
-​	二进制日志（BINLOG）记录了所有的 DDL（数据定义语言）语句和 DML（数据操纵语言）语句，但是不包括数据查询语句。此日志对于灾难时的数据恢复起着极其重要的作用，MySQL的主从复制， 就是通过该bi...
-            </div>
-            <!-- read more -->
-            
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2022/08/14">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2022/08/14</span>
-                </div>
-                <!-- tags -->
-                
-                    <div class= abstract-tags >
-    
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="MySQL">MySQL</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="数据库操作">数据库操作</a>
-    
-</div>
-
-                
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
-    
-        
-        
-        
-        
-            
-        
-        <article class="index-post">
-            <a class="abstract-title" href="/2022/02/10/Vim%E7%94%A8%E6%B3%95%E7%AE%80%E8%AE%B0/">
-                
-                <span class="abstract-title-text">Vim用法简记</span>
-            </a>
-            <div class="abstract-content">
-                简述Vim是从 vi 发展出来的一个文本编辑器。主流linux均自带vi编辑器，在这里简单记录vim用法，vi也基本相同，只是有些功能没有vim丰富。
-模式
-命令模式vim有三大模式，一般你使用vim这个命令打开一个文本，或者新建一个文本时，你进入的是命令模式命令模式是vim打开文件后默认进入的模式，这个模式不能插入字符你无法正常编辑文本，但是可以使用命令来操作文本，例如下面的一些命令。输入冒号“：”，文本的左下角将会出现闪动的光标，你可以在这里输入一些复杂命令。注意vim很重要的退出操作，也是在这里操作的-输入q表示正常退出，前提你没有修改文本，如果文本修改了，将提示你无法正常退出，此...
-            </div>
-            <!-- read more -->
-            
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2022/08/14">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2022/02/10</span>
-                </div>
-                <!-- tags -->
-                
-                    <div class= abstract-tags >
-    
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="vim">vim</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="编辑器之神">编辑器之神</a>
-    
-</div>
-
-                
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
-    
-        
-        
-        
-        
-            
-        
-        <article class="index-post">
-            <a class="abstract-title" href="/2022/02/10/Markdown%E7%A4%BA%E4%BE%8B2/">
-                
-                <span class="abstract-title-text">Markdown示例2</span>
-            </a>
-            <div class="abstract-content">
-                标题123456# 这是一级标题## 这是二级标题### 这是三级标题#### 这是四级标题##### 这是五级标题###### 这是六级标题
-效果：
-这是一级标题这是二级标题这是三级标题这是四级标题这是五级标题这是六级标题字体1234**这是加粗的文字***这是倾斜的文字****这是斜体加粗的文字***~~这是加删除线的文字~~
-效果：这是加粗的文字这是倾斜的文字这是斜体加粗的文字这是加删除线的文字
-引用123&gt;这是引用的内容&gt;&gt;&gt;这是引用的内容&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;这是引用的内容...
-            </div>
-            <!-- read more -->
-            
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2022/08/14">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2022/02/10</span>
-                </div>
-                <!-- tags -->
-                
-                    <div class= abstract-tags >
-    
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="Markdown">Markdown</a>
-    
-</div>
-
-                
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
-    
-        
-        
-        
-        
-            
-        
-        <article class="index-post">
-            <a class="abstract-title" href="/2021/12/20/Dead-Line-2021%E6%80%BB%E7%BB%93/">
-                
-                <span class="abstract-title-text">Dead Line--2021总结</span>
-            </a>
-            <div class="abstract-content">
-                Dead Line–2021总结
-“当你老了，回顾一生，就会发觉：什么时候出国读书、什么时候决定做第一份职业、何时选定了对象而恋爱、什么时候结婚，其实都是命运的巨变。只是当时站在三岔路口，眼见风云千樯，你作出抉择的那一日，在日记上，相当沉闷和平凡，当时还以为是生命中普通的一天。但一场巨变，已经发生了，地动山移，浑然不觉，当时只道是寻常。”
-陶杰 《杀鹌鹑的少女》
-
-1.消失的2021
-2021年，对我而言，是没有锚点的一个年度，彷佛一切都存在于2020，2020奥运会，2020的节奏，2020的疫情，生活粘稠得像麦芽糖，只有时光一往无前，只有不断收到的朋友结婚请柬，在提醒着我，时间，又过...
-            </div>
-            <!-- read more -->
-            
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2022/08/14">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2021/12/20</span>
-                </div>
-                <!-- tags -->
-                
-                    <div class= abstract-tags >
-    
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="年终总结">年终总结</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="碎语">碎语</a>
-    
-</div>
-
-                
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
-    
-        
-        
-        
-        
-            
-        
-        <article class="index-post">
-            <a class="abstract-title" href="/2021/05/04/PVE%E8%99%9A%E6%8B%9F%E5%8C%96/">
-                
-                <span class="abstract-title-text">PVE虚拟化</span>
-            </a>
-            <div class="abstract-content">
-                Proxmox VEProxmox VE（PVE），开源虚拟化解决方案，如果觉得VMware的ESXI过于庞大复杂，可以尝试以下，普通PC就可安装，支持分布式。据说基于KVM，操作系统是万能的Debian。
-官网：https://www.proxmox.com/en/
-中文社区：https://www.proxmox.wiki/
-很多资料都可以在社区找到，安装也及其简单快捷，只需下载镜像，刻录到U盘，在需要安装的主机引导U盘启动，安装镜像的安装指导，一步一步安装即可，安装成功后，在界面会有管理网址弹出，直接web访问管理网址即可。目前的版本是6.4，开源产品，迭代还是很快的，据说是采用的...
-            </div>
-            <!-- read more -->
-            
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2022/08/14">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2021/05/04</span>
-                </div>
-                <!-- tags -->
-                
-                    <div class= abstract-tags >
-    
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="虚拟化">虚拟化</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="Proxmox VE">Proxmox VE</a>
-    
-</div>
-
-                
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
-    
-        
-        
-        
-        
-            
-        
-        <article class="index-post">
             <a class="abstract-title" href="/2021/05/03/Markdown%E8%AF%AD%E6%B3%95%E8%AE%B0%E5%BD%95/">
                 
                 <span class="abstract-title-text">Markdown语法记录</span>
@@ -809,7 +475,412 @@ Nginx是由伊戈尔·赛索耶夫为俄罗斯访问量第二的Rambler.ru站点
             
         
         <article class="index-post">
-            <a class="abstract-title" href="/2021/05/03/%E6%9D%82%E8%B0%88%E6%9C%8D%E5%8A%A1%E5%99%A8/">
+            <a class="abstract-title" href="/2020/08/28/Redis%E7%9B%B8%E5%85%B3%E9%97%AE%E9%A2%98/">
+                
+                <span class="abstract-title-text">Redis相关问题</span>
+            </a>
+            <div class="abstract-content">
+                简单介绍redis
+Redis是 C 编写的，高性能非关系型数据库。
+Redis 键只能为字符串，值支持五种数据类型：string、has、list、set、zset。
+Redis 的数据存在内存中的，读写速度非常快， redis 被广泛应用于缓存方向，每秒可以处理超过 10万次读写操作，是已知性能最快的Key-Value DB。
+支持数据持久化，支持AOF（Append Only File）和RDB（Redis DataBase）两种持久化方式。
+支持主从复制，主机会自动将数据同步到从机，可以进行读写分离。
+Redis 也经常用来做分布式锁和分布式事务。
+不能用作海量数据的高性能读写
+...
+            </div>
+            <!-- read more -->
+            
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2022/10/16">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/08/28</span>
+                </div>
+                <!-- tags -->
+                
+                    <div class= abstract-tags >
+    
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="Java">Java</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="Redis">Redis</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="缓存">缓存</a>
+    
+</div>
+
+                
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+    
+        
+        
+        
+        
+            
+        
+        <article class="index-post">
+            <a class="abstract-title" href="/2020/08/28/Redis%E5%88%86%E5%B8%83%E5%BC%8F%E7%BC%93%E5%AD%98/">
+                
+                <span class="abstract-title-text">Redis分布式缓存</span>
+            </a>
+            <div class="abstract-content">
+                0. 基于Redis集群解决单机Redis存在的问题单机的Redis存在四大问题：
+
+数据丢失问题–解决：实现redis数据持久化
+并发能力问题–解决：搭建主从集群，实现读写分离
+故障恢复问题–解决：利用redis哨兵，实现健康检测和自动恢复
+存储能力问题–解决：搭建分片集群，利用插槽机制实现动态扩容
+
+1. Redis持久化Redis有两种持久化方案：
+
+RDB持久化
+AOF持久化
+
+1.1 RDB持久化RDB全称Redis Database Backup file（Redis数据备份文件），也被叫做Redis数据快照。简单来说就是把内存中的所有数据都记录到磁盘中。当Redis实例故障...
+            </div>
+            <!-- read more -->
+            
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2022/10/16">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/08/28</span>
+                </div>
+                <!-- tags -->
+                
+                    <div class= abstract-tags >
+    
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="Java">Java</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="Redis">Redis</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="缓存">缓存</a>
+    
+</div>
+
+                
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+    
+        
+        
+        
+        
+            
+        
+        <article class="index-post">
+            <a class="abstract-title" href="/2020/08/15/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B-%E5%B9%B6%E5%8F%91%E2%91%A1/">
+                
+                <span class="abstract-title-text">Java多线程-并发②</span>
+            </a>
+            <div class="abstract-content">
+                多线程-并发②16. 数据并发操作可能的问题?
+丢失的修改
+不可重复读,读第二次,数据就不对了
+读脏数据
+幻影读
+
+17. 消息等待通知wait&#x2F;notify具体的应用
+一个线程修改了一个对象的值，另外一个线程需要感知到这个变化
+Java中我们使用的对象锁以及wait&#x2F;notify方法进行线程通信
+等待方遵循的原则：
+
+
+获取对象的锁
+不满足条件 就调用wait()方法
+条件满足继续执行
+
+
+通知方原则：
+
+
+获取对象的锁
+改变条件， 然后notify
+
+18. 线程池中 submit() 和 execute() 方法有什么区别？
+execute() 参数 Runna...
+            </div>
+            <!-- read more -->
+            
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2022/10/16">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/08/15</span>
+                </div>
+                <!-- tags -->
+                
+                    <div class= abstract-tags >
+    
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="Java">Java</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="面试题">面试题</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="多线程">多线程</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="并发">并发</a>
+    
+</div>
+
+                
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+    
+        
+        
+        
+        
+            
+        
+        <article class="index-post">
+            <a class="abstract-title" href="/2020/08/15/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B-%E5%B9%B6%E5%8F%91%E2%91%A0/">
+                
+                <span class="abstract-title-text">Java多线程-并发</span>
+            </a>
+            <div class="abstract-content">
+                多线程-并发①1.Java中的锁
+乐观锁&#x2F;悲观锁
+共享锁&#x2F;独享锁
+公平锁&#x2F;非公平锁
+互斥锁&#x2F;读写锁
+可重入锁
+自旋锁
+分段锁
+偏向锁&#x2F;轻量级锁&#x2F;重量级锁
+
+2. Java线程的状态|生命周期
+Java的线程状态被定义在公共枚举类java.lang.Thread.state中。一种有六种状态
+
+
+新建（NEW）：表示线程新建出来还没有被启动的状态，比如：Thread t &#x3D; new MyThread();
+就绪&#x2F;运行（RUNNABLE）：该状态包含了经典线程模型的两种状态：就绪(Ready)、运行(Runnin...
+            </div>
+            <!-- read more -->
+            
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2022/10/16">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/08/15</span>
+                </div>
+                <!-- tags -->
+                
+                    <div class= abstract-tags >
+    
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="Java">Java</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="面试题">面试题</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="多线程">多线程</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="并发">并发</a>
+    
+</div>
+
+                
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+    
+        
+        
+        
+        
+            
+        
+        <article class="index-post">
+            <a class="abstract-title" href="/2019/08/14/nginx%E7%AE%80%E4%BB%8B%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%BF%9B%E9%98%B6/">
+                
+                <span class="abstract-title-text">nginx简介及使用进阶</span>
+            </a>
+            <div class="abstract-content">
+                1. nginx介绍
+Nginx是一款轻量级的Web服务器&#x2F;反向代理服务器及电子邮件（IMAP&#x2F;POP3）代理服务器。其特点是占有内存少，并发能力强，事实上nginx的并发能力在同类型的网页服务器中表现较好，中国大陆使用nginx的网站有：百度、京东、新浪、网易、腾讯、淘宝等。
+Nginx是由伊戈尔·赛索耶夫为俄罗斯访问量第二的Rambler.ru站点（俄文：Рамблер）开发的，第一个公开版本0.1.0发布于2004年10月4日。nginx官网
+
+2. 安装一般推荐安装在linux服务器，其他操作系统可查看官网网站
+2.1 联网使用包管理器安装方式最简单即使用包管...
+            </div>
+            <!-- read more -->
+            
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2022/10/16">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/08/14</span>
+                </div>
+                <!-- tags -->
+                
+                    <div class= abstract-tags >
+    
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="nginx">nginx</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="http服务器">http服务器</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="高并发">高并发</a>
+    
+</div>
+
+                
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+    
+        
+        
+        
+        
+            
+        
+        <article class="index-post">
+            <a class="abstract-title" href="/2019/05/04/PVE%E8%99%9A%E6%8B%9F%E5%8C%96/">
+                
+                <span class="abstract-title-text">PVE虚拟化</span>
+            </a>
+            <div class="abstract-content">
+                Proxmox VEProxmox VE（PVE），开源虚拟化解决方案，如果觉得VMware的ESXI过于庞大复杂，可以尝试以下，普通PC就可安装，支持分布式。据说基于KVM，操作系统是万能的Debian。
+官网：https://www.proxmox.com/en/
+中文社区：https://www.proxmox.wiki/
+很多资料都可以在社区找到，安装也及其简单快捷，只需下载镜像，刻录到U盘，在需要安装的主机引导U盘启动，安装镜像的安装指导，一步一步安装即可，安装成功后，在界面会有管理网址弹出，直接web访问管理网址即可。目前的版本是6.4，开源产品，迭代还是很快的，据说是采用的...
+            </div>
+            <!-- read more -->
+            
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2022/10/16">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/05/04</span>
+                </div>
+                <!-- tags -->
+                
+                    <div class= abstract-tags >
+    
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="虚拟化">虚拟化</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="Proxmox VE">Proxmox VE</a>
+    
+</div>
+
+                
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+    
+        
+        
+        
+        
+            
+        
+        <article class="index-post">
+            <a class="abstract-title" href="/2018/08/15/Java%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
+                
+                <span class="abstract-title-text">Java算法基础-数据结构-设计模式</span>
+            </a>
+            <div class="abstract-content">
+                Java算法基础-数据结构-设计模式1. 动态代理有几种实现？
+java的动态代理技术的实现主要有两种方式：
+
+
+JDK原生动态代理
+CGLIB动态代理
+
+
+JDK原生动态代理是Java原生支持的，不需要任何外部依赖，但是它只能基于接口进行代理（需要代理的对象必须实现于某个接口）
+CGLIB通过继承的方式进行代理（让需要代理的类成为Enhancer的父类），无论目标对象有没有实现接口都可以代理，但是无法处理final的情况。
+
+2. 堆和栈的区别?
+栈内存
+
+
+栈内存首先是一片内存区域，存储的都是局部变量
+凡是定义在方法中的都是局部变量（方法外的是全局变量），for循环内部定义的也是局部...
+            </div>
+            <!-- read more -->
+            
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2022/10/16">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/08/15</span>
+                </div>
+                <!-- tags -->
+                
+                    <div class= abstract-tags >
+    
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="Java">Java</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="面试题">面试题</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="数据结构">数据结构</a>
+    
+</div>
+
+                
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+    
+        
+        
+        
+        
+            
+        
+        <article class="index-post">
+            <a class="abstract-title" href="/2018/08/15/Java%E6%95%B0%E7%BB%84%E5%9F%BA%E7%A1%80/">
+                
+                <span class="abstract-title-text">Java数组基础</span>
+            </a>
+            <div class="abstract-content">
+                数组基础1.ArrayList和LinkedList区别?
+都是List接口的实现类
+ArrayList基于数组，LinkedList基于链表
+ArrayList3.1 查询快，增删慢3.2 往数组尾部添加元素的效率高，也就是调用add(obj)，但是还是比LinkedList慢。
+LinkedList4.1 数据添加删除效率高，只需要改变指针指向即可4.2 查询数据的平均效率低，需要对链表进行遍历
+
+2.ArrayList扩容机制怎样？
+ArrayList每次扩容是原来的1.5倍。
+数组进行扩容时，会将老数组中的元素重新拷贝一份到新的数组中，每次数组容量的增长大约是其原容量的1.5倍。...
+            </div>
+            <!-- read more -->
+            
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2022/10/16">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/08/15</span>
+                </div>
+                <!-- tags -->
+                
+                    <div class= abstract-tags >
+    
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="Java">Java</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="面试题">面试题</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="数组基础">数组基础</a>
+    
+</div>
+
+                
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+    
+        
+        
+        
+        
+            
+        
+        <article class="index-post">
+            <a class="abstract-title" href="/2018/05/03/%E6%9D%82%E8%B0%88%E6%9C%8D%E5%8A%A1%E5%99%A8/">
                 
                 <span class="abstract-title-text">杂谈服务器</span>
             </a>
@@ -822,8 +893,8 @@ Nginx是由伊戈尔·赛索耶夫为俄罗斯访问量第二的Rambler.ru站点
             
             <div class="abstract-post-meta">
                 <!-- date -->
-                <div class="abstract-date" title="Last updated: 2022/08/14">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2021/05/03</span>
+                <div class="abstract-date" title="Last updated: 2022/10/16">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/05/03</span>
                 </div>
                 <!-- tags -->
                 
@@ -1192,8 +1263,6 @@ Nginx是由伊戈尔·赛索耶夫为俄罗斯访问量第二的Rambler.ru站点
         
         
         
-        
-        
     
     
     
@@ -1234,68 +1303,14 @@ Nginx是由伊戈尔·赛索耶夫为俄罗斯访问量第二的Rambler.ru站点
     
         
         <li class="archive-post-item">
-            <span class="archive-post-date">08/29</span>
-            <a class="archive-post-title" href="/2022/08/29/SpringCloud%E7%AE%80%E4%BB%8B/">SpringCloud简介</a>
-        </li>
-    
-        
-        <li class="archive-post-item">
-            <span class="archive-post-date">08/28</span>
-            <a class="archive-post-title" href="/2022/08/28/Redis%E7%9B%B8%E5%85%B3%E9%97%AE%E9%A2%98/">Redis相关问题</a>
-        </li>
-    
-        
-        <li class="archive-post-item">
-            <span class="archive-post-date">08/28</span>
-            <a class="archive-post-title" href="/2022/08/28/Redis%E5%88%86%E5%B8%83%E5%BC%8F%E7%BC%93%E5%AD%98/">Redis分布式缓存</a>
-        </li>
-    
-        
-        <li class="archive-post-item">
             <span class="archive-post-date">08/15</span>
             <a class="archive-post-title" href="/2022/08/15/Yapi%E9%83%A8%E7%BD%B2%E4%B8%8E%E4%BD%BF%E7%94%A8/">Yapi部署与使用</a>
         </li>
     
         
         <li class="archive-post-item">
-            <span class="archive-post-date">08/15</span>
-            <a class="archive-post-title" href="/2022/08/15/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B-%E5%B9%B6%E5%8F%91%E2%91%A0/">Java多线程-并发</a>
-        </li>
-    
-        
-        <li class="archive-post-item">
-            <span class="archive-post-date">08/15</span>
-            <a class="archive-post-title" href="/2022/08/15/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B-%E5%B9%B6%E5%8F%91%E2%91%A1/">Java多线程-并发②</a>
-        </li>
-    
-        
-        <li class="archive-post-item">
-            <span class="archive-post-date">08/15</span>
-            <a class="archive-post-title" href="/2022/08/15/Java%E6%95%B0%E7%BB%84%E5%9F%BA%E7%A1%80/">Java数组基础</a>
-        </li>
-    
-        
-        <li class="archive-post-item">
-            <span class="archive-post-date">08/15</span>
-            <a class="archive-post-title" href="/2022/08/15/Java%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">Java算法基础-数据结构-设计模式</a>
-        </li>
-    
-        
-        <li class="archive-post-item">
             <span class="archive-post-date">08/14</span>
             <a class="archive-post-title" href="/2022/08/14/HashMap%E5%8E%9F%E7%90%86/">HashMap原理</a>
-        </li>
-    
-        
-        <li class="archive-post-item">
-            <span class="archive-post-date">08/14</span>
-            <a class="archive-post-title" href="/2022/08/14/nginx%E7%AE%80%E4%BB%8B%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%BF%9B%E9%98%B6/">nginx简介及使用进阶</a>
-        </li>
-    
-        
-        <li class="archive-post-item">
-            <span class="archive-post-date">08/14</span>
-            <a class="archive-post-title" href="/2022/08/14/mysql%E8%AF%BB%E5%86%99%E5%88%86%E7%A6%BB-%E4%B8%BB%E4%BB%8E%E5%A4%8D%E5%88%B6%E5%8F%8Asharing-jdbc%E4%BD%BF%E7%94%A8/">mysql读写分离-主从复制及sharing-jdbc使用</a>
         </li>
     
         
@@ -1327,8 +1342,14 @@ Nginx是由伊戈尔·赛索耶夫为俄罗斯访问量第二的Rambler.ru站点
     
         
         <li class="archive-post-item">
-            <span class="archive-post-date">05/04</span>
-            <a class="archive-post-title" href="/2021/05/04/PVE%E8%99%9A%E6%8B%9F%E5%8C%96/">PVE虚拟化</a>
+            <span class="archive-post-date">08/29</span>
+            <a class="archive-post-title" href="/2021/08/29/SpringCloud%E7%AE%80%E4%BB%8B/">SpringCloud简介</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/14</span>
+            <a class="archive-post-title" href="/2021/08/14/mysql%E8%AF%BB%E5%86%99%E5%88%86%E7%A6%BB-%E4%B8%BB%E4%BB%8E%E5%A4%8D%E5%88%B6%E5%8F%8Asharing-jdbc%E4%BD%BF%E7%94%A8/">mysql读写分离-主从复制及sharing-jdbc使用</a>
         </li>
     
         
@@ -1338,9 +1359,84 @@ Nginx是由伊戈尔·赛索耶夫为俄罗斯访问量第二的Rambler.ru站点
         </li>
     
         
+            
+            
+                
+                </ul>
+            
+            <div class="archive-year"> 2020 </div>
+            <ul class="year-list">
+            
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/28</span>
+            <a class="archive-post-title" href="/2020/08/28/Redis%E7%9B%B8%E5%85%B3%E9%97%AE%E9%A2%98/">Redis相关问题</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/28</span>
+            <a class="archive-post-title" href="/2020/08/28/Redis%E5%88%86%E5%B8%83%E5%BC%8F%E7%BC%93%E5%AD%98/">Redis分布式缓存</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/15</span>
+            <a class="archive-post-title" href="/2020/08/15/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B-%E5%B9%B6%E5%8F%91%E2%91%A0/">Java多线程-并发</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/15</span>
+            <a class="archive-post-title" href="/2020/08/15/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B-%E5%B9%B6%E5%8F%91%E2%91%A1/">Java多线程-并发②</a>
+        </li>
+    
+        
+            
+            
+                
+                </ul>
+            
+            <div class="archive-year"> 2019 </div>
+            <ul class="year-list">
+            
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/14</span>
+            <a class="archive-post-title" href="/2019/08/14/nginx%E7%AE%80%E4%BB%8B%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%BF%9B%E9%98%B6/">nginx简介及使用进阶</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/04</span>
+            <a class="archive-post-title" href="/2019/05/04/PVE%E8%99%9A%E6%8B%9F%E5%8C%96/">PVE虚拟化</a>
+        </li>
+    
+        
+            
+            
+                
+                </ul>
+            
+            <div class="archive-year"> 2018 </div>
+            <ul class="year-list">
+            
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/15</span>
+            <a class="archive-post-title" href="/2018/08/15/Java%E6%95%B0%E7%BB%84%E5%9F%BA%E7%A1%80/">Java数组基础</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/15</span>
+            <a class="archive-post-title" href="/2018/08/15/Java%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">Java算法基础-数据结构-设计模式</a>
+        </li>
+    
+        
         <li class="archive-post-item">
             <span class="archive-post-date">05/03</span>
-            <a class="archive-post-title" href="/2021/05/03/%E6%9D%82%E8%B0%88%E6%9C%8D%E5%8A%A1%E5%99%A8/">杂谈服务器</a>
+            <a class="archive-post-title" href="/2018/05/03/%E6%9D%82%E8%B0%88%E6%9C%8D%E5%8A%A1%E5%99%A8/">杂谈服务器</a>
         </li>
     
         

@@ -19,15 +19,15 @@
         <meta name="keywords" content="hexo,hexo-theme,hexo-blog">
     
     <meta name="description" content="">
-    <meta name="description" content="ELK技术栈 elasticsearch结合kibana、Logstash、Beats，也就是elastic stack（ELK）。被广泛应用在日志数据分析、实时监控等领域">
+    <meta name="description" content="ELK技术栈 elasticsearch结合kibana、Logstash、Beats，也就是elastic stack（ELK）。被广泛应用在日志数据分析、实时监控等领域 elasticsearch是elastic stack的核心，负责存储、搜索、分析数据-elasticsearch底层是基于lucene来实现的 以elasticsearch为核心的技术栈，包括beats、Logstash、k">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ELK搜索">
 <meta property="og:url" content="https://winddsnow.github.io/2022/09/08/ELK%E6%90%9C%E7%B4%A2/index.html">
 <meta property="og:site_name" content="WinddSnow">
-<meta property="og:description" content="ELK技术栈 elasticsearch结合kibana、Logstash、Beats，也就是elastic stack（ELK）。被广泛应用在日志数据分析、实时监控等领域">
+<meta property="og:description" content="ELK技术栈 elasticsearch结合kibana、Logstash、Beats，也就是elastic stack（ELK）。被广泛应用在日志数据分析、实时监控等领域 elasticsearch是elastic stack的核心，负责存储、搜索、分析数据-elasticsearch底层是基于lucene来实现的 以elasticsearch为核心的技术栈，包括beats、Logstash、k">
 <meta property="og:locale">
 <meta property="article:published_time" content="2022-09-08T05:42:49.000Z">
-<meta property="article:modified_time" content="2022-09-08T08:46:55.885Z">
+<meta property="article:modified_time" content="2022-10-16T16:40:52.648Z">
 <meta property="article:author" content="WinddSnow">
 <meta property="article:tag" content="Java">
 <meta property="article:tag" content="ELK">
@@ -348,7 +348,7 @@
                 
                 
                     <div class="post-intro-read">
-                        <span>字数统计: <span class="post-count word-count">34</span>阅读时长: <span class="post-count reading-time">1 min</span></span>
+                        <span>字数统计: <span class="post-count word-count">5.7k</span>阅读时长: <span class="post-count reading-time">21 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -511,7 +511,460 @@
     <article class="article-entry">
         <h1 id="ELK技术栈"><a href="#ELK技术栈" class="headerlink" title="ELK技术栈"></a>ELK技术栈</h1><ul>
 <li>elasticsearch结合kibana、Logstash、Beats，也就是elastic stack（ELK）。被广泛应用在日志数据分析、实时监控等领域</li>
+<li>elasticsearch是elastic stack的核心，负责存储、搜索、分析数据-elasticsearch底层是基于<strong>lucene</strong>来实现的</li>
+<li>以elasticsearch为核心的技术栈，包括beats、Logstash、kibana、elasticsearch</li>
 </ul>
+<h2 id="正向索引和倒排索引"><a href="#正向索引和倒排索引" class="headerlink" title="正向索引和倒排索引"></a>正向索引和倒排索引</h2><h3 id="正向索引"><a href="#正向索引" class="headerlink" title="正向索引"></a>正向索引</h3><ol>
+<li>用户搜索数据，条件是title符合<code>&quot;%手机%&quot;</code></li>
+<li>逐行获取数据，比如id为1的数据</li>
+<li>判断数据中的title是否符合用户搜索条件</li>
+<li>如果符合则放入结果集，不符合则丢弃。回到步骤1</li>
+</ol>
+<h3 id="倒排索引"><a href="#倒排索引" class="headerlink" title="倒排索引"></a>倒排索引</h3><p>倒排索引中有两个非常重要的概念：</p>
+<ul>
+<li>文档（<code>Document</code>）：用来搜索的数据，其中的每一条数据就是一个文档。例如一个网页、一个商品信息</li>
+<li>词条（<code>Term</code>）：对文档数据或用户搜索数据，利用某种算法分词，得到的具备含义的词语就是词条。例如：我是中国人，就可以分为：我、是、中国人、中国、国人这样的几个词条<br><strong>创建倒排索引</strong>是对正向索引的一种特殊处理，流程如下：</li>
+<li>将每一个文档的数据利用算法分词，得到一个个词条</li>
+<li>创建表，每行数据包括词条、词条所在文档id、位置等信息</li>
+<li>因为词条唯一性，可以给词条创建索引，例如hash表结构索引</li>
+</ul>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ul>
+<li><strong>正向索引</strong>是最传统的，根据id索引的方式。但根据词条查询时，必须先逐条获取每个文档，然后判断文档中是否包含所需要的词条，是<strong>根据文档找词条的过程</strong>。</li>
+<li>而<strong>倒排索引</strong>则相反，是先找到用户要搜索的词条，根据词条得到保护词条的文档的id，然后根据id获取文档。是<strong>根据词条找文档的过程</strong>。</li>
+</ul>
+<h2 id="对比MySQL"><a href="#对比MySQL" class="headerlink" title="对比MySQL"></a>对比MySQL</h2><table>
+<thead>
+<tr>
+<th><strong>MySQL</strong></th>
+<th><strong>Elasticsearch</strong></th>
+<th><strong>说明</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Table</td>
+<td>Index</td>
+<td>索引(index)，就是文档的集合，类似数据库的表(table)</td>
+</tr>
+<tr>
+<td>Row</td>
+<td>Document</td>
+<td>文档（Document），就是一条条的数据，类似数据库中的行（Row），文档都是JSON格式</td>
+</tr>
+<tr>
+<td>Column</td>
+<td>Field</td>
+<td>字段（Field），就是JSON文档中的字段，类似数据库中的列（Column）</td>
+</tr>
+<tr>
+<td>Schema（DDL）</td>
+<td>Mapping</td>
+<td>Mapping（映射）是索引中文档的约束，例如字段类型约束。类似数据库的表结构（Schema）</td>
+</tr>
+<tr>
+<td>SQL</td>
+<td>DSL</td>
+<td>DSL(Domain Specific Language)是elasticsearch提供的JSON风格的请求语句，用来操作elasticsearch，实现CRUD</td>
+</tr>
+</tbody></table>
+<ul>
+<li>Mysql：擅长事务类型操作，可以确保数据的安全和一致性</li>
+<li>Elasticsearch：擅长海量数据的搜索、分析、计算</li>
+</ul>
+<p>因此在企业中，往往是两者结合使用：</p>
+<ul>
+<li>对安全性要求较高的写操作，使用mysql实现</li>
+<li>对查询性能要求较高的搜索需求，使用elasticsearch实现</li>
+<li>两者再基于某种方式，实现数据的同步，保证一致性</li>
+</ul>
+<h2 id="分词器"><a href="#分词器" class="headerlink" title="分词器"></a>分词器</h2><h3 id="分词器的作用是什么？"><a href="#分词器的作用是什么？" class="headerlink" title="分词器的作用是什么？"></a>分词器的作用是什么？</h3><ul>
+<li>创建倒排索引时对文档分词</li>
+<li>用户搜索时，对输入的内容分词</li>
+</ul>
+<h3 id="IK分词器有几种模式？"><a href="#IK分词器有几种模式？" class="headerlink" title="IK分词器有几种模式？"></a>IK分词器有几种模式？</h3><ul>
+<li>ik_smart：智能切分，粗粒度</li>
+<li>ik_max_word：最细切分，细粒度</li>
+</ul>
+<h3 id="IK分词器如何拓展词条？如何停用词条？"><a href="#IK分词器如何拓展词条？如何停用词条？" class="headerlink" title="IK分词器如何拓展词条？如何停用词条？"></a>IK分词器如何拓展词条？如何停用词条？</h3><ul>
+<li>利用config目录的IkAnalyzer.cfg.xml文件添加拓展词典和停用词典</li>
+<li>在词典中添加拓展词条或者停用词条</li>
+</ul>
+<h2 id="索引库操作"><a href="#索引库操作" class="headerlink" title="索引库操作"></a>索引库操作</h2><p>索引库就类似数据库表，mapping映射就类似表的结构。我们要向es中存储数据，必须先创建“库”和“表”。就需要编写DDL语句实现创建库和表。之前我们对比理解过 mapping等同于数据库中DDL。 </p>
+<h3 id="mapping映射属性"><a href="#mapping映射属性" class="headerlink" title="mapping映射属性"></a>mapping映射属性</h3><p>mapping是对索引库中文档的约束，具体的映射针对的是字段。<strong>常见</strong>的mapping属性包括：</p>
+<ul>
+<li>type：字段数据类型，常见的简单类型有：<ul>
+<li><strong>字符串</strong>：text（可分词的文本）、keyword（精确值，例如：品牌、国家、ip地址）</li>
+<li>数值：long、integer、short、byte、double、float、</li>
+<li>布尔：boolean</li>
+<li>日期：date</li>
+<li>对象：object</li>
+<li>geo_point gps坐标</li>
+</ul>
+</li>
+<li>index：是否创建索引，默认为true</li>
+<li>analyzer：使用哪种分词器（前提是：要分词 才需要指定分词器） </li>
+<li>properties：该字段的子字段</li>
+</ul>
+<h3 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h3><ul>
+<li>请求方式：PUT</li>
+<li>请求路径：&#x2F;索引库名，可以自定义</li>
+<li>请求参数：是一个json其它有个key&#x3D;mapping映射</li>
+</ul>
+<p>格式：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">PUT /索引库名称</span><br><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;mappings&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;properties&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;字段名&quot;</span><span class="punctuation">:</span><span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;type&quot;</span><span class="punctuation">:</span> <span class="string">&quot;text&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;analyzer&quot;</span><span class="punctuation">:</span> <span class="string">&quot;ik_smart&quot;</span></span><br><span class="line">      <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;字段名2&quot;</span><span class="punctuation">:</span><span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;type&quot;</span><span class="punctuation">:</span> <span class="string">&quot;keyword&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;index&quot;</span><span class="punctuation">:</span> <span class="string">&quot;false&quot;</span></span><br><span class="line">      <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;字段名3&quot;</span><span class="punctuation">:</span><span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;properties&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">          <span class="attr">&quot;子字段&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;type&quot;</span><span class="punctuation">:</span> <span class="string">&quot;keyword&quot;</span></span><br><span class="line">          <span class="punctuation">&#125;</span></span><br><span class="line">        <span class="punctuation">&#125;</span></span><br><span class="line">      <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="comment">// ...略</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="查询索引库"><a href="#查询索引库" class="headerlink" title="查询索引库"></a>查询索引库</h3><p><strong>基本语法</strong>：</p>
+<ul>
+<li><p>请求方式：GET</p>
+</li>
+<li><p>请求路径：&#x2F;索引库名</p>
+</li>
+<li><p>请求参数：无</p>
+</li>
+</ul>
+<p><strong>格式</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GET /索引库名</span><br></pre></td></tr></table></figure>
+
+<h3 id="修改索引库"><a href="#修改索引库" class="headerlink" title="修改索引库"></a>修改索引库</h3><p>倒排索引结构虽然不复杂，但是一旦数据结构改变（比如改变了分词器），就需要重新创建倒排索引，这简直是灾难。因此索引库<strong>一旦创建，无法修改mapping</strong>。</p>
+<p>虽然无法修改mapping中已有的字段，但是却允许添加新的字段到mapping中，因为不会对倒排索引产生影响。</p>
+<p><strong>语法说明</strong>：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">PUT /索引库名/_mapping</span><br><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;properties&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;新字段名&quot;</span><span class="punctuation">:</span><span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;type&quot;</span><span class="punctuation">:</span> <span class="string">&quot;integer&quot;</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="删除索引库"><a href="#删除索引库" class="headerlink" title="删除索引库"></a>删除索引库</h3><p><strong>语法：</strong></p>
+<ul>
+<li><p>请求方式：DELETE</p>
+</li>
+<li><p>请求路径：&#x2F;索引库名</p>
+</li>
+<li><p>请求参数：无</p>
+</li>
+</ul>
+<p><strong>格式：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DELETE /索引库名</span><br></pre></td></tr></table></figure>
+
+<h3 id="索引库操作有哪些？"><a href="#索引库操作有哪些？" class="headerlink" title="索引库操作有哪些？"></a>索引库操作有哪些？</h3><ul>
+<li>创建索引库：PUT &#x2F;索引库名</li>
+<li>查询索引库：GET &#x2F;索引库名</li>
+<li>删除索引库：DELETE &#x2F;索引库名</li>
+<li>添加字段：PUT &#x2F;索引库名&#x2F;_mapping</li>
+</ul>
+<h3 id="文档操作有哪些？"><a href="#文档操作有哪些？" class="headerlink" title="文档操作有哪些？"></a>文档操作有哪些？</h3><ul>
+<li>创建文档：POST &#x2F;{索引库名}&#x2F;_doc&#x2F;文档id   { json文档 }</li>
+<li>查询文档：GET &#x2F;{索引库名}&#x2F;_doc&#x2F;文档id</li>
+<li>删除文档：DELETE &#x2F;{索引库名}&#x2F;_doc&#x2F;文档id</li>
+<li>修改文档：<ul>
+<li>修改全部：PUT &#x2F;{索引库名}&#x2F;_doc&#x2F;文档id { json文档 }  ，不管是多少数据，都会将之前的数据删除，并再次添加</li>
+<li>修改部分：POST &#x2F;{索引库名}&#x2F;_update&#x2F;文档id { “doc”: {字段}}</li>
+</ul>
+</li>
+</ul>
+<h2 id="RestClient"><a href="#RestClient" class="headerlink" title="RestClient"></a>RestClient</h2><p>ES官方提供了各种不同语言的客户端，用来操作ES。这些客户端的本质就是组装DSL语句，通过http请求发送给ES。官方文档地址：<a target="_blank" rel="noopener" href="https://www.elastic.co/guide/en/elasticsearch/client/index.html">https://www.elastic.co/guide/en/elasticsearch/client/index.html</a><br>其中的Java Rest Client又包括两种：</p>
+<ul>
+<li>Java Low Level Rest Client</li>
+<li>Java High Level Rest Client<br>一般使用Java HighLevel Rest Client客户端API</li>
+</ul>
+<h3 id="映射分析"><a href="#映射分析" class="headerlink" title="映射分析"></a>映射分析</h3><p>创建索引库，最关键的是mapping映射，而mapping映射要考虑的信息包括：</p>
+<ul>
+<li>字段名</li>
+<li>字段数据类型</li>
+<li>是否参与搜索</li>
+<li>是否需要分词</li>
+<li>如果分词，分词器是什么？<br>其中：</li>
+<li>字段名、字段数据类型，可以参考数据表结构的名称和类型</li>
+<li>是否参与搜索要分析业务来判断，例如图片地址，就无需参与搜索</li>
+<li>是否分词呢要看内容，内容如果是一个整体就无需分词，反之则要分词</li>
+<li>分词器，我们可以统一使用ik_max_word</li>
+</ul>
+<h3 id="构建索引库"><a href="#构建索引库" class="headerlink" title="构建索引库"></a>构建索引库</h3><ul>
+<li>1）创建Request对象。因为是创建索引库的操作，因此Request是CreateIndexRequest。</li>
+<li>2）添加请求参数，其实就是DSL的JSON参数部分。因为json字符串很长，这里是定义了静态字符串常量MAPPING_TEMPLATE，让代码看起来更加优雅。</li>
+<li>3）发送请求，client.indices()方法的返回值是IndicesClient类型，封装了所有与索引库操作有关的方法。</li>
+</ul>
+<h3 id="文档操作的基本步骤："><a href="#文档操作的基本步骤：" class="headerlink" title="文档操作的基本步骤："></a>文档操作的基本步骤：</h3><ul>
+<li>初始化RestHighLevelClient</li>
+<li>创建XxxRequest。XXX是Index、Get、Update、Delete、Bulk</li>
+<li>准备参数（Index、Update、Bulk时需要）</li>
+<li>发送请求。调用RestHighLevelClient#.xxx()方法，xxx是index、get、update、delete、bulk</li>
+<li>解析结果（Get时需要）</li>
+</ul>
+<h2 id="DSL查询文档"><a href="#DSL查询文档" class="headerlink" title="DSL查询文档"></a>DSL查询文档</h2><h3 id="DSL查询分类"><a href="#DSL查询分类" class="headerlink" title="DSL查询分类"></a>DSL查询分类</h3><p>Elasticsearch提供了基于JSON的DSL（<a target="_blank" rel="noopener" href="https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html">Domain Specific Language</a>）来定义查询。常见的查询类型包括：</p>
+<ul>
+<li><strong>查询所有</strong>：查询出所有数据，一般测试用。例如：match_all</li>
+<li><strong>全文检索（full text）查询</strong>：利用分词器对用户输入内容分词，然后去倒排索引库中匹配。例如：<ul>
+<li>match_query</li>
+<li>multi_match_query</li>
+</ul>
+</li>
+<li><strong>精确查询</strong>：根据精确词条值查找数据，一般是查找keyword、数值、日期、boolean等类型字段。例如：<ul>
+<li>ids</li>
+<li>range</li>
+<li>term</li>
+</ul>
+</li>
+<li><strong>地理（geo）查询</strong>：根据经纬度查询。例如：<ul>
+<li>geo_distance</li>
+<li>geo_bounding_box</li>
+</ul>
+</li>
+<li><strong>复合（compound）查询</strong>：复合查询可以将上述各种查询条件组合起来，合并查询条件。例如：<ul>
+<li>bool</li>
+<li>function_score</li>
+</ul>
+</li>
+</ul>
+<h3 id="全文检索查询"><a href="#全文检索查询" class="headerlink" title="全文检索查询"></a>全文检索查询</h3><ul>
+<li>match查询：单字段查询</li>
+<li>multi_match查询：多字段查询，任意一个字段符合条件就算符合查询条件</li>
+</ul>
+<h3 id="match和multi-match的区别是什么？"><a href="#match和multi-match的区别是什么？" class="headerlink" title="match和multi_match的区别是什么？"></a>match和multi_match的区别是什么？</h3><ul>
+<li>match：根据一个字段查询</li>
+<li>multi_match：根据多个字段查询，参与查询字段越多，查询性能越差</li>
+</ul>
+<h3 id="精准查询"><a href="#精准查询" class="headerlink" title="精准查询"></a>精准查询</h3><p>精确查询一般是查找keyword、数值、日期、boolean等类型字段。所以<strong>不会</strong>对搜索条件分词。常见的有：</p>
+<ul>
+<li>term：根据词条精确匹配，一般搜索keyword类型、数值类型、布尔类型、日期类型字段</li>
+<li>range：根据数值范围查询，可以是数值、日期的范围</li>
+</ul>
+<h2 id="地理坐标查询"><a href="#地理坐标查询" class="headerlink" title="地理坐标查询"></a>地理坐标查询</h2><p>所谓的地理坐标查询，其实就是根据经纬度查询，官方文档：<a target="_blank" rel="noopener" href="https://www.elastic.co/guide/en/elasticsearch/reference/current/geo-queries.html">https://www.elastic.co/guide/en/elasticsearch/reference/current/geo-queries.html</a><br>常见的使用场景包括：</p>
+<ul>
+<li>携程：搜索我附近的酒店</li>
+<li>滴滴：搜索我附近的出租车</li>
+<li>微信：搜索我附近的人</li>
+</ul>
+<h3 id="矩形范围查询"><a href="#矩形范围查询" class="headerlink" title="矩形范围查询"></a>矩形范围查询</h3><p>也就是geo_bounding_box查询，查询坐标落在某个矩形范围的所有文档：<br>查询时，需要指定矩形的<strong>左上</strong>、<strong>右下</strong>两个点的坐标，然后画出一个矩形，落在该矩形内的都是符合条件的点。</p>
+<h3 id="附近查询"><a href="#附近查询" class="headerlink" title="附近查询"></a>附近查询</h3><p>也叫做距离查询（geo_distance）：查询到指定中心点小于某个距离值的所有文档。<br><a target="_blank" rel="noopener" href="https://www.elastic.co/guide/en/elasticsearch/reference/7.12/query-dsl-geo-distance-query.html">https://www.elastic.co/guide/en/elasticsearch/reference/7.12/query-dsl-geo-distance-query.html</a><br>换句话来说，在地图上找一个点作为圆心，以指定距离为半径，画一个圆，落在圆内的坐标都算符合条件</p>
+<h2 id="复合查询"><a href="#复合查询" class="headerlink" title="复合查询"></a>复合查询</h2><p>复合（compound）查询：复合查询可以将其它简单查询组合起来，实现更复杂的搜索逻辑。常见的有两种：</p>
+<ul>
+<li>fuction score：算分函数查询，可以控制文档相关性算分，控制文档排名</li>
+<li>bool query：布尔查询，利用逻辑关系组合多个其它的查询，实现复杂搜索</li>
+</ul>
+<h3 id="相关性算分"><a href="#相关性算分" class="headerlink" title="相关性算分"></a>相关性算分</h3><p>当我们利用match查询时，文档结果会根据与搜索词条的关联度打分（_score），返回结果时按照分值降序排列。</p>
+<ul>
+<li>在elasticsearch中，早期使用的打分算法是TF-IDF算法，在后来的5.1版本升级中，elasticsearch将算法改进为BM25算法</li>
+<li>TF-IDF算法有一各缺陷，就是词条频率越高，文档得分也会越高，单个词条对文档影响较大。而BM25则会让单个词条的算分有一个上限，曲线更加平滑</li>
+</ul>
+<h3 id="function-score-查询"><a href="#function-score-查询" class="headerlink" title="function score 查询"></a>function score 查询</h3><p>包含四部分内容：</p>
+<ul>
+<li><strong>原始查询</strong>条件：query部分，基于这个条件搜索文档，并且基于BM25算法给文档打分，<strong>原始算分</strong>（query score)</li>
+<li><strong>过滤条件</strong>：filter部分，符合该条件的文档才会重新算分</li>
+<li><strong>算分函数</strong>：符合filter条件的文档要根据这个函数做运算，得到的<strong>函数算分</strong>（function score），有四种函数<ul>
+<li>weight：函数结果是常量</li>
+<li>field_value_factor：以文档中的某个字段值作为函数结果</li>
+<li>random_score：以随机数作为函数结果</li>
+<li>script_score：自定义算分函数算法</li>
+</ul>
+</li>
+<li><strong>运算模式</strong>：算分函数的结果、原始查询的相关性算分，两者之间的运算方式，包括：<ul>
+<li>multiply：相乘</li>
+<li>replace：用function score替换query score</li>
+<li>其它，例如：sum、avg、max、min</li>
+</ul>
+</li>
+</ul>
+<h3 id="function-score的运行流程"><a href="#function-score的运行流程" class="headerlink" title="function score的运行流程"></a>function score的运行流程</h3><ul>
+<li>1）根据<strong>原始条件</strong>查询搜索文档，并且计算相关性算分，称为<strong>原始算分</strong>（query score）</li>
+<li>2）根据<strong>过滤条件</strong>，过滤文档</li>
+<li>3）符合<strong>过滤条件</strong>的文档，基于<strong>算分函数</strong>运算，得到<strong>函数算分</strong>（function score）</li>
+<li>4）将<strong>原始算分</strong>（query score）和<strong>函数算分</strong>（function score）基于<strong>运算模式</strong>做运算，得到最终结果，作为相关性算分。</li>
+</ul>
+<h3 id="关键点"><a href="#关键点" class="headerlink" title="关键点"></a>关键点</h3><ul>
+<li>过滤条件：决定哪些文档的算分被修改</li>
+<li>算分函数：决定函数算分的算法</li>
+<li>运算模式：决定最终算分结果</li>
+</ul>
+<h3 id="function-score-query定义三要素"><a href="#function-score-query定义三要素" class="headerlink" title="function score query定义三要素"></a>function score query定义三要素</h3><ul>
+<li>过滤条件：哪些文档要加分</li>
+<li>算分函数：如何计算function score</li>
+<li>加权方式：function score 与 query score如何运算</li>
+</ul>
+<h3 id="bool查询有几种逻辑关系？"><a href="#bool查询有几种逻辑关系？" class="headerlink" title="bool查询有几种逻辑关系？"></a>bool查询有几种逻辑关系？</h3><ul>
+<li>must：必须匹配的条件，可以理解为“与”</li>
+<li>should：选择性匹配的条件，可以理解为“或”</li>
+<li>must_not：必须不匹配的条件，不参与打分</li>
+</ul>
+<h2 id="搜索结果处理"><a href="#搜索结果处理" class="headerlink" title="搜索结果处理"></a>搜索结果处理</h2><h3 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h3><ul>
+<li>elasticsearch默认是根据相关度算分（_score）来排序，但是也支持自定义方式</li>
+<li>可以排序字段类型有：keyword类型、数值类型、地理坐标类型、日期类型等</li>
+<li>排序字段、排序方式ASC、DESC</li>
+</ul>
+<h3 id="地理坐标排序"><a href="#地理坐标排序" class="headerlink" title="地理坐标排序"></a>地理坐标排序</h3><ul>
+<li>指定一个坐标，作为目标点</li>
+<li>计算每一个文档中，指定字段（必须是geo_point类型）的坐标 到目标点的距离是多少</li>
+<li>根据距离排序</li>
+</ul>
+<h3 id="分页"><a href="#分页" class="headerlink" title="分页"></a>分页</h3><p>elasticsearch 默认情况下只返回top10的数据。而如果要查询更多数据就需要修改分页参数了。elasticsearch中通过修改from、size参数来控制要返回的分页结果：</p>
+<ul>
+<li>from：从第几个文档开始</li>
+<li>size：总共查询几个文档</li>
+</ul>
+<p>类似于mysql中的<code>limit ?, ?</code><br><a target="_blank" rel="noopener" href="https://www.elastic.co/guide/en/elasticsearch/reference/7.12/paginate-search-results.html">https://www.elastic.co/guide/en/elasticsearch/reference/7.12/paginate-search-results.html</a></p>
+<h3 id="集群查询"><a href="#集群查询" class="headerlink" title="集群查询"></a>集群查询</h3><p>查询TOP1000，如果es是单点模式，这并无太大影响。</p>
+<ol>
+<li>但是elasticsearch如果是集群，例如我集群有5个节点，我要查询TOP1000的数据，并不是每个节点查询200条就可以了。</li>
+<li>因为节点A的TOP200，在另一个节点可能排到10000名以外了。</li>
+<li>因此要想获取整个集群的TOP1000，必须先查询出每个节点的TOP1000，汇总结果后，重新排名，重新截取TOP1000。</li>
+</ol>
+<h3 id="深度分页"><a href="#深度分页" class="headerlink" title="深度分页"></a>深度分页</h3><p><a target="_blank" rel="noopener" href="https://www.elastic.co/guide/en/elasticsearch/reference/current/paginate-search-results.html">https://www.elastic.co/guide/en/elasticsearch/reference/current/paginate-search-results.html</a></p>
+<ul>
+<li>search after：分页时需要排序，原理是从上一次的排序值开始，查询下一页数据。官方推荐使用的方式。</li>
+<li>scroll：原理将排序后的文档id形成快照，保存在内存。官方已经不推荐使用。</li>
+</ul>
+<h3 id="分页方案"><a href="#分页方案" class="headerlink" title="分页方案"></a>分页方案</h3><p>分页查询的常见实现方案以及优缺点：</p>
+<ul>
+<li><code>from + size</code>：<ul>
+<li>优点：支持随机翻页</li>
+<li>缺点：深度分页问题，默认查询上限（from + size）是10000</li>
+<li>场景：百度、京东、谷歌、淘宝这样的随机翻页搜索</li>
+</ul>
+</li>
+<li><code>after search</code>：<ul>
+<li>优点：没有查询上限（单次查询的size不超过10000）</li>
+<li>缺点：只能向后逐页查询，不支持随机翻页</li>
+<li>场景：没有随机翻页需求的搜索，例如手机向下滚动翻页</li>
+</ul>
+</li>
+<li><code>scroll</code>：<ul>
+<li>优点：没有查询上限（单次查询的size不超过10000）</li>
+<li>缺点：会有额外内存消耗，并且搜索结果是非实时的</li>
+<li>场景：海量数据的获取和迁移。从ES7.1开始不推荐，建议用 after search方案。</li>
+</ul>
+</li>
+</ul>
+<h2 id="高亮"><a href="#高亮" class="headerlink" title="高亮"></a>高亮</h2><h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3><p>高亮显示的实现分为两步：</p>
+<ul>
+<li>1）给文档中的所有关键字都添加一个标签，例如<code>&lt;em&gt;</code>标签</li>
+<li>2）页面给<code>&lt;em&gt;</code>标签编写CSS样式</li>
+</ul>
+<p><strong>注意：</strong></p>
+<ul>
+<li>高亮是对关键字高亮，因此<strong>搜索条件必须带有关键字</strong>，而不能是范围这样的查询。</li>
+<li>默认情况下，<strong>高亮的字段，必须与搜索指定的字段一致</strong>，否则无法高亮</li>
+<li>如果要对非搜索字段高亮，则需要添加一个属性：required_field_match&#x3D;false</li>
+</ul>
+<h3 id="查询的DSL是一个大的JSON对象"><a href="#查询的DSL是一个大的JSON对象" class="headerlink" title="查询的DSL是一个大的JSON对象"></a>查询的DSL是一个大的JSON对象</h3><p>包含下列属性：</p>
+<ul>
+<li>query：查询条件</li>
+<li>from和size：分页条件</li>
+<li>sort：排序条件</li>
+<li>highlight：高亮条件</li>
+</ul>
+<h2 id="RestClient查询文档"><a href="#RestClient查询文档" class="headerlink" title="RestClient查询文档"></a>RestClient查询文档</h2><ul>
+<li>第一步，创建<code>SearchRequest</code>对象，指定索引库名</li>
+<li>第二步，利用<code>request.source()</code>构建DSL，DSL中可以包含查询、分页、排序、高亮等<ul>
+<li><code>query()</code>：代表查询条件，利用<code>QueryBuilders.matchAllQuery()</code>构建一个match_all查询的DSL</li>
+</ul>
+</li>
+<li>第三步，利用client.search()发送请求，得到响应<br>这里关键的API有两个，一个是<code>request.source()</code>，其中包含了查询、排序、分页、高亮等所有功能：<br>另一个是<code>QueryBuilders</code>，其中包含match、term、function_score、bool等各种查询：</li>
+</ul>
+<h3 id="结果解析"><a href="#结果解析" class="headerlink" title="结果解析"></a>结果解析</h3><p>elasticsearch返回的结果是一个JSON字符串，结构包含：</p>
+<ul>
+<li><code>hits</code>：命中的结果<ul>
+<li><code>total</code>：总条数，其中的value是具体的总条数值</li>
+<li><code>max_score</code>：所有结果中得分最高的文档的相关性算分</li>
+<li><code>hits</code>：搜索结果的文档数组，其中的每个文档都是一个json对象<ul>
+<li><code>_source</code>：文档中的原始数据，也是json对象<br>因此，我们解析响应结果，就是逐层解析JSON字符串，流程如下：</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>SearchHits：通过response.getHits()获取，就是JSON中的最外层的hits，代表命中的结果<ul>
+<li>SearchHits#getTotalHits().value：获取总条数信息</li>
+<li>SearchHits#getHits()：获取SearchHit数组，也就是文档数组</li>
+<li>SearchHit#getSourceAsString()：获取文档结果中的_source，也就是原始的json文档数据</li>
+</ul>
+</li>
+</ul>
+<h3 id="查询的基本步骤是："><a href="#查询的基本步骤是：" class="headerlink" title="查询的基本步骤是："></a>查询的基本步骤是：</h3><ol>
+<li>创建SearchRequest对象</li>
+<li>准备Request.source()，也就是DSL。<br>① QueryBuilders来构建查询条件<br>② 传入Request.source() 的 query() 方法</li>
+<li>发送请求，得到结果</li>
+<li>解析结果（参考JSON结果，从外到内，逐层解析）</li>
+</ol>
+<h3 id="match查询"><a href="#match查询" class="headerlink" title="match查询"></a>match查询</h3><p>全文检索的match和multi_match查询与match_all的API基本一致。差别是查询条件，也就是query的部分。<br>因此，Java代码上的差异主要是request.source().query()中的参数了。同样是利用QueryBuilders提供的方法</p>
+<h3 id="精确查询"><a href="#精确查询" class="headerlink" title="精确查询"></a>精确查询</h3><ul>
+<li>term：词条精确匹配</li>
+<li>range：范围查询<br>与之前的查询相比，差异同样在查询条件，其它都一样。</li>
+</ul>
+<h3 id="布尔查询"><a href="#布尔查询" class="headerlink" title="布尔查询"></a>布尔查询</h3><p>布尔查询是用must、must_not、filter等方式组合其它查询</p>
+<h3 id="排序、分页"><a href="#排序、分页" class="headerlink" title="排序、分页"></a>排序、分页</h3><p>搜索结果的排序和分页是与query同级的参数，因此同样是使用request.source()来设置</p>
+<h3 id="高亮-1"><a href="#高亮-1" class="headerlink" title="高亮"></a>高亮</h3><p>高亮的代码与之前代码差异较大，有两点：</p>
+<ul>
+<li>查询的DSL：其中除了查询条件，还需要添加高亮条件，同样是与query同级。</li>
+<li>结果解析：结果除了要解析_source文档数据，还要解析高亮结果</li>
+</ul>
+<p>高亮查询必须使用全文检索查询，并且要有搜索关键字，将来才可以对关键字高亮</p>
+<ul>
+<li>第一步：从结果中获取source。hit.getSourceAsString()，这部分是非高亮结果，json字符串。还需要反序列为HotelDoc对象</li>
+<li>第二步：获取高亮结果。hit.getHighlightFields()，返回值是一个Map，key是高亮字段名称，值是HighlightField对象，代表高亮值</li>
+<li>第三步：从map中根据高亮字段名称，获取高亮字段值对象HighlightField</li>
+<li>第四步：从HighlightField中获取Fragments，并且转为字符串。这部分就是真正的高亮字符串了</li>
+<li>第五步：用高亮的结果替换HotelDoc中的非高亮结果</li>
+</ul>
+<h2 id="数据聚合"><a href="#数据聚合" class="headerlink" title="数据聚合"></a>数据聚合</h2><h3 id="聚合的种类"><a href="#聚合的种类" class="headerlink" title="聚合的种类"></a>聚合的种类</h3><p>聚合常见的有三类：</p>
+<ul>
+<li><strong>桶（Bucket）</strong>聚合：用来对文档做分组<ul>
+<li>TermAggregation：按照文档字段值分组，例如按照品牌值分组、按照国家分组</li>
+<li>Date Histogram：按照日期阶梯分组，例如一周为一组，或者一月为一组</li>
+</ul>
+</li>
+<li><strong>度量（Metric）</strong>聚合：用以计算一些值，比如：最大值、最小值、平均值等<ul>
+<li>Avg：求平均值</li>
+<li>Max：求最大值</li>
+<li>Min：求最小值</li>
+<li>Stats：同时求max、min、avg、sum等</li>
+</ul>
+</li>
+<li><strong>管道（pipeline）</strong>聚合：其它聚合的结果为基础做聚合</li>
+</ul>
+<blockquote>
+<p><strong>注意：</strong>参加聚合的字段必须是keyword、日期、数值、布尔类型</p>
+</blockquote>
+<h3 id="aggs代表聚合，与query同级，此时query的作用是？"><a href="#aggs代表聚合，与query同级，此时query的作用是？" class="headerlink" title="aggs代表聚合，与query同级，此时query的作用是？"></a>aggs代表聚合，与query同级，此时query的作用是？</h3><ul>
+<li>限定聚合的的文档范围</li>
+</ul>
+<h3 id="聚合必须的三要素："><a href="#聚合必须的三要素：" class="headerlink" title="聚合必须的三要素："></a>聚合必须的三要素：</h3><ul>
+<li>聚合名称</li>
+<li>聚合类型</li>
+<li>聚合字段</li>
+</ul>
+<h3 id="聚合可配置属性有："><a href="#聚合可配置属性有：" class="headerlink" title="聚合可配置属性有："></a>聚合可配置属性有：</h3><ul>
+<li>size：指定聚合结果数量</li>
+<li>order：指定聚合结果排序方式</li>
+<li>field：指定聚合字段</li>
+</ul>
+<h2 id="自动补全"><a href="#自动补全" class="headerlink" title="自动补全"></a>自动补全</h2><h3 id="拼音分词器"><a href="#拼音分词器" class="headerlink" title="拼音分词器"></a>拼音分词器</h3><p>要实现根据字母做补全，就必须对文档按照拼音分词。在GitHub上恰好有elasticsearch的拼音分词插件。地址：<a target="_blank" rel="noopener" href="https://github.com/medcl/elasticsearch-analysis-pinyin/tree/v7.12.1">https://github.com/medcl/elasticsearch-analysis-pinyin/tree/v7.12.1</a></p>
+<ul>
+<li>①解压</li>
+<li>②上传到elasticsearch的plugin目录</li>
+<li>③重启elasticsearch</li>
+</ul>
+<h3 id="如何自定义分词器？"><a href="#如何自定义分词器？" class="headerlink" title="如何自定义分词器？"></a>如何自定义分词器？</h3><ul>
+<li>①创建索引库时，在settings中配置，可以包含三部分</li>
+<li>②character filter</li>
+<li>③tokenizer</li>
+<li>④filter</li>
+</ul>
+<h2 id="自动补全查询"><a href="#自动补全查询" class="headerlink" title="自动补全查询"></a>自动补全查询</h2><p>elasticsearch提供了<a target="_blank" rel="noopener" href="https://www.elastic.co/guide/en/elasticsearch/reference/7.6/search-suggesters.html">Completion Suggester</a>查询来实现自动补全功能。这个查询会匹配以用户输入内容开头的词条并返回。为了提高补全查询的效率，对于文档中字段的类型有一些约束：</p>
+<ul>
+<li>参与补全查询的字段必须是completion类型。</li>
+<li>字段的内容一般是用来补全的多个词条形成的数组</li>
+</ul>
+<h2 id="集群"><a href="#集群" class="headerlink" title="集群"></a>集群</h2><p>单机的elasticsearch做数据存储，必然面临两个问题：海量数据存储问题、单点故障问题。</p>
+<ul>
+<li>海量数据存储问题：将索引库从逻辑上拆分为N个分片（shard），存储到多个节点</li>
+<li>单点故障问题：将分片数据在不同节点备份（replica ）</li>
+</ul>
+<h3 id="集群职责分离："><a href="#集群职责分离：" class="headerlink" title="集群职责分离："></a>集群职责分离：</h3><ul>
+<li>master节点：对CPU要求高，但是内存要求第</li>
+<li>data节点：对CPU和内存要求都高</li>
+<li>coordinating节点：对网络带宽、CPU要求高<br>职责分离可以让我们根据不同节点的需求分配不同的硬件去部署。而且避免业务之间的互相干扰。</li>
+</ul>
+<h3 id="脑裂"><a href="#脑裂" class="headerlink" title="脑裂"></a>脑裂</h3><p>解决脑裂的方案是，</p>
+<ul>
+<li>要求选票超过 ( eligible节点数量 + 1 ）&#x2F; 2 才能当选为主，因此eligible节点数量最好是奇数。对应配置项是discovery.zen.minimum_master_nodes，在es7.0以后，已经成为默认配置，因此一般不会发生脑裂问题</li>
+<li>例如：3个节点形成的集群，选票必须超过 （3 + 1） &#x2F; 2 ，也就是2票。node3得到node2和node3的选票，当选为主。node1只有自己1票，没有当选。集群中依然只有1个主节点，没有出现脑裂。</li>
+</ul>
+<h2 id="ES数据同步的方式？"><a href="#ES数据同步的方式？" class="headerlink" title="ES数据同步的方式？"></a>ES数据同步的方式？</h2><p>（1）使用MQ方式在代码中实现数据同步。<br>（2）采用定时任务，进行数据同步。<br>（3）采用阿里的数据同步中间件 canal实现数据同步，原理是通过监听binlog日志来实现。<br>（4）使用Logstash实现数据同步。</p>
+<h3 id="logstash如何做数据同步？"><a href="#logstash如何做数据同步？" class="headerlink" title="logstash如何做数据同步？"></a>logstash如何做数据同步？</h3><p>（1）环境搭建：使用docker拉取logstash镜像，版本要和elasticsearch版本相同<br>（2）上传mysql8的jdbc驱动包。<br>（3）创建容器，挂载mysql8的jdbc驱动包到容器。<br>（4）编写pipline脚本。输入：mysql , 输出es。<br>（5）启动容器，观察数据是否自动同步。</p>
 
     </article>
     <!-- license -->
@@ -520,7 +973,7 @@
             <p>原文作者：<a href="https://winddsnow.github.io">WinddSnow</a>
             <p>原文链接：<a href="https://winddsnow.github.io/2022/09/08/ELK%E6%90%9C%E7%B4%A2/">https://winddsnow.github.io/2022/09/08/ELK%E6%90%9C%E7%B4%A2/</a>
             <p>发表日期：<a href="https://winddsnow.github.io/2022/09/08/ELK%E6%90%9C%E7%B4%A2/">September 8th 2022, 1:42:49 pm</a>
-            <p>更新日期：<a href="https://winddsnow.github.io/2022/09/08/ELK%E6%90%9C%E7%B4%A2/">September 8th 2022, 4:46:55 pm</a>
+            <p>更新日期：<a href="https://winddsnow.github.io/2022/09/08/ELK%E6%90%9C%E7%B4%A2/">October 17th 2022, 12:40:52 am</a>
             <p>版权声明：本文采用<a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
         </div>
     
@@ -678,7 +1131,7 @@
                 <div class="toc-catalog">
                     <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
                 </div>
-                <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#ELK%E6%8A%80%E6%9C%AF%E6%A0%88"><span class="toc-number">1.</span> <span class="toc-text">ELK技术栈</span></a></li></ol>
+                <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#ELK%E6%8A%80%E6%9C%AF%E6%A0%88"><span class="toc-number">1.</span> <span class="toc-text">ELK技术栈</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AD%A3%E5%90%91%E7%B4%A2%E5%BC%95%E5%92%8C%E5%80%92%E6%8E%92%E7%B4%A2%E5%BC%95"><span class="toc-number">1.1.</span> <span class="toc-text">正向索引和倒排索引</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AD%A3%E5%90%91%E7%B4%A2%E5%BC%95"><span class="toc-number">1.1.1.</span> <span class="toc-text">正向索引</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%80%92%E6%8E%92%E7%B4%A2%E5%BC%95"><span class="toc-number">1.1.2.</span> <span class="toc-text">倒排索引</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">1.1.3.</span> <span class="toc-text">总结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%B9%E6%AF%94MySQL"><span class="toc-number">1.2.</span> <span class="toc-text">对比MySQL</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E8%AF%8D%E5%99%A8"><span class="toc-number">1.3.</span> <span class="toc-text">分词器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E8%AF%8D%E5%99%A8%E7%9A%84%E4%BD%9C%E7%94%A8%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-number">1.3.1.</span> <span class="toc-text">分词器的作用是什么？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#IK%E5%88%86%E8%AF%8D%E5%99%A8%E6%9C%89%E5%87%A0%E7%A7%8D%E6%A8%A1%E5%BC%8F%EF%BC%9F"><span class="toc-number">1.3.2.</span> <span class="toc-text">IK分词器有几种模式？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#IK%E5%88%86%E8%AF%8D%E5%99%A8%E5%A6%82%E4%BD%95%E6%8B%93%E5%B1%95%E8%AF%8D%E6%9D%A1%EF%BC%9F%E5%A6%82%E4%BD%95%E5%81%9C%E7%94%A8%E8%AF%8D%E6%9D%A1%EF%BC%9F"><span class="toc-number">1.3.3.</span> <span class="toc-text">IK分词器如何拓展词条？如何停用词条？</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B4%A2%E5%BC%95%E5%BA%93%E6%93%8D%E4%BD%9C"><span class="toc-number">1.4.</span> <span class="toc-text">索引库操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#mapping%E6%98%A0%E5%B0%84%E5%B1%9E%E6%80%A7"><span class="toc-number">1.4.1.</span> <span class="toc-text">mapping映射属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95"><span class="toc-number">1.4.2.</span> <span class="toc-text">基本语法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E8%AF%A2%E7%B4%A2%E5%BC%95%E5%BA%93"><span class="toc-number">1.4.3.</span> <span class="toc-text">查询索引库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9%E7%B4%A2%E5%BC%95%E5%BA%93"><span class="toc-number">1.4.4.</span> <span class="toc-text">修改索引库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E7%B4%A2%E5%BC%95%E5%BA%93"><span class="toc-number">1.4.5.</span> <span class="toc-text">删除索引库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B4%A2%E5%BC%95%E5%BA%93%E6%93%8D%E4%BD%9C%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%9F"><span class="toc-number">1.4.6.</span> <span class="toc-text">索引库操作有哪些？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E6%A1%A3%E6%93%8D%E4%BD%9C%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%9F"><span class="toc-number">1.4.7.</span> <span class="toc-text">文档操作有哪些？</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RestClient"><span class="toc-number">1.5.</span> <span class="toc-text">RestClient</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%98%A0%E5%B0%84%E5%88%86%E6%9E%90"><span class="toc-number">1.5.1.</span> <span class="toc-text">映射分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9E%84%E5%BB%BA%E7%B4%A2%E5%BC%95%E5%BA%93"><span class="toc-number">1.5.2.</span> <span class="toc-text">构建索引库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E6%A1%A3%E6%93%8D%E4%BD%9C%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%AD%A5%E9%AA%A4%EF%BC%9A"><span class="toc-number">1.5.3.</span> <span class="toc-text">文档操作的基本步骤：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DSL%E6%9F%A5%E8%AF%A2%E6%96%87%E6%A1%A3"><span class="toc-number">1.6.</span> <span class="toc-text">DSL查询文档</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#DSL%E6%9F%A5%E8%AF%A2%E5%88%86%E7%B1%BB"><span class="toc-number">1.6.1.</span> <span class="toc-text">DSL查询分类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%A8%E6%96%87%E6%A3%80%E7%B4%A2%E6%9F%A5%E8%AF%A2"><span class="toc-number">1.6.2.</span> <span class="toc-text">全文检索查询</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#match%E5%92%8Cmulti-match%E7%9A%84%E5%8C%BA%E5%88%AB%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-number">1.6.3.</span> <span class="toc-text">match和multi_match的区别是什么？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B2%BE%E5%87%86%E6%9F%A5%E8%AF%A2"><span class="toc-number">1.6.4.</span> <span class="toc-text">精准查询</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9C%B0%E7%90%86%E5%9D%90%E6%A0%87%E6%9F%A5%E8%AF%A2"><span class="toc-number">1.7.</span> <span class="toc-text">地理坐标查询</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9F%A9%E5%BD%A2%E8%8C%83%E5%9B%B4%E6%9F%A5%E8%AF%A2"><span class="toc-number">1.7.1.</span> <span class="toc-text">矩形范围查询</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%99%84%E8%BF%91%E6%9F%A5%E8%AF%A2"><span class="toc-number">1.7.2.</span> <span class="toc-text">附近查询</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%8D%E5%90%88%E6%9F%A5%E8%AF%A2"><span class="toc-number">1.8.</span> <span class="toc-text">复合查询</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9B%B8%E5%85%B3%E6%80%A7%E7%AE%97%E5%88%86"><span class="toc-number">1.8.1.</span> <span class="toc-text">相关性算分</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#function-score-%E6%9F%A5%E8%AF%A2"><span class="toc-number">1.8.2.</span> <span class="toc-text">function score 查询</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#function-score%E7%9A%84%E8%BF%90%E8%A1%8C%E6%B5%81%E7%A8%8B"><span class="toc-number">1.8.3.</span> <span class="toc-text">function score的运行流程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E9%94%AE%E7%82%B9"><span class="toc-number">1.8.4.</span> <span class="toc-text">关键点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#function-score-query%E5%AE%9A%E4%B9%89%E4%B8%89%E8%A6%81%E7%B4%A0"><span class="toc-number">1.8.5.</span> <span class="toc-text">function score query定义三要素</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#bool%E6%9F%A5%E8%AF%A2%E6%9C%89%E5%87%A0%E7%A7%8D%E9%80%BB%E8%BE%91%E5%85%B3%E7%B3%BB%EF%BC%9F"><span class="toc-number">1.8.6.</span> <span class="toc-text">bool查询有几种逻辑关系？</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%90%9C%E7%B4%A2%E7%BB%93%E6%9E%9C%E5%A4%84%E7%90%86"><span class="toc-number">1.9.</span> <span class="toc-text">搜索结果处理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%92%E5%BA%8F"><span class="toc-number">1.9.1.</span> <span class="toc-text">排序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%B0%E7%90%86%E5%9D%90%E6%A0%87%E6%8E%92%E5%BA%8F"><span class="toc-number">1.9.2.</span> <span class="toc-text">地理坐标排序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E9%A1%B5"><span class="toc-number">1.9.3.</span> <span class="toc-text">分页</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9B%86%E7%BE%A4%E6%9F%A5%E8%AF%A2"><span class="toc-number">1.9.4.</span> <span class="toc-text">集群查询</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B7%B1%E5%BA%A6%E5%88%86%E9%A1%B5"><span class="toc-number">1.9.5.</span> <span class="toc-text">深度分页</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E9%A1%B5%E6%96%B9%E6%A1%88"><span class="toc-number">1.9.6.</span> <span class="toc-text">分页方案</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%AB%98%E4%BA%AE"><span class="toc-number">1.10.</span> <span class="toc-text">高亮</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A4"><span class="toc-number">1.10.1.</span> <span class="toc-text">步骤</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E8%AF%A2%E7%9A%84DSL%E6%98%AF%E4%B8%80%E4%B8%AA%E5%A4%A7%E7%9A%84JSON%E5%AF%B9%E8%B1%A1"><span class="toc-number">1.10.2.</span> <span class="toc-text">查询的DSL是一个大的JSON对象</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RestClient%E6%9F%A5%E8%AF%A2%E6%96%87%E6%A1%A3"><span class="toc-number">1.11.</span> <span class="toc-text">RestClient查询文档</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%93%E6%9E%9C%E8%A7%A3%E6%9E%90"><span class="toc-number">1.11.1.</span> <span class="toc-text">结果解析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E8%AF%A2%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%AD%A5%E9%AA%A4%E6%98%AF%EF%BC%9A"><span class="toc-number">1.11.2.</span> <span class="toc-text">查询的基本步骤是：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#match%E6%9F%A5%E8%AF%A2"><span class="toc-number">1.11.3.</span> <span class="toc-text">match查询</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B2%BE%E7%A1%AE%E6%9F%A5%E8%AF%A2"><span class="toc-number">1.11.4.</span> <span class="toc-text">精确查询</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%83%E5%B0%94%E6%9F%A5%E8%AF%A2"><span class="toc-number">1.11.5.</span> <span class="toc-text">布尔查询</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%92%E5%BA%8F%E3%80%81%E5%88%86%E9%A1%B5"><span class="toc-number">1.11.6.</span> <span class="toc-text">排序、分页</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%AB%98%E4%BA%AE-1"><span class="toc-number">1.11.7.</span> <span class="toc-text">高亮</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E8%81%9A%E5%90%88"><span class="toc-number">1.12.</span> <span class="toc-text">数据聚合</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%81%9A%E5%90%88%E7%9A%84%E7%A7%8D%E7%B1%BB"><span class="toc-number">1.12.1.</span> <span class="toc-text">聚合的种类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#aggs%E4%BB%A3%E8%A1%A8%E8%81%9A%E5%90%88%EF%BC%8C%E4%B8%8Equery%E5%90%8C%E7%BA%A7%EF%BC%8C%E6%AD%A4%E6%97%B6query%E7%9A%84%E4%BD%9C%E7%94%A8%E6%98%AF%EF%BC%9F"><span class="toc-number">1.12.2.</span> <span class="toc-text">aggs代表聚合，与query同级，此时query的作用是？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%81%9A%E5%90%88%E5%BF%85%E9%A1%BB%E7%9A%84%E4%B8%89%E8%A6%81%E7%B4%A0%EF%BC%9A"><span class="toc-number">1.12.3.</span> <span class="toc-text">聚合必须的三要素：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%81%9A%E5%90%88%E5%8F%AF%E9%85%8D%E7%BD%AE%E5%B1%9E%E6%80%A7%E6%9C%89%EF%BC%9A"><span class="toc-number">1.12.4.</span> <span class="toc-text">聚合可配置属性有：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%87%AA%E5%8A%A8%E8%A1%A5%E5%85%A8"><span class="toc-number">1.13.</span> <span class="toc-text">自动补全</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8B%BC%E9%9F%B3%E5%88%86%E8%AF%8D%E5%99%A8"><span class="toc-number">1.13.1.</span> <span class="toc-text">拼音分词器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E8%87%AA%E5%AE%9A%E4%B9%89%E5%88%86%E8%AF%8D%E5%99%A8%EF%BC%9F"><span class="toc-number">1.13.2.</span> <span class="toc-text">如何自定义分词器？</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%87%AA%E5%8A%A8%E8%A1%A5%E5%85%A8%E6%9F%A5%E8%AF%A2"><span class="toc-number">1.14.</span> <span class="toc-text">自动补全查询</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9B%86%E7%BE%A4"><span class="toc-number">1.15.</span> <span class="toc-text">集群</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9B%86%E7%BE%A4%E8%81%8C%E8%B4%A3%E5%88%86%E7%A6%BB%EF%BC%9A"><span class="toc-number">1.15.1.</span> <span class="toc-text">集群职责分离：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%84%91%E8%A3%82"><span class="toc-number">1.15.2.</span> <span class="toc-text">脑裂</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ES%E6%95%B0%E6%8D%AE%E5%90%8C%E6%AD%A5%E7%9A%84%E6%96%B9%E5%BC%8F%EF%BC%9F"><span class="toc-number">1.16.</span> <span class="toc-text">ES数据同步的方式？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#logstash%E5%A6%82%E4%BD%95%E5%81%9A%E6%95%B0%E6%8D%AE%E5%90%8C%E6%AD%A5%EF%BC%9F"><span class="toc-number">1.16.1.</span> <span class="toc-text">logstash如何做数据同步？</span></a></li></ol></li></ol></li></ol>
             </div>
         
         <!-- sidebar -->
@@ -934,8 +1387,6 @@
         
         
         
-        
-        
     
     
     
@@ -976,68 +1427,14 @@
     
         
         <li class="archive-post-item">
-            <span class="archive-post-date">08/29</span>
-            <a class="archive-post-title" href="/2022/08/29/SpringCloud%E7%AE%80%E4%BB%8B/">SpringCloud简介</a>
-        </li>
-    
-        
-        <li class="archive-post-item">
-            <span class="archive-post-date">08/28</span>
-            <a class="archive-post-title" href="/2022/08/28/Redis%E7%9B%B8%E5%85%B3%E9%97%AE%E9%A2%98/">Redis相关问题</a>
-        </li>
-    
-        
-        <li class="archive-post-item">
-            <span class="archive-post-date">08/28</span>
-            <a class="archive-post-title" href="/2022/08/28/Redis%E5%88%86%E5%B8%83%E5%BC%8F%E7%BC%93%E5%AD%98/">Redis分布式缓存</a>
-        </li>
-    
-        
-        <li class="archive-post-item">
             <span class="archive-post-date">08/15</span>
             <a class="archive-post-title" href="/2022/08/15/Yapi%E9%83%A8%E7%BD%B2%E4%B8%8E%E4%BD%BF%E7%94%A8/">Yapi部署与使用</a>
         </li>
     
         
         <li class="archive-post-item">
-            <span class="archive-post-date">08/15</span>
-            <a class="archive-post-title" href="/2022/08/15/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B-%E5%B9%B6%E5%8F%91%E2%91%A0/">Java多线程-并发</a>
-        </li>
-    
-        
-        <li class="archive-post-item">
-            <span class="archive-post-date">08/15</span>
-            <a class="archive-post-title" href="/2022/08/15/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B-%E5%B9%B6%E5%8F%91%E2%91%A1/">Java多线程-并发②</a>
-        </li>
-    
-        
-        <li class="archive-post-item">
-            <span class="archive-post-date">08/15</span>
-            <a class="archive-post-title" href="/2022/08/15/Java%E6%95%B0%E7%BB%84%E5%9F%BA%E7%A1%80/">Java数组基础</a>
-        </li>
-    
-        
-        <li class="archive-post-item">
-            <span class="archive-post-date">08/15</span>
-            <a class="archive-post-title" href="/2022/08/15/Java%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">Java算法基础-数据结构-设计模式</a>
-        </li>
-    
-        
-        <li class="archive-post-item">
             <span class="archive-post-date">08/14</span>
             <a class="archive-post-title" href="/2022/08/14/HashMap%E5%8E%9F%E7%90%86/">HashMap原理</a>
-        </li>
-    
-        
-        <li class="archive-post-item">
-            <span class="archive-post-date">08/14</span>
-            <a class="archive-post-title" href="/2022/08/14/nginx%E7%AE%80%E4%BB%8B%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%BF%9B%E9%98%B6/">nginx简介及使用进阶</a>
-        </li>
-    
-        
-        <li class="archive-post-item">
-            <span class="archive-post-date">08/14</span>
-            <a class="archive-post-title" href="/2022/08/14/mysql%E8%AF%BB%E5%86%99%E5%88%86%E7%A6%BB-%E4%B8%BB%E4%BB%8E%E5%A4%8D%E5%88%B6%E5%8F%8Asharing-jdbc%E4%BD%BF%E7%94%A8/">mysql读写分离-主从复制及sharing-jdbc使用</a>
         </li>
     
         
@@ -1069,8 +1466,14 @@
     
         
         <li class="archive-post-item">
-            <span class="archive-post-date">05/04</span>
-            <a class="archive-post-title" href="/2021/05/04/PVE%E8%99%9A%E6%8B%9F%E5%8C%96/">PVE虚拟化</a>
+            <span class="archive-post-date">08/29</span>
+            <a class="archive-post-title" href="/2021/08/29/SpringCloud%E7%AE%80%E4%BB%8B/">SpringCloud简介</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/14</span>
+            <a class="archive-post-title" href="/2021/08/14/mysql%E8%AF%BB%E5%86%99%E5%88%86%E7%A6%BB-%E4%B8%BB%E4%BB%8E%E5%A4%8D%E5%88%B6%E5%8F%8Asharing-jdbc%E4%BD%BF%E7%94%A8/">mysql读写分离-主从复制及sharing-jdbc使用</a>
         </li>
     
         
@@ -1080,9 +1483,84 @@
         </li>
     
         
+            
+            
+                
+                </ul>
+            
+            <div class="archive-year"> 2020 </div>
+            <ul class="year-list">
+            
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/28</span>
+            <a class="archive-post-title" href="/2020/08/28/Redis%E7%9B%B8%E5%85%B3%E9%97%AE%E9%A2%98/">Redis相关问题</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/28</span>
+            <a class="archive-post-title" href="/2020/08/28/Redis%E5%88%86%E5%B8%83%E5%BC%8F%E7%BC%93%E5%AD%98/">Redis分布式缓存</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/15</span>
+            <a class="archive-post-title" href="/2020/08/15/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B-%E5%B9%B6%E5%8F%91%E2%91%A0/">Java多线程-并发</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/15</span>
+            <a class="archive-post-title" href="/2020/08/15/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B-%E5%B9%B6%E5%8F%91%E2%91%A1/">Java多线程-并发②</a>
+        </li>
+    
+        
+            
+            
+                
+                </ul>
+            
+            <div class="archive-year"> 2019 </div>
+            <ul class="year-list">
+            
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/14</span>
+            <a class="archive-post-title" href="/2019/08/14/nginx%E7%AE%80%E4%BB%8B%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%BF%9B%E9%98%B6/">nginx简介及使用进阶</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/04</span>
+            <a class="archive-post-title" href="/2019/05/04/PVE%E8%99%9A%E6%8B%9F%E5%8C%96/">PVE虚拟化</a>
+        </li>
+    
+        
+            
+            
+                
+                </ul>
+            
+            <div class="archive-year"> 2018 </div>
+            <ul class="year-list">
+            
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/15</span>
+            <a class="archive-post-title" href="/2018/08/15/Java%E6%95%B0%E7%BB%84%E5%9F%BA%E7%A1%80/">Java数组基础</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/15</span>
+            <a class="archive-post-title" href="/2018/08/15/Java%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">Java算法基础-数据结构-设计模式</a>
+        </li>
+    
+        
         <li class="archive-post-item">
             <span class="archive-post-date">05/03</span>
-            <a class="archive-post-title" href="/2021/05/03/%E6%9D%82%E8%B0%88%E6%9C%8D%E5%8A%A1%E5%99%A8/">杂谈服务器</a>
+            <a class="archive-post-title" href="/2018/05/03/%E6%9D%82%E8%B0%88%E6%9C%8D%E5%8A%A1%E5%99%A8/">杂谈服务器</a>
         </li>
     
         
