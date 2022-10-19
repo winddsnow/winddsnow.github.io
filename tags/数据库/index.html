@@ -21,7 +21,7 @@
     <meta name="description" content="">
     <meta property="og:type" content="website">
 <meta property="og:title" content="WinddSnow">
-<meta property="og:url" content="https://winddsnow.github.io/archives/2022/09/index.html">
+<meta property="og:url" content="https://winddsnow.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/index.html">
 <meta property="og:site_name" content="WinddSnow">
 <meta property="og:locale">
 <meta property="article:author" content="WinddSnow">
@@ -428,27 +428,28 @@
             
         
         <article class="index-post">
-            <a class="abstract-title" href="/2022/09/08/RabbitMQ/">
+            <a class="abstract-title" href="/2022/10/19/MySQL%E4%BC%98%E5%8C%96/">
                 
-                <span class="abstract-title-text">RabbitMQ</span>
+                <span class="abstract-title-text">MySQL优化</span>
             </a>
             <div class="abstract-content">
-                RabbitMQ微服务通信微服务间通讯有同步和异步两种方式：
+                先言
+不要听信你看到的关于优化的“绝对真理”，而应该是在实际的业务场景下通过测试来验证你关于执行计划以及响应时间的假设。
+具体业务场景的不同，使用的MySQL服务版本不同，都会使得优化方案的制定也不同。
+数据库任何操作都需要慎之又慎，即使所谓优化，也需要尽可能组织涉及到的所有业务部门具体商议，非常有可能，对你的业务来说是优化，却会影响他人业务！
+切记，你需要清楚的知道，你的操作所带来的一切结果，测试环境不等于生产环境，风险操作，备份先行。
+优化有风险，涉足需谨慎！
 
-同步通讯：就像打电话，需要实时响应。-Feign调用
-异步通讯：就像发邮件，不需要马上回复 -消息队列两种方式各有优劣，打电话可以立即得到响应，但是你却不能跟多个人同时通话。发送邮件可以同时与多个人收发邮件，但是往往响应会有延迟。
-
-事件模式
-在事件模式中，支付服务是事件发布者（publisher），在支付完成后只需要发布一个支付成功的事件（event），事件中带上订单id。
-订单服务和物流服务是事件订阅者（Consumer），订阅支付成功的事件，监听到事件后完成自己业务即可。
-为了解除事件发布者与订阅者之间的耦合，两者并不...
+优化可能带来的问题
+优化不总是对一个单纯的环境进行，还很可能是一个复杂的已投产的系统！
+优化手段有很大的风险，一定要意识到...
             </div>
             <!-- read more -->
             
             <div class="abstract-post-meta">
                 <!-- date -->
-                <div class="abstract-date" title="Last updated: 2022/10/16">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2022/09/08</span>
+                <div class="abstract-date" title="Last updated: 2022/10/19">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2022/10/19</span>
                 </div>
                 <!-- tags -->
                 
@@ -457,64 +458,9 @@
     
         <a class="post-tag" href="javascript:void(0);" data-tags="Java">Java</a>
     
-        <a class="post-tag" href="javascript:void(0);" data-tags="并发">并发</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="MySQL">MySQL</a>
     
-        <a class="post-tag" href="javascript:void(0);" data-tags="RabbitMQ">RabbitMQ</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="消息队列">消息队列</a>
-    
-</div>
-
-                
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
-    
-        
-        
-        
-        
-            
-        
-        <article class="index-post">
-            <a class="abstract-title" href="/2022/09/08/ELK%E6%90%9C%E7%B4%A2/">
-                
-                <span class="abstract-title-text">ELK搜索</span>
-            </a>
-            <div class="abstract-content">
-                ELK技术栈
-elasticsearch结合kibana、Logstash、Beats，也就是elastic stack（ELK）。被广泛应用在日志数据分析、实时监控等领域
-elasticsearch是elastic stack的核心，负责存储、搜索、分析数据-elasticsearch底层是基于lucene来实现的
-以elasticsearch为核心的技术栈，包括beats、Logstash、kibana、elasticsearch
-
-正向索引和倒排索引正向索引
-用户搜索数据，条件是title符合&quot;%手机%&quot;
-逐行获取数据，比如id为1的数据
-判断数据中的title...
-            </div>
-            <!-- read more -->
-            
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2022/10/17">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2022/09/08</span>
-                </div>
-                <!-- tags -->
-                
-                    <div class= abstract-tags >
-    
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="Java">Java</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="ELK">ELK</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="分布式搜索引擎">分布式搜索引擎</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="elasticsearch">elasticsearch</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="Logstash">Logstash</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="kibana">kibana</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="数据库">数据库</a>
     
 </div>
 

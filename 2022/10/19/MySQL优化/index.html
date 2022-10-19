@@ -1,0 +1,1801 @@
+<!DOCTYPE html>
+<html lang="*zh-CN*">
+    <!-- title -->
+
+
+    
+
+<!-- keywords -->
+
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="author" content="WinddSnow">
+    <meta name="renderer" content="webkit">
+    <meta name="copyright" content="WinddSnow">
+    
+        <meta name="keywords" content="hexo,hexo-theme,hexo-blog">
+    
+    <meta name="description" content="">
+    <meta name="description" content="先言 不要听信你看到的关于优化的“绝对真理”，而应该是在实际的业务场景下通过测试来验证你关于执行计划以及响应时间的假设。 具体业务场景的不同，使用的MySQL服务版本不同，都会使得优化方案的制定也不同。 数据库任何操作都需要慎之又慎，即使所谓优化，也需要尽可能组织涉及到的所有业务部门具体商议，非常有可能，对你的业务来说是优化，却会影响他人业务！ 切记，你需要清楚的知道，你的操作所带来的一切结果，测">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MySQL优化">
+<meta property="og:url" content="https://winddsnow.github.io/2022/10/19/MySQL%E4%BC%98%E5%8C%96/index.html">
+<meta property="og:site_name" content="WinddSnow">
+<meta property="og:description" content="先言 不要听信你看到的关于优化的“绝对真理”，而应该是在实际的业务场景下通过测试来验证你关于执行计划以及响应时间的假设。 具体业务场景的不同，使用的MySQL服务版本不同，都会使得优化方案的制定也不同。 数据库任何操作都需要慎之又慎，即使所谓优化，也需要尽可能组织涉及到的所有业务部门具体商议，非常有可能，对你的业务来说是优化，却会影响他人业务！ 切记，你需要清楚的知道，你的操作所带来的一切结果，测">
+<meta property="og:locale">
+<meta property="article:published_time" content="2022-10-19T14:01:10.000Z">
+<meta property="article:modified_time" content="2022-10-19T15:04:43.734Z">
+<meta property="article:author" content="WinddSnow">
+<meta property="article:tag" content="Java">
+<meta property="article:tag" content="MySQL">
+<meta property="article:tag" content="数据库">
+<meta name="twitter:card" content="summary">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <link rel="icon" href="/assets/favicon.ico">
+    
+    <title>MySQL优化 · WinddSnow</title>
+    <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
+/* This file is meant as a standalone workflow for
+- testing support for link[rel=preload]
+- enabling async CSS loading in browsers that do not support rel=preload
+- applying rel preload css once loaded, whether supported or not.
+*/ -->
+<script>
+    (function (w) {
+        'use strict'
+        // rel=preload support test
+        if (!w.loadCSS) {
+            w.loadCSS = function () {}
+        }
+        // define on the loadCSS obj
+        var rp = (loadCSS.relpreload = {})
+        // rel=preload feature support test
+        // runs once and returns a function for compat purposes
+        rp.support = (function () {
+            var ret
+            try {
+                ret = w.document.createElement('link').relList.supports('preload')
+            } catch (e) {
+                ret = false
+            }
+            return function () {
+                return ret
+            }
+        })()
+
+        // if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+        // then change that media back to its intended value on load
+        rp.bindMediaToggle = function (link) {
+            // remember existing media attr for ultimate state, or default to 'all'
+            var finalMedia = link.media || 'all'
+
+            function enableStylesheet() {
+                link.media = finalMedia
+            }
+
+            // bind load handlers to enable media
+            if (link.addEventListener) {
+                link.addEventListener('load', enableStylesheet)
+            } else if (link.attachEvent) {
+                link.attachEvent('onload', enableStylesheet)
+            }
+
+            // Set rel and non-applicable media type to start an async request
+            // note: timeout allows this to happen async to let rendering continue in IE
+            setTimeout(function () {
+                link.rel = 'stylesheet'
+                link.media = 'only x'
+            })
+            // also enable media after 3 seconds,
+            // which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+            setTimeout(enableStylesheet, 3000)
+        }
+
+        // loop through link elements in DOM
+        rp.poly = function () {
+            // double check this to prevent external calls from running
+            if (rp.support()) {
+                return
+            }
+            var links = w.document.getElementsByTagName('link')
+            for (var i = 0; i < links.length; i++) {
+                var link = links[i]
+                // qualify links to those with rel=preload and as=style attrs
+                if (
+                    link.rel === 'preload' &&
+                    link.getAttribute('as') === 'style' &&
+                    !link.getAttribute('data-loadcss')
+                ) {
+                    // prevent rerunning on link
+                    link.setAttribute('data-loadcss', true)
+                    // bind listeners to toggle media back
+                    rp.bindMediaToggle(link)
+                }
+            }
+        }
+
+        // if unsupported, run the polyfill
+        if (!rp.support()) {
+            // run once at least
+            rp.poly()
+
+            // rerun poly on an interval until onload
+            var run = w.setInterval(rp.poly, 500)
+            if (w.addEventListener) {
+                w.addEventListener('load', function () {
+                    rp.poly()
+                    w.clearInterval(run)
+                })
+            } else if (w.attachEvent) {
+                w.attachEvent('onload', function () {
+                    rp.poly()
+                    w.clearInterval(run)
+                })
+            }
+        }
+
+        // commonjs
+        if (typeof exports !== 'undefined') {
+            exports.loadCSS = loadCSS
+        } else {
+            w.loadCSS = loadCSS
+        }
+    })(typeof global !== 'undefined' ? global : this)
+</script>
+
+    <style type="text/css">
+    @font-face {
+        font-family: 'Oswald-Regular';
+        src: url("/font/Oswald-Regular.ttf");
+    }
+
+    body {
+        margin: 0;
+    }
+
+    header,
+    footer,
+    .back-top,
+    .sidebar,
+    .container,
+    .site-intro-meta,
+    .toc-wrapper {
+        display: none;
+    }
+
+    .site-intro {
+        position: relative;
+        z-index: 3;
+        width: 100%;
+        /* height: 50vh; */
+        overflow: hidden;
+    }
+
+    .site-intro-placeholder {
+        position: absolute;
+        z-index: -2;
+        top: 0;
+        left: 0;
+        width: calc(100% + 300px);
+        height: 100%;
+        background: repeating-linear-gradient(-45deg, #444 0, #444 80px, #333 80px, #333 160px);
+        background-position: center center;
+        transform: translate3d(-226px, 0, 0);
+        animation: gradient-move 2.5s ease-out 0s infinite;
+    }
+
+    @keyframes gradient-move {
+        0% {
+            transform: translate3d(-226px, 0, 0);
+        }
+        100% {
+            transform: translate3d(0, 0, 0);
+        }
+    }
+</style>
+
+    <link rel="preload" href="/css/style.css?v=20211217" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="/css/dark.css?v=20211217" as="style">
+    <link rel="stylesheet" href="/css/dark.css">
+    <link rel="stylesheet" href="/css/mobile.css?v=20211217" media="(max-width: 960px)">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" as="script">
+    <link rel="preload" href="/scripts/main.js?v=20211217" as="script">
+    <link rel="preload" href="/scripts/dark.js?v=20211217" as="script">
+    <link rel="preload" href="/font/Oswald-Regular.ttf" as="font" crossorigin>
+    <link rel="preload" href="https://at.alicdn.com/t/font_327081_1dta1rlogw17zaor.woff" as="font" crossorigin>
+    <!-- algolia -->
+    
+    <!-- 百度统计  -->
+    
+    <!-- 谷歌统计  -->
+    
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+    <script type="text/javascript">
+        if (typeof window.$ == undefined) {
+            console.warn('jquery load from jsdelivr failed, will load local script')
+            document.write('<script src="/lib/jquery.min.js" />')
+        }
+    </script>
+    
+        <body class="post-body">
+    
+        <!-- header -->
+        <header class="header header-mobile">
+    <!-- top read progress line -->
+    <div class="header-element">
+        <div class="read-progress"></div>
+    </div>
+    <!-- sidebar menu button -->
+    <div class="header-element">
+        
+            <div class="header-sidebar-menu">
+        
+            
+                <div style="padding-left: 1px;">&#xe775;</div>
+            
+        </div>
+    </div>
+    <!-- header actions -->
+    <div class="header-actions">
+        <!-- theme mode switch button -->
+        <span class="header-theme-btn header-element">
+            <i class="fas fa-adjust"></i>
+        </span>
+        <!-- back to home page text -->
+        <span class="home-link header-element">
+            <a href=/>WinddSnow</a>
+        </span>
+    </div>
+    <!-- toggle banner for post layout -->
+    
+        
+            <div class="banner">
+        
+            <div class="blog-title header-element">
+                <a href="/">WinddSnow</a>
+            </div>
+            <div class="post-title header-element">
+                <a href="#" class="post-name">MySQL优化</a>
+            </div>
+        </div>
+    
+</header>
+
+        <!-- fixed footer -->
+        <footer class="footer-fixed">
+    <!-- back to top button -->
+    <div class="footer-fixed-element">
+        
+            <div class="back-top back-top-hidden">
+        
+        
+            <div>&#xe639;</div>
+        
+        </div>
+    </div>
+</footer>
+
+        <!-- wrapper -->
+        <div class="wrapper">
+            <div class="site-intro" style="
+
+
+
+
+
+
+
+    height:50vh;
+
+">
+    
+    <!-- 主页  -->
+    
+        
+    <!-- 404页  -->
+            
+    <div class="site-intro-placeholder"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/post-bg.jpg)"></div>
+    <div class="site-intro-meta">
+        <!-- 标题  -->
+        <h1 class="intro-title">
+            <!-- 主页  -->
+            
+                MySQL优化
+            <!-- 404 -->
+            
+        </h1>
+        <!-- 副标题 -->
+        <p class="intro-subtitle">
+            <!-- 主页副标题  -->
+            
+                
+            <!-- 404 -->
+            
+        </p>
+        <!-- 文章页 meta -->
+        
+            <div class="post-intros">
+                <!-- 文章页标签  -->
+                
+                    <div class= post-intro-tags >
+    
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="Java">Java</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="MySQL">MySQL</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="数据库">数据库</a>
+    
+</div>
+
+                
+                
+                    <div class="post-intro-read">
+                        <span>字数统计: <span class="post-count word-count">7.6k</span>阅读时长: <span class="post-count reading-time">27 min</span></span>
+                    </div>
+                
+                <div class="post-intro-meta">
+                    <!-- 撰写日期 -->
+                    <span class="iconfont-archer post-intro-calander">&#xe676;</span>
+                    <span class="post-intro-time">2022/10/19</span>
+                    <!-- busuanzi -->
+                    
+                        <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                            <span class="iconfont-archer post-intro-busuanzi">&#xe602;</span>
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    
+                    <!-- 文章分享 -->
+                    <span class="share-wrapper">
+                        <span class="iconfont-archer share-icon">&#xe71d;</span>
+                        <span class="share-text">Share</span>
+                        <ul class="share-list">
+                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                                <div class="share-qrcode"></div>
+                            </li>
+                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
+        
+    </div>
+</div>
+
+            <script>
+  // get user agent
+  function getBrowserVersions() {
+    var u = window.navigator.userAgent
+    return {
+      userAgent: u,
+      trident: u.indexOf('Trident') > -1, //IE内核
+      presto: u.indexOf('Presto') > -1, //opera内核
+      webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+      gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+      mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+      ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+      android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
+      iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者安卓QQ浏览器
+      iPad: u.indexOf('iPad') > -1, //是否为iPad
+      webApp: u.indexOf('Safari') == -1, //是否为web应用程序，没有头部与底部
+      weixin: u.indexOf('MicroMessenger') == -1, //是否为微信浏览器
+      uc: u.indexOf('UCBrowser') > -1, //是否为android下的UC浏览器
+    }
+  }
+  var browser = {
+    versions: getBrowserVersions(),
+  }
+  console.log('userAgent: ' + browser.versions.userAgent)
+
+  // callback
+  function fontLoaded() {
+    console.log('font loaded')
+    if (document.getElementsByClassName('site-intro-meta')) {
+      document
+        .getElementsByClassName('intro-title')[0]
+        .classList.add('intro-fade-in')
+      document
+        .getElementsByClassName('intro-subtitle')[0]
+        .classList.add('intro-fade-in')
+      var postIntros = document.getElementsByClassName('post-intros')[0]
+      if (postIntros) {
+        postIntros.classList.add('post-fade-in')
+      }
+    }
+  }
+
+  // UC不支持跨域，所以直接显示
+  function asyncCb() {
+    if (browser.versions.uc) {
+      console.log('UCBrowser')
+      fontLoaded()
+    } else {
+      WebFont.load({
+        custom: {
+          families: ['Oswald-Regular'],
+        },
+        loading: function () {
+          // 所有字体开始加载
+          // console.log('font loading');
+        },
+        active: function () {
+          // 所有字体已渲染
+          fontLoaded()
+        },
+        inactive: function () {
+          // 字体预加载失败，无效字体或浏览器不支持加载
+          console.log('inactive: timeout')
+          fontLoaded()
+        },
+        timeout: 5000, // Set the timeout to two seconds
+      })
+    }
+  }
+
+  function asyncErr() {
+    console.warn('script load from CDN failed, will load local script')
+  }
+
+  // load webfont-loader async, and add callback function
+  function async(u, cb, err) {
+    var d = document,
+      t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0]
+    o.src = u
+    if (cb) {
+      o.addEventListener(
+        'load',
+        function (e) {
+          cb(null, e)
+        },
+        false
+      )
+    }
+    if (err) {
+      o.addEventListener(
+        'error',
+        function (e) {
+          err(null, e)
+        },
+        false
+      )
+    }
+    s.parentNode.insertBefore(o, s)
+  }
+
+  var asyncLoadWithFallBack = function (arr, success, reject) {
+    var currReject = function () {
+      reject()
+      arr.shift()
+      if (arr.length) async(arr[0], success, currReject)
+    }
+
+    async(arr[0], success, currReject)
+  }
+
+  asyncLoadWithFallBack(
+    [
+      'https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js',
+      'https://cdn.bootcss.com/webfont/1.6.28/webfontloader.js',
+      "/lib/webfontloader.min.js",
+    ],
+    asyncCb,
+    asyncErr
+  )
+</script>
+
+            <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
+            <div class="container container-unloaded">
+                <main class="main post-page">
+    <article class="article-entry">
+        <h2 id="先言"><a href="#先言" class="headerlink" title="先言"></a>先言</h2><ul>
+<li><strong>不要听信你看到的关于优化的“绝对真理”，而应该是在实际的业务场景下通过测试来验证你关于执行计划以及响应时间的假设。</strong></li>
+<li>具体业务场景的不同，使用的MySQL服务版本不同，都会使得优化方案的制定也不同。</li>
+<li>数据库任何操作都需要慎之又慎，即使所谓优化，也需要尽可能组织涉及到的所有业务部门具体商议，非常有可能，对你的业务来说是优化，却会影响他人业务！</li>
+<li>切记，<strong>你需要清楚的知道，你的操作所带来的一切结果</strong>，测试环境<strong>不等于</strong>生产环境，风险操作，备份先行。</li>
+<li>优化有风险，涉足需谨慎！</li>
+</ul>
+<h3 id="优化可能带来的问题"><a href="#优化可能带来的问题" class="headerlink" title="优化可能带来的问题"></a>优化可能带来的问题</h3><ul>
+<li>优化不总是对一个单纯的环境进行，还很可能是一个复杂的已投产的系统！</li>
+<li>优化手段有很大的风险，一定要意识到和预见到！</li>
+<li>任何的技术可以解决一个问题，但必然存在带来一个问题的风险！</li>
+<li>对于优化来说调优而带来的问题, 控制在可接受的范围内才是有成果。</li>
+<li>保持现状或出现更差的情况都是失败！</li>
+</ul>
+<h3 id="优化的需求"><a href="#优化的需求" class="headerlink" title="优化的需求"></a>优化的需求</h3><ul>
+<li>稳定性和业务可持续性,通常比性能更重要！</li>
+<li>优化不可避免涉及到变更，变更就有风险！</li>
+<li>优化使性能变好，维持和变差是等概率事件！</li>
+<li>优化应该是各部门协同，共同参与的工作，任何单一部门都不能对数据库进行优化！</li>
+<li>所以优化工作,是由业务需要驱使的！！！</li>
+</ul>
+<h3 id="优化由谁参与"><a href="#优化由谁参与" class="headerlink" title="优化由谁参与"></a>优化由谁参与</h3><ul>
+<li>在进行数据库优化时，应由数据库管理员、业务部门代表、应用程序架构师、应用程序设计人员、应用程序开发人员、硬件及系统管理员、存储管理员等，业务相关人员共同参与。</li>
+</ul>
+<h2 id="优化的思路"><a href="#优化的思路" class="headerlink" title="优化的思路"></a>优化的思路</h2><h3 id="应急调优"><a href="#应急调优" class="headerlink" title="应急调优"></a>应急调优</h3><p>针对突然的业务办理卡顿，无法进行正常的业务处理！需要立马解决的场景！</p>
+<ol>
+<li>show processlist（查看连接session状态）</li>
+<li>explain(分析查询计划)，show index from tableName（分析索引）</li>
+<li>通过执行计划判断，索引问题（有没有、合不合理）或者语句本身问题</li>
+<li>show status like ‘%lock%’; # 查询锁状态</li>
+<li>kill sessionId; # 杀掉有问题的session</li>
+</ol>
+<h3 id="常规调优"><a href="#常规调优" class="headerlink" title="常规调优"></a>常规调优</h3><p>针对业务周期性的卡顿，例如在每天10-11点业务特别慢，但是还能够使用，过了这段时间就好了。</p>
+<ol>
+<li>查看slowlog，分析slowlog，分析出查询慢的语句。</li>
+<li>按照一定优先级，进行一个一个的排查所有慢语句。</li>
+<li>分析top sql，进行explain调试，查看语句执行时间。</li>
+<li>调整索引或语句本身。</li>
+</ol>
+<h2 id="具体优化"><a href="#具体优化" class="headerlink" title="具体优化"></a>具体优化</h2><h3 id="mysql查询流程"><a href="#mysql查询流程" class="headerlink" title="mysql查询流程"></a>mysql查询流程</h3><ol>
+<li>客户端将查询发送到服务器；</li>
+<li>服务器检查查询缓存，如果找到了，就从缓存中返回结果，否则进行下一步。—</li>
+<li>服务器解析，预处理。</li>
+<li>查询优化器优化查询</li>
+<li>生成执行计划，执行引擎调用存储引擎API执行查询</li>
+<li>服务器将结果发送回客户端。</li>
+</ol>
+<p><strong>查询缓存</strong><br>在解析一个查询语句之前，如果查询缓存是打开的，那么MySQL会优先检查这个查询是否命中查询缓存中的数据，如果命中缓存直接从缓存中拿到结果并返回给客户端。这种情况下，查询不会被解析，不用生成执行计划，不会被执行。<br><strong>语法解析和预处理器</strong><br>MySQL通过关键字将SQL语句进行解析，并生成一棵对应的“解析树”。MySQL解析器将使用MySQL语法规则验证和解析查询。<br><strong>查询优化器</strong><br>语法书被校验合法后由优化器转成查询计划，一条语句可以有很多种执行方式，最后返回相同的结果。优化器的作用就是找到这其中最好的执行计划。<br><strong>查询执行引擎</strong><br>在解析和优化阶段，MySQL将生成查询对应的执行计划，MySQL的查询执行引擎则根据这个执行计划来完成整个查询。最常使用的也是比较最多的引擎是MyISAM引擎和InnoDB引擎。mysql5.5开始的默认存储引擎已经变更为innodb了。</p>
+<h3 id="查询SQL分析"><a href="#查询SQL分析" class="headerlink" title="查询SQL分析"></a>查询SQL分析</h3><h4 id="1-慢查询日志"><a href="#1-慢查询日志" class="headerlink" title="1. 慢查询日志"></a>1. 慢查询日志</h4><p>在配置文件my.cnf[linux]或my.ini[windows Server2008]中在[mysqld]一行下面加入两个配置参数</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">log-slow-queries</span>=C:/ProgramData/MySQL/MySQL Server <span class="number">5.5</span>/Data/mysqldata/slow-query.log</span><br><span class="line"></span><br><span class="line">超过多少秒就是慢查询</span><br><span class="line"><span class="attr">long_query_time</span>=<span class="number">5</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SHOW</span> VARIABLES <span class="keyword">LIKE</span> <span class="string">&#x27;long_query_time%&#x27;</span>;   <span class="comment">-- 查看当前多少秒算慢</span></span><br><span class="line"><span class="keyword">show</span> <span class="keyword">global</span> status <span class="keyword">like</span> <span class="string">&#x27;%Slow_queries%&#x27;</span>; <span class="comment">--查询当前系统中有多少条慢查询记录</span></span><br></pre></td></tr></table></figure>
+<p>进入log的存放目录，运行：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">[root@mysql_data]# </span><span class="language-bash">mysqldumpslow slow-query.log</span></span><br><span class="line">Reading mysql slow query log fromslow-query.log</span><br><span class="line">Count: 2 Time=11.00s (22s) Lock=0.00s (0s)Rows=1.0 (2), root[root]@mysql</span><br><span class="line">select count(N) from t_user; </span><br></pre></td></tr></table></figure>
+<p>mysqldumpslow命令<br><code>/path/mysqldumpslow -s c -t 10/database/mysql/slow-query.log</code><br>这会输出记录次数最多的10条SQL语句，其中：<br> -s, 是表示按照何种方式排序，c、t、l、r分别是按照记录次数、时间、查询时间、返回的记录数来排序，ac、at、al、ar，表示相应的倒叙<br>-t, 是top n的意思，即为返回前面多少条的数据；<br>-g, 后边可以写一个正则匹配模式，大小写不敏感的；</p>
+<p>例如：</p>
+<p><code>/path/mysqldumpslow -s r -t 10/database/mysql/slow-log</code></p>
+<p>得到返回记录集最多的10个查询。</p>
+<p><code>/path/mysqldumpslow -s t -t 10 -g “leftjoin” /database/mysql/slow-log</code></p>
+<p>得到按照时间排序的前10条里面含有左连接的查询语句。</p>
+<p>使用mysqldumpslow命令可以非常明确的得到各种我们需要的查询语句，对MySQL查询语句的监控、分析、优化是MySQL优化非常重要的一步。开启慢查询日志后，由于日志记录操作，在一定程度上会占用CPU资源影响mysql的性能，但是可以阶段性开启来定位性能瓶颈。</p>
+<h4 id="2-EXPLAIN-分析查询"><a href="#2-EXPLAIN-分析查询" class="headerlink" title="2. EXPLAIN 分析查询"></a>2. EXPLAIN 分析查询</h4><p>EXPLAIN可以帮助开发人员分析SQL问题，EXPLAIN显示了MySQL如何使用使用SQL执行计划，可以帮助开发人员写出更优化的查询语句。使用方法，在select语句前加上Explain就可以了：<br><code>EXPLAIN SELECT * FROM products</code></p>
+<h4 id="exolan结果的列的说明"><a href="#exolan结果的列的说明" class="headerlink" title="exolan结果的列的说明"></a>exolan结果的列的说明</h4><ol>
+<li><p>id<br>SELECT识别符。这是SELECT查询序列号。这个不重要。它只是标识执行的sql语句中有多个查询而已</p>
+</li>
+<li><p>select_type<br>表示SELECT语句的类型。</p>
+</li>
+<li><p>simple:简单select（不使用union或子查询）。</p>
+</li>
+<li><p>primary:最外面的select。</p>
+</li>
+<li><p>union:union中的第二个或后面的select语句。</p>
+</li>
+<li><p>dependent union:union中的第二个或后面的select语句，取决于外面的查询。</p>
+</li>
+<li><p>union result:union的结果。</p>
+</li>
+<li><p>subquery:子查询中的第一个select。</p>
+</li>
+<li><p>dependent subquery:子查询中的第一个select，取决于外面的查询。</p>
+</li>
+<li><p>derived:导出表的select（from子句的子查询）。</p>
+</li>
+<li><p>table<br>显示这查询的数据是关于哪张表的。</p>
+</li>
+<li><p>type【<strong>重要</strong>】<br>区分索引，这是重要的列，显示连接使用了何种类型。从最好到最差的连接类型为：<br>system &gt; const &gt; eq_ref &gt; ref &gt; ref_or_null &gt; index_merge &gt; unique_subquery &gt; index_subquery &gt; range &gt; index &gt; ALL<br>一般来说，得保证查询至少达到range级别,最好能达到ref，到index就可以。</p>
+</li>
+<li><p><strong>system</strong>：表仅有一行，这是const类型的特列，平时不会出现，这个也可以忽略不计。</p>
+</li>
+<li><p><strong>const</strong>：数据表最多只有一个匹配行，因为只匹配一行数据，所以很快</p>
+</li>
+<li><p><strong>eq_ref</strong>：mysql手册是这样说的:”对于每个来自于前面的表的行组合，从该表中读取一行。这可能是最好的联接类型，除了const类型。它用在一个索引的所有部分被联接使用并且索引是UNIQUE或PRIMARY KEY”。eq_ref可以用于使用&#x3D;做条件比较，且该列是索引的列。</p>
+</li>
+<li><p><strong>ref</strong>：查询条件索引既不是UNIQUE也不是PRIMARY KEY的情况。ref可用于&#x3D;或&lt;或&gt;操作符的带索引的列。</p>
+</li>
+<li><p><strong>ref_or_null</strong>：该联接类型如同ref，但是添加了MySQL可以专门搜索包含NULL值的行。在解决子查询中经常使用该联接类型的优化。</p>
+</li>
+<li><p><strong>index_merge</strong>：该联接类型表示使用了索引合并优化方法。在这种情况下，key列包含了使用的索引的清单，key_len包含了使用的索引的最长的关键元素。</p>
+</li>
+<li><p><strong>unique_subquery</strong>：该类型替换了下面形式的IN子查询的ref: value IN (SELECT primary_key FROM single_table WHERE some_expr) unique_subquery是一个索引查找函数,可以完全替换子查询,效率更高。</p>
+</li>
+<li><p><strong>index_subquery</strong>：该联接类型类似于unique_subquery。可以替换IN子查询,但只适合下列形式的子查询中的非唯一索引: value IN (SELECT key_column FROM single_table WHERE some_expr)</p>
+</li>
+<li><p><strong>range</strong>：只检索给定范围的行,使用一个索引来选择行。</p>
+</li>
+<li><p><strong>index</strong>：该联接类型与ALL相同,除了只有索引树被扫描。这通常比ALL快,因为索引文件通常比数据文件小。</p>
+</li>
+<li><p><strong>ALL</strong>：对于每个来自于先前的表的行组合,进行完整的表扫描。（性能最差，去除all，最少要有index）</p>
+</li>
+<li><p>possible_keys<br>指出MySQL能使用哪个索引在该表中找到行。如果是空的，没有相关的索引。这时要提高性能，可通过检验WHERE子句，看是否引用某些字段，或者检索字段不是适合索引。 </p>
+</li>
+<li><p>key<br>实际使用到的索引。如果为NULL，则没有使用索引。如果为primary的话，表示使用了主键。</p>
+</li>
+<li><p>key_len<br>最长的索引宽度。如果键是NULL，长度就是NULL。在不损失精确性的情况下，长度越短越好。</p>
+</li>
+<li><p>ref<br>显示使用哪个列或常数与key一起从表中选择行。</p>
+</li>
+<li><p>rows<br>显示MySQL认为它执行查询时必须检查的行数。行数越少效率越高（是否有索引）</p>
+</li>
+<li><p>Extra<br>执行状态说明，该列包含MySQL解决查询的详细信息，这个列的值有可能多个以下的情况</p>
+</li>
+</ol>
+<ul>
+<li>Distinct: MySQL发现第1个匹配行后,停止为当前的行组合搜索更多的行。</li>
+<li>Not exists: MySQL能够对查询进行LEFT JOIN优化,发现1个匹配LEFT JOIN标准的行后,不再为前面的的行组合在该表内检查更多的行。</li>
+<li>range checked for each record (index map: #): MySQL没有发现好的可以使用的索引,但发现如果来自前面的表的列值已知,可能部分索引可以使用。</li>
+<li>【Using filesort】: MySQL需要额外的一次传递,以找出如何按排序顺序检索行。排序上，出现这个意为着排序时需要读取真实数据记录【读取数据文件IO】</li>
+<li>Using index: 从只使用索引树中的信息而不需要进一步搜索读取实际的行来检索表中的列信息。</li>
+<li>【Using temporary】:为了解决复杂查询,MySQL需要创建一个临时表来容纳结果，效率较低。</li>
+<li>Using where:WHERE 子句用于限制哪一个行匹配下一个表或发送到客户。</li>
+<li>Using sort_union(…), Using union(…), Using intersect(…):这些函数说明如何为index_merge联接类型合并索引扫描。</li>
+<li>Using index for group-by:类似于访问表的Using index方式,Using index for group-by表示MySQL发现了一个索引,可以用来查 询GROUP BY或DISTINCT查询的所有列,而不要额外搜索硬盘访问实际表中的数据。</li>
+</ul>
+<h2 id="索引优化"><a href="#索引优化" class="headerlink" title="索引优化"></a>索引优化</h2><h3 id="什么是索引"><a href="#什么是索引" class="headerlink" title="什么是索引"></a>什么是索引</h3><ul>
+<li>索引（Index）是帮助MySQL高效获取数据的数据结构。在数据之外,数据库系统还维护着满足特定查找算法的数据结构,这些数据结构以某种方式指向数据,这样就可以在这些数据结构上实现高效的查找算法.这种数据结构,就是索引.</li>
+<li>一般来说索引本身也很大,不可能全部存储在内存中,因此往往以索引文件的形式存放在磁盘中. 我们平常所说的索引,如果没有特别说明都是指BTree索引(平衡多路搜索树). 其中聚集索引,次要索引,覆盖索引 复合索引,前缀索引,唯一索引默认都是使用的BTree索引,统称索引. 除了BTree索引之后,还有哈希索引</li>
+<li>索引的优点：大大的提高查询效率</li>
+<li>缺点：占用内存（是一种数据结构需要存储），影响写操作的效率（调整索引结构）</li>
+</ul>
+<h3 id="索引的类别"><a href="#索引的类别" class="headerlink" title="索引的类别"></a>索引的类别</h3><ol>
+<li>普通索引–是最基本的索引，它没有任何限制.</li>
+<li>唯一索引–与前面的普通索引类似，不同的就是：索引列的值必须唯一，但允许有空值。如果是组合(索引的列有多个)索引，则列值的组合必须唯一。</li>
+<li>主键索引–是一种特殊的唯一索引，这个时候需要一个表只能有一个主键，不允许有空值。一般是在建表的时候同时创建主键索引.也就是说主键约束默认索引</li>
+<li>复合索引 【使用时推荐】–指多个字段上创建的索引，只有在查询条件中使用了创建索引时的第一个字段，索引才会被使用。使用组合索引时遵循最左前缀集合(使用复合索引，必须使用索引列中的第一列做为条件,复合索引中的第一个列为最左列，优先列。最左匹配优先)</li>
+<li>全文索引–类似ES倒排索引，不常用，主要用来查找文本中的关键字，而不是直接与索引中的值相比较。</li>
+</ol>
+<h3 id="索引的存储结构"><a href="#索引的存储结构" class="headerlink" title="索引的存储结构"></a>索引的存储结构</h3><h4 id="BTree索引"><a href="#BTree索引" class="headerlink" title="BTree索引"></a>BTree索引</h4><ul>
+<li>BTREE索引以B+树的结构存储数据</li>
+<li>BTREE索引能够加快数据的查询速度</li>
+<li>BTREE索引更适合进行行范围查找</li>
+</ul>
+<h4 id="哈希索引（主要是Memory存储引擎使用）"><a href="#哈希索引（主要是Memory存储引擎使用）" class="headerlink" title="哈希索引（主要是Memory存储引擎使用）"></a>哈希索引（主要是Memory存储引擎使用）</h4><p>特点： map.get(key)</p>
+<ul>
+<li>Hash索引仅仅只能满足“&#x3D;”,“IN”，不能使用范围查询；</li>
+<li>Hash索引无法被利用来避免数据的排序操作；</li>
+<li>Hash索引不能利用部分索引键查询；</li>
+<li>Hash索引在任何时候都不能避免表扫描；</li>
+<li>Hash索引遇到大量Hash值相等的情况后性能并不一定就会比B-Tree索引高；</li>
+</ul>
+<h3 id="优化建议"><a href="#优化建议" class="headerlink" title="优化建议"></a>优化建议</h3><ul>
+<li>保证被驱动表（left join右边的表(临时结果集要放到左边)）的join字段已经被索引 (被驱动表  join 后的表为被驱动表  (需要被查询))</li>
+<li><strong>left join</strong> 时，选择<strong>小表作为驱动主表</strong>(left左边的表)，大表作为被驱动表。left join 右边的表要建立索引 索引的列就是on中右边表的列</li>
+<li><strong>inner join</strong> 时，mysql会自己帮你把<strong>小结果集的表选为驱动表</strong>。</li>
+</ul>
+<h3 id="子查询优化"><a href="#子查询优化" class="headerlink" title="子查询优化"></a>子查询优化</h3><p>子查询类型：</p>
+<ol>
+<li>返回单行单列：使用逻辑运行符 &#x3D;， !&#x3D;, &gt; &lt;&#x3D;…</li>
+<li>返回单列多行: 使用in</li>
+<li>返回单行多列: from后做为子查询 临时表</li>
+<li>返回多行多列：from后做为子查询 临时表</li>
+</ol>
+<ul>
+<li>子查询尽量不要放在被驱动表 关联查询的右边，有可能使用不到索引。</li>
+<li>子查询的语句不能放在select的后面（如果子查询放在select后，则会每提取一条记录执行一次子查询），改为放到from后</li>
+<li>子查询应该优先过滤大量的数据先，再进行关联查询.  能够过滤大量数据的子查询放最里边</li>
+</ul>
+<h3 id="order-by优化"><a href="#order-by优化" class="headerlink" title="order by优化"></a>order by优化</h3><ul>
+<li>ORDER BY 语句使用索引最左前列</li>
+<li>使用Where子句与Order BY子句条件列组合满足索引最左前列</li>
+<li>where子句中如果出现索引的范围查询(即explain中出现range)会&#x3D;&#x3D;导致order by 索引失效&#x3D;&#x3D;</li>
+<li>Order by 复合条件排序, 按照索引顺序, 前后的排序类别不一致,会导致order by 索引失效</li>
+<li>如果使用了复合索引：条件列为最左优先列，排序的第一个列必须为最左优先列右边的第一个列。排序的顺序与创建索引时的顺序一致，与最左优先列一致</li>
+</ul>
+<h3 id="GROUP-BY优化"><a href="#GROUP-BY优化" class="headerlink" title="GROUP BY优化"></a>GROUP BY优化</h3><ul>
+<li>group by实质是先排序后进行分组，遵照索引建的最佳左前缀（优先列-复合索引中的第一列）</li>
+<li>where高于having，能写在where限定的条件就不要去having限定了</li>
+</ul>
+<h3 id="limit优化"><a href="#limit优化" class="headerlink" title="limit优化"></a>limit优化</h3><ul>
+<li>分页时传递排序列的最后一个值</li>
+<li>最多显示100页</li>
+<li>步骤一: 使用有索引的列或者主键进行Order By操作</li>
+<li>步骤二: 记录上次返回的主键,在下次查询的时候使用条件过滤(如果主键不是连续的,是字符串类型,可以创建一个列记录) 依据不一定是id, 可以是条件列或排序列</li>
+</ul>
+<h3 id="索引的使用场景分析"><a href="#索引的使用场景分析" class="headerlink" title="索引的使用场景分析"></a>索引的使用场景分析</h3><h4 id="适合使用索引场景"><a href="#适合使用索引场景" class="headerlink" title="适合使用索引场景"></a>适合使用索引场景</h4><ol>
+<li>频繁作为查询条件的字段应该创建索引(复合索引时，查询条件要用到优先列，排序时最少要用到优先列相邻列，不能跳过列)</li>
+<li>多表查询中与其它表进行关联的字段,外键关系建立索引（不要创建主外健）</li>
+<li>单列索引&#x2F;复合索引的选择,高并发下倾向于创建复合索引（是单列还是多列取决于查询的条件排序、查询的列）</li>
+<li>查询中经常用来排序的字段(索引排序不需要读取数据 不会有filesort)</li>
+<li>查询中经常用来统计或者分组字段</li>
+<li>数据库中表数据量一定要大，数据多</li>
+</ol>
+<h4 id="不适合使用索引场景"><a href="#不适合使用索引场景" class="headerlink" title="不适合使用索引场景"></a>不适合使用索引场景</h4><ol>
+<li>频繁更新的字段: 每次更新都会影响索引树</li>
+<li>where条件查询中用不到的字段, 不做为查询条件的</li>
+<li>表记录太少</li>
+<li>经常增删改的表: 更新了表,索引也得更新才行</li>
+<li>注意: 如果一张表中,列中重复的值过多,为它建立索引就没有太大意义</li>
+<li>列中的null值过多，也不适合创建索引</li>
+</ol>
+<h3 id="索引失效情况"><a href="#索引失效情况" class="headerlink" title="索引失效情况"></a>索引失效情况</h3><ul>
+<li>不在索引列上做任何操作（计算、函数、(自动or手动)类型转换），会导致索引失效而转向全表扫描<br>如果是数值类型的列，运算时使用了字符串  id(bigint) ‘10’</li>
+<li>存储引擎不能使用索引中范围条件右边的列(没有使用优先列)</li>
+<li>mysql 在使用不等于(!&#x3D; 或者&lt;&gt;)的时候无法使用索引会导致全表扫描【验证一把，5.5 - 5.7的是可以使用索引】</li>
+<li>is not null 也无法使用索引(待验证),但是is null是可以使用索引的</li>
+<li>like以通配符开头(‘%abc…’)mysql索引失效会变成全表扫描的操作</li>
+<li>字符串不加单引号索引失效</li>
+<li>少用or,用它来连接时会索引失效（只针对mysql）</li>
+<li>not in操作也会使索引失效 有可能失败  验证mysql8</li>
+</ul>
+<h4 id="索引失效情况个人总结"><a href="#索引失效情况个人总结" class="headerlink" title="索引失效情况个人总结"></a>索引失效情况个人总结</h4><ol>
+<li>SQL语法，数据库版本问题，如字符串不加单引号， like以通配符开头等，根据不同数据库有所不同，总结就是sql语法问题，会导致索引失效</li>
+<li>不遵循最左匹配原则导致索引失效</li>
+<li>sql分析器分析后，发现扫描全表比使用索引快，会导致索引失效</li>
+<li>使用索引时，查询出的结果太大，官方文档说大概全表的30%左右（有争议，大概数，MySQL有优化），总之就是结果太大，会放弃索引，执行全表扫描</li>
+<li>在索引列上做聚合操作，会导致索引失效</li>
+</ol>
+<h3 id="InnoDB存储引擎介绍"><a href="#InnoDB存储引擎介绍" class="headerlink" title="InnoDB存储引擎介绍"></a>InnoDB存储引擎介绍</h3><ol>
+<li>InnoDB存储引擎提供了具有提交、回滚和崩溃恢复能力的事务安全。相比较MyISAM存储引擎，InnoDB写的处理效率差一点并且会占用更多的磁盘空间保留数据和索引。</li>
+<li>提供了对数据库事务ACID（原子性Atomicity、一致性Consistency、隔离性Isolation、持久性Durability）的支持，实现了SQL标准的四种隔离级别。设计目标就是处理大容量的数据库系统，MySQL运行时InnoDB会在内存中建立缓冲池，用于缓冲数据和索引。</li>
+<li>执行<code>select count(*) from table</code>使用innodb引擎的表不会保存表的具体行数,扫描索引即可。MyIsAm有专门存储行数的地方，无需提交无需计算，直接读取</li>
+<li>InnoDB引擎是行锁(锁的是索引)，粒度更小。插入与删除时不会锁定全表，更新时，如果where条件没有使用索引时，锁的表锁。MyIsAm锁级别要表锁。</li>
+<li>InnoDB清空数据量大的表时，是非常缓慢，这是因为InnoDB必须处理表中的每一行，根据InnoDB的事务设计原则，首先需要把“删除动作”写入“事务日志”，然后写入实际的表。所以，清空大表的时候，最好直接truncate table然后重建。即InnoDB一行一行删除(产生磁盘碎片)，不会重建表。</li>
+<li>使用truncate table时要注意：如果有视图使用了这个表，则会导致视图或失效，对视图重新编译 (视图的作用：屏蔽敏感字段、权限控制)</li>
+</ol>
+<h4 id="InnoDB存储引擎支持事务的底层原理"><a href="#InnoDB存储引擎支持事务的底层原理" class="headerlink" title="InnoDB存储引擎支持事务的底层原理"></a>InnoDB存储引擎支持事务的底层原理</h4><h5 id="MVVC"><a href="#MVVC" class="headerlink" title="MVVC"></a>MVVC</h5><p>全称 Multi-Version Concurrency Control，多版本并发控制。指维护一个数据的多个版本，使得读写操作没有冲突，快照读为MySQL实现MVCC提供了一个非阻塞读功能。MVCC的具体实现，还需要依赖于数据库记录中的三个隐式字段、undo log日志、readView。</p>
+<h5 id="隐藏字段"><a href="#隐藏字段" class="headerlink" title="隐藏字段"></a>隐藏字段</h5><table>
+<thead>
+<tr>
+<th>隐藏字段</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>DB_TRX_ID</td>
+<td>最近修改事务ID，记录插入这条记录或最后一次修改该记录的事务ID。</td>
+</tr>
+<tr>
+<td>DB_ROLL_PTR</td>
+<td>回滚指针，指向这条记录的上一个版本，用于配合undo  log，指向上一个版本。</td>
+</tr>
+<tr>
+<td>DB_ROW_ID</td>
+<td>隐藏主键，如果表结构没有指定主键，将会生成该隐藏字段。</td>
+</tr>
+</tbody></table>
+<h5 id="undo-log日志"><a href="#undo-log日志" class="headerlink" title="undo log日志"></a>undo log日志</h5><p>回滚日志，在insert、update、delete的时候产生的便于数据回滚的日志。<br>当insert的时候，产生的undo log日志只在回滚时需要，在事务提交后，可被立即删除。<br>而update、delete的时候，产生的undo log日志不仅在回滚时需要，在快照读时也需要，不会立即被删除。</p>
+<h6 id="版本链"><a href="#版本链" class="headerlink" title="版本链"></a>版本链</h6><ul>
+<li>不同事务或相同事务对同一条记录进行修改，会导致该记录的undolog生成一条记录版本链表，链表的头部是最新的旧记录，链表尾部是最早的旧记录。</li>
+</ul>
+<h5 id="readView"><a href="#readView" class="headerlink" title="readView"></a>readView</h5><p>ReadView（读视图）是 快照读 SQL执行时MVCC提取数据的依据，记录并维护系统当前活跃的事务（未提交的）id。</p>
+<h6 id="ReadView中包含了四个核心字段："><a href="#ReadView中包含了四个核心字段：" class="headerlink" title="ReadView中包含了四个核心字段："></a>ReadView中包含了四个核心字段：</h6><table>
+<thead>
+<tr>
+<th>字段</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>m_ids</td>
+<td>当前活跃的事务ID集合</td>
+</tr>
+<tr>
+<td>min_trx_id</td>
+<td>最小活跃事务ID</td>
+</tr>
+<tr>
+<td>max_trx_id</td>
+<td>预分配事务ID，当前最大事务ID+1（因为事务ID是自增的）</td>
+</tr>
+<tr>
+<td>creator_trx_id</td>
+<td>ReadView创建者的事务ID</td>
+</tr>
+</tbody></table>
+<h6 id="而在readview中就规定了版本链数据的访问规则："><a href="#而在readview中就规定了版本链数据的访问规则：" class="headerlink" title="而在readview中就规定了版本链数据的访问规则："></a>而在readview中就规定了版本链数据的访问规则：</h6><p>trx_id 代表当前undolog版本链对应事务ID。</p>
+<table>
+<thead>
+<tr>
+<th>条件</th>
+<th>是否可以访问</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>trx_id &#x3D;&#x3D; creator_trx_id</td>
+<td>可以访问该版本</td>
+<td>成立，说明数据是当前这个事务更改的。</td>
+</tr>
+<tr>
+<td>trx_id &lt; min_trx_id</td>
+<td>可以访问该版本</td>
+<td>成立，说明数据已经提交了。</td>
+</tr>
+<tr>
+<td>trx_id &gt; max_trx_id</td>
+<td>不可以访问该版本</td>
+<td>成立，说明该事务是在ReadView生成后才开启。</td>
+</tr>
+<tr>
+<td>min_trx_id &lt;&#x3D; trx_id &lt;&#x3D; max_trx_id</td>
+<td>如果trx_id不在m_ids中，是可以访问该版本的</td>
+<td>成立，说明数据已经提交。</td>
+</tr>
+</tbody></table>
+<h6 id="不同的隔离级别，生成ReadView的时机不同："><a href="#不同的隔离级别，生成ReadView的时机不同：" class="headerlink" title="不同的隔离级别，生成ReadView的时机不同："></a>不同的隔离级别，生成ReadView的时机不同：</h6><ul>
+<li>READ COMMITTED ：在事务中每一次执行快照读时生成ReadView。</li>
+<li>REPEATABLE READ：仅在事务中第一次执行快照读时生成ReadView，后续复用该ReadView。</li>
+</ul>
+<h3 id="存储优化"><a href="#存储优化" class="headerlink" title="存储优化"></a>存储优化</h3><h4 id="禁用索引"><a href="#禁用索引" class="headerlink" title="禁用索引"></a>禁用索引</h4><p>对于使用索引的表，插入记录时，MySQL会对插入的记录建立索引。如果插入大量数据，建立索引会降低插入数据速度。为了解决这个问题，可以在批量插入数据之前禁用索引，数据插入完成后再开启索引。</p>
+<p>禁用索引的语句：<br>ALTER TABLE table_name DISABLE KEYS<br>开启索引语句：<br>ALTER TABLE table_name ENABLE KEYS</p>
+<p>MyISAM对于空表批量插入数据，则不需要进行操作，因为MyISAM引擎的表是在导入数据后才建立索引。</p>
+<h4 id="禁用唯一性检查"><a href="#禁用唯一性检查" class="headerlink" title="禁用唯一性检查"></a>禁用唯一性检查</h4><p>唯一性校验会降低插入记录的速度，可以在插入记录之前禁用唯一性检查，插入数据完成后再开启。<br>禁用唯一性检查的语句：SET UNIQUE_CHECKS &#x3D; 0;<br>开启唯一性检查的语句：SET UNIQUE_CHECKS &#x3D; 1;</p>
+<h4 id="禁用外键检查"><a href="#禁用外键检查" class="headerlink" title="禁用外键检查"></a>禁用外键检查</h4><p>插入数据之前执行禁止对外键的检查，数据插入完成后再恢复，可以提供插入速度。</p>
+<p>禁用：SET foreign_key_checks &#x3D; 0;<br>开启：SET foreign_key_checks &#x3D; 1;</p>
+<h4 id="批量插入数据"><a href="#批量插入数据" class="headerlink" title="批量插入数据"></a>批量插入数据</h4><p>插入数据时，可以使用一条INSERT语句插入一条数据，也可以插入多条数据。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 通过查询语句的返回列的结构创建表，表复制</span><br><span class="line">create table tb_table2 as select * from tb_table where 1=2;</span><br><span class="line"># 批量插入</span><br><span class="line">insert into tb_table2 select * From tb_table</span><br></pre></td></tr></table></figure>
+
+<h4 id="禁止自动提交"><a href="#禁止自动提交" class="headerlink" title="禁止自动提交"></a>禁止自动提交</h4><p>插入数据之前执行禁止事务的自动提交，数据插入完成后再恢复，可以提高插入速度。</p>
+<p>禁用：SET autocommit &#x3D; 0;<br>开启：SET autocommit &#x3D; 1;</p>
+<h3 id="MyISAM和Innodb区别"><a href="#MyISAM和Innodb区别" class="headerlink" title="MyISAM和Innodb区别"></a>MyISAM和Innodb区别</h3><ul>
+<li>InnoDB和MyISAM是许多人在使用MySQL时最常用的两个存储引擎，这两个存储引擎各有优劣，视具体应用而定。基本的差别为：MyISAM类型不支持事务处理，而InnoDB类型支持。MyISAM类型强调的是性能，其执行速度比InnoDB类型更快，而InnoDB提供事务支持已经外部键等高级数据库功能。</li>
+</ul>
+<h4 id="具体实现的差别"><a href="#具体实现的差别" class="headerlink" title="具体实现的差别"></a>具体实现的差别</h4><ul>
+<li>MyISAM是非事务安全型的，而InnoDB是事务安全型的。</li>
+<li>MyISAM锁的粒度是<strong>表级</strong>，而InnoDB支持<strong>行级</strong>锁定。</li>
+<li>MyISAM不支持外键，而InnoDB支持外键</li>
+<li>MyISAM相对简单，所以在查询效率上要优于InnoDB，小型应用可以考虑使用MyISAM。</li>
+<li>InnoDB表比MyISAM表更安全（数据）。</li>
+</ul>
+<h2 id="数据库结构优化"><a href="#数据库结构优化" class="headerlink" title="数据库结构优化"></a>数据库结构优化</h2><h3 id="优化表结构"><a href="#优化表结构" class="headerlink" title="优化表结构"></a>优化表结构</h3><ul>
+<li>尽量将表字段定义为NOT NULL（即使可以为空，补空字符串），这是由于在MySQL中含有空值的列很难进行查询优化，NULL值会使索引以及索引的统计信息变得很复杂。</li>
+<li>对于只包含特定类型的字段，可以使用tinyint(1)。 0-9</li>
+<li>数值型字段的比较运算，比字符串的比较运算效率高得多，字段类型尽量使用最小粒度的类型、最简单的数据类型。例如IP地址可以使用int类型。</li>
+<li>尽量使用TINYINT、SMALLINT、MEDIUM_INT作为整数类型而非INT，如果非负则加上UNSIGNED。但对整数类型指定宽度，比如INT(11)，没有任何用，因为指定的类型标识范围已经确定。</li>
+<li>VARCHAR的长度只分配真正需要的空间</li>
+<li>尽量使用TIMESTAMP而非DATETIME，比DATETIME表示的范围小得多，而且TIMESTAMP的值因时区不同而不同。（跨国的数据库，纬度差较大的，使用0时区存储）</li>
+<li>单表不要有太多字段，建议在20个字段以内</li>
+<li>合理的加入冗余字段可以提高查询速度。三大范式</li>
+<li>列名不要过长，控制20个字符以内，不要中文字段名</li>
+<li>列的类型尽量不要使用大数据类型(blob,clob…) 字节数组, 存相对路径</li>
+<li>尽量不要创建外键</li>
+</ul>
+<h3 id="表拆分"><a href="#表拆分" class="headerlink" title="表拆分"></a>表拆分</h3><h4 id="垂直拆分"><a href="#垂直拆分" class="headerlink" title="垂直拆分"></a>垂直拆分</h4><ul>
+<li>垂直拆分按照字段进行拆分，其实就是把组成一行的多个列分开放到不同的表中，这些表具有不同的结构，拆分后的表具有更少的列。例如用户表中的一些字段可能经常访问，可以把这些字段放进一张表里。另外一些不经常使用的信息就可以放进另外一张表里。</li>
+<li>插入的时候使用事务，也可以保证两表的数据一致。缺点也很明显，由于拆分出来的两张表存在一对一的关系，需要使用冗余字段，而且需要join操作。但是我们可以在使用的时候可以分别取两次，这样的来说既可以避免join操作，又可以提高效率。</li>
+<li>查询单表时，效率大大提升</li>
+</ul>
+<h4 id="水平拆分-查询条件，取hash-如果是日期-每月-x2F-周-x2F-季-x2F-年"><a href="#水平拆分-查询条件，取hash-如果是日期-每月-x2F-周-x2F-季-x2F-年" class="headerlink" title="水平拆分 (查询条件，取hash, 如果是日期 每月&#x2F;周&#x2F;季&#x2F;年)"></a>水平拆分 (查询条件，取hash, 如果是日期 每月&#x2F;周&#x2F;季&#x2F;年)</h4><ul>
+<li>水平拆分按照行进行拆分，常见的就是分库分表。以用户表为例，可以取用户ID，然后对ID取10的余数，将用户均匀的分配进这 0-9这10个表中。查找的时候也按照这种规则，又快又方便。</li>
+<li>有些表业务关联比较强，那么可以使用按时间划分的。例如每天的数据量很大，需要每天新建一张表。这种业务类型就是需要高速插入，但是对于查询的效率不太关心。表越大，插入数据所需要索引维护的时间也就越长。</li>
+<li>取(哈希(列))&#x2F;总表数 求余 tb_user_01, tb_user_02…</li>
+<li>如果分表时需要用多个列，创建额外的表维护多个列的关系 userid,friendName,tablename</li>
+</ul>
+<h4 id="表分区"><a href="#表分区" class="headerlink" title="表分区"></a>表分区</h4><ul>
+<li>分区适用于例如日志记录，查询少。一般用于后台的数据报表分析。对于这些数据汇总需求，需要很多日志表去做数据聚合，我们能够容忍1s到2s的延迟，只要数据准确能够满足需求就可以。</li>
+<li>MySQL主要支持4种模式的分区：range分区、list预定义列表分区，hash 分区，key键值分区。</li>
+</ul>
+<h2 id="存储过程"><a href="#存储过程" class="headerlink" title="存储过程"></a>存储过程</h2><h2 id="视图"><a href="#视图" class="headerlink" title="视图"></a>视图</h2><h2 id="同义词"><a href="#同义词" class="headerlink" title="同义词"></a>同义词</h2>
+    </article>
+    <!-- license -->
+    
+        <div class="license-wrapper">
+            <p>原文作者：<a href="https://winddsnow.github.io">WinddSnow</a>
+            <p>原文链接：<a href="https://winddsnow.github.io/2022/10/19/MySQL%E4%BC%98%E5%8C%96/">https://winddsnow.github.io/2022/10/19/MySQL%E4%BC%98%E5%8C%96/</a>
+            <p>发表日期：<a href="https://winddsnow.github.io/2022/10/19/MySQL%E4%BC%98%E5%8C%96/">October 19th 2022, 10:01:10 pm</a>
+            <p>更新日期：<a href="https://winddsnow.github.io/2022/10/19/MySQL%E4%BC%98%E5%8C%96/">October 19th 2022, 11:04:43 pm</a>
+            <p>版权声明：本文采用<a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
+        </div>
+    
+    <!-- paginator -->
+    <ul class="post-paginator">
+        <li class="next">
+            
+        </li>
+        <li class="previous">
+            
+                <div class="prevSlogan">Previous Post</div>
+                <a href="/2022/09/08/RabbitMQ/" title="RabbitMQ">
+                    <div class="prevTitle">RabbitMQ</div>
+                </a>
+            
+        </li>
+    </ul>
+    <!-- comment -->
+    
+        <div class="post-comment">
+            <!-- 来必力 City 版安装代码 -->
+
+
+            
+
+            
+
+            
+
+            <!-- utteranc评论 -->
+
+
+            <!-- partial('_partial/comment/changyan') -->
+            <!--PC版-->
+
+
+            
+            
+
+            
+
+        </div>
+    
+    <!-- timeliness note -->
+    <!-- idea from: https://hexo.fluid-dev.com/posts/hexo-injector/#%E6%96%87%E7%AB%A0%E6%97%B6%E6%95%88%E6%80%A7%E6%8F%90%E7%A4%BA -->
+    
+    <!-- Mathjax -->
+    
+</main>
+
+                <!-- profile -->
+                
+            </div>
+            <footer class="footer footer-unloaded">
+    <!-- social  -->
+    
+        <div class="social">
+            
+    
+        
+            
+                <a href="mailto:winddsnow@163.com" class="iconfont-archer email" title=email ></a>
+            
+        
+    
+        
+            
+                <a href="//github.com/Winddsnow" class="iconfont-archer github" target="_blank" title=github></a>
+            
+        
+    
+        
+            
+                <span class="iconfont-archer wechat" title=wechat>
+                    
+                    <img class="profile-qr" src="/assets/example_qr.png" />
+                </span>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+
+        </div>
+    
+    <!-- powered by Hexo  -->
+    <div class="copyright">
+        <span id="hexo-power">Powered by <a href="https://hexo.io/" target="_blank">Hexo</a></span><span class="iconfont-archer power">&#xe635;</span><span id="theme-info">theme <a href="https://github.com/fi3ework/hexo-theme-archer" target="_blank">Archer</a></span>
+    </div>
+    <!-- website approve for Chinese user -->
+    
+    <!-- 不蒜子  -->
+    
+        <div class="busuanzi-container">
+            
+             
+                <span id="busuanzi_container_site_pv">PV: <span id="busuanzi_value_site_pv"></span> :)</span>
+            
+        </div>
+    	
+</footer>
+
+        </div>
+        <!-- toc -->
+        
+            <div class="toc-wrapper toc-wrapper-loding" style=
+
+
+
+
+
+
+
+    top:50vh;
+
+>
+                <div class="toc-catalog">
+                    <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+                </div>
+                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%88%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">先言</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%98%E5%8C%96%E5%8F%AF%E8%83%BD%E5%B8%A6%E6%9D%A5%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-number">1.1.</span> <span class="toc-text">优化可能带来的问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%98%E5%8C%96%E7%9A%84%E9%9C%80%E6%B1%82"><span class="toc-number">1.2.</span> <span class="toc-text">优化的需求</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%98%E5%8C%96%E7%94%B1%E8%B0%81%E5%8F%82%E4%B8%8E"><span class="toc-number">1.3.</span> <span class="toc-text">优化由谁参与</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BC%98%E5%8C%96%E7%9A%84%E6%80%9D%E8%B7%AF"><span class="toc-number">2.</span> <span class="toc-text">优化的思路</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BA%94%E6%80%A5%E8%B0%83%E4%BC%98"><span class="toc-number">2.1.</span> <span class="toc-text">应急调优</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E8%A7%84%E8%B0%83%E4%BC%98"><span class="toc-number">2.2.</span> <span class="toc-text">常规调优</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B7%E4%BD%93%E4%BC%98%E5%8C%96"><span class="toc-number">3.</span> <span class="toc-text">具体优化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#mysql%E6%9F%A5%E8%AF%A2%E6%B5%81%E7%A8%8B"><span class="toc-number">3.1.</span> <span class="toc-text">mysql查询流程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E8%AF%A2SQL%E5%88%86%E6%9E%90"><span class="toc-number">3.2.</span> <span class="toc-text">查询SQL分析</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E6%85%A2%E6%9F%A5%E8%AF%A2%E6%97%A5%E5%BF%97"><span class="toc-number">3.2.1.</span> <span class="toc-text">1. 慢查询日志</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-EXPLAIN-%E5%88%86%E6%9E%90%E6%9F%A5%E8%AF%A2"><span class="toc-number">3.2.2.</span> <span class="toc-text">2. EXPLAIN 分析查询</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#exolan%E7%BB%93%E6%9E%9C%E7%9A%84%E5%88%97%E7%9A%84%E8%AF%B4%E6%98%8E"><span class="toc-number">3.2.3.</span> <span class="toc-text">exolan结果的列的说明</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B4%A2%E5%BC%95%E4%BC%98%E5%8C%96"><span class="toc-number">4.</span> <span class="toc-text">索引优化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E7%B4%A2%E5%BC%95"><span class="toc-number">4.1.</span> <span class="toc-text">什么是索引</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B4%A2%E5%BC%95%E7%9A%84%E7%B1%BB%E5%88%AB"><span class="toc-number">4.2.</span> <span class="toc-text">索引的类别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B4%A2%E5%BC%95%E7%9A%84%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84"><span class="toc-number">4.3.</span> <span class="toc-text">索引的存储结构</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#BTree%E7%B4%A2%E5%BC%95"><span class="toc-number">4.3.1.</span> <span class="toc-text">BTree索引</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%93%88%E5%B8%8C%E7%B4%A2%E5%BC%95%EF%BC%88%E4%B8%BB%E8%A6%81%E6%98%AFMemory%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E%E4%BD%BF%E7%94%A8%EF%BC%89"><span class="toc-number">4.3.2.</span> <span class="toc-text">哈希索引（主要是Memory存储引擎使用）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%98%E5%8C%96%E5%BB%BA%E8%AE%AE"><span class="toc-number">4.4.</span> <span class="toc-text">优化建议</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%90%E6%9F%A5%E8%AF%A2%E4%BC%98%E5%8C%96"><span class="toc-number">4.5.</span> <span class="toc-text">子查询优化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#order-by%E4%BC%98%E5%8C%96"><span class="toc-number">4.6.</span> <span class="toc-text">order by优化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#GROUP-BY%E4%BC%98%E5%8C%96"><span class="toc-number">4.7.</span> <span class="toc-text">GROUP BY优化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#limit%E4%BC%98%E5%8C%96"><span class="toc-number">4.8.</span> <span class="toc-text">limit优化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B4%A2%E5%BC%95%E7%9A%84%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF%E5%88%86%E6%9E%90"><span class="toc-number">4.9.</span> <span class="toc-text">索引的使用场景分析</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%80%82%E5%90%88%E4%BD%BF%E7%94%A8%E7%B4%A2%E5%BC%95%E5%9C%BA%E6%99%AF"><span class="toc-number">4.9.1.</span> <span class="toc-text">适合使用索引场景</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%8D%E9%80%82%E5%90%88%E4%BD%BF%E7%94%A8%E7%B4%A2%E5%BC%95%E5%9C%BA%E6%99%AF"><span class="toc-number">4.9.2.</span> <span class="toc-text">不适合使用索引场景</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B4%A2%E5%BC%95%E5%A4%B1%E6%95%88%E6%83%85%E5%86%B5"><span class="toc-number">4.10.</span> <span class="toc-text">索引失效情况</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%B4%A2%E5%BC%95%E5%A4%B1%E6%95%88%E6%83%85%E5%86%B5%E4%B8%AA%E4%BA%BA%E6%80%BB%E7%BB%93"><span class="toc-number">4.10.1.</span> <span class="toc-text">索引失效情况个人总结</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#InnoDB%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E%E4%BB%8B%E7%BB%8D"><span class="toc-number">4.11.</span> <span class="toc-text">InnoDB存储引擎介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#InnoDB%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E%E6%94%AF%E6%8C%81%E4%BA%8B%E5%8A%A1%E7%9A%84%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86"><span class="toc-number">4.11.1.</span> <span class="toc-text">InnoDB存储引擎支持事务的底层原理</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#MVVC"><span class="toc-number">4.11.1.1.</span> <span class="toc-text">MVVC</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%9A%90%E8%97%8F%E5%AD%97%E6%AE%B5"><span class="toc-number">4.11.1.2.</span> <span class="toc-text">隐藏字段</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#undo-log%E6%97%A5%E5%BF%97"><span class="toc-number">4.11.1.3.</span> <span class="toc-text">undo log日志</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E7%89%88%E6%9C%AC%E9%93%BE"><span class="toc-number">4.11.1.3.1.</span> <span class="toc-text">版本链</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#readView"><span class="toc-number">4.11.1.4.</span> <span class="toc-text">readView</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#ReadView%E4%B8%AD%E5%8C%85%E5%90%AB%E4%BA%86%E5%9B%9B%E4%B8%AA%E6%A0%B8%E5%BF%83%E5%AD%97%E6%AE%B5%EF%BC%9A"><span class="toc-number">4.11.1.4.1.</span> <span class="toc-text">ReadView中包含了四个核心字段：</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E8%80%8C%E5%9C%A8readview%E4%B8%AD%E5%B0%B1%E8%A7%84%E5%AE%9A%E4%BA%86%E7%89%88%E6%9C%AC%E9%93%BE%E6%95%B0%E6%8D%AE%E7%9A%84%E8%AE%BF%E9%97%AE%E8%A7%84%E5%88%99%EF%BC%9A"><span class="toc-number">4.11.1.4.2.</span> <span class="toc-text">而在readview中就规定了版本链数据的访问规则：</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E4%B8%8D%E5%90%8C%E7%9A%84%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB%EF%BC%8C%E7%94%9F%E6%88%90ReadView%E7%9A%84%E6%97%B6%E6%9C%BA%E4%B8%8D%E5%90%8C%EF%BC%9A"><span class="toc-number">4.11.1.4.3.</span> <span class="toc-text">不同的隔离级别，生成ReadView的时机不同：</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%98%E5%82%A8%E4%BC%98%E5%8C%96"><span class="toc-number">4.12.</span> <span class="toc-text">存储优化</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A6%81%E7%94%A8%E7%B4%A2%E5%BC%95"><span class="toc-number">4.12.1.</span> <span class="toc-text">禁用索引</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A6%81%E7%94%A8%E5%94%AF%E4%B8%80%E6%80%A7%E6%A3%80%E6%9F%A5"><span class="toc-number">4.12.2.</span> <span class="toc-text">禁用唯一性检查</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A6%81%E7%94%A8%E5%A4%96%E9%94%AE%E6%A3%80%E6%9F%A5"><span class="toc-number">4.12.3.</span> <span class="toc-text">禁用外键检查</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%89%B9%E9%87%8F%E6%8F%92%E5%85%A5%E6%95%B0%E6%8D%AE"><span class="toc-number">4.12.4.</span> <span class="toc-text">批量插入数据</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A6%81%E6%AD%A2%E8%87%AA%E5%8A%A8%E6%8F%90%E4%BA%A4"><span class="toc-number">4.12.5.</span> <span class="toc-text">禁止自动提交</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MyISAM%E5%92%8CInnodb%E5%8C%BA%E5%88%AB"><span class="toc-number">4.13.</span> <span class="toc-text">MyISAM和Innodb区别</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%B7%E4%BD%93%E5%AE%9E%E7%8E%B0%E7%9A%84%E5%B7%AE%E5%88%AB"><span class="toc-number">4.13.1.</span> <span class="toc-text">具体实现的差别</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E7%BB%93%E6%9E%84%E4%BC%98%E5%8C%96"><span class="toc-number">5.</span> <span class="toc-text">数据库结构优化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%98%E5%8C%96%E8%A1%A8%E7%BB%93%E6%9E%84"><span class="toc-number">5.1.</span> <span class="toc-text">优化表结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A1%A8%E6%8B%86%E5%88%86"><span class="toc-number">5.2.</span> <span class="toc-text">表拆分</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9E%82%E7%9B%B4%E6%8B%86%E5%88%86"><span class="toc-number">5.2.1.</span> <span class="toc-text">垂直拆分</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B0%B4%E5%B9%B3%E6%8B%86%E5%88%86-%E6%9F%A5%E8%AF%A2%E6%9D%A1%E4%BB%B6%EF%BC%8C%E5%8F%96hash-%E5%A6%82%E6%9E%9C%E6%98%AF%E6%97%A5%E6%9C%9F-%E6%AF%8F%E6%9C%88-x2F-%E5%91%A8-x2F-%E5%AD%A3-x2F-%E5%B9%B4"><span class="toc-number">5.2.2.</span> <span class="toc-text">水平拆分 (查询条件，取hash, 如果是日期 每月&#x2F;周&#x2F;季&#x2F;年)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A1%A8%E5%88%86%E5%8C%BA"><span class="toc-number">5.2.3.</span> <span class="toc-text">表分区</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B"><span class="toc-number">6.</span> <span class="toc-text">存储过程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%86%E5%9B%BE"><span class="toc-number">7.</span> <span class="toc-text">视图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%8C%E4%B9%89%E8%AF%8D"><span class="toc-number">8.</span> <span class="toc-text">同义词</span></a></li></ol>
+            </div>
+        
+        <!-- sidebar -->
+        <div class="sidebar sidebar-hide">
+    <ul class="sidebar-tabs sidebar-tabs-active-0">
+        <li class="sidebar-tab-archives"><span class="iconfont-archer">&#xe67d;</span><span class="tab-name">Archive</span></li>
+        <li class="sidebar-tab-tags"><span class="iconfont-archer">&#xe61b;</span><span class="tab-name">Tag</span></li>
+        <li class="sidebar-tab-categories"><span class="iconfont-archer">&#xe666;</span><span class="tab-name">Cate</span></li>
+    </ul>
+    <div class="sidebar-content sidebar-content-show-archive">
+        <div class="sidebar-panel-archives">
+    <!-- 在 ejs 中将 archive 按照时间排序 -->
+    
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    
+    
+    
+    
+    <div class="total-and-search">
+        <div class="total-archive">
+        Total : 22
+        </div>
+        <!-- search  -->
+        
+    </div>
+    
+    <div class="post-archive">
+    
+        
+            
+            
+            <div class="archive-year"> 2022 </div>
+            <ul class="year-list">
+            
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/19</span>
+            <a class="archive-post-title" href="/2022/10/19/MySQL%E4%BC%98%E5%8C%96/">MySQL优化</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/08</span>
+            <a class="archive-post-title" href="/2022/09/08/RabbitMQ/">RabbitMQ</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/08</span>
+            <a class="archive-post-title" href="/2022/09/08/ELK%E6%90%9C%E7%B4%A2/">ELK搜索</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/30</span>
+            <a class="archive-post-title" href="/2022/08/30/Ribbin%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E6%BA%90%E7%A0%81%E5%8E%9F%E7%90%86%E4%B8%8E%E6%BA%90%E7%A0%81%E8%B0%83%E8%AF%95/">Ribbin负载均衡源码原理与源码调试</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/15</span>
+            <a class="archive-post-title" href="/2022/08/15/Yapi%E9%83%A8%E7%BD%B2%E4%B8%8E%E4%BD%BF%E7%94%A8/">Yapi部署与使用</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/14</span>
+            <a class="archive-post-title" href="/2022/08/14/HashMap%E5%8E%9F%E7%90%86/">HashMap原理</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/10</span>
+            <a class="archive-post-title" href="/2022/02/10/Vim%E7%94%A8%E6%B3%95%E7%AE%80%E8%AE%B0/">Vim用法简记</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/10</span>
+            <a class="archive-post-title" href="/2022/02/10/Markdown%E7%A4%BA%E4%BE%8B2/">Markdown示例2</a>
+        </li>
+    
+        
+            
+            
+                
+                </ul>
+            
+            <div class="archive-year"> 2021 </div>
+            <ul class="year-list">
+            
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/20</span>
+            <a class="archive-post-title" href="/2021/12/20/Dead-Line-2021%E6%80%BB%E7%BB%93/">Dead Line--2021总结</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/29</span>
+            <a class="archive-post-title" href="/2021/08/29/SpringCloud%E7%AE%80%E4%BB%8B/">SpringCloud简介</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/14</span>
+            <a class="archive-post-title" href="/2021/08/14/mysql%E8%AF%BB%E5%86%99%E5%88%86%E7%A6%BB-%E4%B8%BB%E4%BB%8E%E5%A4%8D%E5%88%B6%E5%8F%8Asharing-jdbc%E4%BD%BF%E7%94%A8/">mysql读写分离-主从复制及sharing-jdbc使用</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/03</span>
+            <a class="archive-post-title" href="/2021/05/03/Markdown%E8%AF%AD%E6%B3%95%E8%AE%B0%E5%BD%95/">Markdown语法记录</a>
+        </li>
+    
+        
+            
+            
+                
+                </ul>
+            
+            <div class="archive-year"> 2020 </div>
+            <ul class="year-list">
+            
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/28</span>
+            <a class="archive-post-title" href="/2020/08/28/Redis%E7%9B%B8%E5%85%B3%E9%97%AE%E9%A2%98/">Redis相关问题</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/28</span>
+            <a class="archive-post-title" href="/2020/08/28/Redis%E5%88%86%E5%B8%83%E5%BC%8F%E7%BC%93%E5%AD%98/">Redis分布式缓存</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/15</span>
+            <a class="archive-post-title" href="/2020/08/15/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B-%E5%B9%B6%E5%8F%91%E2%91%A0/">Java多线程-并发</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/15</span>
+            <a class="archive-post-title" href="/2020/08/15/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B-%E5%B9%B6%E5%8F%91%E2%91%A1/">Java多线程-并发②</a>
+        </li>
+    
+        
+            
+            
+                
+                </ul>
+            
+            <div class="archive-year"> 2019 </div>
+            <ul class="year-list">
+            
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/14</span>
+            <a class="archive-post-title" href="/2019/08/14/nginx%E7%AE%80%E4%BB%8B%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%BF%9B%E9%98%B6/">nginx简介及使用进阶</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/04</span>
+            <a class="archive-post-title" href="/2019/05/04/PVE%E8%99%9A%E6%8B%9F%E5%8C%96/">PVE虚拟化</a>
+        </li>
+    
+        
+            
+            
+                
+                </ul>
+            
+            <div class="archive-year"> 2018 </div>
+            <ul class="year-list">
+            
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/15</span>
+            <a class="archive-post-title" href="/2018/08/15/Java%E6%95%B0%E7%BB%84%E5%9F%BA%E7%A1%80/">Java数组基础</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/15</span>
+            <a class="archive-post-title" href="/2018/08/15/Java%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">Java算法基础-数据结构-设计模式</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/03</span>
+            <a class="archive-post-title" href="/2018/05/03/%E6%9D%82%E8%B0%88%E6%9C%8D%E5%8A%A1%E5%99%A8/">杂谈服务器</a>
+        </li>
+    
+        
+            
+            
+                
+                </ul>
+            
+            <div class="archive-year"> 1970 </div>
+            <ul class="year-list">
+            
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/01</span>
+            <a class="archive-post-title" href="/1970/01/01/hello-world/">Hello World</a>
+        </li>
+    
+    </div>
+</div>
+
+        <div class="sidebar-panel-tags">
+    <div class="sidebar-tags-name">
+        
+            <span class="sidebar-tag-name" data-tags="年终总结">
+                <span class="iconfont-archer">&#xe606;</span>
+                年终总结
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="碎语">
+                <span class="iconfont-archer">&#xe606;</span>
+                碎语
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Java">
+                <span class="iconfont-archer">&#xe606;</span>
+                Java
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="原理">
+                <span class="iconfont-archer">&#xe606;</span>
+                原理
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Markdown">
+                <span class="iconfont-archer">&#xe606;</span>
+                Markdown
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="面试题">
+                <span class="iconfont-archer">&#xe606;</span>
+                面试题
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="掘金">
+                <span class="iconfont-archer">&#xe606;</span>
+                掘金
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="vim">
+                <span class="iconfont-archer">&#xe606;</span>
+                vim
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="编辑器之神">
+                <span class="iconfont-archer">&#xe606;</span>
+                编辑器之神
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="虚拟化">
+                <span class="iconfont-archer">&#xe606;</span>
+                虚拟化
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Proxmox VE">
+                <span class="iconfont-archer">&#xe606;</span>
+                Proxmox VE
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="42">
+                <span class="iconfont-archer">&#xe606;</span>
+                42
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="helloworld">
+                <span class="iconfont-archer">&#xe606;</span>
+                helloworld
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="nginx">
+                <span class="iconfont-archer">&#xe606;</span>
+                nginx
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="http服务器">
+                <span class="iconfont-archer">&#xe606;</span>
+                http服务器
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="高并发">
+                <span class="iconfont-archer">&#xe606;</span>
+                高并发
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="计算机的世界">
+                <span class="iconfont-archer">&#xe606;</span>
+                计算机的世界
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="MySQL">
+                <span class="iconfont-archer">&#xe606;</span>
+                MySQL
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="数据库操作">
+                <span class="iconfont-archer">&#xe606;</span>
+                数据库操作
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="多线程">
+                <span class="iconfont-archer">&#xe606;</span>
+                多线程
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="并发">
+                <span class="iconfont-archer">&#xe606;</span>
+                并发
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="数组基础">
+                <span class="iconfont-archer">&#xe606;</span>
+                数组基础
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="数据结构">
+                <span class="iconfont-archer">&#xe606;</span>
+                数据结构
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="前端">
+                <span class="iconfont-archer">&#xe606;</span>
+                前端
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Yapi">
+                <span class="iconfont-archer">&#xe606;</span>
+                Yapi
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="接口管理">
+                <span class="iconfont-archer">&#xe606;</span>
+                接口管理
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="ELK">
+                <span class="iconfont-archer">&#xe606;</span>
+                ELK
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="分布式搜索引擎">
+                <span class="iconfont-archer">&#xe606;</span>
+                分布式搜索引擎
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="elasticsearch">
+                <span class="iconfont-archer">&#xe606;</span>
+                elasticsearch
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Logstash">
+                <span class="iconfont-archer">&#xe606;</span>
+                Logstash
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="kibana">
+                <span class="iconfont-archer">&#xe606;</span>
+                kibana
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="RabbitMQ">
+                <span class="iconfont-archer">&#xe606;</span>
+                RabbitMQ
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="消息队列">
+                <span class="iconfont-archer">&#xe606;</span>
+                消息队列
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Redis">
+                <span class="iconfont-archer">&#xe606;</span>
+                Redis
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="缓存">
+                <span class="iconfont-archer">&#xe606;</span>
+                缓存
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Spring">
+                <span class="iconfont-archer">&#xe606;</span>
+                Spring
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Ribbon">
+                <span class="iconfont-archer">&#xe606;</span>
+                Ribbon
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="debug调试">
+                <span class="iconfont-archer">&#xe606;</span>
+                debug调试
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="spring">
+                <span class="iconfont-archer">&#xe606;</span>
+                spring
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="springcloud">
+                <span class="iconfont-archer">&#xe606;</span>
+                springcloud
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="微服务">
+                <span class="iconfont-archer">&#xe606;</span>
+                微服务
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="数据库">
+                <span class="iconfont-archer">&#xe606;</span>
+                数据库
+            </span>
+        
+    </div>
+    <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
+    <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
+        缺失模块，请参考主题文档进行安装配置：https://github.com/fi3ework/hexo-theme-archer#%E5%AE%89%E8%A3%85%E4%B8%BB%E9%A2%98
+    </div> 
+    <div class="sidebar-tags-list"></div>
+</div>
+
+        <div class="sidebar-panel-categories">
+    <div class="sidebar-categories-name">
+    
+        <span class="sidebar-category-name" data-categories="个人生活">
+            <span class="iconfont-archer">&#xe60a;</span>
+            个人生活
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="编程">
+            <span class="iconfont-archer">&#xe60a;</span>
+            编程
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="工具用法">
+            <span class="iconfont-archer">&#xe60a;</span>
+            工具用法
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="计算机基础架构">
+            <span class="iconfont-archer">&#xe60a;</span>
+            计算机基础架构
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="编程中间件">
+            <span class="iconfont-archer">&#xe60a;</span>
+            编程中间件
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="编程与数据库">
+            <span class="iconfont-archer">&#xe60a;</span>
+            编程与数据库
+        </span>
+    
+    </div>
+    <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>
+    <div class="sidebar-categories-list"></div>
+</div>
+
+    </div>
+</div>
+
+        <!-- site-meta -->
+        <script>
+    var siteMetaRoot = "/"
+    if (siteMetaRoot === "undefined") {
+        siteMetaRoot = '/'
+    }
+    var siteMeta = {
+        url: "https://winddsnow.github.io",
+        root: siteMetaRoot,
+        author: "WinddSnow"
+    }
+</script>
+
+        <!-- import experimental options here -->
+        <!-- Custom Font -->
+
+
+        <!-- main func -->
+        <script src="/scripts/main.js?v=20211217"></script>
+        <!-- dark mode -->
+        <script src="/scripts/dark.js?v=20211217"></script>
+        <!-- fancybox -->
+        <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" defer></script>
+        <!-- algolia -->
+        
+        <!-- busuanzi -->
+        
+            <script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+        
+        <!-- CNZZ -->
+        
+        <!-- async load share.js -->
+        
+            <script src="/scripts/share.js?v=20211217" async></script>
+        
+        <!-- mermaid -->
+        
+    </body>
+</html>
