@@ -443,31 +443,296 @@
             
         
         <article class="index-post">
-            <a class="abstract-title" href="/2021/08/14/mysql%E8%AF%BB%E5%86%99%E5%88%86%E7%A6%BB-%E4%B8%BB%E4%BB%8E%E5%A4%8D%E5%88%B6%E5%8F%8Asharing-jdbc%E4%BD%BF%E7%94%A8/">
+            <a class="abstract-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9806%E6%95%B0%E6%8D%AE%E5%BA%93/">
                 
-                <span class="abstract-title-text">mysql读写分离-主从复制及sharing-jdbc使用</span>
+                <span class="abstract-title-text">Java面试题06数据库</span>
             </a>
             <div class="abstract-content">
-                1. Mysql主从复制介绍MySQL主从复制是一个异步的复制过程，底层是基于Mysql数据库自带的二进制日志功能。就是一台或多台MySQL数据库（slave，即从库）从另一台MySQL数据库（master，即主库）进行日志的复制然后再解析日志并应用到自身，最终实现从库的数据和主库的数据保持一致。MySQL主从复制是MySQL数据库自带功能，无需借助第三方工具。
+                连接查询
+左连接-（左外连接）以左表为基准进行查询,左表数据会全部显示出来,右表 如果和左表匹配 的数据则显示相应字段的数据,如果不匹配,则显示为 NULL;
+右连接-（右外连接）以右表为基准进行查询,右表数据会全部显示出来,右表 如果和左表匹配的数据则显示相应字段的数据,如果不匹配,则显示为 NULL;
 
-二进制日志： 
-​	二进制日志（BINLOG）记录了所有的 DDL（数据定义语言）语句和 DML（数据操纵语言）语句，但是不包括数据查询语句。此日志对于灾难时的数据恢复起着极其重要的作用，MySQL的主从复制， 就是通过该bi...
+聚合函数SQL 中提供的聚合函数可以用来统计、求和、求最值等等。
+
+COUNT：统计行数量
+SUM：获取单个列的合计值
+AVG：获取某个列的平均值
+MAX：获取列的最大值
+MIN：获取列的最小值
+
+SQL 关键字
+分页-MySQL 的分页关键词 limitSELECT * FROM ...
             </div>
             <!-- read more -->
             
             <div class="abstract-post-meta">
                 <!-- date -->
-                <div class="abstract-date" title="Last updated: 2022/10/16">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2021/08/14</span>
+                <div class="abstract-date" title="Last updated: 2022/10/22">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2022/10/22</span>
                 </div>
                 <!-- tags -->
                 
                     <div class= abstract-tags >
     
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="Java">Java</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="数据库">数据库</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="MySql">MySql</a>
+    
+</div>
+
+                
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+    
+        
+        
+        
+        
+            
+        
+        <article class="index-post">
+            <a class="abstract-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9805Web/">
+                
+                <span class="abstract-title-text">Java面试题05Web</span>
+            </a>
+            <div class="abstract-content">
+                TCP 与 UDP 区别？TCP(Transmission Control Protocol 传输控制协议)是一种面向连接(连接导向)的、可靠的、 基于 IP 的传输层协议。
+UDP 是 User Datagram Protocol 的简称，中文名是用户数据报协议，是 OSI 参考模型中的传输层协议，它是一种无连接的传输层协议，提供面向事务的简单不可靠信息传送服务。
+TCP 和 UDP 都是来自于传输层的协议。传输层位于应用层和网络层之间，负责位于不同主机中进程之间的通信。
+
+TCP 基于连接 UDP 无连接
+TCP 要求系统资源较多，UDP 较少
+TCP 保证数据正确性，UDP 可能丢...
+            </div>
+            <!-- read more -->
+            
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2022/10/22">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2022/10/22</span>
+                </div>
+                <!-- tags -->
+                
+                    <div class= abstract-tags >
+    
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="Java">Java</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="WEB">WEB</a>
+    
+</div>
+
+                
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+    
+        
+        
+        
+        
+            
+        
+        <article class="index-post">
+            <a class="abstract-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9804JVM/">
+                
+                <span class="abstract-title-text">Java面试题04JVM</span>
+            </a>
+            <div class="abstract-content">
+                JDK1.8 JVM 运行时内存
+程序计数器:线程私有的(每个线程都有一个自己的程序计数器), 是一个指针. 代码运行, 执行命令. 而每个命令都是有行号的,会使用程序计数器来记录命令执行到多少行了.记录代码执行的位置
+Java 虚拟机栈:线程私有的(每个线程都有一个自己的 Java 虚拟机栈). 一个方法运行, 就会给这个方法创建一个栈帧, 栈帧入栈执行代码, 执行完毕之后出栈(弹栈)存引用变量，基本数据类型
+本地方法栈:线程私有的(每个线程都有一个自己的本地方法栈), 和 Java 虚拟机栈类似, Java 虚拟机栈加载的是普通方法,本地方法加载的是 native 修饰的方法.nat...
+            </div>
+            <!-- read more -->
+            
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2022/10/22">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2022/10/22</span>
+                </div>
+                <!-- tags -->
+                
+                    <div class= abstract-tags >
+    
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="Java">Java</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="JVM">JVM</a>
+    
+</div>
+
+                
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+    
+        
+        
+        
+        
+            
+        
+        <article class="index-post">
+            <a class="abstract-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9803%E5%A4%9A%E7%BA%BF%E7%A8%8B/">
+                
+                <span class="abstract-title-text">Java面试题03多线程</span>
+            </a>
+            <div class="abstract-content">
+                什么是线程?线程和进程的区别?线程：是进程的一个实体，是 cpu 调度和分派的基本单位，是比进程更小的可以独立运行的基本单位。
+进程：具有一定独立功能的程序关于某个数据集合上的一次运行活动，是操作系统进行资源分配和调度的一个独立单位。特点：线程的划分尺度小于进程，这使多线程程序拥有高并发性，进程在运行时各自内存单元相互独立，线程之间 内存共享，这使多线程编程可以拥有更好的性能和用户体验。
+创建线程有几种方式
+继承 Thread 类并重写 run 方法创建线程，实现简单但不可以继承其他类
+实现 Runnable 接口并重写 run 方法。避免了单继承局限性，编程更加灵活，实现解耦。
+实现 ...
+            </div>
+            <!-- read more -->
+            
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2022/10/22">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2022/10/22</span>
+                </div>
+                <!-- tags -->
+                
+                    <div class= abstract-tags >
+    
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="Java">Java</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="多线程">多线程</a>
+    
+</div>
+
+                
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+    
+        
+        
+        
+        
+            
+        
+        <article class="index-post">
+            <a class="abstract-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9802%E9%9B%86%E5%90%88%E7%9B%B8%E5%85%B3/">
+                
+                <span class="abstract-title-text">Java面试题02集合相关</span>
+            </a>
+            <div class="abstract-content">
+                常见的数据结构常用的数据结构有：数组，栈，队列，链表，树，散列，堆，图等
+数组是最常用的数据结构，数组的特点是长度固定，数组的大小固定后就无法扩容了 ，数组只能存储一种类型的数据 ，添加，删除的操作慢，因为要移动其他的元素。
+栈是一种基于先进后出（FILO）的数据结构，是一种只能在一端进行插入和删除操作的特殊线性表。它按照先进后出的原则存储数据，先进入的数据被压入栈底，最后的数据在栈顶，需要读数据的时候从栈顶开始弹出数据（最后一个数据被第一个读出来）。
+队列是一种基于先进先出（FIFO）的数据结构，是一种只能在一端进行插入，在另一端进行删除操作的特殊线性表，它按照先进先出的原则存储数据，...
+            </div>
+            <!-- read more -->
+            
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2022/10/22">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2022/10/22</span>
+                </div>
+                <!-- tags -->
+                
+                    <div class= abstract-tags >
+    
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="Java">Java</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="集合">集合</a>
+    
+</div>
+
+                
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+    
+        
+        
+        
+        
+            
+        
+        <article class="index-post">
+            <a class="abstract-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9801%E5%9F%BA%E7%A1%80/">
+                
+                <span class="abstract-title-text">Java面试题01基础</span>
+            </a>
+            <div class="abstract-content">
+                Java8大基本类型和包装类byte、short、int、long、float、double、boolean、charByte Short Integer Long Float Double  Boolean Character
+面向对象的特征：封装、继承、多态、抽象。封装：就是把对象的属性和行为（数据）结合为一个独立的整体，并尽可能隐藏对象的内部实现细节，就是把不想告诉或者不该告诉别人的东西隐藏起来，把可以告诉别人的公开，别人只能用我提供的功能实现需求，而不知道是如何实现的。增加安全性。
+继承：子类继承父类的数据属性和行为，并能根据自己的需求扩展出新的行为，提高了代码的复用性。
+多态：...
+            </div>
+            <!-- read more -->
+            
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2022/10/22">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2022/10/22</span>
+                </div>
+                <!-- tags -->
+                
+                    <div class= abstract-tags >
+    
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="Java">Java</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="基础">基础</a>
+    
+</div>
+
+                
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+    
+        
+        
+        
+        
+            
+        
+        <article class="index-post">
+            <a class="abstract-title" href="/2022/10/19/MySQL%E4%BC%98%E5%8C%96/">
+                
+                <span class="abstract-title-text">MySQL优化</span>
+            </a>
+            <div class="abstract-content">
+                先言
+不要听信你看到的关于优化的“绝对真理”，而应该是在实际的业务场景下通过测试来验证你关于执行计划以及响应时间的假设。
+具体业务场景的不同，使用的MySQL服务版本不同，都会使得优化方案的制定也不同。
+数据库任何操作都需要慎之又慎，即使所谓优化，也需要尽可能组织涉及到的所有业务部门具体商议，非常有可能，对你的业务来说是优化，却会影响他人业务！
+切记，你需要清楚的知道，你的操作所带来的一切结果，测试环境不等于生产环境，风险操作，备份先行。
+优化有风险，涉足需谨慎！
+
+优化可能带来的问题
+优化不总是对一个单纯的环境进行，还很可能是一个复杂的已投产的系统！
+优化手段有很大的风险，一定要意识到...
+            </div>
+            <!-- read more -->
+            
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2022/10/19">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2022/10/19</span>
+                </div>
+                <!-- tags -->
+                
+                    <div class= abstract-tags >
+    
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="Java">Java</a>
     
         <a class="post-tag" href="javascript:void(0);" data-tags="MySQL">MySQL</a>
     
-        <a class="post-tag" href="javascript:void(0);" data-tags="数据库操作">数据库操作</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="数据库">数据库</a>
     
 </div>
 
@@ -483,74 +748,27 @@
             
         
         <article class="index-post">
-            <a class="abstract-title" href="/2021/05/03/Markdown%E8%AF%AD%E6%B3%95%E8%AE%B0%E5%BD%95/">
+            <a class="abstract-title" href="/2022/09/08/RabbitMQ/">
                 
-                <span class="abstract-title-text">Markdown语法记录</span>
+                <span class="abstract-title-text">RabbitMQ</span>
             </a>
             <div class="abstract-content">
-                使用Markdown语法写文章这是从掘金抄的。一份简要的 Markdown 引导指南，希望可以帮助您顺利的开始使用 Markdown 编辑器。
-丰富的快捷键本 Markdown 编辑器支持丰富的格式快捷键，可以非常便捷、轻松的使用 Markdown 语言，形成优美的排版和内容格式。
-支持的快捷键有：
+                RabbitMQ微服务通信微服务间通讯有同步和异步两种方式：
 
-加粗： Ctrl/Cmd + B
-标题： Ctrl/Cmd + H
-插入链接： Ctrl/Cmd + K
-插入代码： Ctrl/Cmd + Shift + C
-行内代码： Ctrl/Cmd + Shift + K
-插入图片： Ctrl/Cmd + Shift + I
-无序列表： Ctrl/...
+同步通讯：就像打电话，需要实时响应。-Feign调用
+异步通讯：就像发邮件，不需要马上回复 -消息队列两种方式各有优劣，打电话可以立即得到响应，但是你却不能跟多个人同时通话。发送邮件可以同时与多个人收发邮件，但是往往响应会有延迟。
+
+事件模式
+在事件模式中，支付服务是事件发布者（publisher），在支付完成后只需要发布一个支付成功的事件（event），事件中带上订单id。
+订单服务和物流服务是事件订阅者（Consumer），订阅支付成功的事件，监听到事件后完成自己业务即可。
+为了解除事件发布者与订阅者之间的耦合，两者并不...
             </div>
             <!-- read more -->
             
             <div class="abstract-post-meta">
                 <!-- date -->
-                <div class="abstract-date" title="Last updated: 2022/08/14">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2021/05/03</span>
-                </div>
-                <!-- tags -->
-                
-                    <div class= abstract-tags >
-    
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="Markdown">Markdown</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="掘金">掘金</a>
-    
-</div>
-
-                
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
-    
-        
-        
-        
-        
-            
-        
-        <article class="index-post">
-            <a class="abstract-title" href="/2020/08/28/Redis%E7%9B%B8%E5%85%B3%E9%97%AE%E9%A2%98/">
-                
-                <span class="abstract-title-text">Redis相关问题</span>
-            </a>
-            <div class="abstract-content">
-                简单介绍redis
-Redis是 C 编写的，高性能非关系型数据库。
-Redis 键只能为字符串，值支持五种数据类型：string、has、list、set、zset。
-Redis 的数据存在内存中的，读写速度非常快， redis 被广泛应用于缓存方向，每秒可以处理超过 10万次读写操作，是已知性能最快的Key-Value DB。
-支持数据持久化，支持AOF（Append Only File）和RDB（Redis DataBase）两种持久化方式。
-支持主从复制，主机会自动将数据同步到从机，可以进行读写分离。
-Redis 也经常用来做分布式锁和分布式事务。
-不能用作海量数据的高性能读写
-...
-            </div>
-            <!-- read more -->
-            
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2022/10/16">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/08/28</span>
+                <div class="abstract-date" title="Last updated: 2022/10/22">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2022/09/08</span>
                 </div>
                 <!-- tags -->
                 
@@ -558,127 +776,13 @@ Redis 也经常用来做分布式锁和分布式事务。
     
     
         <a class="post-tag" href="javascript:void(0);" data-tags="Java">Java</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="Redis">Redis</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="缓存">缓存</a>
-    
-</div>
-
-                
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
-    
-        
-        
-        
-        
-            
-        
-        <article class="index-post">
-            <a class="abstract-title" href="/2020/08/28/Redis%E5%88%86%E5%B8%83%E5%BC%8F%E7%BC%93%E5%AD%98/">
-                
-                <span class="abstract-title-text">Redis分布式缓存</span>
-            </a>
-            <div class="abstract-content">
-                0. 基于Redis集群解决单机Redis存在的问题单机的Redis存在四大问题：
-
-数据丢失问题–解决：实现redis数据持久化
-并发能力问题–解决：搭建主从集群，实现读写分离
-故障恢复问题–解决：利用redis哨兵，实现健康检测和自动恢复
-存储能力问题–解决：搭建分片集群，利用插槽机制实现动态扩容
-
-1. Redis持久化Redis有两种持久化方案：
-
-RDB持久化
-AOF持久化
-
-1.1 RDB持久化RDB全称Redis Database Backup file（Redis数据备份文件），也被叫做Redis数据快照。简单来说就是把内存中的所有数据都记录到磁盘中。当Redis实例故障...
-            </div>
-            <!-- read more -->
-            
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2022/10/16">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/08/28</span>
-                </div>
-                <!-- tags -->
-                
-                    <div class= abstract-tags >
-    
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="Java">Java</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="Redis">Redis</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="缓存">缓存</a>
-    
-</div>
-
-                
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
-    
-        
-        
-        
-        
-            
-        
-        <article class="index-post">
-            <a class="abstract-title" href="/2020/08/15/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B-%E5%B9%B6%E5%8F%91%E2%91%A1/">
-                
-                <span class="abstract-title-text">Java多线程-并发②</span>
-            </a>
-            <div class="abstract-content">
-                多线程-并发②16. 数据并发操作可能的问题?
-丢失的修改
-不可重复读,读第二次,数据就不对了
-读脏数据
-幻影读
-
-17. 消息等待通知wait&#x2F;notify具体的应用
-一个线程修改了一个对象的值，另外一个线程需要感知到这个变化
-Java中我们使用的对象锁以及wait&#x2F;notify方法进行线程通信
-等待方遵循的原则：
-
-
-获取对象的锁
-不满足条件 就调用wait()方法
-条件满足继续执行
-
-
-通知方原则：
-
-
-获取对象的锁
-改变条件， 然后notify
-
-18. 线程池中 submit() 和 execute() 方法有什么区别？
-execute() 参数 Runna...
-            </div>
-            <!-- read more -->
-            
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2022/10/16">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/08/15</span>
-                </div>
-                <!-- tags -->
-                
-                    <div class= abstract-tags >
-    
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="Java">Java</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="面试题">面试题</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="多线程">多线程</a>
     
         <a class="post-tag" href="javascript:void(0);" data-tags="并发">并发</a>
     
+        <a class="post-tag" href="javascript:void(0);" data-tags="RabbitMQ">RabbitMQ</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="消息队列">消息队列</a>
+    
 </div>
 
                 
@@ -693,34 +797,27 @@ execute() 参数 Runna...
             
         
         <article class="index-post">
-            <a class="abstract-title" href="/2020/08/15/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B-%E5%B9%B6%E5%8F%91%E2%91%A0/">
+            <a class="abstract-title" href="/2022/09/08/ELK%E6%90%9C%E7%B4%A2/">
                 
-                <span class="abstract-title-text">Java多线程-并发</span>
+                <span class="abstract-title-text">ELK搜索</span>
             </a>
             <div class="abstract-content">
-                多线程-并发①1.Java中的锁
-乐观锁&#x2F;悲观锁
-共享锁&#x2F;独享锁
-公平锁&#x2F;非公平锁
-互斥锁&#x2F;读写锁
-可重入锁
-自旋锁
-分段锁
-偏向锁&#x2F;轻量级锁&#x2F;重量级锁
+                ELK技术栈
+elasticsearch结合kibana、Logstash、Beats，也就是elastic stack（ELK）。被广泛应用在日志数据分析、实时监控等领域
+elasticsearch是elastic stack的核心，负责存储、搜索、分析数据-elasticsearch底层是基于lucene来实现的
+以elasticsearch为核心的技术栈，包括beats、Logstash、kibana、elasticsearch
 
-2. Java线程的状态|生命周期
-Java的线程状态被定义在公共枚举类java.lang.Thread.state中。一种有六种状态
-
-
-新建（NEW）：表示线程新建出来还没有被启动的状态，比如：Thread t &#x3D; new MyThread();
-就绪&#x2F;运行（RUNNABLE）：该状态包含了经典线程模型的两种状态：就绪(Ready)、运行(Runnin...
+正向索引和倒排索引正向索引
+用户搜索数据，条件是title符合&quot;%手机%&quot;
+逐行获取数据，比如id为1的数据
+判断数据中的title...
             </div>
             <!-- read more -->
             
             <div class="abstract-post-meta">
                 <!-- date -->
-                <div class="abstract-date" title="Last updated: 2022/10/16">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/08/15</span>
+                <div class="abstract-date" title="Last updated: 2022/10/17">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2022/09/08</span>
                 </div>
                 <!-- tags -->
                 
@@ -729,55 +826,15 @@ Java的线程状态被定义在公共枚举类java.lang.Thread.state中。一种
     
         <a class="post-tag" href="javascript:void(0);" data-tags="Java">Java</a>
     
-        <a class="post-tag" href="javascript:void(0);" data-tags="面试题">面试题</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="ELK">ELK</a>
     
-        <a class="post-tag" href="javascript:void(0);" data-tags="多线程">多线程</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="分布式搜索引擎">分布式搜索引擎</a>
     
-        <a class="post-tag" href="javascript:void(0);" data-tags="并发">并发</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="elasticsearch">elasticsearch</a>
     
-</div>
-
-                
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
+        <a class="post-tag" href="javascript:void(0);" data-tags="Logstash">Logstash</a>
     
-        
-        
-        
-        
-            
-        
-        <article class="index-post">
-            <a class="abstract-title" href="/2019/08/14/nginx%E7%AE%80%E4%BB%8B%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%BF%9B%E9%98%B6/">
-                
-                <span class="abstract-title-text">nginx简介及使用进阶</span>
-            </a>
-            <div class="abstract-content">
-                1. nginx介绍
-Nginx是一款轻量级的Web服务器&#x2F;反向代理服务器及电子邮件（IMAP&#x2F;POP3）代理服务器。其特点是占有内存少，并发能力强，事实上nginx的并发能力在同类型的网页服务器中表现较好，中国大陆使用nginx的网站有：百度、京东、新浪、网易、腾讯、淘宝等。
-Nginx是由伊戈尔·赛索耶夫为俄罗斯访问量第二的Rambler.ru站点（俄文：Рамблер）开发的，第一个公开版本0.1.0发布于2004年10月4日。nginx官网
-
-2. 安装一般推荐安装在linux服务器，其他操作系统可查看官网网站
-2.1 联网使用包管理器安装方式最简单即使用包管...
-            </div>
-            <!-- read more -->
-            
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2022/10/16">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/08/14</span>
-                </div>
-                <!-- tags -->
-                
-                    <div class= abstract-tags >
-    
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="nginx">nginx</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="http服务器">http服务器</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="高并发">高并发</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="kibana">kibana</a>
     
 </div>
 
@@ -793,75 +850,25 @@ Nginx是由伊戈尔·赛索耶夫为俄罗斯访问量第二的Rambler.ru站点
             
         
         <article class="index-post">
-            <a class="abstract-title" href="/2019/05/04/PVE%E8%99%9A%E6%8B%9F%E5%8C%96/">
+            <a class="abstract-title" href="/2022/08/30/Ribbin%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E6%BA%90%E7%A0%81%E5%8E%9F%E7%90%86%E4%B8%8E%E6%BA%90%E7%A0%81%E8%B0%83%E8%AF%95/">
                 
-                <span class="abstract-title-text">PVE虚拟化</span>
+                <span class="abstract-title-text">Ribbin负载均衡源码原理与源码调试</span>
             </a>
             <div class="abstract-content">
-                Proxmox VEProxmox VE（PVE），开源虚拟化解决方案，如果觉得VMware的ESXI过于庞大复杂，可以尝试以下，普通PC就可安装，支持分布式。据说基于KVM，操作系统是万能的Debian。
-官网：https://www.proxmox.com/en/
-中文社区：https://www.proxmox.wiki/
-很多资料都可以在社区找到，安装也及其简单快捷，只需下载镜像，刻录到U盘，在需要安装的主机引导U盘启动，安装镜像的安装指导，一步一步安装即可，安装成功后，在界面会有管理网址弹出，直接web访问管理网址即可。目前的版本是6.4，开源产品，迭代还是很快的，据说是采用的...
+                Ribbon负载均衡流程
+发起请求http:&#x2F;&#x2F;服务名xxx&#x2F;服务接口名xxx&#x2F;参数
+被LoadBalancerInterceptor负载均衡拦截器拦截
+LoadBalancerInterceptor调用RibbonLoadBanlancerClient真实执行
+RibbonLoadBanlancerClient获取url中的服务参数与服务接口名
+RibbonLoadBanlancerClient调用DynamicServerListLoadBalancer，从eurekaserver中得到服务列表
+DynamicServerListLoadBal...
             </div>
             <!-- read more -->
             
             <div class="abstract-post-meta">
                 <!-- date -->
-                <div class="abstract-date" title="Last updated: 2022/10/16">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/05/04</span>
-                </div>
-                <!-- tags -->
-                
-                    <div class= abstract-tags >
-    
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="虚拟化">虚拟化</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="Proxmox VE">Proxmox VE</a>
-    
-</div>
-
-                
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
-    
-        
-        
-        
-        
-            
-        
-        <article class="index-post">
-            <a class="abstract-title" href="/2018/08/15/Java%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
-                
-                <span class="abstract-title-text">Java算法基础-数据结构-设计模式</span>
-            </a>
-            <div class="abstract-content">
-                Java算法基础-数据结构-设计模式1. 动态代理有几种实现？
-java的动态代理技术的实现主要有两种方式：
-
-
-JDK原生动态代理
-CGLIB动态代理
-
-
-JDK原生动态代理是Java原生支持的，不需要任何外部依赖，但是它只能基于接口进行代理（需要代理的对象必须实现于某个接口）
-CGLIB通过继承的方式进行代理（让需要代理的类成为Enhancer的父类），无论目标对象有没有实现接口都可以代理，但是无法处理final的情况。
-
-2. 堆和栈的区别?
-栈内存
-
-
-栈内存首先是一片内存区域，存储的都是局部变量
-凡是定义在方法中的都是局部变量（方法外的是全局变量），for循环内部定义的也是局部...
-            </div>
-            <!-- read more -->
-            
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2022/10/16">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/08/15</span>
+                <div class="abstract-date" title="Last updated: 2022/09/08">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2022/08/30</span>
                 </div>
                 <!-- tags -->
                 
@@ -870,56 +877,11 @@ CGLIB通过继承的方式进行代理（让需要代理的类成为Enhancer的�
     
         <a class="post-tag" href="javascript:void(0);" data-tags="Java">Java</a>
     
-        <a class="post-tag" href="javascript:void(0);" data-tags="面试题">面试题</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="Spring">Spring</a>
     
-        <a class="post-tag" href="javascript:void(0);" data-tags="数据结构">数据结构</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="Ribbon">Ribbon</a>
     
-</div>
-
-                
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
-    
-        
-        
-        
-        
-            
-        
-        <article class="index-post">
-            <a class="abstract-title" href="/2018/08/15/Java%E6%95%B0%E7%BB%84%E5%9F%BA%E7%A1%80/">
-                
-                <span class="abstract-title-text">Java数组基础</span>
-            </a>
-            <div class="abstract-content">
-                数组基础1.ArrayList和LinkedList区别?
-都是List接口的实现类
-ArrayList基于数组，LinkedList基于链表
-ArrayList3.1 查询快，增删慢3.2 往数组尾部添加元素的效率高，也就是调用add(obj)，但是还是比LinkedList慢。
-LinkedList4.1 数据添加删除效率高，只需要改变指针指向即可4.2 查询数据的平均效率低，需要对链表进行遍历
-
-2.ArrayList扩容机制怎样？
-ArrayList每次扩容是原来的1.5倍。
-数组进行扩容时，会将老数组中的元素重新拷贝一份到新的数组中，每次数组容量的增长大约是其原容量的1.5倍。...
-            </div>
-            <!-- read more -->
-            
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2022/10/16">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/08/15</span>
-                </div>
-                <!-- tags -->
-                
-                    <div class= abstract-tags >
-    
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="Java">Java</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="面试题">面试题</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="数组基础">数组基础</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="debug调试">debug调试</a>
     
 </div>
 
@@ -931,7 +893,7 @@ ArrayList每次扩容是原来的1.5倍。
     <!-- paginator  -->
     
         <nav class="page-nav">
-            <a class="extend prev" rel="prev" href="/">&lt; PREV</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">NEXT &gt;</a>
+            <a class="extend prev" rel="prev" href="/">&lt; PREV</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/">NEXT &gt;</a>
         </nav>
     
 </main>
@@ -1250,7 +1212,247 @@ ArrayList每次扩容是原来的1.5倍。
         
         
         
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
     
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         
         
         
@@ -1403,7 +1605,7 @@ ArrayList每次扩容是原来的1.5倍。
     
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 22
+        Total : 38
         </div>
         <!-- search  -->
         
@@ -1417,6 +1619,102 @@ ArrayList每次扩容是原来的1.5倍。
             <div class="archive-year"> 2022 </div>
             <ul class="year-list">
             
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/22</span>
+            <a class="archive-post-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9802%E9%9B%86%E5%90%88%E7%9B%B8%E5%85%B3/">Java面试题02集合相关</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/22</span>
+            <a class="archive-post-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9801%E5%9F%BA%E7%A1%80/">Java面试题01基础</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/22</span>
+            <a class="archive-post-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9803%E5%A4%9A%E7%BA%BF%E7%A8%8B/">Java面试题03多线程</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/22</span>
+            <a class="archive-post-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9804JVM/">Java面试题04JVM</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/22</span>
+            <a class="archive-post-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9805Web/">Java面试题05Web</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/22</span>
+            <a class="archive-post-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9807Mybatis%E6%A1%86%E6%9E%B6/">Java面试题07Mybatis框架</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/22</span>
+            <a class="archive-post-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9806%E6%95%B0%E6%8D%AE%E5%BA%93/">Java面试题06数据库</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/22</span>
+            <a class="archive-post-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9808Spring%E6%A1%86%E6%9E%B6/">Java面试题08Spring框架</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/22</span>
+            <a class="archive-post-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9809SpringMVC%E6%A1%86%E6%9E%B6/">Java面试题09SpringMVC框架</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/22</span>
+            <a class="archive-post-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9810SpringBoot/">Java面试题10SpringBoot</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/22</span>
+            <a class="archive-post-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9812%E9%98%BF%E9%87%8CDubbo/">Java面试题12阿里Dubbo</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/22</span>
+            <a class="archive-post-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9811SpringCloud/">Java面试题11SpringCloud</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/22</span>
+            <a class="archive-post-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9814MongoDB/">Java面试题14MongoDB</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/22</span>
+            <a class="archive-post-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9813Zookeeper/">Java面试题13Zookeeper</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/22</span>
+            <a class="archive-post-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9815Kafka/">Java面试题15Kafka</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/22</span>
+            <a class="archive-post-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9816JWT/">Java面试题16JWT</a>
+        </li>
+    
         
         <li class="archive-post-item">
             <span class="archive-post-date">10/19</span>
@@ -1810,6 +2108,81 @@ ArrayList每次扩容是原来的1.5倍。
                 数据库
             </span>
         
+            <span class="sidebar-tag-name" data-tags="集合">
+                <span class="iconfont-archer">&#xe606;</span>
+                集合
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="基础">
+                <span class="iconfont-archer">&#xe606;</span>
+                基础
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="JVM">
+                <span class="iconfont-archer">&#xe606;</span>
+                JVM
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="WEB">
+                <span class="iconfont-archer">&#xe606;</span>
+                WEB
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Mybatis">
+                <span class="iconfont-archer">&#xe606;</span>
+                Mybatis
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="MySql">
+                <span class="iconfont-archer">&#xe606;</span>
+                MySql
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="SpringMVC">
+                <span class="iconfont-archer">&#xe606;</span>
+                SpringMVC
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="SpringBoot">
+                <span class="iconfont-archer">&#xe606;</span>
+                SpringBoot
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Dubbo">
+                <span class="iconfont-archer">&#xe606;</span>
+                Dubbo
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="SpringCloud">
+                <span class="iconfont-archer">&#xe606;</span>
+                SpringCloud
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="MongoDB">
+                <span class="iconfont-archer">&#xe606;</span>
+                MongoDB
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Zookeeper">
+                <span class="iconfont-archer">&#xe606;</span>
+                Zookeeper
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Kafka">
+                <span class="iconfont-archer">&#xe606;</span>
+                Kafka
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="JWT">
+                <span class="iconfont-archer">&#xe606;</span>
+                JWT
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="token">
+                <span class="iconfont-archer">&#xe606;</span>
+                token
+            </span>
+        
     </div>
     <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
     <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
@@ -1849,6 +2222,11 @@ ArrayList每次扩容是原来的1.5倍。
         <span class="sidebar-category-name" data-categories="编程与数据库">
             <span class="iconfont-archer">&#xe60a;</span>
             编程与数据库
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="面试">
+            <span class="iconfont-archer">&#xe60a;</span>
+            面试
         </span>
     
     </div>

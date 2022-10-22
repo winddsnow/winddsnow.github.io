@@ -1,0 +1,2037 @@
+<!DOCTYPE html>
+<html lang="*zh-CN*">
+    <!-- title -->
+
+
+    
+
+<!-- keywords -->
+
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="author" content="WinddSnow">
+    <meta name="renderer" content="webkit">
+    <meta name="copyright" content="WinddSnow">
+    
+        <meta name="keywords" content="hexo,hexo-theme,hexo-blog">
+    
+    <meta name="description" content="">
+    <meta name="description" content="SOA 和微服务的区别?到 SOA 和微服务的区别, 那咱们先谈谈架构的演变  集中式架构 项目功能简单, 一个项目只需一个应用, 将所有功能部署在一起, 这样的架构好处是减少了部署节点和成本. 缺点: 代码耦合，开发维护困难, 无法水平扩展, 单点容错率低，并发能力差  垂直拆分架构 当访问量逐渐增大，单一应用无法满足需求，此时为了应对更高的并发和业务需求，我们根据业务功能对系统进行拆分： 优点">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java面试题11SpringCloud">
+<meta property="og:url" content="https://winddsnow.github.io/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9811SpringCloud/index.html">
+<meta property="og:site_name" content="WinddSnow">
+<meta property="og:description" content="SOA 和微服务的区别?到 SOA 和微服务的区别, 那咱们先谈谈架构的演变  集中式架构 项目功能简单, 一个项目只需一个应用, 将所有功能部署在一起, 这样的架构好处是减少了部署节点和成本. 缺点: 代码耦合，开发维护困难, 无法水平扩展, 单点容错率低，并发能力差  垂直拆分架构 当访问量逐渐增大，单一应用无法满足需求，此时为了应对更高的并发和业务需求，我们根据业务功能对系统进行拆分： 优点">
+<meta property="og:locale">
+<meta property="article:published_time" content="2022-10-22T12:50:07.000Z">
+<meta property="article:modified_time" content="2022-10-22T12:50:34.797Z">
+<meta property="article:author" content="WinddSnow">
+<meta property="article:tag" content="Java">
+<meta property="article:tag" content="SpringCloud">
+<meta name="twitter:card" content="summary">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <link rel="icon" href="/assets/favicon.ico">
+    
+    <title>Java面试题11SpringCloud · WinddSnow</title>
+    <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
+/* This file is meant as a standalone workflow for
+- testing support for link[rel=preload]
+- enabling async CSS loading in browsers that do not support rel=preload
+- applying rel preload css once loaded, whether supported or not.
+*/ -->
+<script>
+    (function (w) {
+        'use strict'
+        // rel=preload support test
+        if (!w.loadCSS) {
+            w.loadCSS = function () {}
+        }
+        // define on the loadCSS obj
+        var rp = (loadCSS.relpreload = {})
+        // rel=preload feature support test
+        // runs once and returns a function for compat purposes
+        rp.support = (function () {
+            var ret
+            try {
+                ret = w.document.createElement('link').relList.supports('preload')
+            } catch (e) {
+                ret = false
+            }
+            return function () {
+                return ret
+            }
+        })()
+
+        // if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+        // then change that media back to its intended value on load
+        rp.bindMediaToggle = function (link) {
+            // remember existing media attr for ultimate state, or default to 'all'
+            var finalMedia = link.media || 'all'
+
+            function enableStylesheet() {
+                link.media = finalMedia
+            }
+
+            // bind load handlers to enable media
+            if (link.addEventListener) {
+                link.addEventListener('load', enableStylesheet)
+            } else if (link.attachEvent) {
+                link.attachEvent('onload', enableStylesheet)
+            }
+
+            // Set rel and non-applicable media type to start an async request
+            // note: timeout allows this to happen async to let rendering continue in IE
+            setTimeout(function () {
+                link.rel = 'stylesheet'
+                link.media = 'only x'
+            })
+            // also enable media after 3 seconds,
+            // which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+            setTimeout(enableStylesheet, 3000)
+        }
+
+        // loop through link elements in DOM
+        rp.poly = function () {
+            // double check this to prevent external calls from running
+            if (rp.support()) {
+                return
+            }
+            var links = w.document.getElementsByTagName('link')
+            for (var i = 0; i < links.length; i++) {
+                var link = links[i]
+                // qualify links to those with rel=preload and as=style attrs
+                if (
+                    link.rel === 'preload' &&
+                    link.getAttribute('as') === 'style' &&
+                    !link.getAttribute('data-loadcss')
+                ) {
+                    // prevent rerunning on link
+                    link.setAttribute('data-loadcss', true)
+                    // bind listeners to toggle media back
+                    rp.bindMediaToggle(link)
+                }
+            }
+        }
+
+        // if unsupported, run the polyfill
+        if (!rp.support()) {
+            // run once at least
+            rp.poly()
+
+            // rerun poly on an interval until onload
+            var run = w.setInterval(rp.poly, 500)
+            if (w.addEventListener) {
+                w.addEventListener('load', function () {
+                    rp.poly()
+                    w.clearInterval(run)
+                })
+            } else if (w.attachEvent) {
+                w.attachEvent('onload', function () {
+                    rp.poly()
+                    w.clearInterval(run)
+                })
+            }
+        }
+
+        // commonjs
+        if (typeof exports !== 'undefined') {
+            exports.loadCSS = loadCSS
+        } else {
+            w.loadCSS = loadCSS
+        }
+    })(typeof global !== 'undefined' ? global : this)
+</script>
+
+    <style type="text/css">
+    @font-face {
+        font-family: 'Oswald-Regular';
+        src: url("/font/Oswald-Regular.ttf");
+    }
+
+    body {
+        margin: 0;
+    }
+
+    header,
+    footer,
+    .back-top,
+    .sidebar,
+    .container,
+    .site-intro-meta,
+    .toc-wrapper {
+        display: none;
+    }
+
+    .site-intro {
+        position: relative;
+        z-index: 3;
+        width: 100%;
+        /* height: 50vh; */
+        overflow: hidden;
+    }
+
+    .site-intro-placeholder {
+        position: absolute;
+        z-index: -2;
+        top: 0;
+        left: 0;
+        width: calc(100% + 300px);
+        height: 100%;
+        background: repeating-linear-gradient(-45deg, #444 0, #444 80px, #333 80px, #333 160px);
+        background-position: center center;
+        transform: translate3d(-226px, 0, 0);
+        animation: gradient-move 2.5s ease-out 0s infinite;
+    }
+
+    @keyframes gradient-move {
+        0% {
+            transform: translate3d(-226px, 0, 0);
+        }
+        100% {
+            transform: translate3d(0, 0, 0);
+        }
+    }
+</style>
+
+    <link rel="preload" href="/css/style.css?v=20211217" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="/css/dark.css?v=20211217" as="style">
+    <link rel="stylesheet" href="/css/dark.css">
+    <link rel="stylesheet" href="/css/mobile.css?v=20211217" media="(max-width: 960px)">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" as="script">
+    <link rel="preload" href="/scripts/main.js?v=20211217" as="script">
+    <link rel="preload" href="/scripts/dark.js?v=20211217" as="script">
+    <link rel="preload" href="/font/Oswald-Regular.ttf" as="font" crossorigin>
+    <link rel="preload" href="https://at.alicdn.com/t/font_327081_1dta1rlogw17zaor.woff" as="font" crossorigin>
+    <!-- algolia -->
+    
+    <!-- 百度统计  -->
+    
+    <!-- 谷歌统计  -->
+    
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+    <script type="text/javascript">
+        if (typeof window.$ == undefined) {
+            console.warn('jquery load from jsdelivr failed, will load local script')
+            document.write('<script src="/lib/jquery.min.js" />')
+        }
+    </script>
+    
+        <body class="post-body">
+    
+        <!-- header -->
+        <header class="header header-mobile">
+    <!-- top read progress line -->
+    <div class="header-element">
+        <div class="read-progress"></div>
+    </div>
+    <!-- sidebar menu button -->
+    <div class="header-element">
+        
+            <div class="header-sidebar-menu">
+        
+            
+                <div style="padding-left: 1px;">&#xe775;</div>
+            
+        </div>
+    </div>
+    <!-- header actions -->
+    <div class="header-actions">
+        <!-- theme mode switch button -->
+        <span class="header-theme-btn header-element">
+            <i class="fas fa-adjust"></i>
+        </span>
+        <!-- back to home page text -->
+        <span class="home-link header-element">
+            <a href=/>WinddSnow</a>
+        </span>
+    </div>
+    <!-- toggle banner for post layout -->
+    
+        
+            <div class="banner">
+        
+            <div class="blog-title header-element">
+                <a href="/">WinddSnow</a>
+            </div>
+            <div class="post-title header-element">
+                <a href="#" class="post-name">Java面试题11SpringCloud</a>
+            </div>
+        </div>
+    
+</header>
+
+        <!-- fixed footer -->
+        <footer class="footer-fixed">
+    <!-- back to top button -->
+    <div class="footer-fixed-element">
+        
+            <div class="back-top back-top-hidden">
+        
+        
+            <div>&#xe639;</div>
+        
+        </div>
+    </div>
+</footer>
+
+        <!-- wrapper -->
+        <div class="wrapper">
+            <div class="site-intro" style="
+
+
+
+
+
+
+
+    height:50vh;
+
+">
+    
+    <!-- 主页  -->
+    
+        
+    <!-- 404页  -->
+            
+    <div class="site-intro-placeholder"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/post-bg.jpg)"></div>
+    <div class="site-intro-meta">
+        <!-- 标题  -->
+        <h1 class="intro-title">
+            <!-- 主页  -->
+            
+                Java面试题11SpringCloud
+            <!-- 404 -->
+            
+        </h1>
+        <!-- 副标题 -->
+        <p class="intro-subtitle">
+            <!-- 主页副标题  -->
+            
+                
+            <!-- 404 -->
+            
+        </p>
+        <!-- 文章页 meta -->
+        
+            <div class="post-intros">
+                <!-- 文章页标签  -->
+                
+                    <div class= post-intro-tags >
+    
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="Java">Java</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="SpringCloud">SpringCloud</a>
+    
+</div>
+
+                
+                
+                    <div class="post-intro-read">
+                        <span>字数统计: <span class="post-count word-count">4k</span>阅读时长: <span class="post-count reading-time">13 min</span></span>
+                    </div>
+                
+                <div class="post-intro-meta">
+                    <!-- 撰写日期 -->
+                    <span class="iconfont-archer post-intro-calander">&#xe676;</span>
+                    <span class="post-intro-time">2022/10/22</span>
+                    <!-- busuanzi -->
+                    
+                        <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                            <span class="iconfont-archer post-intro-busuanzi">&#xe602;</span>
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    
+                    <!-- 文章分享 -->
+                    <span class="share-wrapper">
+                        <span class="iconfont-archer share-icon">&#xe71d;</span>
+                        <span class="share-text">Share</span>
+                        <ul class="share-list">
+                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                                <div class="share-qrcode"></div>
+                            </li>
+                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
+        
+    </div>
+</div>
+
+            <script>
+  // get user agent
+  function getBrowserVersions() {
+    var u = window.navigator.userAgent
+    return {
+      userAgent: u,
+      trident: u.indexOf('Trident') > -1, //IE内核
+      presto: u.indexOf('Presto') > -1, //opera内核
+      webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+      gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+      mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+      ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+      android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
+      iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者安卓QQ浏览器
+      iPad: u.indexOf('iPad') > -1, //是否为iPad
+      webApp: u.indexOf('Safari') == -1, //是否为web应用程序，没有头部与底部
+      weixin: u.indexOf('MicroMessenger') == -1, //是否为微信浏览器
+      uc: u.indexOf('UCBrowser') > -1, //是否为android下的UC浏览器
+    }
+  }
+  var browser = {
+    versions: getBrowserVersions(),
+  }
+  console.log('userAgent: ' + browser.versions.userAgent)
+
+  // callback
+  function fontLoaded() {
+    console.log('font loaded')
+    if (document.getElementsByClassName('site-intro-meta')) {
+      document
+        .getElementsByClassName('intro-title')[0]
+        .classList.add('intro-fade-in')
+      document
+        .getElementsByClassName('intro-subtitle')[0]
+        .classList.add('intro-fade-in')
+      var postIntros = document.getElementsByClassName('post-intros')[0]
+      if (postIntros) {
+        postIntros.classList.add('post-fade-in')
+      }
+    }
+  }
+
+  // UC不支持跨域，所以直接显示
+  function asyncCb() {
+    if (browser.versions.uc) {
+      console.log('UCBrowser')
+      fontLoaded()
+    } else {
+      WebFont.load({
+        custom: {
+          families: ['Oswald-Regular'],
+        },
+        loading: function () {
+          // 所有字体开始加载
+          // console.log('font loading');
+        },
+        active: function () {
+          // 所有字体已渲染
+          fontLoaded()
+        },
+        inactive: function () {
+          // 字体预加载失败，无效字体或浏览器不支持加载
+          console.log('inactive: timeout')
+          fontLoaded()
+        },
+        timeout: 5000, // Set the timeout to two seconds
+      })
+    }
+  }
+
+  function asyncErr() {
+    console.warn('script load from CDN failed, will load local script')
+  }
+
+  // load webfont-loader async, and add callback function
+  function async(u, cb, err) {
+    var d = document,
+      t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0]
+    o.src = u
+    if (cb) {
+      o.addEventListener(
+        'load',
+        function (e) {
+          cb(null, e)
+        },
+        false
+      )
+    }
+    if (err) {
+      o.addEventListener(
+        'error',
+        function (e) {
+          err(null, e)
+        },
+        false
+      )
+    }
+    s.parentNode.insertBefore(o, s)
+  }
+
+  var asyncLoadWithFallBack = function (arr, success, reject) {
+    var currReject = function () {
+      reject()
+      arr.shift()
+      if (arr.length) async(arr[0], success, currReject)
+    }
+
+    async(arr[0], success, currReject)
+  }
+
+  asyncLoadWithFallBack(
+    [
+      'https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js',
+      'https://cdn.bootcss.com/webfont/1.6.28/webfontloader.js',
+      "/lib/webfontloader.min.js",
+    ],
+    asyncCb,
+    asyncErr
+  )
+</script>
+
+            <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
+            <div class="container container-unloaded">
+                <main class="main post-page">
+    <article class="article-entry">
+        <h2 id="SOA-和微服务的区别"><a href="#SOA-和微服务的区别" class="headerlink" title="SOA 和微服务的区别?"></a>SOA 和微服务的区别?</h2><p>到 SOA 和微服务的区别, 那咱们先谈谈架构的演变</p>
+<ol>
+<li><p>集中式架构</p>
+<p>项目功能简单, 一个项目只需一个应用, 将所有功能部署在一起, 这样的架构好处是减少了部署节点和成本.</p>
+<p>缺点: 代码耦合，开发维护困难, 无法水平扩展, 单点容错率低，并发能力差</p>
+</li>
+<li><p>垂直拆分架构</p>
+<p>当访问量逐渐增大，单一应用无法满足需求，此时为了应对更高的并发和业务需求，我们根据业务功能对系统进行拆分：</p>
+<p>优点：系统拆分实现了流量分担，解决了并发问题,可以针对不同模块进行优化, 方便水平扩展，负载均衡，容错率提高</p>
+<p>缺点：系统间相互独立，会有很多重复开发工作，影响开发效率</p>
+</li>
+<li><p>分布式服务</p>
+<p>当垂直应用越来越多, 随着项目业务功能越来越复杂, 并非垂直应用这一条线进行数据调用, 应用和应用之间也会互相调用, 也就是完成某一个功能,需要多个应用互相调用, 这就是将功能拆完来完成的分布式架构.</p>
+<p>优点：将基础服务进行了抽取，系统间相互调用，提高了代码复用和开发效率</p>
+<p>缺点：系统间耦合度变高，调用关系错综复杂，难以维护.</p>
+</li>
+<li><p>服务治理架构 SOA</p>
+<p>SOA ：面向服务的架构:当服务越来越多，容量的评估，小服务资源的浪费等问题逐渐显现，此时需增加一个调度中心基于访问压力实时管理集群容量，提高集群利用率。此时，用于提高机器利用率的资源调度和治理中心(SOA)是关键, 而最初的服务治理基石是 Dubbo 服务治理</p>
+<p><strong>以前分布式服务的问题？</strong></p>
+<ul>
+<li>服务越来越多，需要管理每个服务的地址, 调用关系错综复杂，难以理清依赖关系</li>
+<li>服务过多，服务状态难以管理，无法根据服务情况动态管理</li>
+</ul>
+<p><strong>SOA 服务治理架构的优点:</strong></p>
+<ul>
+<li>服务注册中心，实现服务自动注册和发现，无需人为记录服务地址</li>
+<li>服务自动订阅，服务列表自动推送，服务调用透明化，无需关心依赖关系</li>
+<li>动态监控服务状态监控报告，人为控制服务状态</li>
+</ul>
+<p><strong>SOA 服务治理架构的缺点：</strong></p>
+<ul>
+<li>服务间依然会有依赖关系，一旦某个环节出错会影响较大(容错机制)</li>
+<li>服务关系复杂，运维、测试部署困难，不符合开发-运维一站式维护的思想.</li>
+</ul>
+</li>
+<li><p>微服务</p>
+<p>前面说的 SOA，英文翻译过来是面向服务。微服务，似乎也是服务，都是对系统进行拆分。因此两者非常容易混淆，但其实缺有一些差别：</p>
+<p>微服务的特点：</p>
+<ul>
+<li>单一职责：微服务中每一个服务都对应唯一的业务能力，做到单一职责.</li>
+<li>微：微服务的服务拆分粒度很小，例如一个用户管理就可以作为一个服务。每个服务虽小，但“五脏俱全”。</li>
+<li>面向服务：面向服务是说每个服务都要对外暴露 Rest 风格服务接口 API。并不关心服务的技术实现，做到与平台和语言无关，也不限定用什么技术实现，只要提供Rest 的接口即可。</li>
+<li>自治：自治是说服务间互相独立，互不干扰</li>
+<li>团队独立：每个服务都是一个独立的开发团队，人数不能过多。</li>
+<li>技术独立：因为是面向服务，提供 Rest 接口，使用什么技术没有别人干涉</li>
+<li>前后端分离：采用前后端分离开发，提供统一 Rest 接口，后端不用再为 PC、移动段开发不同接口</li>
+<li>数据库分离：每个服务都使用自己的数据源</li>
+<li>部署独立，服务间虽然有调用，但要做到服务重启不影响其它服务。有利于持续集成和持续交付。每个服务都是独立的组件，可复用，可替换，降低耦合，易维护. 基于 docker 容器是开发.</li>
+</ul>
+</li>
+</ol>
+<p><strong>目前微服务微服务架构主流的是 SpringBoot+Dubbo 和 SpringBoot+SpringCloud的架构模式.</strong></p>
+<p>综上, 无论是 SOA 还是微服务, 都需要进行服务调度, 目前主流的服务调度室 RPC 和HTTP 两种协议, 而 Dubbo 基于 RPC 的远程调度机构, SpringCloud 是基于 Rest 风格(基于 http 协议实现的)的 Spring 全家桶微服务服务治理框架. 说到这里也可以继续说下Dubbo 和 SpringCloud 的区别.</p>
+<h2 id="SpringCloud-是什么"><a href="#SpringCloud-是什么" class="headerlink" title="SpringCloud 是什么?"></a>SpringCloud 是什么?</h2><p>SpringCloud 是一系列框架的集合，集成 SpringBoot，提供很多优秀服务：服务发现和注册，统一配置中心, 负载均衡，网关, 熔断器等的一个微服务治理框架.</p>
+<h2 id="SpringCloud-的优势"><a href="#SpringCloud-的优势" class="headerlink" title="SpringCloud 的优势?"></a>SpringCloud 的优势?</h2><ul>
+<li>因为 SpringCloud 源于 Spring，所以它的质量，稳定性，持续性都是可以保证的。</li>
+<li>SpringCloud 天热支持 SpringBoot 框架，就可以提高开发效率，能够实现需求。</li>
+<li>SpringCloud 更新很快，后期支持很给力。</li>
+<li>SpringCloud 可以用来开发微服务。</li>
+</ul>
+<h2 id="SpringCloud-有哪些核心组件"><a href="#SpringCloud-有哪些核心组件" class="headerlink" title="SpringCloud 有哪些核心组件?"></a>SpringCloud 有哪些核心组件?</h2><ul>
+<li>Eureka: 注册中心, 服务注册和发现<ul>
+<li>提供服务注册和发现, 是注册中心. 有两个组件: Eureka 服务端和 Eureka 客户端</li>
+<li>Eureka 服务端: 作为服务的注册中心, 用来提供服务注册, 支持集群部署.</li>
+<li>Eureka 客户端: 是一个 java 客户端, 将服务注册到服务端, 同事将服务端的信息缓存到本地, 客户端和服务端定时交互.</li>
+<li>Eureka-Server：就是服务注册中心（可以是一个集群），对外暴露自己的地址。</li>
+<li>提供者：启动后向 Eureka 注册自己信息（地址，服务名称等），并且定期进行服务续约</li>
+<li>消费者：服务调用方，会定期去 Eureka 拉取服务列表，然后使用负载均衡算法选出一个服务进行调用。</li>
+<li>心跳(续约)：提供者定期通过 http 方式向 Eureka 刷新自己的状态</li>
+<li>服务下线、失效剔除和自我保护：</li>
+<li>服务的注册和发现都是可控制的，可以关闭也可以开启。默认都是开启</li>
+<li>注册后需要心跳，心跳周期默认 30 秒一次，超过 90 秒没发心跳认为宕机</li>
+<li>服务拉取默认 30 秒拉取一次.</li>
+<li>Eureka 每个 60 秒会剔除标记为宕机的服务</li>
+<li>Eureka 会有自我保护，当心跳失败比例超过阈值(默认 85%)，那么开启自我保护，不再剔除服务。</li>
+<li>Eureka 高可用就是多台 Eureka 互相注册在对方上.</li>
+</ul>
+</li>
+<li>Ribbon: 负载均衡, 实现服务调用的负载均衡<ul>
+<li>Ribbon 是 Netflix 发布的云中服务开源项目. 给客户端提供负载均衡, 也就是说Ribbon 是作用在消费者方的.</li>
+<li>简单来说, 它是一个客户端负载均衡器, 它会自动通过某种算法去分配你要连接的机器.</li>
+<li>SpringCloud 认为 Ribbon 这种功能很好, 就对它进行了封装, 从而完成负载均衡.</li>
+<li>Ribbon 默认负责均衡策略是轮询策略.</li>
+</ul>
+</li>
+<li>Hystrix: 熔断器<ul>
+<li>有时候可能是网络问题, 一些其它问题, 导致代码无法正常运行, 这是服务就挂了, 崩溃了. 熔断器就是为了解决无法正常访问服务的时, 提供的一种解决方案.</li>
+<li>解决因为一个服务崩溃而引起的一系列问题, 使问题只局限于这个服务中,不会影响其他服务.</li>
+<li>Hystrix 提供了两种功能, 一种是服务降级, 一种是服务熔断.<ul>
+<li>服务降级原理：1.Hystrix 为每个服务分配了小的线程池, 当用户发请求过来, 会通过线程池创建线程来执行任务, 当创建的线程池已满或者请求超时(这里和多线程线程池不一样,不存在任务队列), 则启动服务降级功能.2.降级指的请求故障时, 不会阻塞, 会返回一个友好提示(可以自定义, 例如网站维护中请稍后重试), 也就是说不会影响其他服务的运行.</li>
+<li>服务熔断原理：状态机有 3 个状态：1.Closed：关闭状态（断路器关闭），所有请求都正常访问。2.Open：打开状态（断路器打开），所有请求都会被降级。Hystix 会对请求情况计数，当一定时间内失败请求百分比达到阈值，则触发熔断，断路器会完全关闭。默认失败比例的阈值是 50%，请求次数最少不低于 20 次。3.Half Open：半开状态，open 状态不是永久的，打开后会进入休眠时间（默认是 5S）。随后断路器会自动进入半开状态。此时会释放 1 次请求通过，若这个请求是健康的，则会关闭断路器，否则继续保持打开，再次进行 5 秒休眠计时。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Feign: 远程调用<ul>
+<li>后台系统中, 微服务和微服务之间的调用可以通过 Feign 组件来完成.</li>
+<li>Feign 组件集成了 Ribbon 负载均衡策略(默认开启的, 使用轮询机制), Hystrix 熔断器(默认关闭的, 需要通过配置文件进行设置开启)</li>
+<li>被调用的微服务需要提供一个接口, 加上@@FeignClient(“url”)注解</li>
+<li>调用方需要在启动类上加上@EnableFeignClients, 开启 Feign 组件功能.</li>
+</ul>
+</li>
+<li>Gateway: 网关<ul>
+<li>对于项目后台的微服务系统, 每一个微服务都不会直接暴露给用户来调用的, 但是如果用户知道了某一个服务的 ip:端口号:url:访问参数, 就能直接访问你. 如果再是恶意访问,恶意攻击, 就会击垮后台微服务系统.因此, 需要一个看大门的大 boss, 来保护我们的后台系统.</li>
+<li>Gateway 支持过滤器功能，对请求或响应进行拦截，完成一些通用操作。 Gateway 提供两种过滤器方式：“pre”和“post”</li>
+<li>pre 过滤器，在转发之前执行，可以做参数校验、权限校验、流量监控、日志输出、协议转换等。</li>
+<li>post 过滤器，在后端微服务响应之后并且给前端响应之前执行，可以做响应内容、响应头的修改，日志的输出，流量监控等。</li>
+<li>Gateway 还提供了两种类型过滤器<ul>
+<li>GatewayFilter：局部过滤器，针对单个路由<ul>
+<li>GatewayFilter 局部过滤器，是针对单个路由的过滤器。</li>
+<li>在 Spring Cloud Gateway 组件中提供了大量内置的局部过滤器，对请求和响应做过滤操作。</li>
+<li>遵循约定大于配置的思想，只需要在配置文件配置局部过滤器名称，并为其指定对应的值，就可以让其生效.</li>
+</ul>
+</li>
+<li>GlobalFilter ：全局过滤器，针对所有路由<ul>
+<li>GlobalFilter 全局过滤器，不需要在配置文件中配置，系统初始化时加载，并作用在每个路由上。</li>
+<li>Spring Cloud Gateway 核心的功能也是通过内置的全局过滤器来完成。</li>
+<li>自定义全局过滤器步骤：<ol>
+<li>定义类实现 GlobalFilter 和 Ordered 接口</li>
+<li>复写方法</li>
+<li>完成逻辑处理</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Spring Cloud Config: 配置中心<ul>
+<li>在分布式系统中，由于服务数量巨多，为了方便服务配置文件统一管理，实时更新，所以需要分布式配置中心组件。在 Spring Cloud 中，有分布式配置中心组件 spring Cloud Config ，它支持配置服务放在配置服务的内存中（即本地），也支持放在远程Git 仓库中.</li>
+</ul>
+</li>
+</ul>
+<h2 id="SpringBoot-和-SpringCloud-的关系"><a href="#SpringBoot-和-SpringCloud-的关系" class="headerlink" title="SpringBoot 和 SpringCloud 的关系"></a>SpringBoot 和 SpringCloud 的关系</h2><ul>
+<li>SpringBoot 是为了解决 Spring 配置文件冗余问题, 简化开发的框架.</li>
+<li>SpringCloud 是为了解决微服务之间的协调和配置问题, 还有服务之间的通信,熔断, 负载均衡远程调度任务框架.</li>
+<li>SpringCloud 需要依赖 SpringBoot 搭建微服务, SpringBoot 使用了默认大于配置的理念，很多集成方案已经帮你选择好了，能不配置就不配置，SpringCloud很大的一部分是基于 SpringBoot 来实现。</li>
+<li>SpringBoot 不需要依赖 SpringCloud 就可以独立开发. SpringBoot 也可以集成Dubbo 进行开发.</li>
+</ul>
+<h2 id="SpringCloud-和-Dubbo-的区别"><a href="#SpringCloud-和-Dubbo-的区别" class="headerlink" title="SpringCloud 和 Dubbo 的区别"></a>SpringCloud 和 Dubbo 的区别</h2><ul>
+<li>SpringCloud 和 Dubbo 都是主流的微服务架构.<ul>
+<li>SpringCloud 是 Apache 下的 Spring 体系下的微服务解决方案.</li>
+<li>Dubbo 是阿里系统中分布式微服务治理框架.</li>
+</ul>
+</li>
+<li>技术方面对比<ul>
+<li>SpringCloud 功能远远超过 Dubbo, Dubbo 只实现了服务治理(注册和发现). 但是 SpringCloud 提供了很多功能, 有 21 个子项目</li>
+<li>Dubbo 可 以 使 用 Zookeeper 作 为 注 册 中 心 , 实 现 服 务 的 注 册 和 发 现 , SpringCloud 不仅可以使用 Eureka 作为注册中心, 也可以使用 Zookeeper 作为注册中心.</li>
+<li>Dubbo 没有实现网关功能, 只能通过第三方技术去整合. 但是 SpringCloud 有zuul 路由网关, 对请求进行负载均衡和分发. 提供熔断器, 而且和 git 能完美集成.</li>
+</ul>
+</li>
+<li>性能方面对比<ul>
+<li>由于 Dubbo 底层是使用 Netty 这样的 NIO 框架，是基于 TCP 协议传输的，配合以 Hession 序列化完成 RPC。</li>
+<li>而 SpringCloud 是基于 Http 协议+Rest 接口调用远程过程的，相对来说，Http请求会有更大的报文，占的带宽也会更多。</li>
+<li>使用 Dubbo 时, 需要给每个实体类实现序列化接口, 将实体类转化为二进制进行RPC 通信调用.而使用 SpringCloud 时, 实体类就不需要进行序列化.</li>
+</ul>
+</li>
+</ul>
+<h2 id="Eureka-和-Zookeeper-的区别"><a href="#Eureka-和-Zookeeper-的区别" class="headerlink" title="Eureka 和 Zookeeper 的区别"></a>Eureka 和 Zookeeper 的区别</h2><p>在谈这个问题前我们先看下 CAP 原则:</p>
+<ul>
+<li><p>C(Consistency)-数据一致性;</p>
+</li>
+<li><p>A(Availability)-服务可用性; </p>
+</li>
+<li><p>P(Partition tolerance)-服务对网络分区故障的容错性,</p>
+</li>
+</ul>
+<p>这三个特性在任何分布式系统中不能同时满足, 最多同时满足两个, 而且 P(分区容错性)是一定要满足的.</p>
+<ul>
+<li>Eureka 满足 AP(服务可用性和容错性), Zookeeper 满足 CP(数据一致性和容错性)</li>
+<li>Zookeeper 满足 CP, 数据一致性, 服务的容错性. 数据在各个服务间同步完成后才返回用户结果, 而且如果服务出现网络波动导致监听不到服务心跳, 会立即从服务列表中剔除, 服务不可用.</li>
+<li>Eureka 满足 AP, 可用性, 容错性. 当因网络故障时, Eureka 的自我保护机制不会立即剔除服务, 虽然用户获取到的服务不一定是可用的, 但至少能够获取到服务列表. 用户访问服务列表时还可以利用重试机制, 找到正确的服务. 更服务分布式服务的高可用需求.</li>
+<li>Eureka 集群各节点平等, Zookeeper 集群有主从之分.<ul>
+<li>如果 Zk 集群中有服务宕机,会重新进行选举机制,选择出主节点, 因此可能会导致整个集群因为选主而阻塞, 服务不可用.</li>
+<li>Eureka 集群中有服务宕机,因为是平等的各个服务器,所以其他服务器不受影响.</li>
+</ul>
+</li>
+<li>Eureka 的服务发现者会主动拉取服务, ZK 服务发现者是监听机制<ul>
+<li>Eureka 中获取服务列表后会缓存起来, 每隔 30 秒重新拉取服务列表.</li>
+<li>Zk 则是监听节点信息变化, 当服务节点信息变化时, 客户端立即就得到通知.</li>
+</ul>
+</li>
+</ul>
+
+    </article>
+    <!-- license -->
+    
+        <div class="license-wrapper">
+            <p>原文作者：<a href="https://winddsnow.github.io">WinddSnow</a>
+            <p>原文链接：<a href="https://winddsnow.github.io/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9811SpringCloud/">https://winddsnow.github.io/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9811SpringCloud/</a>
+            <p>发表日期：<a href="https://winddsnow.github.io/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9811SpringCloud/">October 22nd 2022, 8:50:07 pm</a>
+            <p>更新日期：<a href="https://winddsnow.github.io/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9811SpringCloud/">October 22nd 2022, 8:50:34 pm</a>
+            <p>版权声明：本文采用<a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
+        </div>
+    
+    <!-- paginator -->
+    <ul class="post-paginator">
+        <li class="next">
+            
+                <div class="nextSlogan">Next Post</div>
+                <a href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9812%E9%98%BF%E9%87%8CDubbo/" title="Java面试题12阿里Dubbo">
+                    <div class="nextTitle">Java面试题12阿里Dubbo</div>
+                </a>
+            
+        </li>
+        <li class="previous">
+            
+                <div class="prevSlogan">Previous Post</div>
+                <a href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9810SpringBoot/" title="Java面试题10SpringBoot">
+                    <div class="prevTitle">Java面试题10SpringBoot</div>
+                </a>
+            
+        </li>
+    </ul>
+    <!-- comment -->
+    
+        <div class="post-comment">
+            <!-- 来必力 City 版安装代码 -->
+
+
+            
+
+            
+
+            
+
+            <!-- utteranc评论 -->
+
+
+            <!-- partial('_partial/comment/changyan') -->
+            <!--PC版-->
+
+
+            
+            
+
+            
+
+        </div>
+    
+    <!-- timeliness note -->
+    <!-- idea from: https://hexo.fluid-dev.com/posts/hexo-injector/#%E6%96%87%E7%AB%A0%E6%97%B6%E6%95%88%E6%80%A7%E6%8F%90%E7%A4%BA -->
+    
+    <!-- Mathjax -->
+    
+</main>
+
+                <!-- profile -->
+                
+            </div>
+            <footer class="footer footer-unloaded">
+    <!-- social  -->
+    
+        <div class="social">
+            
+    
+        
+            
+                <a href="mailto:winddsnow@163.com" class="iconfont-archer email" title=email ></a>
+            
+        
+    
+        
+            
+                <a href="//github.com/Winddsnow" class="iconfont-archer github" target="_blank" title=github></a>
+            
+        
+    
+        
+            
+                <span class="iconfont-archer wechat" title=wechat>
+                    
+                    <img class="profile-qr" src="/assets/example_qr.png" />
+                </span>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+
+        </div>
+    
+    <!-- powered by Hexo  -->
+    <div class="copyright">
+        <span id="hexo-power">Powered by <a href="https://hexo.io/" target="_blank">Hexo</a></span><span class="iconfont-archer power">&#xe635;</span><span id="theme-info">theme <a href="https://github.com/fi3ework/hexo-theme-archer" target="_blank">Archer</a></span>
+    </div>
+    <!-- website approve for Chinese user -->
+    
+    <!-- 不蒜子  -->
+    
+        <div class="busuanzi-container">
+            
+             
+                <span id="busuanzi_container_site_pv">PV: <span id="busuanzi_value_site_pv"></span> :)</span>
+            
+        </div>
+    	
+</footer>
+
+        </div>
+        <!-- toc -->
+        
+            <div class="toc-wrapper toc-wrapper-loding" style=
+
+
+
+
+
+
+
+    top:50vh;
+
+>
+                <div class="toc-catalog">
+                    <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+                </div>
+                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#SOA-%E5%92%8C%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">1.</span> <span class="toc-text">SOA 和微服务的区别?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SpringCloud-%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-number">2.</span> <span class="toc-text">SpringCloud 是什么?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SpringCloud-%E7%9A%84%E4%BC%98%E5%8A%BF"><span class="toc-number">3.</span> <span class="toc-text">SpringCloud 的优势?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SpringCloud-%E6%9C%89%E5%93%AA%E4%BA%9B%E6%A0%B8%E5%BF%83%E7%BB%84%E4%BB%B6"><span class="toc-number">4.</span> <span class="toc-text">SpringCloud 有哪些核心组件?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SpringBoot-%E5%92%8C-SpringCloud-%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="toc-number">5.</span> <span class="toc-text">SpringBoot 和 SpringCloud 的关系</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SpringCloud-%E5%92%8C-Dubbo-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">6.</span> <span class="toc-text">SpringCloud 和 Dubbo 的区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Eureka-%E5%92%8C-Zookeeper-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">7.</span> <span class="toc-text">Eureka 和 Zookeeper 的区别</span></a></li></ol>
+            </div>
+        
+        <!-- sidebar -->
+        <div class="sidebar sidebar-hide">
+    <ul class="sidebar-tabs sidebar-tabs-active-0">
+        <li class="sidebar-tab-archives"><span class="iconfont-archer">&#xe67d;</span><span class="tab-name">Archive</span></li>
+        <li class="sidebar-tab-tags"><span class="iconfont-archer">&#xe61b;</span><span class="tab-name">Tag</span></li>
+        <li class="sidebar-tab-categories"><span class="iconfont-archer">&#xe666;</span><span class="tab-name">Cate</span></li>
+    </ul>
+    <div class="sidebar-content sidebar-content-show-archive">
+        <div class="sidebar-panel-archives">
+    <!-- 在 ejs 中将 archive 按照时间排序 -->
+    
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    
+    
+    
+    
+    <div class="total-and-search">
+        <div class="total-archive">
+        Total : 38
+        </div>
+        <!-- search  -->
+        
+    </div>
+    
+    <div class="post-archive">
+    
+        
+            
+            
+            <div class="archive-year"> 2022 </div>
+            <ul class="year-list">
+            
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/22</span>
+            <a class="archive-post-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9802%E9%9B%86%E5%90%88%E7%9B%B8%E5%85%B3/">Java面试题02集合相关</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/22</span>
+            <a class="archive-post-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9801%E5%9F%BA%E7%A1%80/">Java面试题01基础</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/22</span>
+            <a class="archive-post-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9803%E5%A4%9A%E7%BA%BF%E7%A8%8B/">Java面试题03多线程</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/22</span>
+            <a class="archive-post-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9804JVM/">Java面试题04JVM</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/22</span>
+            <a class="archive-post-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9805Web/">Java面试题05Web</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/22</span>
+            <a class="archive-post-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9807Mybatis%E6%A1%86%E6%9E%B6/">Java面试题07Mybatis框架</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/22</span>
+            <a class="archive-post-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9806%E6%95%B0%E6%8D%AE%E5%BA%93/">Java面试题06数据库</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/22</span>
+            <a class="archive-post-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9808Spring%E6%A1%86%E6%9E%B6/">Java面试题08Spring框架</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/22</span>
+            <a class="archive-post-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9809SpringMVC%E6%A1%86%E6%9E%B6/">Java面试题09SpringMVC框架</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/22</span>
+            <a class="archive-post-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9810SpringBoot/">Java面试题10SpringBoot</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/22</span>
+            <a class="archive-post-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9812%E9%98%BF%E9%87%8CDubbo/">Java面试题12阿里Dubbo</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/22</span>
+            <a class="archive-post-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9811SpringCloud/">Java面试题11SpringCloud</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/22</span>
+            <a class="archive-post-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9814MongoDB/">Java面试题14MongoDB</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/22</span>
+            <a class="archive-post-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9813Zookeeper/">Java面试题13Zookeeper</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/22</span>
+            <a class="archive-post-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9815Kafka/">Java面试题15Kafka</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/22</span>
+            <a class="archive-post-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9816JWT/">Java面试题16JWT</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/19</span>
+            <a class="archive-post-title" href="/2022/10/19/MySQL%E4%BC%98%E5%8C%96/">MySQL优化</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/08</span>
+            <a class="archive-post-title" href="/2022/09/08/RabbitMQ/">RabbitMQ</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/08</span>
+            <a class="archive-post-title" href="/2022/09/08/ELK%E6%90%9C%E7%B4%A2/">ELK搜索</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/30</span>
+            <a class="archive-post-title" href="/2022/08/30/Ribbin%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E6%BA%90%E7%A0%81%E5%8E%9F%E7%90%86%E4%B8%8E%E6%BA%90%E7%A0%81%E8%B0%83%E8%AF%95/">Ribbin负载均衡源码原理与源码调试</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/15</span>
+            <a class="archive-post-title" href="/2022/08/15/Yapi%E9%83%A8%E7%BD%B2%E4%B8%8E%E4%BD%BF%E7%94%A8/">Yapi部署与使用</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/14</span>
+            <a class="archive-post-title" href="/2022/08/14/HashMap%E5%8E%9F%E7%90%86/">HashMap原理</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/10</span>
+            <a class="archive-post-title" href="/2022/02/10/Vim%E7%94%A8%E6%B3%95%E7%AE%80%E8%AE%B0/">Vim用法简记</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/10</span>
+            <a class="archive-post-title" href="/2022/02/10/Markdown%E7%A4%BA%E4%BE%8B2/">Markdown示例2</a>
+        </li>
+    
+        
+            
+            
+                
+                </ul>
+            
+            <div class="archive-year"> 2021 </div>
+            <ul class="year-list">
+            
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/20</span>
+            <a class="archive-post-title" href="/2021/12/20/Dead-Line-2021%E6%80%BB%E7%BB%93/">Dead Line--2021总结</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/29</span>
+            <a class="archive-post-title" href="/2021/08/29/SpringCloud%E7%AE%80%E4%BB%8B/">SpringCloud简介</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/14</span>
+            <a class="archive-post-title" href="/2021/08/14/mysql%E8%AF%BB%E5%86%99%E5%88%86%E7%A6%BB-%E4%B8%BB%E4%BB%8E%E5%A4%8D%E5%88%B6%E5%8F%8Asharing-jdbc%E4%BD%BF%E7%94%A8/">mysql读写分离-主从复制及sharing-jdbc使用</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/03</span>
+            <a class="archive-post-title" href="/2021/05/03/Markdown%E8%AF%AD%E6%B3%95%E8%AE%B0%E5%BD%95/">Markdown语法记录</a>
+        </li>
+    
+        
+            
+            
+                
+                </ul>
+            
+            <div class="archive-year"> 2020 </div>
+            <ul class="year-list">
+            
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/28</span>
+            <a class="archive-post-title" href="/2020/08/28/Redis%E7%9B%B8%E5%85%B3%E9%97%AE%E9%A2%98/">Redis相关问题</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/28</span>
+            <a class="archive-post-title" href="/2020/08/28/Redis%E5%88%86%E5%B8%83%E5%BC%8F%E7%BC%93%E5%AD%98/">Redis分布式缓存</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/15</span>
+            <a class="archive-post-title" href="/2020/08/15/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B-%E5%B9%B6%E5%8F%91%E2%91%A0/">Java多线程-并发</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/15</span>
+            <a class="archive-post-title" href="/2020/08/15/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B-%E5%B9%B6%E5%8F%91%E2%91%A1/">Java多线程-并发②</a>
+        </li>
+    
+        
+            
+            
+                
+                </ul>
+            
+            <div class="archive-year"> 2019 </div>
+            <ul class="year-list">
+            
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/14</span>
+            <a class="archive-post-title" href="/2019/08/14/nginx%E7%AE%80%E4%BB%8B%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%BF%9B%E9%98%B6/">nginx简介及使用进阶</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/04</span>
+            <a class="archive-post-title" href="/2019/05/04/PVE%E8%99%9A%E6%8B%9F%E5%8C%96/">PVE虚拟化</a>
+        </li>
+    
+        
+            
+            
+                
+                </ul>
+            
+            <div class="archive-year"> 2018 </div>
+            <ul class="year-list">
+            
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/15</span>
+            <a class="archive-post-title" href="/2018/08/15/Java%E6%95%B0%E7%BB%84%E5%9F%BA%E7%A1%80/">Java数组基础</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/15</span>
+            <a class="archive-post-title" href="/2018/08/15/Java%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">Java算法基础-数据结构-设计模式</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/03</span>
+            <a class="archive-post-title" href="/2018/05/03/%E6%9D%82%E8%B0%88%E6%9C%8D%E5%8A%A1%E5%99%A8/">杂谈服务器</a>
+        </li>
+    
+        
+            
+            
+                
+                </ul>
+            
+            <div class="archive-year"> 1970 </div>
+            <ul class="year-list">
+            
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/01</span>
+            <a class="archive-post-title" href="/1970/01/01/hello-world/">Hello World</a>
+        </li>
+    
+    </div>
+</div>
+
+        <div class="sidebar-panel-tags">
+    <div class="sidebar-tags-name">
+        
+            <span class="sidebar-tag-name" data-tags="年终总结">
+                <span class="iconfont-archer">&#xe606;</span>
+                年终总结
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="碎语">
+                <span class="iconfont-archer">&#xe606;</span>
+                碎语
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Java">
+                <span class="iconfont-archer">&#xe606;</span>
+                Java
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="原理">
+                <span class="iconfont-archer">&#xe606;</span>
+                原理
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Markdown">
+                <span class="iconfont-archer">&#xe606;</span>
+                Markdown
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="面试题">
+                <span class="iconfont-archer">&#xe606;</span>
+                面试题
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="掘金">
+                <span class="iconfont-archer">&#xe606;</span>
+                掘金
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="vim">
+                <span class="iconfont-archer">&#xe606;</span>
+                vim
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="编辑器之神">
+                <span class="iconfont-archer">&#xe606;</span>
+                编辑器之神
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="虚拟化">
+                <span class="iconfont-archer">&#xe606;</span>
+                虚拟化
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Proxmox VE">
+                <span class="iconfont-archer">&#xe606;</span>
+                Proxmox VE
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="42">
+                <span class="iconfont-archer">&#xe606;</span>
+                42
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="helloworld">
+                <span class="iconfont-archer">&#xe606;</span>
+                helloworld
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="nginx">
+                <span class="iconfont-archer">&#xe606;</span>
+                nginx
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="http服务器">
+                <span class="iconfont-archer">&#xe606;</span>
+                http服务器
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="高并发">
+                <span class="iconfont-archer">&#xe606;</span>
+                高并发
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="计算机的世界">
+                <span class="iconfont-archer">&#xe606;</span>
+                计算机的世界
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="MySQL">
+                <span class="iconfont-archer">&#xe606;</span>
+                MySQL
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="数据库操作">
+                <span class="iconfont-archer">&#xe606;</span>
+                数据库操作
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="多线程">
+                <span class="iconfont-archer">&#xe606;</span>
+                多线程
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="并发">
+                <span class="iconfont-archer">&#xe606;</span>
+                并发
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="数组基础">
+                <span class="iconfont-archer">&#xe606;</span>
+                数组基础
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="数据结构">
+                <span class="iconfont-archer">&#xe606;</span>
+                数据结构
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="前端">
+                <span class="iconfont-archer">&#xe606;</span>
+                前端
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Yapi">
+                <span class="iconfont-archer">&#xe606;</span>
+                Yapi
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="接口管理">
+                <span class="iconfont-archer">&#xe606;</span>
+                接口管理
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="ELK">
+                <span class="iconfont-archer">&#xe606;</span>
+                ELK
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="分布式搜索引擎">
+                <span class="iconfont-archer">&#xe606;</span>
+                分布式搜索引擎
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="elasticsearch">
+                <span class="iconfont-archer">&#xe606;</span>
+                elasticsearch
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Logstash">
+                <span class="iconfont-archer">&#xe606;</span>
+                Logstash
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="kibana">
+                <span class="iconfont-archer">&#xe606;</span>
+                kibana
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="RabbitMQ">
+                <span class="iconfont-archer">&#xe606;</span>
+                RabbitMQ
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="消息队列">
+                <span class="iconfont-archer">&#xe606;</span>
+                消息队列
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Redis">
+                <span class="iconfont-archer">&#xe606;</span>
+                Redis
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="缓存">
+                <span class="iconfont-archer">&#xe606;</span>
+                缓存
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Spring">
+                <span class="iconfont-archer">&#xe606;</span>
+                Spring
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Ribbon">
+                <span class="iconfont-archer">&#xe606;</span>
+                Ribbon
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="debug调试">
+                <span class="iconfont-archer">&#xe606;</span>
+                debug调试
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="spring">
+                <span class="iconfont-archer">&#xe606;</span>
+                spring
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="springcloud">
+                <span class="iconfont-archer">&#xe606;</span>
+                springcloud
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="微服务">
+                <span class="iconfont-archer">&#xe606;</span>
+                微服务
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="数据库">
+                <span class="iconfont-archer">&#xe606;</span>
+                数据库
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="集合">
+                <span class="iconfont-archer">&#xe606;</span>
+                集合
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="基础">
+                <span class="iconfont-archer">&#xe606;</span>
+                基础
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="JVM">
+                <span class="iconfont-archer">&#xe606;</span>
+                JVM
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="WEB">
+                <span class="iconfont-archer">&#xe606;</span>
+                WEB
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Mybatis">
+                <span class="iconfont-archer">&#xe606;</span>
+                Mybatis
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="MySql">
+                <span class="iconfont-archer">&#xe606;</span>
+                MySql
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="SpringMVC">
+                <span class="iconfont-archer">&#xe606;</span>
+                SpringMVC
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="SpringBoot">
+                <span class="iconfont-archer">&#xe606;</span>
+                SpringBoot
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Dubbo">
+                <span class="iconfont-archer">&#xe606;</span>
+                Dubbo
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="SpringCloud">
+                <span class="iconfont-archer">&#xe606;</span>
+                SpringCloud
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="MongoDB">
+                <span class="iconfont-archer">&#xe606;</span>
+                MongoDB
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Zookeeper">
+                <span class="iconfont-archer">&#xe606;</span>
+                Zookeeper
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Kafka">
+                <span class="iconfont-archer">&#xe606;</span>
+                Kafka
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="JWT">
+                <span class="iconfont-archer">&#xe606;</span>
+                JWT
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="token">
+                <span class="iconfont-archer">&#xe606;</span>
+                token
+            </span>
+        
+    </div>
+    <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
+    <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
+        缺失模块，请参考主题文档进行安装配置：https://github.com/fi3ework/hexo-theme-archer#%E5%AE%89%E8%A3%85%E4%B8%BB%E9%A2%98
+    </div> 
+    <div class="sidebar-tags-list"></div>
+</div>
+
+        <div class="sidebar-panel-categories">
+    <div class="sidebar-categories-name">
+    
+        <span class="sidebar-category-name" data-categories="个人生活">
+            <span class="iconfont-archer">&#xe60a;</span>
+            个人生活
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="编程">
+            <span class="iconfont-archer">&#xe60a;</span>
+            编程
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="工具用法">
+            <span class="iconfont-archer">&#xe60a;</span>
+            工具用法
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="计算机基础架构">
+            <span class="iconfont-archer">&#xe60a;</span>
+            计算机基础架构
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="编程中间件">
+            <span class="iconfont-archer">&#xe60a;</span>
+            编程中间件
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="编程与数据库">
+            <span class="iconfont-archer">&#xe60a;</span>
+            编程与数据库
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="面试">
+            <span class="iconfont-archer">&#xe60a;</span>
+            面试
+        </span>
+    
+    </div>
+    <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>
+    <div class="sidebar-categories-list"></div>
+</div>
+
+    </div>
+</div>
+
+        <!-- site-meta -->
+        <script>
+    var siteMetaRoot = "/"
+    if (siteMetaRoot === "undefined") {
+        siteMetaRoot = '/'
+    }
+    var siteMeta = {
+        url: "https://winddsnow.github.io",
+        root: siteMetaRoot,
+        author: "WinddSnow"
+    }
+</script>
+
+        <!-- import experimental options here -->
+        <!-- Custom Font -->
+
+
+        <!-- main func -->
+        <script src="/scripts/main.js?v=20211217"></script>
+        <!-- dark mode -->
+        <script src="/scripts/dark.js?v=20211217"></script>
+        <!-- fancybox -->
+        <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" defer></script>
+        <!-- algolia -->
+        
+        <!-- busuanzi -->
+        
+            <script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+        
+        <!-- CNZZ -->
+        
+        <!-- async load share.js -->
+        
+            <script src="/scripts/share.js?v=20211217" async></script>
+        
+        <!-- mermaid -->
+        
+    </body>
+</html>

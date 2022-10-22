@@ -443,32 +443,42 @@
             
         
         <article class="index-post">
-            <a class="abstract-title" href="/2018/05/03/%E6%9D%82%E8%B0%88%E6%9C%8D%E5%8A%A1%E5%99%A8/">
+            <a class="abstract-title" href="/2022/08/15/Yapi%E9%83%A8%E7%BD%B2%E4%B8%8E%E4%BD%BF%E7%94%A8/">
                 
-                <span class="abstract-title-text">杂谈服务器</span>
+                <span class="abstract-title-text">Yapi部署与使用</span>
             </a>
             <div class="abstract-content">
-                服务器本质上也是就是加强版的计算机，服务器主要对外提供服务。但这有什么好谈论的呢？现代网络条件下，随着物联网的进一步发展，万物互联成为了趋势，那这一切服务的背后，是无数的服务器的支撑。
-我曾经一度很好奇，各种云厂商，如阿里云等，巨量的服务器是如何运维的？他们的服务器安装的是什么系统，不同的架构（如X86或ARM）对前端服务有何影响？网上资料很少，我的见解也是一知半解，只当记录，留作参考。
-磁盘阵列RAID谈论服务器绕不开磁盘阵列，本质上磁盘阵列是硬盘的一种冗余方式，从接触的服务器来看，大多服务器自带raid卡，可以进行硬件层面的磁盘阵列，牺牲性价比的raid1，两个磁盘互备，损失一半容量...
+                Yapi部署与使用1. 环境依赖，部署环境准备
+Yapi依赖：
+
+nodejs（7.6+)–nodejs版本有大问题！一定不能太新，Yapi已经一年没有更新了，新版本不兼容！
+
+mongodb（2.6+）
+
+git
+
+这里使用Debian11来部署，单机部署
+
+注意！注意！注意！这里nodois版本选择v8.17.0！！！使用nvm安装
+1234567891011121314151617181920212223242526//依赖nodejs，安装nodejs，这里安装还有点麻烦，需要官网下载nodejs二进制的包，解压安装#mkdir /usr/local/nodejs#//nodej...
             </div>
             <!-- read more -->
             
             <div class="abstract-post-meta">
                 <!-- date -->
-                <div class="abstract-date" title="Last updated: 2022/10/16">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/05/03</span>
+                <div class="abstract-date" title="Last updated: 2022/08/17">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2022/08/15</span>
                 </div>
                 <!-- tags -->
                 
                     <div class= abstract-tags >
     
     
-        <a class="post-tag" href="javascript:void(0);" data-tags="碎语">碎语</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="前端">前端</a>
     
-        <a class="post-tag" href="javascript:void(0);" data-tags="42">42</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="Yapi">Yapi</a>
     
-        <a class="post-tag" href="javascript:void(0);" data-tags="计算机的世界">计算机的世界</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="接口管理">接口管理</a>
     
 </div>
 
@@ -484,38 +494,388 @@
             
         
         <article class="index-post">
-            <a class="abstract-title" href="/1970/01/01/hello-world/">
+            <a class="abstract-title" href="/2022/08/14/HashMap%E5%8E%9F%E7%90%86/">
                 
-                <span class="abstract-title-text">Hello World</span>
+                <span class="abstract-title-text">HashMap原理</span>
             </a>
             <div class="abstract-content">
-                这是用GitHub的站点，百度了一番教程，做出来的静态blog。用hexo驱动，主题是 hexo官网里的archer。在本地编写md文件后，由hexo编译，再上传到GitHub上，完成博文更新。
-1. 环境准备
-hexo基于nodejs，所以需要nodejs环境
-python–如果没有，安装nodejs时可以通过npm自动安装
-git
-
-nodejs官网npm下载慢的话也可以下载淘宝下载源cnpm
-1npm install -g cnpm --registry=https://registry.npm.taobao.org
-
-
-安装hexo12345npm install -g hexo...
+                HashMap原理
+HashMap内部是基于哈希表实现的键值对存储，继承 AbstractMap 并且实现了 Map 接口。
+HashMap基于hashing原理，我们通过put()和get()方法储存和获取对象。
+当我们将键值对传递给put()方法时，它调用键对象的hashCode()方法来计算hashcode，让后找到bucket位置来储存值对象。
+当获取对象时，通过键对象的equals()方法找到正确的键值对，然后返回值对象。
+HashMap使用LinkedList来解决碰撞问题，当发生碰撞了，对象将会储存在LinkedList的下一个节点中。 
+当两个不同的键对象的hashcod...
             </div>
             <!-- read more -->
             
             <div class="abstract-post-meta">
                 <!-- date -->
-                <div class="abstract-date" title="Last updated: 2022/08/15">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">1970/01/01</span>
+                <div class="abstract-date" title="Last updated: 2022/08/14">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2022/08/14</span>
                 </div>
                 <!-- tags -->
                 
                     <div class= abstract-tags >
     
     
-        <a class="post-tag" href="javascript:void(0);" data-tags="42">42</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="Java">Java</a>
     
-        <a class="post-tag" href="javascript:void(0);" data-tags="helloworld">helloworld</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="原理">原理</a>
+    
+</div>
+
+                
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+    
+        
+        
+        
+        
+            
+        
+        <article class="index-post">
+            <a class="abstract-title" href="/2022/02/10/Vim%E7%94%A8%E6%B3%95%E7%AE%80%E8%AE%B0/">
+                
+                <span class="abstract-title-text">Vim用法简记</span>
+            </a>
+            <div class="abstract-content">
+                简述Vim是从 vi 发展出来的一个文本编辑器。主流linux均自带vi编辑器，在这里简单记录vim用法，vi也基本相同，只是有些功能没有vim丰富。
+模式
+命令模式vim有三大模式，一般你使用vim这个命令打开一个文本，或者新建一个文本时，你进入的是命令模式命令模式是vim打开文件后默认进入的模式，这个模式不能插入字符你无法正常编辑文本，但是可以使用命令来操作文本，例如下面的一些命令。输入冒号“：”，文本的左下角将会出现闪动的光标，你可以在这里输入一些复杂命令。注意vim很重要的退出操作，也是在这里操作的-输入q表示正常退出，前提你没有修改文本，如果文本修改了，将提示你无法正常退出，此...
+            </div>
+            <!-- read more -->
+            
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2022/08/14">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2022/02/10</span>
+                </div>
+                <!-- tags -->
+                
+                    <div class= abstract-tags >
+    
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="vim">vim</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="编辑器之神">编辑器之神</a>
+    
+</div>
+
+                
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+    
+        
+        
+        
+        
+            
+        
+        <article class="index-post">
+            <a class="abstract-title" href="/2022/02/10/Markdown%E7%A4%BA%E4%BE%8B2/">
+                
+                <span class="abstract-title-text">Markdown示例2</span>
+            </a>
+            <div class="abstract-content">
+                标题123456# 这是一级标题## 这是二级标题### 这是三级标题#### 这是四级标题##### 这是五级标题###### 这是六级标题
+效果：
+这是一级标题这是二级标题这是三级标题这是四级标题这是五级标题这是六级标题字体1234**这是加粗的文字***这是倾斜的文字****这是斜体加粗的文字***~~这是加删除线的文字~~
+效果：这是加粗的文字这是倾斜的文字这是斜体加粗的文字这是加删除线的文字
+引用123&gt;这是引用的内容&gt;&gt;&gt;这是引用的内容&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;这是引用的内容...
+            </div>
+            <!-- read more -->
+            
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2022/08/14">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2022/02/10</span>
+                </div>
+                <!-- tags -->
+                
+                    <div class= abstract-tags >
+    
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="Markdown">Markdown</a>
+    
+</div>
+
+                
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+    
+        
+        
+        
+        
+            
+        
+        <article class="index-post">
+            <a class="abstract-title" href="/2021/12/20/Dead-Line-2021%E6%80%BB%E7%BB%93/">
+                
+                <span class="abstract-title-text">Dead Line--2021总结</span>
+            </a>
+            <div class="abstract-content">
+                Dead Line–2021总结
+“当你老了，回顾一生，就会发觉：什么时候出国读书、什么时候决定做第一份职业、何时选定了对象而恋爱、什么时候结婚，其实都是命运的巨变。只是当时站在三岔路口，眼见风云千樯，你作出抉择的那一日，在日记上，相当沉闷和平凡，当时还以为是生命中普通的一天。但一场巨变，已经发生了，地动山移，浑然不觉，当时只道是寻常。”
+陶杰 《杀鹌鹑的少女》
+
+1.消失的2021
+2021年，对我而言，是没有锚点的一个年度，彷佛一切都存在于2020，2020奥运会，2020的节奏，2020的疫情，生活粘稠得像麦芽糖，只有时光一往无前，只有不断收到的朋友结婚请柬，在提醒着我，时间，又过...
+            </div>
+            <!-- read more -->
+            
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2022/08/14">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2021/12/20</span>
+                </div>
+                <!-- tags -->
+                
+                    <div class= abstract-tags >
+    
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="年终总结">年终总结</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="碎语">碎语</a>
+    
+</div>
+
+                
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+    
+        
+        
+        
+        
+            
+        
+        <article class="index-post">
+            <a class="abstract-title" href="/2021/08/29/SpringCloud%E7%AE%80%E4%BB%8B/">
+                
+                <span class="abstract-title-text">SpringCloud简介</span>
+            </a>
+            <div class="abstract-content">
+                认识微服务
+微服务是系统架构的一种设计风格,将一个原本独立的服务拆分成多个小型服务,每个服务独立运行在在各自的进程中,服务之间通过 HTTP RESTful API 进行通信.每个小型的服务都围绕着系统中的某个耦合度较高的业务进行构建。
+微服务是一种经过良好设计的分布式架构方案，而全球的互联网公司都在积极尝试自己的微服务落地方案。其中在java领域最引人注目的是SpringCloud提供的方案。
+
+
+单一职责:微服务拆分粒度更小，每个服务都应对唯一的业务能力，做到单一职责
+自治:团队独立、技术独立、数据独立，独立部署和交付
+面向服务:服务提供统一标准的接口，与语言无关、与技术无关
+隔离性...
+            </div>
+            <!-- read more -->
+            
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2022/10/16">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2021/08/29</span>
+                </div>
+                <!-- tags -->
+                
+                    <div class= abstract-tags >
+    
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="Java">Java</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="spring">spring</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="springcloud">springcloud</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="微服务">微服务</a>
+    
+</div>
+
+                
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+    
+        
+        
+        
+        
+            
+        
+        <article class="index-post">
+            <a class="abstract-title" href="/2021/08/14/mysql%E8%AF%BB%E5%86%99%E5%88%86%E7%A6%BB-%E4%B8%BB%E4%BB%8E%E5%A4%8D%E5%88%B6%E5%8F%8Asharing-jdbc%E4%BD%BF%E7%94%A8/">
+                
+                <span class="abstract-title-text">mysql读写分离-主从复制及sharing-jdbc使用</span>
+            </a>
+            <div class="abstract-content">
+                1. Mysql主从复制介绍MySQL主从复制是一个异步的复制过程，底层是基于Mysql数据库自带的二进制日志功能。就是一台或多台MySQL数据库（slave，即从库）从另一台MySQL数据库（master，即主库）进行日志的复制然后再解析日志并应用到自身，最终实现从库的数据和主库的数据保持一致。MySQL主从复制是MySQL数据库自带功能，无需借助第三方工具。
+
+二进制日志： 
+​	二进制日志（BINLOG）记录了所有的 DDL（数据定义语言）语句和 DML（数据操纵语言）语句，但是不包括数据查询语句。此日志对于灾难时的数据恢复起着极其重要的作用，MySQL的主从复制， 就是通过该bi...
+            </div>
+            <!-- read more -->
+            
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2022/10/16">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2021/08/14</span>
+                </div>
+                <!-- tags -->
+                
+                    <div class= abstract-tags >
+    
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="MySQL">MySQL</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="数据库操作">数据库操作</a>
+    
+</div>
+
+                
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+    
+        
+        
+        
+        
+            
+        
+        <article class="index-post">
+            <a class="abstract-title" href="/2021/05/03/Markdown%E8%AF%AD%E6%B3%95%E8%AE%B0%E5%BD%95/">
+                
+                <span class="abstract-title-text">Markdown语法记录</span>
+            </a>
+            <div class="abstract-content">
+                使用Markdown语法写文章这是从掘金抄的。一份简要的 Markdown 引导指南，希望可以帮助您顺利的开始使用 Markdown 编辑器。
+丰富的快捷键本 Markdown 编辑器支持丰富的格式快捷键，可以非常便捷、轻松的使用 Markdown 语言，形成优美的排版和内容格式。
+支持的快捷键有：
+
+加粗： Ctrl/Cmd + B
+标题： Ctrl/Cmd + H
+插入链接： Ctrl/Cmd + K
+插入代码： Ctrl/Cmd + Shift + C
+行内代码： Ctrl/Cmd + Shift + K
+插入图片： Ctrl/Cmd + Shift + I
+无序列表： Ctrl/...
+            </div>
+            <!-- read more -->
+            
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2022/08/14">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2021/05/03</span>
+                </div>
+                <!-- tags -->
+                
+                    <div class= abstract-tags >
+    
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="Markdown">Markdown</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="掘金">掘金</a>
+    
+</div>
+
+                
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+    
+        
+        
+        
+        
+            
+        
+        <article class="index-post">
+            <a class="abstract-title" href="/2020/08/28/Redis%E7%9B%B8%E5%85%B3%E9%97%AE%E9%A2%98/">
+                
+                <span class="abstract-title-text">Redis相关问题</span>
+            </a>
+            <div class="abstract-content">
+                简单介绍redis
+Redis是 C 编写的，高性能非关系型数据库。
+Redis 键只能为字符串，值支持五种数据类型：string、has、list、set、zset。
+Redis 的数据存在内存中的，读写速度非常快， redis 被广泛应用于缓存方向，每秒可以处理超过 10万次读写操作，是已知性能最快的Key-Value DB。
+支持数据持久化，支持AOF（Append Only File）和RDB（Redis DataBase）两种持久化方式。
+支持主从复制，主机会自动将数据同步到从机，可以进行读写分离。
+Redis 也经常用来做分布式锁和分布式事务。
+不能用作海量数据的高性能读写
+...
+            </div>
+            <!-- read more -->
+            
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2022/10/22">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/08/28</span>
+                </div>
+                <!-- tags -->
+                
+                    <div class= abstract-tags >
+    
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="Java">Java</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="Redis">Redis</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="缓存">缓存</a>
+    
+</div>
+
+                
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+    
+        
+        
+        
+        
+            
+        
+        <article class="index-post">
+            <a class="abstract-title" href="/2020/08/28/Redis%E5%88%86%E5%B8%83%E5%BC%8F%E7%BC%93%E5%AD%98/">
+                
+                <span class="abstract-title-text">Redis分布式缓存</span>
+            </a>
+            <div class="abstract-content">
+                0. 基于Redis集群解决单机Redis存在的问题单机的Redis存在四大问题：
+
+数据丢失问题–解决：实现redis数据持久化
+并发能力问题–解决：搭建主从集群，实现读写分离
+故障恢复问题–解决：利用redis哨兵，实现健康检测和自动恢复
+存储能力问题–解决：搭建分片集群，利用插槽机制实现动态扩容
+
+1. Redis持久化Redis有两种持久化方案：
+
+RDB持久化
+AOF持久化
+
+1.1 RDB持久化RDB全称Redis Database Backup file（Redis数据备份文件），也被叫做Redis数据快照。简单来说就是把内存中的所有数据都记录到磁盘中。当Redis实例故障...
+            </div>
+            <!-- read more -->
+            
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2022/10/16">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/08/28</span>
+                </div>
+                <!-- tags -->
+                
+                    <div class= abstract-tags >
+    
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="Java">Java</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="Redis">Redis</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="缓存">缓存</a>
     
 </div>
 
@@ -527,7 +887,7 @@ nodejs官网npm下载慢的话也可以下载淘宝下载源cnpm
     <!-- paginator  -->
     
         <nav class="page-nav">
-            <a class="extend prev" rel="prev" href="/page/2/">&lt; PREV</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
+            <a class="extend prev" rel="prev" href="/page/2/">&lt; PREV</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/">NEXT &gt;</a>
         </nav>
     
 </main>
@@ -846,7 +1206,247 @@ nodejs官网npm下载慢的话也可以下载淘宝下载源cnpm
         
         
         
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
     
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         
         
         
@@ -999,7 +1599,7 @@ nodejs官网npm下载慢的话也可以下载淘宝下载源cnpm
     
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 22
+        Total : 38
         </div>
         <!-- search  -->
         
@@ -1013,6 +1613,102 @@ nodejs官网npm下载慢的话也可以下载淘宝下载源cnpm
             <div class="archive-year"> 2022 </div>
             <ul class="year-list">
             
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/22</span>
+            <a class="archive-post-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9802%E9%9B%86%E5%90%88%E7%9B%B8%E5%85%B3/">Java面试题02集合相关</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/22</span>
+            <a class="archive-post-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9801%E5%9F%BA%E7%A1%80/">Java面试题01基础</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/22</span>
+            <a class="archive-post-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9803%E5%A4%9A%E7%BA%BF%E7%A8%8B/">Java面试题03多线程</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/22</span>
+            <a class="archive-post-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9804JVM/">Java面试题04JVM</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/22</span>
+            <a class="archive-post-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9805Web/">Java面试题05Web</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/22</span>
+            <a class="archive-post-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9807Mybatis%E6%A1%86%E6%9E%B6/">Java面试题07Mybatis框架</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/22</span>
+            <a class="archive-post-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9806%E6%95%B0%E6%8D%AE%E5%BA%93/">Java面试题06数据库</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/22</span>
+            <a class="archive-post-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9808Spring%E6%A1%86%E6%9E%B6/">Java面试题08Spring框架</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/22</span>
+            <a class="archive-post-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9809SpringMVC%E6%A1%86%E6%9E%B6/">Java面试题09SpringMVC框架</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/22</span>
+            <a class="archive-post-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9810SpringBoot/">Java面试题10SpringBoot</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/22</span>
+            <a class="archive-post-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9812%E9%98%BF%E9%87%8CDubbo/">Java面试题12阿里Dubbo</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/22</span>
+            <a class="archive-post-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9811SpringCloud/">Java面试题11SpringCloud</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/22</span>
+            <a class="archive-post-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9814MongoDB/">Java面试题14MongoDB</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/22</span>
+            <a class="archive-post-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9813Zookeeper/">Java面试题13Zookeeper</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/22</span>
+            <a class="archive-post-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9815Kafka/">Java面试题15Kafka</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/22</span>
+            <a class="archive-post-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9816JWT/">Java面试题16JWT</a>
+        </li>
+    
         
         <li class="archive-post-item">
             <span class="archive-post-date">10/19</span>
@@ -1406,6 +2102,81 @@ nodejs官网npm下载慢的话也可以下载淘宝下载源cnpm
                 数据库
             </span>
         
+            <span class="sidebar-tag-name" data-tags="集合">
+                <span class="iconfont-archer">&#xe606;</span>
+                集合
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="基础">
+                <span class="iconfont-archer">&#xe606;</span>
+                基础
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="JVM">
+                <span class="iconfont-archer">&#xe606;</span>
+                JVM
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="WEB">
+                <span class="iconfont-archer">&#xe606;</span>
+                WEB
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Mybatis">
+                <span class="iconfont-archer">&#xe606;</span>
+                Mybatis
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="MySql">
+                <span class="iconfont-archer">&#xe606;</span>
+                MySql
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="SpringMVC">
+                <span class="iconfont-archer">&#xe606;</span>
+                SpringMVC
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="SpringBoot">
+                <span class="iconfont-archer">&#xe606;</span>
+                SpringBoot
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Dubbo">
+                <span class="iconfont-archer">&#xe606;</span>
+                Dubbo
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="SpringCloud">
+                <span class="iconfont-archer">&#xe606;</span>
+                SpringCloud
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="MongoDB">
+                <span class="iconfont-archer">&#xe606;</span>
+                MongoDB
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Zookeeper">
+                <span class="iconfont-archer">&#xe606;</span>
+                Zookeeper
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Kafka">
+                <span class="iconfont-archer">&#xe606;</span>
+                Kafka
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="JWT">
+                <span class="iconfont-archer">&#xe606;</span>
+                JWT
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="token">
+                <span class="iconfont-archer">&#xe606;</span>
+                token
+            </span>
+        
     </div>
     <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
     <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
@@ -1445,6 +2216,11 @@ nodejs官网npm下载慢的话也可以下载淘宝下载源cnpm
         <span class="sidebar-category-name" data-categories="编程与数据库">
             <span class="iconfont-archer">&#xe60a;</span>
             编程与数据库
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="面试">
+            <span class="iconfont-archer">&#xe60a;</span>
+            面试
         </span>
     
     </div>

@@ -443,28 +443,21 @@
             
         
         <article class="index-post">
-            <a class="abstract-title" href="/2022/10/19/MySQL%E4%BC%98%E5%8C%96/">
+            <a class="abstract-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9816JWT/">
                 
-                <span class="abstract-title-text">MySQL优化</span>
+                <span class="abstract-title-text">Java面试题16JWT</span>
             </a>
             <div class="abstract-content">
-                先言
-不要听信你看到的关于优化的“绝对真理”，而应该是在实际的业务场景下通过测试来验证你关于执行计划以及响应时间的假设。
-具体业务场景的不同，使用的MySQL服务版本不同，都会使得优化方案的制定也不同。
-数据库任何操作都需要慎之又慎，即使所谓优化，也需要尽可能组织涉及到的所有业务部门具体商议，非常有可能，对你的业务来说是优化，却会影响他人业务！
-切记，你需要清楚的知道，你的操作所带来的一切结果，测试环境不等于生产环境，风险操作，备份先行。
-优化有风险，涉足需谨慎！
-
-优化可能带来的问题
-优化不总是对一个单纯的环境进行，还很可能是一个复杂的已投产的系统！
-优化手段有很大的风险，一定要意识到...
+                JWTJSON Web token 简称 JWT， 是用于对应用程序上的用户进行身份验证的标记。也就是说, 使用 JWTS 的应用程序不再需要保存有关其用户的 cookie 或其他 session 数据。此特性便于可伸缩性, 同时保证应用程序的安全。
+在身份验证过程中, 当用户使用其凭据成功登录时, 将返回 JSON Web token, 并且必须在本地保存 (通常在本地存储中)。
+每当用户要访问受保护的路由或资源 (端点) 时, 用户代理(user agent)必须连同请求一起发送 JWT, 通常在授权标头中使用 Bearer schema。后端服务器接收到带有 JWT 的请求时, 首...
             </div>
             <!-- read more -->
             
             <div class="abstract-post-meta">
                 <!-- date -->
-                <div class="abstract-date" title="Last updated: 2022/10/19">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2022/10/19</span>
+                <div class="abstract-date" title="Last updated: 2022/10/22">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2022/10/22</span>
                 </div>
                 <!-- tags -->
                 
@@ -473,9 +466,9 @@
     
         <a class="post-tag" href="javascript:void(0);" data-tags="Java">Java</a>
     
-        <a class="post-tag" href="javascript:void(0);" data-tags="MySQL">MySQL</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="JWT">JWT</a>
     
-        <a class="post-tag" href="javascript:void(0);" data-tags="数据库">数据库</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="token">token</a>
     
 </div>
 
@@ -491,27 +484,28 @@
             
         
         <article class="index-post">
-            <a class="abstract-title" href="/2022/09/08/RabbitMQ/">
+            <a class="abstract-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9815Kafka/">
                 
-                <span class="abstract-title-text">RabbitMQ</span>
+                <span class="abstract-title-text">Java面试题15Kafka</span>
             </a>
             <div class="abstract-content">
-                RabbitMQ微服务通信微服务间通讯有同步和异步两种方式：
+                Kafka 是什么?Kafka 是一款分布式流处理框架，用于实时构建流处理应用。它有一个核心 的功能广为人知，即作为企业级的消息引擎被广泛使用。
+明确Kafka 的流处理框架地位
+Kafka 的特点？
+高吞吐量、低延迟：kafka 每秒可以处理几十万条消息，它的延迟最低只有几毫秒
+可扩展性：kafka 集群支持热扩展
+持久性、可靠性：消息被持久化到本地磁盘，并且支持数据备份防止数据丢失
+容错性：允许集群中节点失败（若副本数量为 n,则允许 n-1 个节点失败）
+高并发：支持数千个客户端同时读写
 
-同步通讯：就像打电话，需要实时响应。-Feign调用
-异步通讯：就像发邮件，不需要马上回复 -消息队列两种方式各有优劣，打电话可以立即得到响应，但是你却不能跟多个人同时通话。发送邮件可以同时与多个人收发邮件，但是往往响应会有延迟。
-
-事件模式
-在事件模式中，支付服务是事件发布者（publisher），在支付完成后只需要发布一个支付成功的事件（event），事件中带上订单id。
-订单服务和物流服务是事件订阅者（Consumer），订阅支付成功的事件，监听到事件后完成自己业务即可。
-为了解除事件发布者与订阅者之间的耦合，两者并不...
+什么是消费者组?消费者组是 Kafka 独有的概念，如果面试官问这 个，就说明他对此是有一定...
             </div>
             <!-- read more -->
             
             <div class="abstract-post-meta">
                 <!-- date -->
-                <div class="abstract-date" title="Last updated: 2022/10/16">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2022/09/08</span>
+                <div class="abstract-date" title="Last updated: 2022/10/22">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2022/10/22</span>
                 </div>
                 <!-- tags -->
                 
@@ -520,11 +514,7 @@
     
         <a class="post-tag" href="javascript:void(0);" data-tags="Java">Java</a>
     
-        <a class="post-tag" href="javascript:void(0);" data-tags="并发">并发</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="RabbitMQ">RabbitMQ</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="消息队列">消息队列</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="Kafka">Kafka</a>
     
 </div>
 
@@ -540,27 +530,25 @@
             
         
         <article class="index-post">
-            <a class="abstract-title" href="/2022/09/08/ELK%E6%90%9C%E7%B4%A2/">
+            <a class="abstract-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9814MongoDB/">
                 
-                <span class="abstract-title-text">ELK搜索</span>
+                <span class="abstract-title-text">Java面试题14MongoDB</span>
             </a>
             <div class="abstract-content">
-                ELK技术栈
-elasticsearch结合kibana、Logstash、Beats，也就是elastic stack（ELK）。被广泛应用在日志数据分析、实时监控等领域
-elasticsearch是elastic stack的核心，负责存储、搜索、分析数据-elasticsearch底层是基于lucene来实现的
-以elasticsearch为核心的技术栈，包括beats、Logstash、kibana、elasticsearch
+                MongoDB 是什么？mongodb 是属于文档型的非关系型数据库，是开源、高性能、高可用、可扩展的数据逻辑层次关系：文档&#x3D;&gt;集合&#x3D;&gt;数据库在关系型数据库中每一行的数据对应 mongodb 里是一个文档。mongodb 的文档是以 BSON（binary json）格式存储的，其格式就是 json 格式。
+MongoDB术语
+集合
+集合是一组文档（即上面的 users 集合）。集合相当于关系数据库中的表，但集合中的文档长度可不同（集合中的文档中的键值对个数可不同）、集合中文档的 key 可不同。向集合中插入第一个文档时，集合会被自动创建。
 
-正向索引和倒排索引正向索引
-用户搜索数据，条件是title符合&quot;%手机%&quot;
-逐行获取数据，比如id为1的数据
-判断数据中的title...
+文档
+文档是...
             </div>
             <!-- read more -->
             
             <div class="abstract-post-meta">
                 <!-- date -->
-                <div class="abstract-date" title="Last updated: 2022/10/17">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2022/09/08</span>
+                <div class="abstract-date" title="Last updated: 2022/10/22">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2022/10/22</span>
                 </div>
                 <!-- tags -->
                 
@@ -569,15 +557,7 @@ elasticsearch是elastic stack的核心，负责存储、搜索、分析数据-el
     
         <a class="post-tag" href="javascript:void(0);" data-tags="Java">Java</a>
     
-        <a class="post-tag" href="javascript:void(0);" data-tags="ELK">ELK</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="分布式搜索引擎">分布式搜索引擎</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="elasticsearch">elasticsearch</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="Logstash">Logstash</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="kibana">kibana</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="MongoDB">MongoDB</a>
     
 </div>
 
@@ -593,25 +573,231 @@ elasticsearch是elastic stack的核心，负责存储、搜索、分析数据-el
             
         
         <article class="index-post">
-            <a class="abstract-title" href="/2022/08/30/Ribbin%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E6%BA%90%E7%A0%81%E5%8E%9F%E7%90%86%E4%B8%8E%E6%BA%90%E7%A0%81%E8%B0%83%E8%AF%95/">
+            <a class="abstract-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9813Zookeeper/">
                 
-                <span class="abstract-title-text">Ribbin负载均衡源码原理与源码调试</span>
+                <span class="abstract-title-text">Java面试题13Zookeeper</span>
             </a>
             <div class="abstract-content">
-                Ribbon负载均衡流程
-发起请求http:&#x2F;&#x2F;服务名xxx&#x2F;服务接口名xxx&#x2F;参数
-被LoadBalancerInterceptor负载均衡拦截器拦截
-LoadBalancerInterceptor调用RibbonLoadBanlancerClient真实执行
-RibbonLoadBanlancerClient获取url中的服务参数与服务接口名
-RibbonLoadBanlancerClient调用DynamicServerListLoadBalancer，从eurekaserver中得到服务列表
-DynamicServerListLoadBal...
+                Zookeeper 是什么Zookeeper 是一个分布式协调服务的开源框架, 主要用来解决分布式集群中应用系统的一致性问题, 例如怎样避免同时操作同一数据造成脏读的问题.
+ZooKeeper 本质上是一个分布式的小文件存储系统. 提供基于类似于文件系统的目录树方式的数据存储, 并且可以对树中的节点进行有效管理. 从而用来维护和监控你存储的数据的状态变化. 通过监控这些数据状态的变化，从而可以达到基于数据的集群管理.
+在大数据生态系统里，很多组件的命名都是某种动物，比如 hadoop 就是大象, hive就是蜜蜂, 而 Zookeeper 就是动物管理员.
+Zookeeper 的数据模型...
             </div>
             <!-- read more -->
             
             <div class="abstract-post-meta">
                 <!-- date -->
-                <div class="abstract-date" title="Last updated: 2022/09/08">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2022/08/30</span>
+                <div class="abstract-date" title="Last updated: 2022/10/22">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2022/10/22</span>
+                </div>
+                <!-- tags -->
+                
+                    <div class= abstract-tags >
+    
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="Java">Java</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="42">42</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="Zookeeper">Zookeeper</a>
+    
+</div>
+
+                
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+    
+        
+        
+        
+        
+            
+        
+        <article class="index-post">
+            <a class="abstract-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9812%E9%98%BF%E9%87%8CDubbo/">
+                
+                <span class="abstract-title-text">Java面试题12阿里Dubbo</span>
+            </a>
+            <div class="abstract-content">
+                什么是 dubboDubbo 是工作在 soa 面向服务分布式框架中的服务管理中间件。Dubbo 是一个分布式服务框架，致力于提供高性能和透明化的 RPC 远程服务调用方案，以及 SOA 服务治理方案。
+它最大的特点是按照分层的方式来架构，使用这种方式可以使各个层之间解耦合（或者最大限度地松耦合）。从服务模型的角度来看，Dubbo 采用的是一种非常简单的模型，要么是提供方提供服务，要么是消费方消费服务，所以基于这一点可以抽象出服务提供方（Provider）和服务消费方（Consumer）两个角色。关于注册中心、协议支持、服务监控等内容。
+Dubbo 使用的是缺省协议， 采用长连接和 ni...
+            </div>
+            <!-- read more -->
+            
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2022/10/22">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2022/10/22</span>
+                </div>
+                <!-- tags -->
+                
+                    <div class= abstract-tags >
+    
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="Java">Java</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="Dubbo">Dubbo</a>
+    
+</div>
+
+                
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+    
+        
+        
+        
+        
+            
+        
+        <article class="index-post">
+            <a class="abstract-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9811SpringCloud/">
+                
+                <span class="abstract-title-text">Java面试题11SpringCloud</span>
+            </a>
+            <div class="abstract-content">
+                SOA 和微服务的区别?到 SOA 和微服务的区别, 那咱们先谈谈架构的演变
+
+集中式架构
+项目功能简单, 一个项目只需一个应用, 将所有功能部署在一起, 这样的架构好处是减少了部署节点和成本.
+缺点: 代码耦合，开发维护困难, 无法水平扩展, 单点容错率低，并发能力差
+
+垂直拆分架构
+当访问量逐渐增大，单一应用无法满足需求，此时为了应对更高的并发和业务需求，我们根据业务功能对系统进行拆分：
+优点：系统拆分实现了流量分担，解决了并发问题,可以针对不同模块进行优化, 方便水平扩展，负载均衡，容错率提高
+缺点：系统间相互独立，会有很多重复开发工作，影响开发效率
+
+分布式服务
+当垂直应用越来越...
+            </div>
+            <!-- read more -->
+            
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2022/10/22">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2022/10/22</span>
+                </div>
+                <!-- tags -->
+                
+                    <div class= abstract-tags >
+    
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="Java">Java</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="SpringCloud">SpringCloud</a>
+    
+</div>
+
+                
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+    
+        
+        
+        
+        
+            
+        
+        <article class="index-post">
+            <a class="abstract-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9810SpringBoot/">
+                
+                <span class="abstract-title-text">Java面试题10SpringBoot</span>
+            </a>
+            <div class="abstract-content">
+                SpringBoot 是什么是 Spring 的子项目,主要简化 Spring 开发难度,去掉了繁重配置,提供各种启动器,可以让程序员很快上手,节省开发时间.
+SpringBoot 的优点SpringBoot 对上述 Spring 的缺点进行的改善和优化，基于约定优于配置的思想，可以让开发人员不必在配置与逻辑业务之间进行思维的切换，全身心的投入到逻辑业务的代码编写中，从而大大提高了开发的效率，一定程度上缩短了项目周期。
+
+版本锁定：解决是 maven 依赖版本容易冲突的问题，集合了常用的并且测试过的所有版本
+
+使用了 Starter（启动器）管理依赖并能对版本进行集中控制,父工程带有版本...
+            </div>
+            <!-- read more -->
+            
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2022/10/22">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2022/10/22</span>
+                </div>
+                <!-- tags -->
+                
+                    <div class= abstract-tags >
+    
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="Java">Java</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="SpringBoot">SpringBoot</a>
+    
+</div>
+
+                
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+    
+        
+        
+        
+        
+            
+        
+        <article class="index-post">
+            <a class="abstract-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9809SpringMVC%E6%A1%86%E6%9E%B6/">
+                
+                <span class="abstract-title-text">Java面试题09SpringMVC框架</span>
+            </a>
+            <div class="abstract-content">
+                谈一下你对 SpringMVC 框架的理解SpringMVC 是一个基于 Java 的实现了 MVC 设计模式的请求驱动类型的轻量级 Web框架，通过把 Model，View，Controller 分离，将 web 层进行职责解耦，把复杂的 web应用分成逻辑清晰的几部分，简化开发，减少出错，方便组内开发人员之间的配合。
+在我看来,SpringMVC 就是将我们原来开发在 servlet 中的代码拆分了,一部分由SpringMVC 完成,一部分由我们自己完成
+SpringMVC 主要组件
+前端控制器 DispatcherServlet ：接收请求、响应结果，相当于转发器，有了Dispat...
+            </div>
+            <!-- read more -->
+            
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2022/10/22">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2022/10/22</span>
+                </div>
+                <!-- tags -->
+                
+                    <div class= abstract-tags >
+    
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="Java">Java</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="SpringMVC">SpringMVC</a>
+    
+</div>
+
+                
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+    
+        
+        
+        
+        
+            
+        
+        <article class="index-post">
+            <a class="abstract-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9808Spring%E6%A1%86%E6%9E%B6/">
+                
+                <span class="abstract-title-text">Java面试题08Spring框架</span>
+            </a>
+            <div class="abstract-content">
+                Spring的两大核心是什么?谈一谈你对IOC的理解? 谈一谈你对DI的理解?谈一谈你对 AOP 的理解?Spring 的两大核心是：IOC（控制反转）和 AOP（面向切面编程） DI（依赖注入）IOC 的意思是控制反转，是指创建对象的控制权的转移，以前创建对象的主动权和时机是由程序员自己把控的，而现在这种权力转移到 Spring 容器中，并由容器根据配置文件去创建实例和管理各个实例之间的依赖关系，对象与对象之间松散耦合，也利于功能的复用。最直观的表达就是，IOC 让对象的创建不用去 new 了，可以由 spring 根据我们提供的配置文件自动生产，我们需要对象的时候，直接从 Sprin...
+            </div>
+            <!-- read more -->
+            
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2022/10/22">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2022/10/22</span>
                 </div>
                 <!-- tags -->
                 
@@ -622,10 +808,6 @@ DynamicServerListLoadBal...
     
         <a class="post-tag" href="javascript:void(0);" data-tags="Spring">Spring</a>
     
-        <a class="post-tag" href="javascript:void(0);" data-tags="Ribbon">Ribbon</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="debug调试">debug调试</a>
-    
 </div>
 
                 
@@ -640,76 +822,22 @@ DynamicServerListLoadBal...
             
         
         <article class="index-post">
-            <a class="abstract-title" href="/2022/08/15/Yapi%E9%83%A8%E7%BD%B2%E4%B8%8E%E4%BD%BF%E7%94%A8/">
+            <a class="abstract-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9807Mybatis%E6%A1%86%E6%9E%B6/">
                 
-                <span class="abstract-title-text">Yapi部署与使用</span>
+                <span class="abstract-title-text">Java面试题07Mybatis框架</span>
             </a>
             <div class="abstract-content">
-                Yapi部署与使用1. 环境依赖，部署环境准备
-Yapi依赖：
-
-nodejs（7.6+)–nodejs版本有大问题！一定不能太新，Yapi已经一年没有更新了，新版本不兼容！
-
-mongodb（2.6+）
-
-git
-
-这里使用Debian11来部署，单机部署
-
-注意！注意！注意！这里nodois版本选择v8.17.0！！！使用nvm安装
-1234567891011121314151617181920212223242526//依赖nodejs，安装nodejs，这里安装还有点麻烦，需要官网下载nodejs二进制的包，解压安装#mkdir /usr/local/nodejs#//nodej...
+                谈一谈你对 Mybatis 框架的理解MyBatis 是一款优秀的持久层框架，一个半 ORM（对象关系映射）框架，它支持定制化 SQL、存储过程以及高级映射。MyBatis 避免了几乎所有的 JDBC 代码和手动设置参数以及获取结果集。MyBatis 可以使用简单的 XML 或注解来配置和映射原生类型、接口和 Java 的 POJO（Plain Old Java Objects，普通老式 Java 对象）为数据库中的记录。
+在 mybatis 中,${} 和 #{} 的区别是什么?
+#{} 是占位符，预编译处理，${}是字符串替换。
+Mybatis 在处理#{}时，会将 sql 中的#{...
             </div>
             <!-- read more -->
             
             <div class="abstract-post-meta">
                 <!-- date -->
-                <div class="abstract-date" title="Last updated: 2022/08/17">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2022/08/15</span>
-                </div>
-                <!-- tags -->
-                
-                    <div class= abstract-tags >
-    
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="前端">前端</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="Yapi">Yapi</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="接口管理">接口管理</a>
-    
-</div>
-
-                
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
-    
-        
-        
-        
-        
-            
-        
-        <article class="index-post">
-            <a class="abstract-title" href="/2022/08/14/HashMap%E5%8E%9F%E7%90%86/">
-                
-                <span class="abstract-title-text">HashMap原理</span>
-            </a>
-            <div class="abstract-content">
-                HashMap原理
-HashMap内部是基于哈希表实现的键值对存储，继承 AbstractMap 并且实现了 Map 接口。
-HashMap基于hashing原理，我们通过put()和get()方法储存和获取对象。
-当我们将键值对传递给put()方法时，它调用键对象的hashCode()方法来计算hashcode，让后找到bucket位置来储存值对象。
-当获取对象时，通过键对象的equals()方法找到正确的键值对，然后返回值对象。
-HashMap使用LinkedList来解决碰撞问题，当发生碰撞了，对象将会储存在LinkedList的下一个节点中。 
-当两个不同的键对象的hashcod...
-            </div>
-            <!-- read more -->
-            
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2022/08/14">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2022/08/14</span>
+                <div class="abstract-date" title="Last updated: 2022/10/22">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2022/10/22</span>
                 </div>
                 <!-- tags -->
                 
@@ -718,176 +846,7 @@ HashMap使用LinkedList来解决碰撞问题，当发生碰撞了，对象将会
     
         <a class="post-tag" href="javascript:void(0);" data-tags="Java">Java</a>
     
-        <a class="post-tag" href="javascript:void(0);" data-tags="原理">原理</a>
-    
-</div>
-
-                
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
-    
-        
-        
-        
-        
-            
-        
-        <article class="index-post">
-            <a class="abstract-title" href="/2022/02/10/Vim%E7%94%A8%E6%B3%95%E7%AE%80%E8%AE%B0/">
-                
-                <span class="abstract-title-text">Vim用法简记</span>
-            </a>
-            <div class="abstract-content">
-                简述Vim是从 vi 发展出来的一个文本编辑器。主流linux均自带vi编辑器，在这里简单记录vim用法，vi也基本相同，只是有些功能没有vim丰富。
-模式
-命令模式vim有三大模式，一般你使用vim这个命令打开一个文本，或者新建一个文本时，你进入的是命令模式命令模式是vim打开文件后默认进入的模式，这个模式不能插入字符你无法正常编辑文本，但是可以使用命令来操作文本，例如下面的一些命令。输入冒号“：”，文本的左下角将会出现闪动的光标，你可以在这里输入一些复杂命令。注意vim很重要的退出操作，也是在这里操作的-输入q表示正常退出，前提你没有修改文本，如果文本修改了，将提示你无法正常退出，此...
-            </div>
-            <!-- read more -->
-            
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2022/08/14">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2022/02/10</span>
-                </div>
-                <!-- tags -->
-                
-                    <div class= abstract-tags >
-    
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="vim">vim</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="编辑器之神">编辑器之神</a>
-    
-</div>
-
-                
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
-    
-        
-        
-        
-        
-            
-        
-        <article class="index-post">
-            <a class="abstract-title" href="/2022/02/10/Markdown%E7%A4%BA%E4%BE%8B2/">
-                
-                <span class="abstract-title-text">Markdown示例2</span>
-            </a>
-            <div class="abstract-content">
-                标题123456# 这是一级标题## 这是二级标题### 这是三级标题#### 这是四级标题##### 这是五级标题###### 这是六级标题
-效果：
-这是一级标题这是二级标题这是三级标题这是四级标题这是五级标题这是六级标题字体1234**这是加粗的文字***这是倾斜的文字****这是斜体加粗的文字***~~这是加删除线的文字~~
-效果：这是加粗的文字这是倾斜的文字这是斜体加粗的文字这是加删除线的文字
-引用123&gt;这是引用的内容&gt;&gt;&gt;这是引用的内容&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;这是引用的内容...
-            </div>
-            <!-- read more -->
-            
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2022/08/14">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2022/02/10</span>
-                </div>
-                <!-- tags -->
-                
-                    <div class= abstract-tags >
-    
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="Markdown">Markdown</a>
-    
-</div>
-
-                
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
-    
-        
-        
-        
-        
-            
-        
-        <article class="index-post">
-            <a class="abstract-title" href="/2021/12/20/Dead-Line-2021%E6%80%BB%E7%BB%93/">
-                
-                <span class="abstract-title-text">Dead Line--2021总结</span>
-            </a>
-            <div class="abstract-content">
-                Dead Line–2021总结
-“当你老了，回顾一生，就会发觉：什么时候出国读书、什么时候决定做第一份职业、何时选定了对象而恋爱、什么时候结婚，其实都是命运的巨变。只是当时站在三岔路口，眼见风云千樯，你作出抉择的那一日，在日记上，相当沉闷和平凡，当时还以为是生命中普通的一天。但一场巨变，已经发生了，地动山移，浑然不觉，当时只道是寻常。”
-陶杰 《杀鹌鹑的少女》
-
-1.消失的2021
-2021年，对我而言，是没有锚点的一个年度，彷佛一切都存在于2020，2020奥运会，2020的节奏，2020的疫情，生活粘稠得像麦芽糖，只有时光一往无前，只有不断收到的朋友结婚请柬，在提醒着我，时间，又过...
-            </div>
-            <!-- read more -->
-            
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2022/08/14">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2021/12/20</span>
-                </div>
-                <!-- tags -->
-                
-                    <div class= abstract-tags >
-    
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="年终总结">年终总结</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="碎语">碎语</a>
-    
-</div>
-
-                
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
-    
-        
-        
-        
-        
-            
-        
-        <article class="index-post">
-            <a class="abstract-title" href="/2021/08/29/SpringCloud%E7%AE%80%E4%BB%8B/">
-                
-                <span class="abstract-title-text">SpringCloud简介</span>
-            </a>
-            <div class="abstract-content">
-                认识微服务
-微服务是系统架构的一种设计风格,将一个原本独立的服务拆分成多个小型服务,每个服务独立运行在在各自的进程中,服务之间通过 HTTP RESTful API 进行通信.每个小型的服务都围绕着系统中的某个耦合度较高的业务进行构建。
-微服务是一种经过良好设计的分布式架构方案，而全球的互联网公司都在积极尝试自己的微服务落地方案。其中在java领域最引人注目的是SpringCloud提供的方案。
-
-
-单一职责:微服务拆分粒度更小，每个服务都应对唯一的业务能力，做到单一职责
-自治:团队独立、技术独立、数据独立，独立部署和交付
-面向服务:服务提供统一标准的接口，与语言无关、与技术无关
-隔离性...
-            </div>
-            <!-- read more -->
-            
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2022/10/16">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2021/08/29</span>
-                </div>
-                <!-- tags -->
-                
-                    <div class= abstract-tags >
-    
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="Java">Java</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="spring">spring</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="springcloud">springcloud</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="微服务">微服务</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="Mybatis">Mybatis</a>
     
 </div>
 
@@ -899,7 +858,7 @@ HashMap使用LinkedList来解决碰撞问题，当发生碰撞了，对象将会
     <!-- paginator  -->
     
         <nav class="page-nav">
-            <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">NEXT &gt;</a>
+            <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">NEXT &gt;</a>
         </nav>
     
 </main>
@@ -1218,7 +1177,247 @@ HashMap使用LinkedList来解决碰撞问题，当发生碰撞了，对象将会
         
         
         
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
     
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         
         
         
@@ -1371,7 +1570,7 @@ HashMap使用LinkedList来解决碰撞问题，当发生碰撞了，对象将会
     
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 22
+        Total : 38
         </div>
         <!-- search  -->
         
@@ -1385,6 +1584,102 @@ HashMap使用LinkedList来解决碰撞问题，当发生碰撞了，对象将会
             <div class="archive-year"> 2022 </div>
             <ul class="year-list">
             
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/22</span>
+            <a class="archive-post-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9802%E9%9B%86%E5%90%88%E7%9B%B8%E5%85%B3/">Java面试题02集合相关</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/22</span>
+            <a class="archive-post-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9801%E5%9F%BA%E7%A1%80/">Java面试题01基础</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/22</span>
+            <a class="archive-post-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9803%E5%A4%9A%E7%BA%BF%E7%A8%8B/">Java面试题03多线程</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/22</span>
+            <a class="archive-post-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9804JVM/">Java面试题04JVM</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/22</span>
+            <a class="archive-post-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9805Web/">Java面试题05Web</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/22</span>
+            <a class="archive-post-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9807Mybatis%E6%A1%86%E6%9E%B6/">Java面试题07Mybatis框架</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/22</span>
+            <a class="archive-post-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9806%E6%95%B0%E6%8D%AE%E5%BA%93/">Java面试题06数据库</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/22</span>
+            <a class="archive-post-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9808Spring%E6%A1%86%E6%9E%B6/">Java面试题08Spring框架</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/22</span>
+            <a class="archive-post-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9809SpringMVC%E6%A1%86%E6%9E%B6/">Java面试题09SpringMVC框架</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/22</span>
+            <a class="archive-post-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9810SpringBoot/">Java面试题10SpringBoot</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/22</span>
+            <a class="archive-post-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9812%E9%98%BF%E9%87%8CDubbo/">Java面试题12阿里Dubbo</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/22</span>
+            <a class="archive-post-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9811SpringCloud/">Java面试题11SpringCloud</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/22</span>
+            <a class="archive-post-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9814MongoDB/">Java面试题14MongoDB</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/22</span>
+            <a class="archive-post-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9813Zookeeper/">Java面试题13Zookeeper</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/22</span>
+            <a class="archive-post-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9815Kafka/">Java面试题15Kafka</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/22</span>
+            <a class="archive-post-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9816JWT/">Java面试题16JWT</a>
+        </li>
+    
         
         <li class="archive-post-item">
             <span class="archive-post-date">10/19</span>
@@ -1778,6 +2073,81 @@ HashMap使用LinkedList来解决碰撞问题，当发生碰撞了，对象将会
                 数据库
             </span>
         
+            <span class="sidebar-tag-name" data-tags="集合">
+                <span class="iconfont-archer">&#xe606;</span>
+                集合
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="基础">
+                <span class="iconfont-archer">&#xe606;</span>
+                基础
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="JVM">
+                <span class="iconfont-archer">&#xe606;</span>
+                JVM
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="WEB">
+                <span class="iconfont-archer">&#xe606;</span>
+                WEB
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Mybatis">
+                <span class="iconfont-archer">&#xe606;</span>
+                Mybatis
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="MySql">
+                <span class="iconfont-archer">&#xe606;</span>
+                MySql
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="SpringMVC">
+                <span class="iconfont-archer">&#xe606;</span>
+                SpringMVC
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="SpringBoot">
+                <span class="iconfont-archer">&#xe606;</span>
+                SpringBoot
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Dubbo">
+                <span class="iconfont-archer">&#xe606;</span>
+                Dubbo
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="SpringCloud">
+                <span class="iconfont-archer">&#xe606;</span>
+                SpringCloud
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="MongoDB">
+                <span class="iconfont-archer">&#xe606;</span>
+                MongoDB
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Zookeeper">
+                <span class="iconfont-archer">&#xe606;</span>
+                Zookeeper
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Kafka">
+                <span class="iconfont-archer">&#xe606;</span>
+                Kafka
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="JWT">
+                <span class="iconfont-archer">&#xe606;</span>
+                JWT
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="token">
+                <span class="iconfont-archer">&#xe606;</span>
+                token
+            </span>
+        
     </div>
     <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
     <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
@@ -1817,6 +2187,11 @@ HashMap使用LinkedList来解决碰撞问题，当发生碰撞了，对象将会
         <span class="sidebar-category-name" data-categories="编程与数据库">
             <span class="iconfont-archer">&#xe60a;</span>
             编程与数据库
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="面试">
+            <span class="iconfont-archer">&#xe60a;</span>
+            面试
         </span>
     
     </div>
