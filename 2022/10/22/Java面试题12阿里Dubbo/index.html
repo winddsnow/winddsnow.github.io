@@ -565,6 +565,28 @@
             
 
             
+    <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js"></script>
+    <script>
+        let idOption = '1666443047000'
+        
+            idOption = location.pathname
+        
+        const gitalk = new Gitalk({
+            clientID: '72081952d87ae3ddd54d',
+            clientSecret: 'ec2a4a2d33999931c5639c25a52190c660ee0357',
+            repo: 'winddsnow.github.io',
+            owner: 'winddsnow',
+            admin: "winddsnow",
+            id: idOption,
+            distractionFreeMode: false,
+            createIssueManually: true,
+        })
+        gitalk.render('gitalk-container')
+    </script>
+    <noscript>为正常使用 Gitalk 评论功能，您需要激活 JavaScript</noscript>
+
 
             <!-- utteranc评论 -->
 
