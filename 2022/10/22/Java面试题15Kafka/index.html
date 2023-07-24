@@ -1,0 +1,2352 @@
+<!DOCTYPE html>
+<html lang="*zh-CN*">
+    <!-- title -->
+
+
+    
+
+<!-- keywords -->
+
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="author" content="WinddSnow">
+    <meta name="renderer" content="webkit">
+    <meta name="copyright" content="WinddSnow">
+    
+        <meta name="keywords" content="hexo,hexo-theme,hexo-blog">
+    
+    <meta name="description" content="">
+    <meta name="description" content="Kafka 是什么?Kafka 是一款分布式流处理框架，用于实时构建流处理应用。它有一个核心 的功能广为人知，即作为企业级的消息引擎被广泛使用。 明确Kafka 的流处理框架地位 Kafka 的特点？ 高吞吐量、低延迟：kafka 每秒可以处理几十万条消息，它的延迟最低只有几毫秒 可扩展性：kafka 集群支持热扩展 持久性、可靠性：消息被持久化到本地磁盘，并且支持数据备份防止数据丢失 容错性：允">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java面试题15Kafka">
+<meta property="og:url" content="https://winddsnow.github.io/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9815Kafka/index.html">
+<meta property="og:site_name" content="WinddSnow">
+<meta property="og:description" content="Kafka 是什么?Kafka 是一款分布式流处理框架，用于实时构建流处理应用。它有一个核心 的功能广为人知，即作为企业级的消息引擎被广泛使用。 明确Kafka 的流处理框架地位 Kafka 的特点？ 高吞吐量、低延迟：kafka 每秒可以处理几十万条消息，它的延迟最低只有几毫秒 可扩展性：kafka 集群支持热扩展 持久性、可靠性：消息被持久化到本地磁盘，并且支持数据备份防止数据丢失 容错性：允">
+<meta property="og:locale">
+<meta property="article:published_time" content="2022-10-22T12:53:14.000Z">
+<meta property="article:modified_time" content="2023-07-24T11:52:50.148Z">
+<meta property="article:author" content="WinddSnow">
+<meta property="article:tag" content="Java">
+<meta property="article:tag" content="Kafka">
+<meta name="twitter:card" content="summary">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <link rel="icon" href="/assets/favicon.ico">
+    
+    <title>Java面试题15Kafka · WinddSnow</title>
+    <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
+/* This file is meant as a standalone workflow for
+- testing support for link[rel=preload]
+- enabling async CSS loading in browsers that do not support rel=preload
+- applying rel preload css once loaded, whether supported or not.
+*/ -->
+<script>
+    (function (w) {
+        'use strict'
+        // rel=preload support test
+        if (!w.loadCSS) {
+            w.loadCSS = function () {}
+        }
+        // define on the loadCSS obj
+        var rp = (loadCSS.relpreload = {})
+        // rel=preload feature support test
+        // runs once and returns a function for compat purposes
+        rp.support = (function () {
+            var ret
+            try {
+                ret = w.document.createElement('link').relList.supports('preload')
+            } catch (e) {
+                ret = false
+            }
+            return function () {
+                return ret
+            }
+        })()
+
+        // if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+        // then change that media back to its intended value on load
+        rp.bindMediaToggle = function (link) {
+            // remember existing media attr for ultimate state, or default to 'all'
+            var finalMedia = link.media || 'all'
+
+            function enableStylesheet() {
+                link.media = finalMedia
+            }
+
+            // bind load handlers to enable media
+            if (link.addEventListener) {
+                link.addEventListener('load', enableStylesheet)
+            } else if (link.attachEvent) {
+                link.attachEvent('onload', enableStylesheet)
+            }
+
+            // Set rel and non-applicable media type to start an async request
+            // note: timeout allows this to happen async to let rendering continue in IE
+            setTimeout(function () {
+                link.rel = 'stylesheet'
+                link.media = 'only x'
+            })
+            // also enable media after 3 seconds,
+            // which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+            setTimeout(enableStylesheet, 3000)
+        }
+
+        // loop through link elements in DOM
+        rp.poly = function () {
+            // double check this to prevent external calls from running
+            if (rp.support()) {
+                return
+            }
+            var links = w.document.getElementsByTagName('link')
+            for (var i = 0; i < links.length; i++) {
+                var link = links[i]
+                // qualify links to those with rel=preload and as=style attrs
+                if (
+                    link.rel === 'preload' &&
+                    link.getAttribute('as') === 'style' &&
+                    !link.getAttribute('data-loadcss')
+                ) {
+                    // prevent rerunning on link
+                    link.setAttribute('data-loadcss', true)
+                    // bind listeners to toggle media back
+                    rp.bindMediaToggle(link)
+                }
+            }
+        }
+
+        // if unsupported, run the polyfill
+        if (!rp.support()) {
+            // run once at least
+            rp.poly()
+
+            // rerun poly on an interval until onload
+            var run = w.setInterval(rp.poly, 500)
+            if (w.addEventListener) {
+                w.addEventListener('load', function () {
+                    rp.poly()
+                    w.clearInterval(run)
+                })
+            } else if (w.attachEvent) {
+                w.attachEvent('onload', function () {
+                    rp.poly()
+                    w.clearInterval(run)
+                })
+            }
+        }
+
+        // commonjs
+        if (typeof exports !== 'undefined') {
+            exports.loadCSS = loadCSS
+        } else {
+            w.loadCSS = loadCSS
+        }
+    })(typeof global !== 'undefined' ? global : this)
+</script>
+
+    <style type="text/css">
+    @font-face {
+        font-family: 'Oswald-Regular';
+        src: url("/font/Oswald-Regular.ttf");
+    }
+
+    body {
+        margin: 0;
+    }
+
+    header,
+    footer,
+    .back-top,
+    .sidebar,
+    .container,
+    .site-intro-meta,
+    .toc-wrapper {
+        display: none;
+    }
+
+    .site-intro {
+        position: relative;
+        z-index: 3;
+        width: 100%;
+        /* height: 50vh; */
+        overflow: hidden;
+    }
+
+    .site-intro-placeholder {
+        position: absolute;
+        z-index: -2;
+        top: 0;
+        left: 0;
+        width: calc(100% + 300px);
+        height: 100%;
+        background: repeating-linear-gradient(-45deg, #444 0, #444 80px, #333 80px, #333 160px);
+        background-position: center center;
+        transform: translate3d(-226px, 0, 0);
+        animation: gradient-move 2.5s ease-out 0s infinite;
+    }
+
+    @keyframes gradient-move {
+        0% {
+            transform: translate3d(-226px, 0, 0);
+        }
+        100% {
+            transform: translate3d(0, 0, 0);
+        }
+    }
+</style>
+
+    <link rel="preload" href="/css/style.css?v=20211217" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="/css/dark.css?v=20211217" as="style">
+    <link rel="stylesheet" href="/css/dark.css">
+    <link rel="stylesheet" href="/css/mobile.css?v=20211217" media="(max-width: 960px)">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" as="script">
+    <link rel="preload" href="/scripts/main.js?v=20211217" as="script">
+    <link rel="preload" href="/scripts/dark.js?v=20211217" as="script">
+    <link rel="preload" href="/font/Oswald-Regular.ttf" as="font" crossorigin>
+    <link rel="preload" href="https://at.alicdn.com/t/font_327081_1dta1rlogw17zaor.woff" as="font" crossorigin>
+    <!-- algolia -->
+    
+    <!-- 百度统计  -->
+    
+    <!-- Google tag (gtag.js) -->
+    
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+    <script type="text/javascript">
+        if (typeof window.$ == undefined) {
+            console.warn('jquery load from jsdelivr failed, will load local script')
+            document.write('<script src="/lib/jquery.min.js" />')
+        }
+    </script>
+    
+        <body class="post-body">
+    
+        <!-- header -->
+        <header class="header header-mobile">
+    <!-- top read progress line -->
+    <div class="header-element">
+        <div class="read-progress"></div>
+    </div>
+    <!-- sidebar menu button -->
+    <div class="header-element">
+        
+            <div class="header-sidebar-menu">
+        
+            
+                <div style="padding-left: 1px;">&#xe775;</div>
+            
+        </div>
+    </div>
+    <!-- header actions -->
+    <div class="header-actions">
+        <!-- theme mode switch button -->
+        <span class="header-theme-btn header-element">
+            <i class="fas fa-adjust"></i>
+        </span>
+        <!-- back to home page text -->
+        <span class="home-link header-element">
+            <a href=/>WinddSnow</a>
+        </span>
+    </div>
+    <!-- toggle banner for post layout -->
+    
+        
+            <div class="banner">
+        
+            <div class="blog-title header-element">
+                <a href="/">WinddSnow</a>
+            </div>
+            <div class="post-title header-element">
+                <a href="#" class="post-name">Java面试题15Kafka</a>
+            </div>
+        </div>
+    
+</header>
+
+        <!-- fixed footer -->
+        <footer class="footer-fixed">
+    <!-- back to top button -->
+    <div class="footer-fixed-element">
+        
+            <div class="back-top back-top-hidden">
+        
+        
+            <div>&#xe639;</div>
+        
+        </div>
+    </div>
+</footer>
+
+        <!-- wrapper -->
+        <div class="wrapper">
+            <div class="site-intro" style="
+
+
+
+
+
+
+
+    height:50vh;
+
+">
+    
+    <!-- 主页  -->
+    
+        
+    <!-- 404页  -->
+    
+    <div class="site-intro-placeholder"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/post-bg.jpg)"></div>
+    <div class="site-intro-meta">
+        <!-- 标题  -->
+        <h1 class="intro-title">
+            <!-- 主页  -->
+            
+                Java面试题15Kafka
+            <!-- 404 -->
+            
+        </h1>
+        <!-- 副标题 -->
+        <p class="intro-subtitle">
+            <!-- 主页副标题  -->
+            
+                
+            <!-- 404 -->
+            
+        </p>
+        <!-- 文章页 meta -->
+        
+            <div class="post-intros">
+                <!-- 文章页标签  -->
+                
+                    <div class= post-intro-tags >
+    
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="Java">Java</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="Kafka">Kafka</a>
+    
+</div>
+
+                
+                <!-- 文章字数统计 -->
+                
+                    <div class="post-intro-read">
+                        <span>字数统计: <span class="post-count word-count">4.4k</span>阅读时长: <span class="post-count reading-time">15 min</span></span>
+                    </div>
+                
+                <div class="post-intro-meta">
+                    <!-- 撰写日期 -->
+                    <span class="iconfont-archer post-intro-calander">&#xe676;</span>
+                    <span class="post-intro-time">2022/10/22</span>
+                    <!-- busuanzi -->
+                    
+                        <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                            <span class="iconfont-archer post-intro-busuanzi">&#xe602;</span>
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    
+                    <!-- 文章分享 -->
+                    <span class="share-wrapper">
+                        <span class="iconfont-archer share-icon">&#xe71d;</span>
+                        <span class="share-text">Share</span>
+                        <ul class="share-list">
+                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                                <div class="share-qrcode"></div>
+                            </li>
+                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
+        
+    </div>
+</div>
+
+            <script>
+  // get user agent
+  function getBrowserVersions() {
+    var u = window.navigator.userAgent
+    return {
+      userAgent: u,
+      trident: u.indexOf('Trident') > -1, //IE内核
+      presto: u.indexOf('Presto') > -1, //opera内核
+      webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+      gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+      mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+      ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+      android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
+      iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者安卓QQ浏览器
+      iPad: u.indexOf('iPad') > -1, //是否为iPad
+      webApp: u.indexOf('Safari') == -1, //是否为web应用程序，没有头部与底部
+      weixin: u.indexOf('MicroMessenger') == -1, //是否为微信浏览器
+      uc: u.indexOf('UCBrowser') > -1, //是否为android下的UC浏览器
+    }
+  }
+  var browser = {
+    versions: getBrowserVersions(),
+  }
+  console.log('userAgent: ' + browser.versions.userAgent)
+
+  // callback
+  function fontLoaded() {
+    console.log('font loaded')
+    if (document.getElementsByClassName('site-intro-meta')) {
+      document
+        .getElementsByClassName('intro-title')[0]
+        .classList.add('intro-fade-in')
+      document
+        .getElementsByClassName('intro-subtitle')[0]
+        .classList.add('intro-fade-in')
+      var postIntros = document.getElementsByClassName('post-intros')[0]
+      if (postIntros) {
+        postIntros.classList.add('post-fade-in')
+      }
+    }
+  }
+
+  // UC不支持跨域，所以直接显示
+  function asyncCb() {
+    if (browser.versions.uc) {
+      console.log('UCBrowser')
+      fontLoaded()
+    } else {
+      WebFont.load({
+        custom: {
+          families: ['Oswald-Regular'],
+        },
+        loading: function () {
+          // 所有字体开始加载
+          // console.log('font loading');
+        },
+        active: function () {
+          // 所有字体已渲染
+          fontLoaded()
+        },
+        inactive: function () {
+          // 字体预加载失败，无效字体或浏览器不支持加载
+          console.log('inactive: timeout')
+          fontLoaded()
+        },
+        timeout: 5000, // Set the timeout to two seconds
+      })
+    }
+  }
+
+  function asyncErr() {
+    console.warn('script load from CDN failed, will load local script')
+  }
+
+  // load webfont-loader async, and add callback function
+  function async(u, cb, err) {
+    var d = document,
+      t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0]
+    o.src = u
+    if (cb) {
+      o.addEventListener(
+        'load',
+        function (e) {
+          cb(null, e)
+        },
+        false
+      )
+    }
+    if (err) {
+      o.addEventListener(
+        'error',
+        function (e) {
+          err(null, e)
+        },
+        false
+      )
+    }
+    s.parentNode.insertBefore(o, s)
+  }
+
+  var asyncLoadWithFallBack = function (arr, success, reject) {
+    var currReject = function () {
+      reject()
+      arr.shift()
+      if (arr.length) async(arr[0], success, currReject)
+    }
+
+    async(arr[0], success, currReject)
+  }
+
+  asyncLoadWithFallBack(
+    [
+      'https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js',
+      'https://cdn.bootcss.com/webfont/1.6.28/webfontloader.js',
+      "/lib/webfontloader.min.js",
+    ],
+    asyncCb,
+    asyncErr
+  )
+</script>
+
+            <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
+            <div class="container container-unloaded">
+                <main class="main post-page">
+    <article class="article-entry">
+        <h2 id="Kafka-是什么"><a href="#Kafka-是什么" class="headerlink" title="Kafka 是什么?"></a>Kafka 是什么?</h2><p>Kafka 是一款分布式流处理框架，用于实时构建流处理应用。它有一个核心 的功能广为人知，即作为企业级的消息引擎被广泛使用。</p>
+<p>明确Kafka 的流处理框架地位</p>
+<h2 id="Kafka-的特点？"><a href="#Kafka-的特点？" class="headerlink" title="Kafka 的特点？"></a>Kafka 的特点？</h2><ul>
+<li>高吞吐量、低延迟：kafka 每秒可以处理几十万条消息，它的延迟最低只有几毫秒</li>
+<li>可扩展性：kafka 集群支持热扩展</li>
+<li>持久性、可靠性：消息被持久化到本地磁盘，并且支持数据备份防止数据丢失</li>
+<li>容错性：允许集群中节点失败（若副本数量为 n,则允许 n-1 个节点失败）</li>
+<li>高并发：支持数千个客户端同时读写</li>
+</ul>
+<h2 id="什么是消费者组"><a href="#什么是消费者组" class="headerlink" title="什么是消费者组?"></a>什么是消费者组?</h2><p>消费者组是 Kafka 独有的概念，如果面试官问这 个，就说明他对此是有一定了解的。我先给出标准答案：</p>
+<ol>
+<li>定义：即消费者组是 Kafka 提供的可扩展且具有容错性的消费者机制。</li>
+<li>原理：在 Kafka 中，消费者组是一个由多个消费者实例 构成的组。多个实例共同订阅若干个主题，实现共同消费。同一个组下的每个实例都配置有 相同的组 ID，被分配不同的订阅分区。当某个实例挂掉的时候，其他实例会自动地承担起 它负责消费的分区。</li>
+</ol>
+<p>面试小技巧:消费者组的题目，能够帮你在某种程度上掌控下面的面试方向：</p>
+<ul>
+<li>如果你擅长位移值原理，就不妨再提一下<strong>消费者组的位移提交机制</strong>;</li>
+<li>如果你擅长 Kafka Broker，可以提一下<strong>消费者组与 Broker 之间的交互</strong>;</li>
+<li>如果你擅长与消费者组完全不相关的 Producer，那么就可以这么说:“<strong>消费者组要消费的数据完全来自于 Producer 端生产的消息，我对 Producer 还是比较熟悉的。</strong>”</li>
+</ul>
+<h2 id="Kafka位移提交详解"><a href="#Kafka位移提交详解" class="headerlink" title="Kafka位移提交详解"></a>Kafka位移提交详解</h2><h3 id="什么是位移提交，定义"><a href="#什么是位移提交，定义" class="headerlink" title="什么是位移提交，定义"></a>什么是位移提交，定义</h3><ul>
+<li> Consumer需要向kafka汇报自己的位移数据，这个汇报过程称为位移提交。因为Consumer可以同时消费多个分区。所以位移提交是按照分区的粒度进行的。即Consumer需要为分配给他的每个分区提交各自的位移数据。</li>
+<li> 作用是：位移提交表示了Consumer的消费进度。这样当Consumer发生故障重启后，就可以读取之前提交的位移，然后从指定位移开始继续消费。类似于书签。</li>
+<li> 我们要知道，位移的提交完全由我们掌控，我们可以提交任何位移值，但是我们也就需要为我们提交的位移负责。</li>
+</ul>
+<h3 id="位移提交的分类"><a href="#位移提交的分类" class="headerlink" title="位移提交的分类"></a>位移提交的分类</h3><ul>
+<li>用户角度分类<ol>
+<li>自动提交</li>
+<li>手动提交</li>
+</ol>
+</li>
+<li>Consumer角度<ol>
+<li>同步提交</li>
+<li>异步提交</li>
+</ol>
+</li>
+</ul>
+<h3 id="自动提交和手动提交："><a href="#自动提交和手动提交：" class="headerlink" title="自动提交和手动提交："></a>自动提交和手动提交：</h3><ul>
+<li>我们将Consumer端的参数：enable.auto.commit设置为true，就开启了自动提交。如果我们开启了自动提价哪还有一个参数：auto.commit.interval.ms 它是自动提交的时间间隔，默认是5秒钟。</li>
+<li>我们开启了自动提交之后就不需要对提交位移进行管理了，并且kafka会保证在开始调用Poll方法时，提交上一次poll返回的所有消息。从顺序上说，是先提价上一批消息的位移，再处理新的消息。因此他能保证消息不丢失，但是会出现重复的情况。</li>
+<li>也就是，Consumer是每5秒提价一次位移，如果，Rebalance发生在第三秒的时候。这样当重启之后，前三秒已经消费过的消息就会被重新消费，因为位移数据还是三秒前的位移数据。虽然你可以通过减少提交位移的时间间隔，但是并不能完全避免重复消费，只能减少重复消费的数据。</li>
+<li>手动提交：只要将上面的自动提交的参数设置成false就可以了。</li>
+</ul>
+<h3 id="同步提交和异步提交"><a href="#同步提交和异步提交" class="headerlink" title="同步提交和异步提交"></a>同步提交和异步提交</h3><ul>
+<li>手动提交更加灵活，但是，有一个缺陷：调用commitSync()同步提交时，Consumer会处于阻塞状态。会影响应用程序的TPS。因为这个问题，又出现了另一个API:commitAsync()异步提交。</li>
+<li>异步提交不会阻塞Consumer但是它没有重试机制，不能保证提交一定会成功。所以通常情况下是异步提交和同步提交一起使用，先用异步提交进行阶段性提交避免阻塞，然后在Consumer要关闭时再用同步提交最后提交一次，确保Consumer位移的正确性。</li>
+<li>kafka Consumer API还为手动提交提供了这样的方法：<br>commitSync(Map&lt;TopicPartition,OffsetAndMetadata&gt;)和commitAsync(Map&lt;TopicParttion,OffsetAndMetadata&gt;)它们的参数是一个Map对象，键是TopicPartition（消费的分区），值是：OffsetAndMetadata对象（主要保存的是位移数据）。</li>
+<li>它可以将一个大的事务分割成若干个小的事务分别提交，能有效的减少错误恢复的时间。</li>
+</ul>
+<h2 id="Kafka-中消费者组与-Broker-之间的交互"><a href="#Kafka-中消费者组与-Broker-之间的交互" class="headerlink" title="Kafka 中消费者组与 Broker 之间的交互"></a>Kafka 中消费者组与 Broker 之间的交互</h2><h3 id="Kafka中消费者的消费方式"><a href="#Kafka中消费者的消费方式" class="headerlink" title="Kafka中消费者的消费方式"></a>Kafka中消费者的消费方式</h3><p><strong>consumer采用pull(拉)模式从broker中读取数据。 拉取模式也有不足，如果kafka没有数据，消费者可能会陷入循环中，一直返回空数据。针对这一点，kafka消费者在消费数据时会传入一个时长参数timeout，如果当前没有数据可供消费，consumer会等待一段时间后再返回，这段时长即为timeout</strong></p>
+<h3 id="Kafka的分区分配策略"><a href="#Kafka的分区分配策略" class="headerlink" title="Kafka的分区分配策略"></a>Kafka的分区分配策略</h3><p>一个消费者组中有多个消费者，一个broker有多个分区，所有必然会涉及到分区分配问题，即确定哪一个分区由哪一个consumer来消费。kafka有两种分区分配策略：RoundRobin和Range</p>
+<ul>
+<li><strong>RoundRobinAssignor分配策略(轮询分区)</strong></li>
+<li><strong>RangeAssignor 分配策略(范围分区)</strong>   默认采用 Range 范围分区</li>
+</ul>
+<h3 id="offset的维护"><a href="#offset的维护" class="headerlink" title="offset的维护"></a>offset的维护</h3><p><strong>由于kafka可能出现故障，故障之后要恢复到上一次消费的位置，往下继续进行消费。因此consumer需要实时记录自己消费到了哪一个offset，从0.9版本开始，consumer默认将offset保存在kafka的内置topic中，该topic为_consumer_offsets（0.9版本前放在zk中）</strong></p>
+<h2 id="Kafka的Producer深入"><a href="#Kafka的Producer深入" class="headerlink" title="Kafka的Producer深入"></a>Kafka的Producer深入</h2><h3 id="消息发送流程-【面试】"><a href="#消息发送流程-【面试】" class="headerlink" title="消息发送流程 【面试】"></a>消息发送流程 【面试】</h3><ul>
+<li>Kafka 的 Producer 发送消息采用的是异步发送的方式。在消息发送的过程中，涉及到了两个线程——main 线程和 Sender 线程，以及一个线程共享变量——RecordAccumulator。</li>
+<li>main 线程将消息发送给 RecordAccumulator，Sender 线程不断从 RecordAccumulator 中拉取消息发送到 Kafka broker。</li>
+</ul>
+<p>相关参数：</p>
+<ul>
+<li>batch.size：只有数据积累到 batch.size 之后，sender 才会发送数据。(默认 16384byte, 16KB)</li>
+<li>linger.ms：如果数据迟迟未达到 batch.size，sender 等待 linger.time 之后就会发送数据。(默认为0)</li>
+</ul>
+<p>参数详解</p>
+<ul>
+<li><p>acks</p>
+<p>指的是producer的消息发送确认机制</p>
+</li>
+<li><p>retries</p>
+<p>生产者从服务器收到的错误有可能是临时性错误，在这种情况下，retries参数的值决定了生产者可以重发消息的次数，如果达到这个次数，生产者会放弃重试返回错误，默认情况下，生产者会在每次重试之间等待100ms</p>
+</li>
+</ul>
+<h3 id="消息发送"><a href="#消息发送" class="headerlink" title="消息发送"></a>消息发送</h3><ul>
+<li><p>异步发送</p>
+<ul>
+<li><p>不带回调函数的 API</p>
+</li>
+<li><p>带回调函数的 API</p>
+<p>回调函数会在 producer  收到 ack   时调用，为异步调用，该方法有两个参数，分别是RecordMetadata 和 Exception，如果 Exception 为 null，说明消息发送成功，如果Exception 不为 null，说明消息发送失败。注意：消息发送失败会自动重试，不需要我们在回调函数中手动重试</p>
+</li>
+</ul>
+</li>
+<li><h5 id="同步发送"><a href="#同步发送" class="headerlink" title="同步发送"></a>同步发送</h5><ul>
+<li>同步发送的意思就是，一条消息发送之后，会阻塞当前线程，直至返回 ack。</li>
+<li>由于 send 方法返回的是一个 Future 对象，根据 Futrue 对象的特点，我们也可以实现同步发送的效果，只需在调用 Future 对象的 get 方发即可。</li>
+</ul>
+</li>
+</ul>
+<h3 id="消息发送流程："><a href="#消息发送流程：" class="headerlink" title="消息发送流程："></a>消息发送流程：</h3><p>producer-&gt;interceptor-&gt;serializer-&gt;partitioner -&gt; RecordAccumulator（累加消息，批量batch.size, liner.ms）-&gt; send -&gt; kafka broker</p>
+<ul>
+<li><p>acks: 生产者确认机制 </p>
+<ul>
+<li><p>0: fire and forgot，快速放下，短信通知。消息发送完成不报错即可</p>
+</li>
+<li><p>1: 快递需要签收，等leader 确认。消息到了leader, 还没同步给集群</p>
+</li>
+</ul>
+</li>
+<li><p>all: 快递跟亲戚 确认，leader把消息同步给集群，之后才返回确认给生产者。 消息不会丢失</p>
+</li>
+<li><p>retries: 发送失败时会自动重试次数</p>
+</li>
+<li><p>异步：异常时处理</p>
+</li>
+</ul>
+<h2 id="Kafka的Consumer深入"><a href="#Kafka的Consumer深入" class="headerlink" title="Kafka的Consumer深入"></a>Kafka的Consumer深入</h2><h3 id="工作原理-【面试】"><a href="#工作原理-【面试】" class="headerlink" title="工作原理 【面试】"></a>工作原理 【面试】</h3><ul>
+<li>Consumer 消费数据时的可靠性是很容易保证的，因为数据在 Kafka 中是持久化的，故不用担心数据丢失问题。</li>
+<li>由于 consumer 在消费过程中可能会出现断电宕机等故障，consumer 恢复后，需要从故障前的位置的继续消费，所以 consumer 需要实时记录自己消费到了哪个 offset，以便故障恢复后继续消费。</li>
+<li>所以 offset 的维护是 Consumer 消费数据是必须考虑的问题。</li>
+</ul>
+<h3 id="offset-偏移量"><a href="#offset-偏移量" class="headerlink" title="offset(偏移量)"></a>offset(偏移量)</h3><p>offset消费者消费到了第几个消息</p>
+<ul>
+<li>每次调用poll()方法，它会返回由生产者写入kafka但还没有被消费者读取过来的记录，我们由此可以追踪到哪些记录是被群组里的哪个消费者读取的，kafka不会像其他JMS队列那样需要得到消费者的确认，这是kafka的一个独特之处，相反，消费者可以使用kafka来追踪消息在分区的位置（偏移量）</li>
+<li>消费者会往一个叫做<code>_consumer_offset</code>的特殊主题发送消息，消息里包含了每个分区的偏移量。如果消费者一直处于运行状态，那么偏移量就没有什么用处。不过，如果消费者发生崩溃或有新的消费者加入群组，就会触发再均衡，完成再均衡之后，每个消费者可能分配到新的分区，消费者需要读取每个分区最后一次提交的偏移量，然后从偏移量指定的地方继续处理。</li>
+<li>如果提交偏移量小于客户端处理的最后一个消息的偏移量，那么处于两个偏移量之间的消息就会被重复处理。</li>
+<li>消费者处理完消息后再提交offset，有可能导致消息重复消费(解决：幂等)</li>
+<li>如果提交的偏移量大于客户端的最后一个消息的偏移量，那么处于两个偏移量之间的消息将会丢失。</li>
+<li>拉取到消息还没消费完就提交offset, 导致可能消息丢失。解决(消息回溯)</li>
+</ul>
+<h3 id="配置参数详解"><a href="#配置参数详解" class="headerlink" title="配置参数详解"></a>配置参数详解</h3><ul>
+<li><p>enable.auto.commit</p>
+<ul>
+<li>当<code>enable.auto.commit</code>被设置为true，提交方式就是让消费者自动提交偏移量，每隔5秒消费者会自动把从poll()方法接收的最大偏移量提交上去。提交时间间隔有<code>auto.commot.interval.ms</code>控制，默认值是5秒。</li>
+</ul>
+</li>
+<li><p>需要注意到，这种方式可能会导致消息重复消费。假如，某个消费者poll消息后，应用正在处理消息，在3秒后Kafka进行了重平衡，那么由于没有更新位移导致重平衡后这部分消息重复消费。                                                                                                                                    </p>
+</li>
+<li><p>auto.offset.reset</p>
+<ul>
+<li><p><strong>earliest</strong></p>
+<p>当各分区下有已提交的offset时，从提交的offset开始消费；无提交的offset时，从头开始消费</p>
+</li>
+<li><p><strong>latest 默认</strong></p>
+<p>当各分区下有已提交的offset时，从提交的offset开始消费；无提交的offset时，消费新产生的该分区下的数据</p>
+</li>
+<li><p><strong>none</strong></p>
+<p>topic各分区都存在已提交的offset时，从offset后开始消费；只要有一个分区不存在已提交的offset，则抛出异常</p>
+</li>
+<li><p><strong>anything  else</strong></p>
+<p>向consumer抛出异常</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="自动提交offset"><a href="#自动提交offset" class="headerlink" title="自动提交offset"></a>自动提交offset</h3><h3 id="手动提交offset"><a href="#手动提交offset" class="headerlink" title="手动提交offset"></a>手动提交offset</h3><p> 虽然自动提交 offset   十分简介便利，但由于其是基于时间提交的，开发人员难以把握offset 提交的时机。因此 Kafka 还提供了手动提交 offset 的 API。手动提交 offset 的方法有两种：</p>
+<p>分别是 commitSync（同步提交）和 commitAsync（异步提交）。</p>
+<ul>
+<li>两者的相同点是，都会将本次 poll 的一批数据最高的偏移量提交；</li>
+<li>不同点是，commitSync  阻塞当前线程，一直到提交成功，并且会自动失败重试（由不可控因素导致，也会出现提交失败）；</li>
+<li>而 commitAsync 则没有失败重试机制，故有可能提交失败。<ul>
+<li>同步提交 offset:由于同步提交 offset 有失败重试机制，故更加可靠</li>
+<li>异步提交 offset:虽然同步提交 offset 更可靠一些，但是由于其会阻塞当前线程，直到提交成功。因此吞吐量会收到很大的影响。因此更多的情况下，会选用异步提交 offset 的方式。</li>
+</ul>
+</li>
+</ul>
+<h2 id="消息重复消费处理"><a href="#消息重复消费处理" class="headerlink" title="消息重复消费处理"></a>消息重复消费处理</h2><p>幂等：不管执行多少次，结果都一样</p>
+<ol>
+<li>判断数据的状态, status&#x3D;1 需要审核, 如果status!&#x3D;1不处理</li>
+<li>只有一个消费者组，一个消息只会被一个消费者消费</li>
+<li>加乐观锁，取消息记录版本，更新数据时判断版本是否一致，一致则更新，不一致则不更新数据, affected rows: 0代表没更新成功，其它消费者已经处理过了</li>
+<li>发送消息时，给消息唯一标识, 当消费消息时，先检查这个唯一的id是否存在，存在则不处理，不存在则存入redis|mysql，开始处理。</li>
+</ol>
+<h2 id="发送及消费小结"><a href="#发送及消费小结" class="headerlink" title="发送及消费小结"></a>发送及消费小结</h2><ol>
+<li><p>消费流程:</p>
+<ul>
+<li>client去请求消息数据</li>
+<li>消息存入一个队列里</li>
+<li>消费者另一线程去队列poll获取，最大500条消息</li>
+<li>反序列化</li>
+<li>拦截器</li>
+<li>业务处理， 提交offset</li>
+</ul>
+</li>
+<li><p>offset: 记录消费者消费到第几个消息</p>
+</li>
+<li><p>offset: 提交：auto, 手工</p>
+<ul>
+<li>如果提交的offset小于服务器维护的offset，则消息重复消费</li>
+<li>如果提交的offset大于服务器维护的offset，则消息丢失</li>
+</ul>
+</li>
+<li><p>消费者重平衡(消费者数量在组内有变化时, 加入新的组，消费者挂了重启)</p>
+<p>earliest, latest, none, anythiny else报错</p>
+</li>
+</ol>
+<h2 id="Kafka-中，ZooKeeper-的作用是什么"><a href="#Kafka-中，ZooKeeper-的作用是什么" class="headerlink" title="Kafka 中，ZooKeeper 的作用是什么?"></a>Kafka 中，ZooKeeper 的作用是什么?</h2><p><strong>目前</strong>，Kafka 使用 ZooKeeper 存放集群元数据、成员管理、Controller 选举，以及其他一些管理类任务。之后，等 KIP-500 提案完成后，Kafka 将完全不再依赖 于 ZooKeeper。突出“目前”，以彰显你非常了解社区的演进计划。</p>
+<ul>
+<li>存放元数据”是指主题 分区的所有数据都保存在 ZooKeeper 中，且以它保存的数据为权威，其他“人” 都要与它 保持对齐。</li>
+<li>成员管理”是指 Broker 节点的注册、注销以及属性变更等</li>
+<li>Controller 选举”是指选举集群 Controller</li>
+<li>其他管理类任务包括但不限于主题 删除、参数配置等。</li>
+</ul>
+<p>不过，抛出 KIP-500 也可能是个双刃剑。碰到非常资深的面试官，他可能会进一步追问你 KIP-500 是做的。一言以蔽之:KIP-500 思想，是使用社区自研的基于 Raft 的共识算法， 替代 ZooKeeper，实现 Controller 自选举。</p>
+<h2 id="如何估算-Kafka-集群的机器数量"><a href="#如何估算-Kafka-集群的机器数量" class="headerlink" title="如何估算 Kafka 集群的机器数量?"></a>如何估算 Kafka 集群的机器数量?</h2><p>这道题目考查的是机器数量和所用资源之间的关联关系。所谓资源，也就是 CPU、内存、磁盘和带宽。</p>
+<ul>
+<li>通常来说，CPU 和内存资源的充足是比较容易保证的，因此，你需要从磁盘空间和带宽占用两个维度去评估机器数量。</li>
+<li>在预估磁盘的占用时，你一定不要忘记计算副本同步的开销。如果一条消息占用1KB 的磁 盘空间，那么，在有 3 个副本的主题中，你就需要 3KB 的总空间来保存这条消息。显式地 将这些考虑因素答出来，能够彰显你考虑问题的全面性，是一个难得的加分项</li>
+<li>对于评估带宽来说，常见的带宽有 1Gbps 和 10Gbps，但你要切记，这两个数字仅仅是最大值。因此，你最好和面试官确认一下给定的带宽是多少。然后，明确阐述出当带宽占用接 近总带宽的 90% 时，丢包情形就会发生。这样能显示出你的网络基本功。</li>
+</ul>
+<h2 id="Kafka-为什么不支持读写分离"><a href="#Kafka-为什么不支持读写分离" class="headerlink" title="Kafka 为什么不支持读写分离?"></a>Kafka 为什么不支持读写分离?</h2><p>这道题目考察的是你对 Leader&#x2F;Follower 模型的思考。</p>
+<ul>
+<li>Leader&#x2F;Follower 模型并没有规定 Follower 副本不可以对外提供读服务。很多框架都是允 许这么做的，只是 Kafka 最初为了避免不一致性的问题，而采用了让 Leader 统一提供服 务的方式。</li>
+<li>不过，在开始回答这道题时，你可以率先亮出观点:自 Kafka 2.4 之后，Kafka 提供了有限度的读写分离，也就是说，Follower 副本能够对外提供读服务。</li>
+</ul>
+<p>说完这些之后，你可以再给出之前的版本不支持读写分离的理由：</p>
+<ul>
+<li>场景不适用：读写分离适用于那种读负载很大，而写操作相对不频繁的场景，可Kafka 不属于这样的场景。</li>
+<li>同步机制：Kafka 采用 PULL 方式实现 Follower 的同步，因此，Follower 与 Leader存在不一致性窗口。如果允许读 Follower 副本，就势必要处理消息滞后(Lagging)的问题。</li>
+</ul>
+
+    </article>
+    <!-- license -->
+    
+        <div class="license-wrapper">
+            <p>原文作者：<a href="https://winddsnow.github.io">WinddSnow</a>
+            <p>原文链接：<a href="https://winddsnow.github.io/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9815Kafka/">https://winddsnow.github.io/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9815Kafka/</a>
+            <p>发表日期：<a href="https://winddsnow.github.io/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9815Kafka/">October 22nd 2022, 8:53:14 pm</a>
+            <p>更新日期：<a href="https://winddsnow.github.io/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9815Kafka/">July 24th 2023, 11:52:50 am</a>
+            <p>版权声明：本文采用<a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
+        </div>
+    
+    <!-- paginator -->
+    <ul class="post-paginator">
+        <li class="next">
+            
+                <div class="nextSlogan">Next Post</div>
+                <a href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9816JWT/" title="Java面试题16JWT">
+                    <div class="nextTitle">Java面试题16JWT</div>
+                </a>
+            
+        </li>
+        <li class="previous">
+            
+                <div class="prevSlogan">Previous Post</div>
+                <a href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9814MongoDB/" title="Java面试题14MongoDB">
+                    <div class="prevTitle">Java面试题14MongoDB</div>
+                </a>
+            
+        </li>
+    </ul>
+    <!-- comment -->
+    
+        <div class="post-comment">
+            <!-- 来必力 City 版安装代码 -->
+
+
+            
+
+            
+
+            
+    <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js"></script>
+    <script>
+        let idOption = '1666443194000'
+        
+            idOption = location.pathname
+        
+        const gitalk = new Gitalk({
+            clientID: '72081952d87ae3ddd54d',
+            clientSecret: 'ec2a4a2d33999931c5639c25a52190c660ee0357',
+            repo: 'winddsnow.github.io',
+            owner: 'winddsnow',
+            admin: "winddsnow",
+            id: idOption,
+            distractionFreeMode: false,
+            createIssueManually: true,
+        })
+        gitalk.render('gitalk-container')
+    </script>
+    <noscript>为正常使用 Gitalk 评论功能，您需要激活 JavaScript</noscript>
+
+
+            <!-- utteranc评论 -->
+
+
+            <!-- partial('_partial/comment/changyan') -->
+            <!--PC版-->
+
+
+            
+            
+
+            
+
+        </div>
+    
+    <!-- timeliness note -->
+    <!-- idea from: https://hexo.fluid-dev.com/posts/hexo-injector/#%E6%96%87%E7%AB%A0%E6%97%B6%E6%95%88%E6%80%A7%E6%8F%90%E7%A4%BA -->
+    
+    <!-- Mathjax -->
+    
+</main>
+
+                <!-- profile -->
+                
+            </div>
+            <footer class="footer footer-unloaded">
+    <!-- social  -->
+    
+        <div class="social">
+            
+    
+        
+            
+                <a href="mailto:winddsnow@163.com" class="iconfont-archer email" title=email ></a>
+            
+        
+    
+        
+            
+                <a href="//github.com/Winddsnow" class="iconfont-archer github" target="_blank" title=github></a>
+            
+        
+    
+        
+            
+                <span class="iconfont-archer wechat" title=wechat>
+                    
+                    <img class="profile-qr" src="/assets/example_qr.png" />
+                </span>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+
+        </div>
+    
+    <!-- powered by Hexo  -->
+    <div class="copyright">
+        <span id="hexo-power">Powered by <a href="https://hexo.io/" target="_blank">Hexo</a></span><span class="iconfont-archer power">&#xe635;</span><span id="theme-info">theme <a href="https://github.com/fi3ework/hexo-theme-archer" target="_blank">Archer</a></span>
+    </div>
+    <!-- website approve for Chinese user -->
+    
+    <!-- 不蒜子  -->
+    
+        <div class="busuanzi-container">
+            
+             
+                <span id="busuanzi_container_site_pv">PV: <span id="busuanzi_value_site_pv"></span> :)</span>
+            
+        </div>
+    	
+</footer>
+
+        </div>
+        <!-- toc -->
+        
+            <div class="toc-wrapper toc-wrapper-loding" style=
+
+
+
+
+
+
+
+    top:50vh;
+
+>
+                <div class="toc-catalog">
+                    <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+                </div>
+                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Kafka-%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-number">1.</span> <span class="toc-text">Kafka 是什么?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Kafka-%E7%9A%84%E7%89%B9%E7%82%B9%EF%BC%9F"><span class="toc-number">2.</span> <span class="toc-text">Kafka 的特点？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E6%B6%88%E8%B4%B9%E8%80%85%E7%BB%84"><span class="toc-number">3.</span> <span class="toc-text">什么是消费者组?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Kafka%E4%BD%8D%E7%A7%BB%E6%8F%90%E4%BA%A4%E8%AF%A6%E8%A7%A3"><span class="toc-number">4.</span> <span class="toc-text">Kafka位移提交详解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E4%BD%8D%E7%A7%BB%E6%8F%90%E4%BA%A4%EF%BC%8C%E5%AE%9A%E4%B9%89"><span class="toc-number">4.1.</span> <span class="toc-text">什么是位移提交，定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%8D%E7%A7%BB%E6%8F%90%E4%BA%A4%E7%9A%84%E5%88%86%E7%B1%BB"><span class="toc-number">4.2.</span> <span class="toc-text">位移提交的分类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%87%AA%E5%8A%A8%E6%8F%90%E4%BA%A4%E5%92%8C%E6%89%8B%E5%8A%A8%E6%8F%90%E4%BA%A4%EF%BC%9A"><span class="toc-number">4.3.</span> <span class="toc-text">自动提交和手动提交：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%8C%E6%AD%A5%E6%8F%90%E4%BA%A4%E5%92%8C%E5%BC%82%E6%AD%A5%E6%8F%90%E4%BA%A4"><span class="toc-number">4.4.</span> <span class="toc-text">同步提交和异步提交</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Kafka-%E4%B8%AD%E6%B6%88%E8%B4%B9%E8%80%85%E7%BB%84%E4%B8%8E-Broker-%E4%B9%8B%E9%97%B4%E7%9A%84%E4%BA%A4%E4%BA%92"><span class="toc-number">5.</span> <span class="toc-text">Kafka 中消费者组与 Broker 之间的交互</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Kafka%E4%B8%AD%E6%B6%88%E8%B4%B9%E8%80%85%E7%9A%84%E6%B6%88%E8%B4%B9%E6%96%B9%E5%BC%8F"><span class="toc-number">5.1.</span> <span class="toc-text">Kafka中消费者的消费方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Kafka%E7%9A%84%E5%88%86%E5%8C%BA%E5%88%86%E9%85%8D%E7%AD%96%E7%95%A5"><span class="toc-number">5.2.</span> <span class="toc-text">Kafka的分区分配策略</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#offset%E7%9A%84%E7%BB%B4%E6%8A%A4"><span class="toc-number">5.3.</span> <span class="toc-text">offset的维护</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Kafka%E7%9A%84Producer%E6%B7%B1%E5%85%A5"><span class="toc-number">6.</span> <span class="toc-text">Kafka的Producer深入</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B6%88%E6%81%AF%E5%8F%91%E9%80%81%E6%B5%81%E7%A8%8B-%E3%80%90%E9%9D%A2%E8%AF%95%E3%80%91"><span class="toc-number">6.1.</span> <span class="toc-text">消息发送流程 【面试】</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B6%88%E6%81%AF%E5%8F%91%E9%80%81"><span class="toc-number">6.2.</span> <span class="toc-text">消息发送</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%90%8C%E6%AD%A5%E5%8F%91%E9%80%81"><span class="toc-number">6.2.0.1.</span> <span class="toc-text">同步发送</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B6%88%E6%81%AF%E5%8F%91%E9%80%81%E6%B5%81%E7%A8%8B%EF%BC%9A"><span class="toc-number">6.3.</span> <span class="toc-text">消息发送流程：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Kafka%E7%9A%84Consumer%E6%B7%B1%E5%85%A5"><span class="toc-number">7.</span> <span class="toc-text">Kafka的Consumer深入</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86-%E3%80%90%E9%9D%A2%E8%AF%95%E3%80%91"><span class="toc-number">7.1.</span> <span class="toc-text">工作原理 【面试】</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#offset-%E5%81%8F%E7%A7%BB%E9%87%8F"><span class="toc-number">7.2.</span> <span class="toc-text">offset(偏移量)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E5%8F%82%E6%95%B0%E8%AF%A6%E8%A7%A3"><span class="toc-number">7.3.</span> <span class="toc-text">配置参数详解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%87%AA%E5%8A%A8%E6%8F%90%E4%BA%A4offset"><span class="toc-number">7.4.</span> <span class="toc-text">自动提交offset</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%8B%E5%8A%A8%E6%8F%90%E4%BA%A4offset"><span class="toc-number">7.5.</span> <span class="toc-text">手动提交offset</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B6%88%E6%81%AF%E9%87%8D%E5%A4%8D%E6%B6%88%E8%B4%B9%E5%A4%84%E7%90%86"><span class="toc-number">8.</span> <span class="toc-text">消息重复消费处理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%91%E9%80%81%E5%8F%8A%E6%B6%88%E8%B4%B9%E5%B0%8F%E7%BB%93"><span class="toc-number">9.</span> <span class="toc-text">发送及消费小结</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Kafka-%E4%B8%AD%EF%BC%8CZooKeeper-%E7%9A%84%E4%BD%9C%E7%94%A8%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-number">10.</span> <span class="toc-text">Kafka 中，ZooKeeper 的作用是什么?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E4%BC%B0%E7%AE%97-Kafka-%E9%9B%86%E7%BE%A4%E7%9A%84%E6%9C%BA%E5%99%A8%E6%95%B0%E9%87%8F"><span class="toc-number">11.</span> <span class="toc-text">如何估算 Kafka 集群的机器数量?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Kafka-%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E6%94%AF%E6%8C%81%E8%AF%BB%E5%86%99%E5%88%86%E7%A6%BB"><span class="toc-number">12.</span> <span class="toc-text">Kafka 为什么不支持读写分离?</span></a></li></ol>
+            </div>
+        
+        <!-- sidebar -->
+        <div class="sidebar sidebar-hide">
+    <ul class="sidebar-tabs sidebar-tabs-active-0">
+        <li class="sidebar-tab-archives"><span class="iconfont-archer">&#xe67d;</span><span class="tab-name">Archive</span></li>
+        <li class="sidebar-tab-tags"><span class="iconfont-archer">&#xe61b;</span><span class="tab-name">Tag</span></li>
+        <li class="sidebar-tab-categories"><span class="iconfont-archer">&#xe666;</span><span class="tab-name">Cate</span></li>
+    </ul>
+    <div class="sidebar-content sidebar-content-show-archive">
+        <div class="sidebar-panel-archives">
+    <!-- 在 ejs 中将 archive 按照时间排序 -->
+    
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    
+    
+    
+    
+    <div class="total-and-search">
+        <div class="total-archive">
+        Total : 49
+        </div>
+        <!-- search  -->
+        
+    </div>
+    
+    <div class="post-archive">
+    
+        
+            
+            
+            <div class="archive-year"> 2023 </div>
+            <ul class="year-list">
+            
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/24</span>
+            <a class="archive-post-title" href="/2023/07/23/how-to-do-great-work-zhCN/">how_to_do_great_work_zhCN</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/24</span>
+            <a class="archive-post-title" href="/2023/07/23/%E5%81%9C%E6%AD%A2%E7%A9%BA%E6%83%B3/">停止空想</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/03</span>
+            <a class="archive-post-title" href="/2023/04/02/Java%E5%9F%BA%E7%A1%80/">Java基础</a>
+        </li>
+    
+        
+            
+            
+                
+                </ul>
+            
+            <div class="archive-year"> 2022 </div>
+            <ul class="year-list">
+            
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/23</span>
+            <a class="archive-post-title" href="/2022/10/22/%E3%80%8AJava-%E5%BC%80%E5%8F%91%E6%89%8B%E5%86%8C%E3%80%8B%E5%B5%A9%E5%B1%B1%E7%89%88/">《Java 开发手册》嵩山版</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/23</span>
+            <a class="archive-post-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9801%E5%9F%BA%E7%A1%80/">Java面试题01基础</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/23</span>
+            <a class="archive-post-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9802%E9%9B%86%E5%90%88%E7%9B%B8%E5%85%B3/">Java面试题02集合相关</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/23</span>
+            <a class="archive-post-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9803%E5%A4%9A%E7%BA%BF%E7%A8%8B/">Java面试题03多线程</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/23</span>
+            <a class="archive-post-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9804JVM/">Java面试题04JVM</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/23</span>
+            <a class="archive-post-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9805Web/">Java面试题05Web</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/23</span>
+            <a class="archive-post-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9806%E6%95%B0%E6%8D%AE%E5%BA%93/">Java面试题06数据库</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/23</span>
+            <a class="archive-post-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9807Mybatis%E6%A1%86%E6%9E%B6/">Java面试题07Mybatis框架</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/23</span>
+            <a class="archive-post-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9808Spring%E6%A1%86%E6%9E%B6/">Java面试题08Spring框架</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/23</span>
+            <a class="archive-post-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9809SpringMVC%E6%A1%86%E6%9E%B6/">Java面试题09SpringMVC框架</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/23</span>
+            <a class="archive-post-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9810SpringBoot/">Java面试题10SpringBoot</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/23</span>
+            <a class="archive-post-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9811SpringCloud/">Java面试题11SpringCloud</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/23</span>
+            <a class="archive-post-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9812%E9%98%BF%E9%87%8CDubbo/">Java面试题12阿里Dubbo</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/23</span>
+            <a class="archive-post-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9813Zookeeper/">Java面试题13Zookeeper</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/23</span>
+            <a class="archive-post-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9814MongoDB/">Java面试题14MongoDB</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/23</span>
+            <a class="archive-post-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9815Kafka/">Java面试题15Kafka</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/23</span>
+            <a class="archive-post-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9816JWT/">Java面试题16JWT</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/20</span>
+            <a class="archive-post-title" href="/2022/10/19/MySQL%E4%BC%98%E5%8C%96/">MySQL优化</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/08</span>
+            <a class="archive-post-title" href="/2022/09/08/RabbitMQ/">RabbitMQ</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/08</span>
+            <a class="archive-post-title" href="/2022/09/08/ELK%E6%90%9C%E7%B4%A2/">ELK搜索</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/30</span>
+            <a class="archive-post-title" href="/2022/08/30/Ribbin%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E6%BA%90%E7%A0%81%E5%8E%9F%E7%90%86%E4%B8%8E%E6%BA%90%E7%A0%81%E8%B0%83%E8%AF%95/">Ribbin负载均衡源码原理与源码调试</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/16</span>
+            <a class="archive-post-title" href="/2022/08/15/Yapi%E9%83%A8%E7%BD%B2%E4%B8%8E%E4%BD%BF%E7%94%A8/">Yapi部署与使用</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/15</span>
+            <a class="archive-post-title" href="/2022/08/14/HashMap%E5%8E%9F%E7%90%86/">HashMap原理</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/11</span>
+            <a class="archive-post-title" href="/2022/02/10/Vim%E7%94%A8%E6%B3%95%E7%AE%80%E8%AE%B0/">Vim用法简记</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/11</span>
+            <a class="archive-post-title" href="/2022/02/10/Markdown%E7%A4%BA%E4%BE%8B2/">Markdown示例2</a>
+        </li>
+    
+        
+            
+            
+                
+                </ul>
+            
+            <div class="archive-year"> 2021 </div>
+            <ul class="year-list">
+            
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/21</span>
+            <a class="archive-post-title" href="/2021/12/20/Dead-Line-2021%E6%80%BB%E7%BB%93/">Dead Line--2021总结</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/29</span>
+            <a class="archive-post-title" href="/2021/08/29/SpringCloud%E7%AE%80%E4%BB%8B/">SpringCloud简介</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/14</span>
+            <a class="archive-post-title" href="/2021/08/14/mysql%E8%AF%BB%E5%86%99%E5%88%86%E7%A6%BB-%E4%B8%BB%E4%BB%8E%E5%A4%8D%E5%88%B6%E5%8F%8Asharing-jdbc%E4%BD%BF%E7%94%A8/">mysql读写分离-主从复制及sharing-jdbc使用</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/04</span>
+            <a class="archive-post-title" href="/2021/05/03/Markdown%E8%AF%AD%E6%B3%95%E8%AE%B0%E5%BD%95/">Markdown语法记录</a>
+        </li>
+    
+        
+            
+            
+                
+                </ul>
+            
+            <div class="archive-year"> 2020 </div>
+            <ul class="year-list">
+            
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/29</span>
+            <a class="archive-post-title" href="/2020/08/28/Redis%E7%9B%B8%E5%85%B3%E9%97%AE%E9%A2%98/">Redis相关问题</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/28</span>
+            <a class="archive-post-title" href="/2020/08/28/Redis%E5%88%86%E5%B8%83%E5%BC%8F%E7%BC%93%E5%AD%98/">Redis分布式缓存</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/16</span>
+            <a class="archive-post-title" href="/2020/08/15/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B-%E5%B9%B6%E5%8F%91%E2%91%A0/">Java多线程-并发</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/16</span>
+            <a class="archive-post-title" href="/2020/08/15/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B-%E5%B9%B6%E5%8F%91%E2%91%A1/">Java多线程-并发②</a>
+        </li>
+    
+        
+            
+            
+                
+                </ul>
+            
+            <div class="archive-year"> 2019 </div>
+            <ul class="year-list">
+            
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/14</span>
+            <a class="archive-post-title" href="/2019/08/14/nginx%E7%AE%80%E4%BB%8B%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%BF%9B%E9%98%B6/">nginx简介及使用进阶</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/04</span>
+            <a class="archive-post-title" href="/2019/05/04/PVE%E8%99%9A%E6%8B%9F%E5%8C%96/">PVE虚拟化</a>
+        </li>
+    
+        
+            
+            
+                
+                </ul>
+            
+            <div class="archive-year"> 2018 </div>
+            <ul class="year-list">
+            
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/16</span>
+            <a class="archive-post-title" href="/2018/08/15/Java%E6%95%B0%E7%BB%84%E5%9F%BA%E7%A1%80/">Java数组基础</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/16</span>
+            <a class="archive-post-title" href="/2018/08/15/Java%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">Java算法基础-数据结构-设计模式</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/04</span>
+            <a class="archive-post-title" href="/2018/05/03/%E6%9D%82%E8%B0%88%E6%9C%8D%E5%8A%A1%E5%99%A8/">杂谈服务器</a>
+        </li>
+    
+        
+            
+            
+                
+                </ul>
+            
+            <div class="archive-year"> 1970 </div>
+            <ul class="year-list">
+            
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/01</span>
+            <a class="archive-post-title" href="/1970/01/01/hello-world/">Hello World</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/01</span>
+            <a class="archive-post-title" href="/1970/01/01/%E5%83%8F%E7%8B%BC%E4%B8%80%E6%A0%B7%E6%88%98%E6%96%97%EF%BC%81/">像狼一样战斗！</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/01</span>
+            <a class="archive-post-title" href="/1970/01/01/%E5%BD%93%E5%85%B5%E7%9A%84%E6%97%A5%E5%AD%90/">当兵的日子</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/01</span>
+            <a class="archive-post-title" href="/1970/01/01/%E6%88%91%E6%B0%B8%E8%BF%9C%E4%B8%8D%E5%86%8D%E8%87%AA%E6%80%9C%E8%87%AA%E8%B4%B1/">我永远不再自怜自贱</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/01</span>
+            <a class="archive-post-title" href="/1970/01/01/%E7%BE%8A%E7%9A%AE%E5%8D%B7/">羊皮卷</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/01</span>
+            <a class="archive-post-title" href="/1970/01/01/%E8%93%9D%E8%8E%B2%E8%8A%B1/">蓝莲花</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/01</span>
+            <a class="archive-post-title" href="/1970/01/01/%E9%82%A3%E4%B8%80%E9%81%93%E6%9C%A6%E8%83%A7/">那一道朦胧</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/01</span>
+            <a class="archive-post-title" href="/1970/01/01/%E9%9B%A8%E4%B8%8E%E7%AF%AE%E7%90%83/">雨与篮球</a>
+        </li>
+    
+    </div>
+</div>
+
+        <div class="sidebar-panel-tags">
+    <div class="sidebar-tags-name">
+        
+            <span class="sidebar-tag-name" data-tags="年终总结">
+                <span class="iconfont-archer">&#xe606;</span>
+                年终总结
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="碎语">
+                <span class="iconfont-archer">&#xe606;</span>
+                碎语
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Java">
+                <span class="iconfont-archer">&#xe606;</span>
+                Java
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="ELK">
+                <span class="iconfont-archer">&#xe606;</span>
+                ELK
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="分布式搜索引擎">
+                <span class="iconfont-archer">&#xe606;</span>
+                分布式搜索引擎
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="elasticsearch">
+                <span class="iconfont-archer">&#xe606;</span>
+                elasticsearch
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Logstash">
+                <span class="iconfont-archer">&#xe606;</span>
+                Logstash
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="kibana">
+                <span class="iconfont-archer">&#xe606;</span>
+                kibana
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="原理">
+                <span class="iconfont-archer">&#xe606;</span>
+                原理
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="42">
+                <span class="iconfont-archer">&#xe606;</span>
+                42
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="多线程">
+                <span class="iconfont-archer">&#xe606;</span>
+                多线程
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="并发">
+                <span class="iconfont-archer">&#xe606;</span>
+                并发
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="面试题">
+                <span class="iconfont-archer">&#xe606;</span>
+                面试题
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="数组基础">
+                <span class="iconfont-archer">&#xe606;</span>
+                数组基础
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="数据结构">
+                <span class="iconfont-archer">&#xe606;</span>
+                数据结构
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="基础">
+                <span class="iconfont-archer">&#xe606;</span>
+                基础
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="集合">
+                <span class="iconfont-archer">&#xe606;</span>
+                集合
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="JVM">
+                <span class="iconfont-archer">&#xe606;</span>
+                JVM
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="WEB">
+                <span class="iconfont-archer">&#xe606;</span>
+                WEB
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="数据库">
+                <span class="iconfont-archer">&#xe606;</span>
+                数据库
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="MySql">
+                <span class="iconfont-archer">&#xe606;</span>
+                MySql
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Mybatis">
+                <span class="iconfont-archer">&#xe606;</span>
+                Mybatis
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Spring">
+                <span class="iconfont-archer">&#xe606;</span>
+                Spring
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="SpringMVC">
+                <span class="iconfont-archer">&#xe606;</span>
+                SpringMVC
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="SpringBoot">
+                <span class="iconfont-archer">&#xe606;</span>
+                SpringBoot
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="SpringCloud">
+                <span class="iconfont-archer">&#xe606;</span>
+                SpringCloud
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Dubbo">
+                <span class="iconfont-archer">&#xe606;</span>
+                Dubbo
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Zookeeper">
+                <span class="iconfont-archer">&#xe606;</span>
+                Zookeeper
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="MongoDB">
+                <span class="iconfont-archer">&#xe606;</span>
+                MongoDB
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Kafka">
+                <span class="iconfont-archer">&#xe606;</span>
+                Kafka
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="JWT">
+                <span class="iconfont-archer">&#xe606;</span>
+                JWT
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="token">
+                <span class="iconfont-archer">&#xe606;</span>
+                token
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Markdown">
+                <span class="iconfont-archer">&#xe606;</span>
+                Markdown
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="掘金">
+                <span class="iconfont-archer">&#xe606;</span>
+                掘金
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="MySQL">
+                <span class="iconfont-archer">&#xe606;</span>
+                MySQL
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="虚拟化">
+                <span class="iconfont-archer">&#xe606;</span>
+                虚拟化
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Proxmox VE">
+                <span class="iconfont-archer">&#xe606;</span>
+                Proxmox VE
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="RabbitMQ">
+                <span class="iconfont-archer">&#xe606;</span>
+                RabbitMQ
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="消息队列">
+                <span class="iconfont-archer">&#xe606;</span>
+                消息队列
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Redis">
+                <span class="iconfont-archer">&#xe606;</span>
+                Redis
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="缓存">
+                <span class="iconfont-archer">&#xe606;</span>
+                缓存
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Ribbon">
+                <span class="iconfont-archer">&#xe606;</span>
+                Ribbon
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="debug调试">
+                <span class="iconfont-archer">&#xe606;</span>
+                debug调试
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="spring">
+                <span class="iconfont-archer">&#xe606;</span>
+                spring
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="springcloud">
+                <span class="iconfont-archer">&#xe606;</span>
+                springcloud
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="微服务">
+                <span class="iconfont-archer">&#xe606;</span>
+                微服务
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="vim">
+                <span class="iconfont-archer">&#xe606;</span>
+                vim
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="编辑器之神">
+                <span class="iconfont-archer">&#xe606;</span>
+                编辑器之神
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="前端">
+                <span class="iconfont-archer">&#xe606;</span>
+                前端
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Yapi">
+                <span class="iconfont-archer">&#xe606;</span>
+                Yapi
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="接口管理">
+                <span class="iconfont-archer">&#xe606;</span>
+                接口管理
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="helloworld">
+                <span class="iconfont-archer">&#xe606;</span>
+                helloworld
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="分享">
+                <span class="iconfont-archer">&#xe606;</span>
+                分享
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="保罗·格雷厄姆（Paul Graham）">
+                <span class="iconfont-archer">&#xe606;</span>
+                保罗·格雷厄姆（Paul Graham）
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="数据库操作">
+                <span class="iconfont-archer">&#xe606;</span>
+                数据库操作
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="nginx">
+                <span class="iconfont-archer">&#xe606;</span>
+                nginx
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="http服务器">
+                <span class="iconfont-archer">&#xe606;</span>
+                http服务器
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="高并发">
+                <span class="iconfont-archer">&#xe606;</span>
+                高并发
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="计算机的世界">
+                <span class="iconfont-archer">&#xe606;</span>
+                计算机的世界
+            </span>
+        
+    </div>
+    <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
+    <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
+        缺失模块，请参考主题文档进行安装配置：https://github.com/fi3ework/hexo-theme-archer#%E5%AE%89%E8%A3%85%E4%B8%BB%E9%A2%98
+    </div> 
+    <div class="sidebar-tags-list"></div>
+</div>
+
+        <div class="sidebar-panel-categories">
+    <div class="sidebar-categories-name">
+    
+        <span class="sidebar-category-name" data-categories="个人生活">
+            <span class="iconfont-archer">&#xe60a;</span>
+            个人生活
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="编程中间件">
+            <span class="iconfont-archer">&#xe60a;</span>
+            编程中间件
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="编程">
+            <span class="iconfont-archer">&#xe60a;</span>
+            编程
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="面试">
+            <span class="iconfont-archer">&#xe60a;</span>
+            面试
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="工具用法">
+            <span class="iconfont-archer">&#xe60a;</span>
+            工具用法
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="计算机基础架构">
+            <span class="iconfont-archer">&#xe60a;</span>
+            计算机基础架构
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="指引">
+            <span class="iconfont-archer">&#xe60a;</span>
+            指引
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="编程与数据库">
+            <span class="iconfont-archer">&#xe60a;</span>
+            编程与数据库
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="生活">
+            <span class="iconfont-archer">&#xe60a;</span>
+            生活
+        </span>
+    
+    </div>
+    <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>
+    <div class="sidebar-categories-list"></div>
+</div>
+
+    </div>
+</div>
+
+        <!-- site-meta -->
+        <script>
+    var siteMetaRoot = "/"
+    if (siteMetaRoot === "undefined") {
+        siteMetaRoot = '/'
+    }
+    var siteMeta = {
+        url: "https://winddsnow.github.io",
+        root: siteMetaRoot,
+        author: "WinddSnow"
+    }
+</script>
+
+        <!-- import experimental options here -->
+        <!-- Custom Font -->
+
+
+        <!-- main func -->
+        <script src="/scripts/main.js?v=20211217"></script>
+        <!-- dark mode -->
+        <script src="/scripts/dark.js?v=20211217"></script>
+        <!-- fancybox -->
+        <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" defer></script>
+        <!-- algolia -->
+        
+        <!-- busuanzi -->
+        
+            <script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+        
+        <!-- CNZZ -->
+        
+        <!-- async load share.js -->
+        
+            <script src="/scripts/share.js?v=20211217" async></script>
+        
+        <!-- mermaid -->
+        
+    </body>
+</html>

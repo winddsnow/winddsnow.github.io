@@ -1,0 +1,2310 @@
+<!DOCTYPE html>
+<html lang="*zh-CN*">
+    <!-- title -->
+
+
+    
+
+<!-- keywords -->
+
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="author" content="WinddSnow">
+    <meta name="renderer" content="webkit">
+    <meta name="copyright" content="WinddSnow">
+    
+        <meta name="keywords" content="hexo,hexo-theme,hexo-blog">
+    
+    <meta name="description" content="">
+    <meta name="description" content="Zookeeper 是什么Zookeeper 是一个分布式协调服务的开源框架, 主要用来解决分布式集群中应用系统的一致性问题, 例如怎样避免同时操作同一数据造成脏读的问题. ZooKeeper 本质上是一个分布式的小文件存储系统. 提供基于类似于文件系统的目录树方式的数据存储, 并且可以对树中的节点进行有效管理. 从而用来维护和监控你存储的数据的状态变化. 通过监控这些数据状态的变化，从而可以达到">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java面试题13Zookeeper">
+<meta property="og:url" content="https://winddsnow.github.io/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9813Zookeeper/index.html">
+<meta property="og:site_name" content="WinddSnow">
+<meta property="og:description" content="Zookeeper 是什么Zookeeper 是一个分布式协调服务的开源框架, 主要用来解决分布式集群中应用系统的一致性问题, 例如怎样避免同时操作同一数据造成脏读的问题. ZooKeeper 本质上是一个分布式的小文件存储系统. 提供基于类似于文件系统的目录树方式的数据存储, 并且可以对树中的节点进行有效管理. 从而用来维护和监控你存储的数据的状态变化. 通过监控这些数据状态的变化，从而可以达到">
+<meta property="og:locale">
+<meta property="article:published_time" content="2022-10-22T12:51:27.000Z">
+<meta property="article:modified_time" content="2023-07-24T11:52:50.148Z">
+<meta property="article:author" content="WinddSnow">
+<meta property="article:tag" content="Java">
+<meta property="article:tag" content="42">
+<meta property="article:tag" content="Zookeeper">
+<meta name="twitter:card" content="summary">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <link rel="icon" href="/assets/favicon.ico">
+    
+    <title>Java面试题13Zookeeper · WinddSnow</title>
+    <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
+/* This file is meant as a standalone workflow for
+- testing support for link[rel=preload]
+- enabling async CSS loading in browsers that do not support rel=preload
+- applying rel preload css once loaded, whether supported or not.
+*/ -->
+<script>
+    (function (w) {
+        'use strict'
+        // rel=preload support test
+        if (!w.loadCSS) {
+            w.loadCSS = function () {}
+        }
+        // define on the loadCSS obj
+        var rp = (loadCSS.relpreload = {})
+        // rel=preload feature support test
+        // runs once and returns a function for compat purposes
+        rp.support = (function () {
+            var ret
+            try {
+                ret = w.document.createElement('link').relList.supports('preload')
+            } catch (e) {
+                ret = false
+            }
+            return function () {
+                return ret
+            }
+        })()
+
+        // if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+        // then change that media back to its intended value on load
+        rp.bindMediaToggle = function (link) {
+            // remember existing media attr for ultimate state, or default to 'all'
+            var finalMedia = link.media || 'all'
+
+            function enableStylesheet() {
+                link.media = finalMedia
+            }
+
+            // bind load handlers to enable media
+            if (link.addEventListener) {
+                link.addEventListener('load', enableStylesheet)
+            } else if (link.attachEvent) {
+                link.attachEvent('onload', enableStylesheet)
+            }
+
+            // Set rel and non-applicable media type to start an async request
+            // note: timeout allows this to happen async to let rendering continue in IE
+            setTimeout(function () {
+                link.rel = 'stylesheet'
+                link.media = 'only x'
+            })
+            // also enable media after 3 seconds,
+            // which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+            setTimeout(enableStylesheet, 3000)
+        }
+
+        // loop through link elements in DOM
+        rp.poly = function () {
+            // double check this to prevent external calls from running
+            if (rp.support()) {
+                return
+            }
+            var links = w.document.getElementsByTagName('link')
+            for (var i = 0; i < links.length; i++) {
+                var link = links[i]
+                // qualify links to those with rel=preload and as=style attrs
+                if (
+                    link.rel === 'preload' &&
+                    link.getAttribute('as') === 'style' &&
+                    !link.getAttribute('data-loadcss')
+                ) {
+                    // prevent rerunning on link
+                    link.setAttribute('data-loadcss', true)
+                    // bind listeners to toggle media back
+                    rp.bindMediaToggle(link)
+                }
+            }
+        }
+
+        // if unsupported, run the polyfill
+        if (!rp.support()) {
+            // run once at least
+            rp.poly()
+
+            // rerun poly on an interval until onload
+            var run = w.setInterval(rp.poly, 500)
+            if (w.addEventListener) {
+                w.addEventListener('load', function () {
+                    rp.poly()
+                    w.clearInterval(run)
+                })
+            } else if (w.attachEvent) {
+                w.attachEvent('onload', function () {
+                    rp.poly()
+                    w.clearInterval(run)
+                })
+            }
+        }
+
+        // commonjs
+        if (typeof exports !== 'undefined') {
+            exports.loadCSS = loadCSS
+        } else {
+            w.loadCSS = loadCSS
+        }
+    })(typeof global !== 'undefined' ? global : this)
+</script>
+
+    <style type="text/css">
+    @font-face {
+        font-family: 'Oswald-Regular';
+        src: url("/font/Oswald-Regular.ttf");
+    }
+
+    body {
+        margin: 0;
+    }
+
+    header,
+    footer,
+    .back-top,
+    .sidebar,
+    .container,
+    .site-intro-meta,
+    .toc-wrapper {
+        display: none;
+    }
+
+    .site-intro {
+        position: relative;
+        z-index: 3;
+        width: 100%;
+        /* height: 50vh; */
+        overflow: hidden;
+    }
+
+    .site-intro-placeholder {
+        position: absolute;
+        z-index: -2;
+        top: 0;
+        left: 0;
+        width: calc(100% + 300px);
+        height: 100%;
+        background: repeating-linear-gradient(-45deg, #444 0, #444 80px, #333 80px, #333 160px);
+        background-position: center center;
+        transform: translate3d(-226px, 0, 0);
+        animation: gradient-move 2.5s ease-out 0s infinite;
+    }
+
+    @keyframes gradient-move {
+        0% {
+            transform: translate3d(-226px, 0, 0);
+        }
+        100% {
+            transform: translate3d(0, 0, 0);
+        }
+    }
+</style>
+
+    <link rel="preload" href="/css/style.css?v=20211217" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="/css/dark.css?v=20211217" as="style">
+    <link rel="stylesheet" href="/css/dark.css">
+    <link rel="stylesheet" href="/css/mobile.css?v=20211217" media="(max-width: 960px)">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" as="script">
+    <link rel="preload" href="/scripts/main.js?v=20211217" as="script">
+    <link rel="preload" href="/scripts/dark.js?v=20211217" as="script">
+    <link rel="preload" href="/font/Oswald-Regular.ttf" as="font" crossorigin>
+    <link rel="preload" href="https://at.alicdn.com/t/font_327081_1dta1rlogw17zaor.woff" as="font" crossorigin>
+    <!-- algolia -->
+    
+    <!-- 百度统计  -->
+    
+    <!-- Google tag (gtag.js) -->
+    
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+    <script type="text/javascript">
+        if (typeof window.$ == undefined) {
+            console.warn('jquery load from jsdelivr failed, will load local script')
+            document.write('<script src="/lib/jquery.min.js" />')
+        }
+    </script>
+    
+        <body class="post-body">
+    
+        <!-- header -->
+        <header class="header header-mobile">
+    <!-- top read progress line -->
+    <div class="header-element">
+        <div class="read-progress"></div>
+    </div>
+    <!-- sidebar menu button -->
+    <div class="header-element">
+        
+            <div class="header-sidebar-menu">
+        
+            
+                <div style="padding-left: 1px;">&#xe775;</div>
+            
+        </div>
+    </div>
+    <!-- header actions -->
+    <div class="header-actions">
+        <!-- theme mode switch button -->
+        <span class="header-theme-btn header-element">
+            <i class="fas fa-adjust"></i>
+        </span>
+        <!-- back to home page text -->
+        <span class="home-link header-element">
+            <a href=/>WinddSnow</a>
+        </span>
+    </div>
+    <!-- toggle banner for post layout -->
+    
+        
+            <div class="banner">
+        
+            <div class="blog-title header-element">
+                <a href="/">WinddSnow</a>
+            </div>
+            <div class="post-title header-element">
+                <a href="#" class="post-name">Java面试题13Zookeeper</a>
+            </div>
+        </div>
+    
+</header>
+
+        <!-- fixed footer -->
+        <footer class="footer-fixed">
+    <!-- back to top button -->
+    <div class="footer-fixed-element">
+        
+            <div class="back-top back-top-hidden">
+        
+        
+            <div>&#xe639;</div>
+        
+        </div>
+    </div>
+</footer>
+
+        <!-- wrapper -->
+        <div class="wrapper">
+            <div class="site-intro" style="
+
+
+
+
+
+
+
+    height:50vh;
+
+">
+    
+    <!-- 主页  -->
+    
+        
+    <!-- 404页  -->
+    
+    <div class="site-intro-placeholder"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/post-bg.jpg)"></div>
+    <div class="site-intro-meta">
+        <!-- 标题  -->
+        <h1 class="intro-title">
+            <!-- 主页  -->
+            
+                Java面试题13Zookeeper
+            <!-- 404 -->
+            
+        </h1>
+        <!-- 副标题 -->
+        <p class="intro-subtitle">
+            <!-- 主页副标题  -->
+            
+                
+            <!-- 404 -->
+            
+        </p>
+        <!-- 文章页 meta -->
+        
+            <div class="post-intros">
+                <!-- 文章页标签  -->
+                
+                    <div class= post-intro-tags >
+    
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="Java">Java</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="42">42</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="Zookeeper">Zookeeper</a>
+    
+</div>
+
+                
+                <!-- 文章字数统计 -->
+                
+                    <div class="post-intro-read">
+                        <span>字数统计: <span class="post-count word-count">4.2k</span>阅读时长: <span class="post-count reading-time">15 min</span></span>
+                    </div>
+                
+                <div class="post-intro-meta">
+                    <!-- 撰写日期 -->
+                    <span class="iconfont-archer post-intro-calander">&#xe676;</span>
+                    <span class="post-intro-time">2022/10/22</span>
+                    <!-- busuanzi -->
+                    
+                        <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                            <span class="iconfont-archer post-intro-busuanzi">&#xe602;</span>
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    
+                    <!-- 文章分享 -->
+                    <span class="share-wrapper">
+                        <span class="iconfont-archer share-icon">&#xe71d;</span>
+                        <span class="share-text">Share</span>
+                        <ul class="share-list">
+                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                                <div class="share-qrcode"></div>
+                            </li>
+                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
+        
+    </div>
+</div>
+
+            <script>
+  // get user agent
+  function getBrowserVersions() {
+    var u = window.navigator.userAgent
+    return {
+      userAgent: u,
+      trident: u.indexOf('Trident') > -1, //IE内核
+      presto: u.indexOf('Presto') > -1, //opera内核
+      webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+      gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+      mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+      ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+      android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
+      iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者安卓QQ浏览器
+      iPad: u.indexOf('iPad') > -1, //是否为iPad
+      webApp: u.indexOf('Safari') == -1, //是否为web应用程序，没有头部与底部
+      weixin: u.indexOf('MicroMessenger') == -1, //是否为微信浏览器
+      uc: u.indexOf('UCBrowser') > -1, //是否为android下的UC浏览器
+    }
+  }
+  var browser = {
+    versions: getBrowserVersions(),
+  }
+  console.log('userAgent: ' + browser.versions.userAgent)
+
+  // callback
+  function fontLoaded() {
+    console.log('font loaded')
+    if (document.getElementsByClassName('site-intro-meta')) {
+      document
+        .getElementsByClassName('intro-title')[0]
+        .classList.add('intro-fade-in')
+      document
+        .getElementsByClassName('intro-subtitle')[0]
+        .classList.add('intro-fade-in')
+      var postIntros = document.getElementsByClassName('post-intros')[0]
+      if (postIntros) {
+        postIntros.classList.add('post-fade-in')
+      }
+    }
+  }
+
+  // UC不支持跨域，所以直接显示
+  function asyncCb() {
+    if (browser.versions.uc) {
+      console.log('UCBrowser')
+      fontLoaded()
+    } else {
+      WebFont.load({
+        custom: {
+          families: ['Oswald-Regular'],
+        },
+        loading: function () {
+          // 所有字体开始加载
+          // console.log('font loading');
+        },
+        active: function () {
+          // 所有字体已渲染
+          fontLoaded()
+        },
+        inactive: function () {
+          // 字体预加载失败，无效字体或浏览器不支持加载
+          console.log('inactive: timeout')
+          fontLoaded()
+        },
+        timeout: 5000, // Set the timeout to two seconds
+      })
+    }
+  }
+
+  function asyncErr() {
+    console.warn('script load from CDN failed, will load local script')
+  }
+
+  // load webfont-loader async, and add callback function
+  function async(u, cb, err) {
+    var d = document,
+      t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0]
+    o.src = u
+    if (cb) {
+      o.addEventListener(
+        'load',
+        function (e) {
+          cb(null, e)
+        },
+        false
+      )
+    }
+    if (err) {
+      o.addEventListener(
+        'error',
+        function (e) {
+          err(null, e)
+        },
+        false
+      )
+    }
+    s.parentNode.insertBefore(o, s)
+  }
+
+  var asyncLoadWithFallBack = function (arr, success, reject) {
+    var currReject = function () {
+      reject()
+      arr.shift()
+      if (arr.length) async(arr[0], success, currReject)
+    }
+
+    async(arr[0], success, currReject)
+  }
+
+  asyncLoadWithFallBack(
+    [
+      'https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js',
+      'https://cdn.bootcss.com/webfont/1.6.28/webfontloader.js',
+      "/lib/webfontloader.min.js",
+    ],
+    asyncCb,
+    asyncErr
+  )
+</script>
+
+            <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
+            <div class="container container-unloaded">
+                <main class="main post-page">
+    <article class="article-entry">
+        <h2 id="Zookeeper-是什么"><a href="#Zookeeper-是什么" class="headerlink" title="Zookeeper 是什么"></a>Zookeeper 是什么</h2><p>Zookeeper 是一个分布式协调服务的开源框架, 主要用来解决分布式集群中应用系统的一致性问题, 例如怎样避免同时操作同一数据造成脏读的问题.</p>
+<p>ZooKeeper 本质上是一个分布式的小文件存储系统. 提供基于类似于文件系统的目录树方式的数据存储, 并且可以对树中的节点进行有效管理. 从而用来维护和监控你存储的数据的状态变化. 通过监控这些数据状态的变化，从而可以达到基于数据的集群管理.</p>
+<p>在大数据生态系统里，很多组件的命名都是某种动物，比如 hadoop 就是大象, hive就是蜜蜂, 而 Zookeeper 就是动物管理员.</p>
+<h2 id="Zookeeper-的数据模型"><a href="#Zookeeper-的数据模型" class="headerlink" title="Zookeeper 的数据模型"></a>Zookeeper 的数据模型</h2><ul>
+<li>ZK 本质上是一个分布式的小文件存储系统.</li>
+<li>ZK 表现为一个分层的文件系统目录树结构, 既能存储数据, 而且还能像目录一样有子节点. 每个节点可以存最多 1M 左右的数据.</li>
+<li>每个节点称做一个 Znode, 每个 Znode 都可以通过其路径唯一标识.</li>
+<li>而且客户端还能给节点添加 watch, 也就是监听器, 可以监听节点的变化, 这个功能常在实际开发中作为监听服务器集群机器上下线操作.</li>
+</ul>
+<h2 id="节点结构"><a href="#节点结构" class="headerlink" title="节点结构"></a>节点结构</h2><p>每个节点称为一个 Znode。 每个 Znode 由 3 部分组成:</p>
+<ul>
+<li>stat：此为状态信息, 描述该 Znode 的版本, 权限等信息</li>
+<li>data：与该 Znode 关联的数据</li>
+<li>children：该 Znode 下的子节点</li>
+</ul>
+<h2 id="节点类型"><a href="#节点类型" class="headerlink" title="节点类型"></a>节点类型</h2><p>Znode 有 2 大类 4 小类, 两大类分别为永久节点和临时节点.</p>
+<ul>
+<li>永久节点(Persistent): 客户端和服务器端断开连接后，创建的节点不会消失, 只有在客户端执行删除操作的时候, 他们才能被删除.</li>
+<li>临时节点(Ephemeral): 客户端和服务器端断开连接后，创建的节点会被删除.</li>
+</ul>
+<p>Znode 还有一个序列化的特性, 这个序列号对于此节点的父节点来说是唯一的, 这样便会记录每个子节点创建的先后顺序. 它的格式为“%10d”(10 位数字, 没有数值的数位用 0 补充, 例如“0000000001”)，因此节点可以分为 4 小类:</p>
+<ul>
+<li>永久节点(Persistent)</li>
+<li>永久_序列化节点(Persistent_Sequential)</li>
+<li>临时节点(Ephemeral)</li>
+<li>临时_序列化节点(Ephemeral_Sequential)</li>
+</ul>
+<h2 id="Zookeeper-的-watch-监听机制"><a href="#Zookeeper-的-watch-监听机制" class="headerlink" title="Zookeeper 的 watch 监听机制"></a>Zookeeper 的 watch 监听机制</h2><ul>
+<li>在 ZooKeeper 中还支持一种 watch(监听)机制, 它允许对 ZooKeeper 注册监听, 当监听的对象发生指定的事件的时候, ZooKeeper 就会返回一个通知.</li>
+<li>Watcher 分为以下三个过程：客户端向 ZK 服务端注册 Watcher、服务端事件发生触发 Watcher、客户端回调 Watcher 得到触发事件情况.<br>触发事件种类很多，如：节点创建，节点删除，节点改变，子节点改变等。</li>
+<li>Watcher 是一次性的. 一旦被触发将会失效. 如果需要反复进行监听就需要反复进行注册.</li>
+</ul>
+<h2 id="监听器原理"><a href="#监听器原理" class="headerlink" title="监听器原理"></a>监听器原理</h2><ul>
+<li><p>首先要有一个 main()线程</p>
+</li>
+<li><p>在 main 线程中创建 Zookeeper 客户端， 这时就会创建两个线程， 一个复制网络连接通信(connect), 一个负责监听(listener).</p>
+</li>
+<li><p>通过 connect 线程将注册的监听事件发送给 zk, 常见的监听有</p>
+<p>监听节点数据的变化 get path [watch]</p>
+<p>监听节点状态的变化 stat path  [watch]</p>
+<p>监听子节点增减的变化 ls path  [watch]</p>
+</li>
+<li><p>将注册的监听事件添加到 zk 的注册的监听器列表中</p>
+</li>
+<li><p>监听到有数据或路径变化, 就会将这个消息发送给 listener 线程.</p>
+</li>
+<li><p>listener 线程内部调用了 process()方法.此方法是程序员自定义的方法, 里面可以写明监听到事件后做如何的通知操作.</p>
+</li>
+</ul>
+<h2 id="监听器实际应用"><a href="#监听器实际应用" class="headerlink" title="监听器实际应用"></a>监听器实际应用</h2><ul>
+<li>监听器+ZK 临时节点能够很好的监听服务器的上线和下线.<ol>
+<li>第一步: 先想 zk 集群注册一个监听器, 监听某一个节点路径</li>
+<li>第二步: 主要服务器启动, 就去 zk 上指定路径下创建一个临时节点.</li>
+<li>第三步: 监听器监听 servers 下面的子节点有没有变化, 一旦有变化, 不管新增(机器上线)还是减少(机器下线)都会马上给对应的人发送通知.</li>
+</ol>
+</li>
+</ul>
+<h2 id="Zookeeper-的应用场景"><a href="#Zookeeper-的应用场景" class="headerlink" title="Zookeeper 的应用场景"></a>Zookeeper 的应用场景</h2><p>ZK 提供的服务包括: </p>
+<ul>
+<li><p>统一命名服务,统一命名服务使用的是 ZK 的 node 节点全局唯一的这个特点.</p>
+<p>在分布式环境下，经常需要对应用&#x2F;服务进行统一命名，便于识别。例如：IP 不容易记住，而域名容易记住。创建一个节点后, 节点的路径就是全局唯一的, 可以作为全局名称使用.</p>
+</li>
+<li><p>统一配置管理, 使用的是 Zookeeper 的 watch 机制</p>
+<p>可以把所有的配置都放在一个配置中心, 然后各个服务分别去监听配置中心,一旦发现里面的内容发生变化, 立即获取变化的内容, 然后更新本地配置即可.</p>
+<p>可将配置信息写入 Zookeeper 上的一个 Znode.</p>
+<p>各个客户端服务器监听这个 Znode.</p>
+<p>一旦 Znode 中的数据被修改, Zookeeper 将通知各个客户端服务器.</p>
+</li>
+<li><p>统一集群管理,统一集群管理使用的是 Zookeeper 的 watch 机制</p>
+<p>可将节点信息写入 Zookeeper 上的一个 Znode</p>
+<p>监听这个 Znode 可获取它的实时状态变化</p>
+</li>
+<li><p>集群选主,集群选主使用的是 zookeeper 的临时节点</p>
+<p>所有参与选主的主机都去 Zookeeper 上创建同一个临时节点，那么最终一定只有一个客户端请求能够 创建成功。</p>
+<p>成功创建节点的客户端所在的机器就成为了 Master，其他没有成功创建该节点的客户端，成为从节点</p>
+<p>所 有 的 从 节 点 都 会 在 主 节 点 上 注 册 一 个 子 节 点 变 更 的Watcher，用于监控当前主节点是否存活，一旦 发现当前的主节点挂了，那么其他客户端将会重新进行选主。</p>
+</li>
+<li><p>服务动态上下线, </p>
+</li>
+<li><p>分布式锁等.分布式锁使用的是 Zookeeper 的临时有序节点</p>
+<ol>
+<li>所有需要执行操作的主机都去 Zookeeper 上创建一个临时有序节点.</li>
+<li>然后获取到 Zookeeper 上创建出来的这些节点进行一个从小到大的排序.</li>
+<li>判断自己创建的节点是不是最小的, 如果是, 自己就获取到了锁; 如果不是,则对最小的节点注册一个监听.</li>
+<li>如果自己获取到了锁, 就去执行相应的操作. 当执行完毕之后, 连接断开, 节点消失, 锁就被释放了.</li>
+<li>如果自己没有获取到锁, 就等待, 一直监听节点是否消失，锁被释放后, 再重新执行抢夺锁的操作.</li>
+</ol>
+</li>
+</ul>
+<h2 id="Zookeeper-集群介绍"><a href="#Zookeeper-集群介绍" class="headerlink" title="Zookeeper 集群介绍"></a>Zookeeper 集群介绍</h2><p>ookeeper 在一个系统中一般会充当一个很重要的角色, 所以一定要保证它的高可用,这就需要部署 Zookeeper 的集群. Zookeeper 有三种运行模式: 单机模式, 集群模式和伪集群模式.</p>
+<ul>
+<li>单机模式: 使用一台主机不是一个 Zookeeper 来对外提供服务, 有单点故障问题,仅适合于开发、测试环境.</li>
+<li>集群模式: 使用多台服务器, 每台上部署一个 Zookeeper 一起对外提供服务, 适合于生产环境.</li>
+<li>伪集群模式: 在服务器不够多的情况下, 也可以考虑在一台服务器上部署多个Zookeeper 来对外提供服务.</li>
+</ul>
+<h2 id="集群角色"><a href="#集群角色" class="headerlink" title="集群角色"></a>集群角色</h2><ul>
+<li>Leader: 负责投票的发起和决议, 更新系统状态, 是事务请求(写请求) 的唯一处理者,一个 ZooKeeper 同一时刻只会有一个 Leader.<br>对于 create 创建&#x2F;setData 修改&#x2F;delete 删除等有写操作的请求, 则需要统一转发给 leader处理, leader 需要决定编号和执行操作, 这个过程称为一个事务.</li>
+<li>Follower: 接收客户端请求, 参与选主投票. 处理客户端非事务(读操作)请求，转发事务请求(写请求)给 Leader；</li>
+<li>Observer: 针对访问量比较大的 zookeeper 集群, 为了增加并发的读请求. 还可新增观察者角色.作用: 可以接受客户端请求, 把请求转发给 leader, 不参与投票, 只同步 leader 的状态.</li>
+</ul>
+<h2 id="Zookeeper-集群的特性"><a href="#Zookeeper-集群的特性" class="headerlink" title="Zookeeper 集群的特性"></a>Zookeeper 集群的特性</h2><ol>
+<li>Zookeeper: 一个领导者(Leader), 多个跟随者(Follower)组成的集群.</li>
+<li>集群中只要有半数以上节点存活, Zookeeper 集群就能正常服务.</li>
+<li><strong>全局数据一致</strong>: 每个 Server 保存一份相同的数据副本, Client 无论连接到哪个 Server, 数据都是一致的.</li>
+<li>更新请求<strong>顺序性</strong>: 从同一个客户端发起的事务请求,最终会严格按照顺序被应用到zookeeper 中.</li>
+<li>数据更新<strong>原子性</strong>: 一次数据更新要么成功, 要么失败。</li>
+<li><strong>实时性</strong>，在一定时间范围内，Client 能读到最新数据。</li>
+</ol>
+<h2 id="ZAB-协议"><a href="#ZAB-协议" class="headerlink" title="ZAB 协议"></a>ZAB 协议</h2><ul>
+<li>Zookeeper 采用 ZAB(Zookeeper Atomic Broadcast)协议来保证 分布式数据一致性 。</li>
+<li>ZAB 并不是一种通用的分布式一致性算法,而是一种专为 Zookeeper 设计的崩溃可恢复的原子消息广播算法。</li>
+<li>ZAB 协议包括两种基本模式: 崩溃恢复 模式和 消息广播 模式:</li>
+<li>消息广播模式主要用来进行事务请求的处理</li>
+<li>崩溃恢复模式主要用来在集群启动过程,或者 Leader 服务器崩溃退出后进行新的Leader 服务器的选举以及数据同步.</li>
+</ul>
+<h2 id="ZK-集群写数据流程"><a href="#ZK-集群写数据流程" class="headerlink" title="ZK 集群写数据流程"></a>ZK 集群写数据流程</h2><ol>
+<li>Client 向 Zookeeper 的 Server1 上写数据, 发送一个写请求.</li>
+<li>如果 Server1 不是 Leader, 那么 Server1 会把接受的请求进一步<strong>转发</strong>给 Leader, 因为每个 Zookeeper 的 Server 里面有一个是 Leader. 这个 Leader 会将写请求<strong>广播</strong>给各个Server, 比如 Server1 和 Server2, 各个 Server 会将该写请求加入待写队列, 并向Leader 发送成功信息(<strong>ack 反馈机制</strong>).</li>
+<li>当 Leader 收到<strong>半数以上</strong> Server 的成功信息, 说明该写操作可以执行. Leader 会向各个Server 发送<strong>事务提交</strong>信息, 各个 Server 收到信息后会落实队列里面的写请求, 此时写成功.</li>
+<li>Server1 会进一步通知 Client 数据写成功了, 这是就认为整个写操纵成功.</li>
+</ol>
+<h2 id="ZK-集群选举机制"><a href="#ZK-集群选举机制" class="headerlink" title="ZK 集群选举机制"></a>ZK 集群选举机制</h2><ul>
+<li>Zookeeper 服务器有四个状态：</li>
+</ul>
+<ol>
+<li>looking: 寻找 leader 状态, 当服务器处于该状态时, 它会认为当前集群中没有 leader,因此需要进入 leader 选举状态.</li>
+<li>leading: 领导者状态, 表明当前服务器角色是 leader.</li>
+<li>following: 跟随者状态, 表明当前服务器角色是 follower.</li>
+<li>observing：观察者状态, 表明当前服务器角色是 observer。</li>
+</ol>
+<ul>
+<li>半数机制: 集群中半数以上机器存活, 集群可用, 所以 Zookeeper 适合安装奇数台服务器. 集群启动时, 如果当前机器票数超过了总票数一半则为 Leader, Leader 产生后, 投过票的机器就不能再投票了.</li>
+<li>Zookeeper 虽然在配置文件中没有指定主从节点. 但是, Zookeeper 工作时, 是有一个节点 Leader, 其他则为 Follower, Leader 是通过内部的选举机制临时产生的.配置文件中会指定每台 ZK 的 myid, 而且不能重复, 通常用 1,2,3…区分每台 ZK 的myid.</li>
+</ul>
+<h2 id="集群启动器的选举机制"><a href="#集群启动器的选举机制" class="headerlink" title="集群启动器的选举机制"></a>集群启动器的选举机制</h2><p>在集群初始化阶段, 当有一台服务器 server1 启动时, 其单独无法进行和完成 leader选举, 当第二台服务器 server2 启动时, 此时两台机器可以相互通信, 每台机器都试图找到leader, 于是进入 leader 选举过程.</p>
+<ol>
+<li>服务器 1 启动, 服务器 1 状态保持为 looking.</li>
+<li>服务器 2 启动, 发起一次选举. 服务器 1 投票给比自己 ID 号大的服务器 2. 服务器 2 投票给自己.<br>投票结果: 服务器 1 票数 0 票, 服务器 2 票数 2 票, 没有半数以上结果, 选举无法完成,服务器 1, 2 状态保持 looking.</li>
+<li>服务器 3 启动, 发起一次选举. 此时服务器 1 和 2 都会更改选票为服务器 3, 服务器 3 投票给自己.<br>投票结果: 服务器 1 为 0 票, 服务器 2 为 0 票, 服务器 3 为 3 票. 此时服务器 3 的票数已经超过半数，服务器 3 当选 Leader. 服务器 1，2 更改状态为 follower，服务器 3更改状态为 leader；</li>
+<li>服务器 4 启动, 发起一次选举. 此时服务器 1，2，3 已经不是 looking 状态, 不会更改选票信息, 服务器 4 投票给自己.<br>投票结果：服务器 3 为 3 票，服务器 4 为 1 票。此时服务器 4 服从多数，更改选票信息为服务器 3，并更改状态为 following；</li>
+<li>服务器 5 启动，同 4 一样当小弟.</li>
+</ol>
+<h2 id="服务器运行时期的-Leader-选举"><a href="#服务器运行时期的-Leader-选举" class="headerlink" title="服务器运行时期的 Leader 选举"></a>服务器运行时期的 Leader 选举</h2><p>在 zk 运行期间, leader 与非 leader 服务器各司其职, 即便当有非 leader 服务器宕机或者新加入, 此时也不会影响leader. 但是一旦leader服务器宕机了, 那么整个集群将会暂停对外服务, 进入新一轮 leader 选 举, 其过程和启动时期的 Leader 选举过程基本一致.</p>
+<p>假设正在运行的有 server1,server2,server3 三台服务器,当前 leader 是 server2,若某一时刻 leader 挂了, 此时便开始 leader 选举. 选举过程如下：</p>
+<ol>
+<li>变更转态, server1 和 server3 变更为 looking 状态.</li>
+<li>开始投票, 每台服务器投票给比自己 myid 大的机器, 没有比自己大的就投给自己.</li>
+<li>这样 server3有2票, server1有1票, server3的票数超过了集群一半, 当选 leader, server1 变更状态 follower.</li>
+</ol>
+<h2 id="为什么-zookeeper-集群的数目，一般为奇数个？"><a href="#为什么-zookeeper-集群的数目，一般为奇数个？" class="headerlink" title="为什么 zookeeper 集群的数目，一般为奇数个？"></a>为什么 zookeeper 集群的数目，一般为奇数个？</h2><ol>
+<li><p>容错</p>
+<p>由于在增删改操作中需要半数以上服务器通过，来分析以下情况。2 台服务器，至少 2 台正常运行才行（2 的半数为 1，半数以上最少为 2），正常运行1 台服务器都不允许挂掉3 台服务器，至少 2 台正常运行才行（3 的半数为 1.5，半数以上最少为 2），正常运行可以允许 1 台服务器挂掉</p>
+<p>4 台服务器，至少 3 台正常运行才行（4 的半数为 2，半数以上最少为 3），正常运行可以允许 1 台服务器挂掉</p>
+<p>5 台服务器，至少 3 台正常运行才行（5 的半数为 2.5，半数以上最少为 3），正常运行可以允许 2 台服务器挂掉</p>
+<p>通过以上可以发现，3 台服务器和 4 台服务器都最多允许 1 台服务器挂掉，5 台服务器和 6 台服务器都最多允许 2 台服务器挂掉但是明显 4 台服务器成本高于 3 台服务器成本，6 台服务器成本高于 5 服务器成本。这是由于半数以上投票通过决定的。</p>
+</li>
+<li><p>防脑裂</p>
+<p>一个 zookeeper 集群中，可以有多个 follower.observer 服务器，但是必需只能有一个 leader 服务器。</p>
+</li>
+</ol>
+<p>集群互不通讯情况：</p>
+<p>一个集群 3 台服务器，全部运行正常，但是其中 1 台裂开了，和另外 2 台无法通讯。3台机器里面 2 台正常运行过半票可以选出一个 leader。</p>
+<p>一个集群 4 台服务器，全部运行正常，但是其中 2 台裂开了，和另外 2 台无法通讯。4台机器里面 2 台正常工作没有过半票以上达到 3，无法选出 leader 正常运行。</p>
+<p>一个集群 5 台服务器，全部运行正常，但是其中 2 台裂开了，和另外 3 台无法通讯。5台机器里面 3 台正常运行过半票可以选出一个 leader。</p>
+<p>一个集群 6 台服务器，全部运行正常，但是其中 3 台裂开了，和另外 3 台无法通讯。6台机器里面 3 台正常工作没有过半票以上达到 4，无法选出 leader 正常运行。</p>
+<p>通过以上分析可以看出，为什么 zookeeper 集群数量总是单出现，主要原因还是在于第 2 点，防脑裂，对于第 1 点，无非是正本控制，但是不影响集群正常运行。但是出现第 2种裂的情况，zookeeper 集群就无法正常运行了。</p>
+
+    </article>
+    <!-- license -->
+    
+        <div class="license-wrapper">
+            <p>原文作者：<a href="https://winddsnow.github.io">WinddSnow</a>
+            <p>原文链接：<a href="https://winddsnow.github.io/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9813Zookeeper/">https://winddsnow.github.io/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9813Zookeeper/</a>
+            <p>发表日期：<a href="https://winddsnow.github.io/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9813Zookeeper/">October 22nd 2022, 8:51:27 pm</a>
+            <p>更新日期：<a href="https://winddsnow.github.io/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9813Zookeeper/">July 24th 2023, 11:52:50 am</a>
+            <p>版权声明：本文采用<a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
+        </div>
+    
+    <!-- paginator -->
+    <ul class="post-paginator">
+        <li class="next">
+            
+                <div class="nextSlogan">Next Post</div>
+                <a href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9814MongoDB/" title="Java面试题14MongoDB">
+                    <div class="nextTitle">Java面试题14MongoDB</div>
+                </a>
+            
+        </li>
+        <li class="previous">
+            
+                <div class="prevSlogan">Previous Post</div>
+                <a href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9812%E9%98%BF%E9%87%8CDubbo/" title="Java面试题12阿里Dubbo">
+                    <div class="prevTitle">Java面试题12阿里Dubbo</div>
+                </a>
+            
+        </li>
+    </ul>
+    <!-- comment -->
+    
+        <div class="post-comment">
+            <!-- 来必力 City 版安装代码 -->
+
+
+            
+
+            
+
+            
+    <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js"></script>
+    <script>
+        let idOption = '1666443087000'
+        
+            idOption = location.pathname
+        
+        const gitalk = new Gitalk({
+            clientID: '72081952d87ae3ddd54d',
+            clientSecret: 'ec2a4a2d33999931c5639c25a52190c660ee0357',
+            repo: 'winddsnow.github.io',
+            owner: 'winddsnow',
+            admin: "winddsnow",
+            id: idOption,
+            distractionFreeMode: false,
+            createIssueManually: true,
+        })
+        gitalk.render('gitalk-container')
+    </script>
+    <noscript>为正常使用 Gitalk 评论功能，您需要激活 JavaScript</noscript>
+
+
+            <!-- utteranc评论 -->
+
+
+            <!-- partial('_partial/comment/changyan') -->
+            <!--PC版-->
+
+
+            
+            
+
+            
+
+        </div>
+    
+    <!-- timeliness note -->
+    <!-- idea from: https://hexo.fluid-dev.com/posts/hexo-injector/#%E6%96%87%E7%AB%A0%E6%97%B6%E6%95%88%E6%80%A7%E6%8F%90%E7%A4%BA -->
+    
+    <!-- Mathjax -->
+    
+</main>
+
+                <!-- profile -->
+                
+            </div>
+            <footer class="footer footer-unloaded">
+    <!-- social  -->
+    
+        <div class="social">
+            
+    
+        
+            
+                <a href="mailto:winddsnow@163.com" class="iconfont-archer email" title=email ></a>
+            
+        
+    
+        
+            
+                <a href="//github.com/Winddsnow" class="iconfont-archer github" target="_blank" title=github></a>
+            
+        
+    
+        
+            
+                <span class="iconfont-archer wechat" title=wechat>
+                    
+                    <img class="profile-qr" src="/assets/example_qr.png" />
+                </span>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+
+        </div>
+    
+    <!-- powered by Hexo  -->
+    <div class="copyright">
+        <span id="hexo-power">Powered by <a href="https://hexo.io/" target="_blank">Hexo</a></span><span class="iconfont-archer power">&#xe635;</span><span id="theme-info">theme <a href="https://github.com/fi3ework/hexo-theme-archer" target="_blank">Archer</a></span>
+    </div>
+    <!-- website approve for Chinese user -->
+    
+    <!-- 不蒜子  -->
+    
+        <div class="busuanzi-container">
+            
+             
+                <span id="busuanzi_container_site_pv">PV: <span id="busuanzi_value_site_pv"></span> :)</span>
+            
+        </div>
+    	
+</footer>
+
+        </div>
+        <!-- toc -->
+        
+            <div class="toc-wrapper toc-wrapper-loding" style=
+
+
+
+
+
+
+
+    top:50vh;
+
+>
+                <div class="toc-catalog">
+                    <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+                </div>
+                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Zookeeper-%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-number">1.</span> <span class="toc-text">Zookeeper 是什么</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Zookeeper-%E7%9A%84%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B"><span class="toc-number">2.</span> <span class="toc-text">Zookeeper 的数据模型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%8A%82%E7%82%B9%E7%BB%93%E6%9E%84"><span class="toc-number">3.</span> <span class="toc-text">节点结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%8A%82%E7%82%B9%E7%B1%BB%E5%9E%8B"><span class="toc-number">4.</span> <span class="toc-text">节点类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Zookeeper-%E7%9A%84-watch-%E7%9B%91%E5%90%AC%E6%9C%BA%E5%88%B6"><span class="toc-number">5.</span> <span class="toc-text">Zookeeper 的 watch 监听机制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%91%E5%90%AC%E5%99%A8%E5%8E%9F%E7%90%86"><span class="toc-number">6.</span> <span class="toc-text">监听器原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%91%E5%90%AC%E5%99%A8%E5%AE%9E%E9%99%85%E5%BA%94%E7%94%A8"><span class="toc-number">7.</span> <span class="toc-text">监听器实际应用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Zookeeper-%E7%9A%84%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-number">8.</span> <span class="toc-text">Zookeeper 的应用场景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Zookeeper-%E9%9B%86%E7%BE%A4%E4%BB%8B%E7%BB%8D"><span class="toc-number">9.</span> <span class="toc-text">Zookeeper 集群介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9B%86%E7%BE%A4%E8%A7%92%E8%89%B2"><span class="toc-number">10.</span> <span class="toc-text">集群角色</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Zookeeper-%E9%9B%86%E7%BE%A4%E7%9A%84%E7%89%B9%E6%80%A7"><span class="toc-number">11.</span> <span class="toc-text">Zookeeper 集群的特性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ZAB-%E5%8D%8F%E8%AE%AE"><span class="toc-number">12.</span> <span class="toc-text">ZAB 协议</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ZK-%E9%9B%86%E7%BE%A4%E5%86%99%E6%95%B0%E6%8D%AE%E6%B5%81%E7%A8%8B"><span class="toc-number">13.</span> <span class="toc-text">ZK 集群写数据流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ZK-%E9%9B%86%E7%BE%A4%E9%80%89%E4%B8%BE%E6%9C%BA%E5%88%B6"><span class="toc-number">14.</span> <span class="toc-text">ZK 集群选举机制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9B%86%E7%BE%A4%E5%90%AF%E5%8A%A8%E5%99%A8%E7%9A%84%E9%80%89%E4%B8%BE%E6%9C%BA%E5%88%B6"><span class="toc-number">15.</span> <span class="toc-text">集群启动器的选举机制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%BF%90%E8%A1%8C%E6%97%B6%E6%9C%9F%E7%9A%84-Leader-%E9%80%89%E4%B8%BE"><span class="toc-number">16.</span> <span class="toc-text">服务器运行时期的 Leader 选举</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88-zookeeper-%E9%9B%86%E7%BE%A4%E7%9A%84%E6%95%B0%E7%9B%AE%EF%BC%8C%E4%B8%80%E8%88%AC%E4%B8%BA%E5%A5%87%E6%95%B0%E4%B8%AA%EF%BC%9F"><span class="toc-number">17.</span> <span class="toc-text">为什么 zookeeper 集群的数目，一般为奇数个？</span></a></li></ol>
+            </div>
+        
+        <!-- sidebar -->
+        <div class="sidebar sidebar-hide">
+    <ul class="sidebar-tabs sidebar-tabs-active-0">
+        <li class="sidebar-tab-archives"><span class="iconfont-archer">&#xe67d;</span><span class="tab-name">Archive</span></li>
+        <li class="sidebar-tab-tags"><span class="iconfont-archer">&#xe61b;</span><span class="tab-name">Tag</span></li>
+        <li class="sidebar-tab-categories"><span class="iconfont-archer">&#xe666;</span><span class="tab-name">Cate</span></li>
+    </ul>
+    <div class="sidebar-content sidebar-content-show-archive">
+        <div class="sidebar-panel-archives">
+    <!-- 在 ejs 中将 archive 按照时间排序 -->
+    
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    
+    
+    
+    
+    <div class="total-and-search">
+        <div class="total-archive">
+        Total : 49
+        </div>
+        <!-- search  -->
+        
+    </div>
+    
+    <div class="post-archive">
+    
+        
+            
+            
+            <div class="archive-year"> 2023 </div>
+            <ul class="year-list">
+            
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/24</span>
+            <a class="archive-post-title" href="/2023/07/23/how-to-do-great-work-zhCN/">how_to_do_great_work_zhCN</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/24</span>
+            <a class="archive-post-title" href="/2023/07/23/%E5%81%9C%E6%AD%A2%E7%A9%BA%E6%83%B3/">停止空想</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/03</span>
+            <a class="archive-post-title" href="/2023/04/02/Java%E5%9F%BA%E7%A1%80/">Java基础</a>
+        </li>
+    
+        
+            
+            
+                
+                </ul>
+            
+            <div class="archive-year"> 2022 </div>
+            <ul class="year-list">
+            
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/23</span>
+            <a class="archive-post-title" href="/2022/10/22/%E3%80%8AJava-%E5%BC%80%E5%8F%91%E6%89%8B%E5%86%8C%E3%80%8B%E5%B5%A9%E5%B1%B1%E7%89%88/">《Java 开发手册》嵩山版</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/23</span>
+            <a class="archive-post-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9801%E5%9F%BA%E7%A1%80/">Java面试题01基础</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/23</span>
+            <a class="archive-post-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9802%E9%9B%86%E5%90%88%E7%9B%B8%E5%85%B3/">Java面试题02集合相关</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/23</span>
+            <a class="archive-post-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9803%E5%A4%9A%E7%BA%BF%E7%A8%8B/">Java面试题03多线程</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/23</span>
+            <a class="archive-post-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9804JVM/">Java面试题04JVM</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/23</span>
+            <a class="archive-post-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9805Web/">Java面试题05Web</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/23</span>
+            <a class="archive-post-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9806%E6%95%B0%E6%8D%AE%E5%BA%93/">Java面试题06数据库</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/23</span>
+            <a class="archive-post-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9807Mybatis%E6%A1%86%E6%9E%B6/">Java面试题07Mybatis框架</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/23</span>
+            <a class="archive-post-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9808Spring%E6%A1%86%E6%9E%B6/">Java面试题08Spring框架</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/23</span>
+            <a class="archive-post-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9809SpringMVC%E6%A1%86%E6%9E%B6/">Java面试题09SpringMVC框架</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/23</span>
+            <a class="archive-post-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9810SpringBoot/">Java面试题10SpringBoot</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/23</span>
+            <a class="archive-post-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9811SpringCloud/">Java面试题11SpringCloud</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/23</span>
+            <a class="archive-post-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9812%E9%98%BF%E9%87%8CDubbo/">Java面试题12阿里Dubbo</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/23</span>
+            <a class="archive-post-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9813Zookeeper/">Java面试题13Zookeeper</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/23</span>
+            <a class="archive-post-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9814MongoDB/">Java面试题14MongoDB</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/23</span>
+            <a class="archive-post-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9815Kafka/">Java面试题15Kafka</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/23</span>
+            <a class="archive-post-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9816JWT/">Java面试题16JWT</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/20</span>
+            <a class="archive-post-title" href="/2022/10/19/MySQL%E4%BC%98%E5%8C%96/">MySQL优化</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/08</span>
+            <a class="archive-post-title" href="/2022/09/08/RabbitMQ/">RabbitMQ</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/08</span>
+            <a class="archive-post-title" href="/2022/09/08/ELK%E6%90%9C%E7%B4%A2/">ELK搜索</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/30</span>
+            <a class="archive-post-title" href="/2022/08/30/Ribbin%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E6%BA%90%E7%A0%81%E5%8E%9F%E7%90%86%E4%B8%8E%E6%BA%90%E7%A0%81%E8%B0%83%E8%AF%95/">Ribbin负载均衡源码原理与源码调试</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/16</span>
+            <a class="archive-post-title" href="/2022/08/15/Yapi%E9%83%A8%E7%BD%B2%E4%B8%8E%E4%BD%BF%E7%94%A8/">Yapi部署与使用</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/15</span>
+            <a class="archive-post-title" href="/2022/08/14/HashMap%E5%8E%9F%E7%90%86/">HashMap原理</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/11</span>
+            <a class="archive-post-title" href="/2022/02/10/Vim%E7%94%A8%E6%B3%95%E7%AE%80%E8%AE%B0/">Vim用法简记</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/11</span>
+            <a class="archive-post-title" href="/2022/02/10/Markdown%E7%A4%BA%E4%BE%8B2/">Markdown示例2</a>
+        </li>
+    
+        
+            
+            
+                
+                </ul>
+            
+            <div class="archive-year"> 2021 </div>
+            <ul class="year-list">
+            
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/21</span>
+            <a class="archive-post-title" href="/2021/12/20/Dead-Line-2021%E6%80%BB%E7%BB%93/">Dead Line--2021总结</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/29</span>
+            <a class="archive-post-title" href="/2021/08/29/SpringCloud%E7%AE%80%E4%BB%8B/">SpringCloud简介</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/14</span>
+            <a class="archive-post-title" href="/2021/08/14/mysql%E8%AF%BB%E5%86%99%E5%88%86%E7%A6%BB-%E4%B8%BB%E4%BB%8E%E5%A4%8D%E5%88%B6%E5%8F%8Asharing-jdbc%E4%BD%BF%E7%94%A8/">mysql读写分离-主从复制及sharing-jdbc使用</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/04</span>
+            <a class="archive-post-title" href="/2021/05/03/Markdown%E8%AF%AD%E6%B3%95%E8%AE%B0%E5%BD%95/">Markdown语法记录</a>
+        </li>
+    
+        
+            
+            
+                
+                </ul>
+            
+            <div class="archive-year"> 2020 </div>
+            <ul class="year-list">
+            
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/29</span>
+            <a class="archive-post-title" href="/2020/08/28/Redis%E7%9B%B8%E5%85%B3%E9%97%AE%E9%A2%98/">Redis相关问题</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/28</span>
+            <a class="archive-post-title" href="/2020/08/28/Redis%E5%88%86%E5%B8%83%E5%BC%8F%E7%BC%93%E5%AD%98/">Redis分布式缓存</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/16</span>
+            <a class="archive-post-title" href="/2020/08/15/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B-%E5%B9%B6%E5%8F%91%E2%91%A0/">Java多线程-并发</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/16</span>
+            <a class="archive-post-title" href="/2020/08/15/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B-%E5%B9%B6%E5%8F%91%E2%91%A1/">Java多线程-并发②</a>
+        </li>
+    
+        
+            
+            
+                
+                </ul>
+            
+            <div class="archive-year"> 2019 </div>
+            <ul class="year-list">
+            
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/14</span>
+            <a class="archive-post-title" href="/2019/08/14/nginx%E7%AE%80%E4%BB%8B%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%BF%9B%E9%98%B6/">nginx简介及使用进阶</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/04</span>
+            <a class="archive-post-title" href="/2019/05/04/PVE%E8%99%9A%E6%8B%9F%E5%8C%96/">PVE虚拟化</a>
+        </li>
+    
+        
+            
+            
+                
+                </ul>
+            
+            <div class="archive-year"> 2018 </div>
+            <ul class="year-list">
+            
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/16</span>
+            <a class="archive-post-title" href="/2018/08/15/Java%E6%95%B0%E7%BB%84%E5%9F%BA%E7%A1%80/">Java数组基础</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/16</span>
+            <a class="archive-post-title" href="/2018/08/15/Java%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">Java算法基础-数据结构-设计模式</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/04</span>
+            <a class="archive-post-title" href="/2018/05/03/%E6%9D%82%E8%B0%88%E6%9C%8D%E5%8A%A1%E5%99%A8/">杂谈服务器</a>
+        </li>
+    
+        
+            
+            
+                
+                </ul>
+            
+            <div class="archive-year"> 1970 </div>
+            <ul class="year-list">
+            
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/01</span>
+            <a class="archive-post-title" href="/1970/01/01/hello-world/">Hello World</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/01</span>
+            <a class="archive-post-title" href="/1970/01/01/%E5%83%8F%E7%8B%BC%E4%B8%80%E6%A0%B7%E6%88%98%E6%96%97%EF%BC%81/">像狼一样战斗！</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/01</span>
+            <a class="archive-post-title" href="/1970/01/01/%E5%BD%93%E5%85%B5%E7%9A%84%E6%97%A5%E5%AD%90/">当兵的日子</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/01</span>
+            <a class="archive-post-title" href="/1970/01/01/%E6%88%91%E6%B0%B8%E8%BF%9C%E4%B8%8D%E5%86%8D%E8%87%AA%E6%80%9C%E8%87%AA%E8%B4%B1/">我永远不再自怜自贱</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/01</span>
+            <a class="archive-post-title" href="/1970/01/01/%E7%BE%8A%E7%9A%AE%E5%8D%B7/">羊皮卷</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/01</span>
+            <a class="archive-post-title" href="/1970/01/01/%E8%93%9D%E8%8E%B2%E8%8A%B1/">蓝莲花</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/01</span>
+            <a class="archive-post-title" href="/1970/01/01/%E9%82%A3%E4%B8%80%E9%81%93%E6%9C%A6%E8%83%A7/">那一道朦胧</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/01</span>
+            <a class="archive-post-title" href="/1970/01/01/%E9%9B%A8%E4%B8%8E%E7%AF%AE%E7%90%83/">雨与篮球</a>
+        </li>
+    
+    </div>
+</div>
+
+        <div class="sidebar-panel-tags">
+    <div class="sidebar-tags-name">
+        
+            <span class="sidebar-tag-name" data-tags="年终总结">
+                <span class="iconfont-archer">&#xe606;</span>
+                年终总结
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="碎语">
+                <span class="iconfont-archer">&#xe606;</span>
+                碎语
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Java">
+                <span class="iconfont-archer">&#xe606;</span>
+                Java
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="ELK">
+                <span class="iconfont-archer">&#xe606;</span>
+                ELK
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="分布式搜索引擎">
+                <span class="iconfont-archer">&#xe606;</span>
+                分布式搜索引擎
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="elasticsearch">
+                <span class="iconfont-archer">&#xe606;</span>
+                elasticsearch
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Logstash">
+                <span class="iconfont-archer">&#xe606;</span>
+                Logstash
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="kibana">
+                <span class="iconfont-archer">&#xe606;</span>
+                kibana
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="原理">
+                <span class="iconfont-archer">&#xe606;</span>
+                原理
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="42">
+                <span class="iconfont-archer">&#xe606;</span>
+                42
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="多线程">
+                <span class="iconfont-archer">&#xe606;</span>
+                多线程
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="并发">
+                <span class="iconfont-archer">&#xe606;</span>
+                并发
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="面试题">
+                <span class="iconfont-archer">&#xe606;</span>
+                面试题
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="数组基础">
+                <span class="iconfont-archer">&#xe606;</span>
+                数组基础
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="数据结构">
+                <span class="iconfont-archer">&#xe606;</span>
+                数据结构
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="基础">
+                <span class="iconfont-archer">&#xe606;</span>
+                基础
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="集合">
+                <span class="iconfont-archer">&#xe606;</span>
+                集合
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="JVM">
+                <span class="iconfont-archer">&#xe606;</span>
+                JVM
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="WEB">
+                <span class="iconfont-archer">&#xe606;</span>
+                WEB
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="数据库">
+                <span class="iconfont-archer">&#xe606;</span>
+                数据库
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="MySql">
+                <span class="iconfont-archer">&#xe606;</span>
+                MySql
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Mybatis">
+                <span class="iconfont-archer">&#xe606;</span>
+                Mybatis
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Spring">
+                <span class="iconfont-archer">&#xe606;</span>
+                Spring
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="SpringMVC">
+                <span class="iconfont-archer">&#xe606;</span>
+                SpringMVC
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="SpringBoot">
+                <span class="iconfont-archer">&#xe606;</span>
+                SpringBoot
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="SpringCloud">
+                <span class="iconfont-archer">&#xe606;</span>
+                SpringCloud
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Dubbo">
+                <span class="iconfont-archer">&#xe606;</span>
+                Dubbo
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Zookeeper">
+                <span class="iconfont-archer">&#xe606;</span>
+                Zookeeper
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="MongoDB">
+                <span class="iconfont-archer">&#xe606;</span>
+                MongoDB
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Kafka">
+                <span class="iconfont-archer">&#xe606;</span>
+                Kafka
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="JWT">
+                <span class="iconfont-archer">&#xe606;</span>
+                JWT
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="token">
+                <span class="iconfont-archer">&#xe606;</span>
+                token
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Markdown">
+                <span class="iconfont-archer">&#xe606;</span>
+                Markdown
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="掘金">
+                <span class="iconfont-archer">&#xe606;</span>
+                掘金
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="MySQL">
+                <span class="iconfont-archer">&#xe606;</span>
+                MySQL
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="虚拟化">
+                <span class="iconfont-archer">&#xe606;</span>
+                虚拟化
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Proxmox VE">
+                <span class="iconfont-archer">&#xe606;</span>
+                Proxmox VE
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="RabbitMQ">
+                <span class="iconfont-archer">&#xe606;</span>
+                RabbitMQ
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="消息队列">
+                <span class="iconfont-archer">&#xe606;</span>
+                消息队列
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Redis">
+                <span class="iconfont-archer">&#xe606;</span>
+                Redis
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="缓存">
+                <span class="iconfont-archer">&#xe606;</span>
+                缓存
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Ribbon">
+                <span class="iconfont-archer">&#xe606;</span>
+                Ribbon
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="debug调试">
+                <span class="iconfont-archer">&#xe606;</span>
+                debug调试
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="spring">
+                <span class="iconfont-archer">&#xe606;</span>
+                spring
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="springcloud">
+                <span class="iconfont-archer">&#xe606;</span>
+                springcloud
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="微服务">
+                <span class="iconfont-archer">&#xe606;</span>
+                微服务
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="vim">
+                <span class="iconfont-archer">&#xe606;</span>
+                vim
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="编辑器之神">
+                <span class="iconfont-archer">&#xe606;</span>
+                编辑器之神
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="前端">
+                <span class="iconfont-archer">&#xe606;</span>
+                前端
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Yapi">
+                <span class="iconfont-archer">&#xe606;</span>
+                Yapi
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="接口管理">
+                <span class="iconfont-archer">&#xe606;</span>
+                接口管理
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="helloworld">
+                <span class="iconfont-archer">&#xe606;</span>
+                helloworld
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="分享">
+                <span class="iconfont-archer">&#xe606;</span>
+                分享
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="保罗·格雷厄姆（Paul Graham）">
+                <span class="iconfont-archer">&#xe606;</span>
+                保罗·格雷厄姆（Paul Graham）
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="数据库操作">
+                <span class="iconfont-archer">&#xe606;</span>
+                数据库操作
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="nginx">
+                <span class="iconfont-archer">&#xe606;</span>
+                nginx
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="http服务器">
+                <span class="iconfont-archer">&#xe606;</span>
+                http服务器
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="高并发">
+                <span class="iconfont-archer">&#xe606;</span>
+                高并发
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="计算机的世界">
+                <span class="iconfont-archer">&#xe606;</span>
+                计算机的世界
+            </span>
+        
+    </div>
+    <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
+    <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
+        缺失模块，请参考主题文档进行安装配置：https://github.com/fi3ework/hexo-theme-archer#%E5%AE%89%E8%A3%85%E4%B8%BB%E9%A2%98
+    </div> 
+    <div class="sidebar-tags-list"></div>
+</div>
+
+        <div class="sidebar-panel-categories">
+    <div class="sidebar-categories-name">
+    
+        <span class="sidebar-category-name" data-categories="个人生活">
+            <span class="iconfont-archer">&#xe60a;</span>
+            个人生活
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="编程中间件">
+            <span class="iconfont-archer">&#xe60a;</span>
+            编程中间件
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="编程">
+            <span class="iconfont-archer">&#xe60a;</span>
+            编程
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="面试">
+            <span class="iconfont-archer">&#xe60a;</span>
+            面试
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="工具用法">
+            <span class="iconfont-archer">&#xe60a;</span>
+            工具用法
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="计算机基础架构">
+            <span class="iconfont-archer">&#xe60a;</span>
+            计算机基础架构
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="指引">
+            <span class="iconfont-archer">&#xe60a;</span>
+            指引
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="编程与数据库">
+            <span class="iconfont-archer">&#xe60a;</span>
+            编程与数据库
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="生活">
+            <span class="iconfont-archer">&#xe60a;</span>
+            生活
+        </span>
+    
+    </div>
+    <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>
+    <div class="sidebar-categories-list"></div>
+</div>
+
+    </div>
+</div>
+
+        <!-- site-meta -->
+        <script>
+    var siteMetaRoot = "/"
+    if (siteMetaRoot === "undefined") {
+        siteMetaRoot = '/'
+    }
+    var siteMeta = {
+        url: "https://winddsnow.github.io",
+        root: siteMetaRoot,
+        author: "WinddSnow"
+    }
+</script>
+
+        <!-- import experimental options here -->
+        <!-- Custom Font -->
+
+
+        <!-- main func -->
+        <script src="/scripts/main.js?v=20211217"></script>
+        <!-- dark mode -->
+        <script src="/scripts/dark.js?v=20211217"></script>
+        <!-- fancybox -->
+        <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" defer></script>
+        <!-- algolia -->
+        
+        <!-- busuanzi -->
+        
+            <script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+        
+        <!-- CNZZ -->
+        
+        <!-- async load share.js -->
+        
+            <script src="/scripts/share.js?v=20211217" async></script>
+        
+        <!-- mermaid -->
+        
+    </body>
+</html>
