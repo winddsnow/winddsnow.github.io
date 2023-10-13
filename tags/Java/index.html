@@ -429,6 +429,45 @@
             
         
         <article class="index-post">
+            <a class="abstract-title" href="/2023/10/13/%E8%87%AA%E8%A1%8C%E5%BC%BA%E5%8C%96HashMap-%E4%BD%BF%E5%BE%97%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8/">
+                
+                <span class="abstract-title-text">自行强化HashMap,使得线程安全</span>
+            </a>
+            <div class="abstract-content">
+                在Java中,不使用ConcurrentHashMap的前提下,通过自行加强HashMap,使得HashMap线程安全,一般思路都是加锁,可以是普通的lock锁,也可以是其他锁,具体操作如下:
+使用HashMap和显示的同步机制，如ReentrantLock来保证多线程安全访问。下面是一个简单的示例：
+12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455import java.util.HashMap;import java.util.Ma...
+            </div>
+            <!-- read more -->
+            
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2023/10/13">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2023/10/13</span>
+                </div>
+                <!-- tags -->
+                
+                    <div class= abstract-tags >
+    
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="Java">Java</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="数据结构">数据结构</a>
+    
+</div>
+
+                
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+    
+        
+        
+        
+        
+            
+        
+        <article class="index-post">
             <a class="abstract-title" href="/2023/10/13/OpenFeign%E5%B8%AE%E6%88%91%E4%BB%AC%E5%81%9A%E4%BA%86%E4%BB%80%E4%B9%88/">
                 
                 <span class="abstract-title-text">OpenFeign帮我们做了什么</span>
@@ -801,48 +840,6 @@ Dubbo 使用的是缺省协议， 采用长连接和 ni...
         </article>
         <div class="index-post-divider"></div>
     
-        
-        
-        
-        
-            
-        
-        <article class="index-post">
-            <a class="abstract-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9810SpringBoot/">
-                
-                <span class="abstract-title-text">Java面试题10SpringBoot</span>
-            </a>
-            <div class="abstract-content">
-                SpringBoot 是什么是 Spring 的子项目,主要简化 Spring 开发难度,去掉了繁重配置,提供各种启动器,可以让程序员很快上手,节省开发时间.
-SpringBoot 的优点SpringBoot 对上述 Spring 的缺点进行的改善和优化，基于约定优于配置的思想，可以让开发人员不必在配置与逻辑业务之间进行思维的切换，全身心的投入到逻辑业务的代码编写中，从而大大提高了开发的效率，一定程度上缩短了项目周期。
-
-版本锁定：解决是 maven 依赖版本容易冲突的问题，集合了常用的并且测试过的所有版本
-
-使用了 Starter（启动器）管理依赖并能对版本进行集中控制,父工程带有版本...
-            </div>
-            <!-- read more -->
-            
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2023/10/13">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2022/10/22</span>
-                </div>
-                <!-- tags -->
-                
-                    <div class= abstract-tags >
-    
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="Java">Java</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="SpringBoot">SpringBoot</a>
-    
-</div>
-
-                
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
-    
     <!-- paginator  -->
     
         <nav class="page-nav">
@@ -1200,7 +1197,24 @@ SpringBoot 的优点SpringBoot 对上述 Spring 的缺点进行的改善和优�
         
         
         
+        
+        
+        
+        
+        
     
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         
         
         
@@ -1639,7 +1653,7 @@ SpringBoot 的优点SpringBoot 对上述 Spring 的缺点进行的改善和优�
     
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 50
+        Total : 51
         </div>
         <!-- search  -->
         
@@ -1657,6 +1671,12 @@ SpringBoot 的优点SpringBoot 对上述 Spring 的缺点进行的改善和优�
         <li class="archive-post-item">
             <span class="archive-post-date">10/13</span>
             <a class="archive-post-title" href="/2023/10/13/OpenFeign%E5%B8%AE%E6%88%91%E4%BB%AC%E5%81%9A%E4%BA%86%E4%BB%80%E4%B9%88/">OpenFeign帮我们做了什么</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/13</span>
+            <a class="archive-post-title" href="/2023/10/13/%E8%87%AA%E8%A1%8C%E5%BC%BA%E5%8C%96HashMap-%E4%BD%BF%E5%BE%97%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8/">自行强化HashMap,使得线程安全</a>
         </li>
     
         
