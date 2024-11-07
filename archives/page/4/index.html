@@ -429,6 +429,49 @@
             
         
         <article class="index-post">
+            <a class="abstract-title" href="/2022/08/14/HashMap%E5%8E%9F%E7%90%86/">
+                
+                <span class="abstract-title-text">HashMap原理</span>
+            </a>
+            <div class="abstract-content">
+                HashMap原理
+HashMap内部是基于哈希表实现的键值对存储，继承 AbstractMap 并且实现了 Map 接口。
+HashMap基于hashing原理，我们通过put()和get()方法储存和获取对象。
+当我们将键值对传递给put()方法时，它调用键对象的hashCode()方法来计算hashcode，让后找到bucket位置来储存值对象。
+当获取对象时，通过键对象的equals()方法找到正确的键值对，然后返回值对象。
+HashMap使用LinkedList来解决碰撞问题，当发生碰撞了，对象将会储存在LinkedList的下一个节点中。 
+当两个不同的键对象的hashcod...
+            </div>
+            <!-- read more -->
+            
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2024/11/07">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2022/08/14</span>
+                </div>
+                <!-- tags -->
+                
+                    <div class= abstract-tags >
+    
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="Java">Java</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="原理">原理</a>
+    
+</div>
+
+                
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+    
+        
+        
+        
+        
+            
+        
+        <article class="index-post">
             <a class="abstract-title" href="/2022/02/10/Vim%E7%94%A8%E6%B3%95%E7%AE%80%E8%AE%B0/">
                 
                 <span class="abstract-title-text">Vim用法简记</span>
@@ -442,7 +485,7 @@
             
             <div class="abstract-post-meta">
                 <!-- date -->
-                <div class="abstract-date" title="Last updated: 2024/11/02">
+                <div class="abstract-date" title="Last updated: 2024/11/07">
                     <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2022/02/10</span>
                 </div>
                 <!-- tags -->
@@ -483,7 +526,7 @@
             
             <div class="abstract-post-meta">
                 <!-- date -->
-                <div class="abstract-date" title="Last updated: 2024/11/02">
+                <div class="abstract-date" title="Last updated: 2024/11/07">
                     <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2022/02/10</span>
                 </div>
                 <!-- tags -->
@@ -523,7 +566,7 @@
             
             <div class="abstract-post-meta">
                 <!-- date -->
-                <div class="abstract-date" title="Last updated: 2024/11/02">
+                <div class="abstract-date" title="Last updated: 2024/11/07">
                     <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2021/12/20</span>
                 </div>
                 <!-- tags -->
@@ -568,7 +611,7 @@
             
             <div class="abstract-post-meta">
                 <!-- date -->
-                <div class="abstract-date" title="Last updated: 2024/11/02">
+                <div class="abstract-date" title="Last updated: 2024/11/07">
                     <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2021/08/29</span>
                 </div>
                 <!-- tags -->
@@ -612,7 +655,7 @@
             
             <div class="abstract-post-meta">
                 <!-- date -->
-                <div class="abstract-date" title="Last updated: 2024/11/02">
+                <div class="abstract-date" title="Last updated: 2024/11/07">
                     <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2021/08/14</span>
                 </div>
                 <!-- tags -->
@@ -659,7 +702,7 @@
             
             <div class="abstract-post-meta">
                 <!-- date -->
-                <div class="abstract-date" title="Last updated: 2024/11/02">
+                <div class="abstract-date" title="Last updated: 2024/11/07">
                     <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2021/05/03</span>
                 </div>
                 <!-- tags -->
@@ -704,7 +747,7 @@ Redis 也经常用来做分布式锁和分布式事务。
             
             <div class="abstract-post-meta">
                 <!-- date -->
-                <div class="abstract-date" title="Last updated: 2024/11/02">
+                <div class="abstract-date" title="Last updated: 2024/11/07">
                     <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/08/28</span>
                 </div>
                 <!-- tags -->
@@ -755,7 +798,7 @@ AOF持久化
             
             <div class="abstract-post-meta">
                 <!-- date -->
-                <div class="abstract-date" title="Last updated: 2024/11/02">
+                <div class="abstract-date" title="Last updated: 2024/11/07">
                     <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/08/28</span>
                 </div>
                 <!-- tags -->
@@ -818,63 +861,7 @@ execute() 参数 Runna...
             
             <div class="abstract-post-meta">
                 <!-- date -->
-                <div class="abstract-date" title="Last updated: 2024/11/02">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/08/15</span>
-                </div>
-                <!-- tags -->
-                
-                    <div class= abstract-tags >
-    
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="Java">Java</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="多线程">多线程</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="并发">并发</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="面试题">面试题</a>
-    
-</div>
-
-                
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
-    
-        
-        
-        
-        
-            
-        
-        <article class="index-post">
-            <a class="abstract-title" href="/2020/08/15/Java-Thread%E2%91%A0/">
-                
-                <span class="abstract-title-text">Java多线程-并发</span>
-            </a>
-            <div class="abstract-content">
-                多线程-并发①1.Java中的锁
-乐观锁&#x2F;悲观锁
-共享锁&#x2F;独享锁
-公平锁&#x2F;非公平锁
-互斥锁&#x2F;读写锁
-可重入锁
-自旋锁
-分段锁
-偏向锁&#x2F;轻量级锁&#x2F;重量级锁
-
-2. Java线程的状态|生命周期
-Java的线程状态被定义在公共枚举类java.lang.Thread.state中。一种有六种状态
-
-
-新建（NEW）：表示线程新建出来还没有被启动的状态，比如：Thread t &#x3D; new MyThread();
-就绪&#x2F;运行（RUNNABLE）：该状态包含了经典线程模型的两种状态：就绪(Ready)、运行(Runnin...
-            </div>
-            <!-- read more -->
-            
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2024/11/02">
+                <div class="abstract-date" title="Last updated: 2024/11/07">
                     <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/08/15</span>
                 </div>
                 <!-- tags -->
@@ -1269,7 +1256,24 @@ Java的线程状态被定义在公共枚举类java.lang.Thread.state中。一种
         
         
         
+        
+        
+        
+        
+        
     
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         
         
         
@@ -1746,7 +1750,7 @@ Java的线程状态被定义在公共枚举类java.lang.Thread.state中。一种
     
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 53
+        Total : 54
         </div>
         <!-- search  -->
         
@@ -1762,6 +1766,12 @@ Java的线程状态被定义在公共枚举类java.lang.Thread.state中。一种
             
         
         <li class="archive-post-item">
+            <span class="archive-post-date">11/08</span>
+            <a class="archive-post-title" href="/2024/11/07/%E5%8C%AE%E4%B9%8F%E5%A4%A7%E8%84%91%E2%91%A6%E5%BD%B1%E5%93%8D%E5%8A%9B/">匮乏大脑⑦影响力</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
             <span class="archive-post-date">11/02</span>
             <a class="archive-post-title" href="/2024/11/02/%E5%8C%AE%E4%B9%8F%E5%A4%A7%E8%84%91%E2%91%A5%E7%A1%AE%E5%AE%9A%E6%80%A7/">匮乏大脑⑥确定性</a>
         </li>
@@ -1769,7 +1779,7 @@ Java的线程状态被定义在公共枚举类java.lang.Thread.state中。一种
         
         <li class="archive-post-item">
             <span class="archive-post-date">11/01</span>
-            <a class="archive-post-title" href="/2024/10/31/%E5%8C%AE%E4%B9%8F%E5%A4%A7%E8%84%91%E7%BF%BB%E8%AF%91%E2%91%A0/">匮乏大脑翻译①</a>
+            <a class="archive-post-title" href="/2024/10/31/%E5%8C%AE%E4%B9%8F%E5%A4%A7%E8%84%91%E2%91%A0-%E2%91%A4/">匮乏大脑翻译①</a>
         </li>
     
         
