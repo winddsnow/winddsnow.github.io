@@ -444,6 +444,45 @@
             
         
         <article class="index-post">
+            <a class="abstract-title" href="/2023/10/13/security-HashMap/">
+                
+                <span class="abstract-title-text">自行强化HashMap,使得线程安全</span>
+            </a>
+            <div class="abstract-content">
+                在Java中,不使用ConcurrentHashMap的前提下,通过自行加强HashMap,使得HashMap线程安全,一般思路都是加锁,可以是普通的lock锁,也可以是其他锁,具体操作如下:
+使用HashMap和显示的同步机制，如ReentrantLock来保证多线程安全访问。下面是一个简单的示例：
+12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455import java.util.HashMap;import java.util.Ma...
+            </div>
+            <!-- read more -->
+            
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2024/11/16">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2023/10/13</span>
+                </div>
+                <!-- tags -->
+                
+                    <div class= abstract-tags >
+    
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="Java">Java</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="数据结构">数据结构</a>
+    
+</div>
+
+                
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+    
+        
+        
+        
+        
+            
+        
+        <article class="index-post">
             <a class="abstract-title" href="/2023/10/13/OpenFeign/">
                 
                 <span class="abstract-title-text">OpenFeign帮我们做了什么</span>
@@ -807,49 +846,10 @@ Zookeeper 的数据模型...
         </article>
         <div class="index-post-divider"></div>
     
-        
-        
-        
-        
-            
-        
-        <article class="index-post">
-            <a class="abstract-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9812%E9%98%BF%E9%87%8CDubbo/">
-                
-                <span class="abstract-title-text">Java面试题12阿里Dubbo</span>
-            </a>
-            <div class="abstract-content">
-                什么是 dubboDubbo 是工作在 soa 面向服务分布式框架中的服务管理中间件。Dubbo 是一个分布式服务框架，致力于提供高性能和透明化的 RPC 远程服务调用方案，以及 SOA 服务治理方案。
-它最大的特点是按照分层的方式来架构，使用这种方式可以使各个层之间解耦合（或者最大限度地松耦合）。从服务模型的角度来看，Dubbo 采用的是一种非常简单的模型，要么是提供方提供服务，要么是消费方消费服务，所以基于这一点可以抽象出服务提供方（Provider）和服务消费方（Consumer）两个角色。关于注册中心、协议支持、服务监控等内容。
-Dubbo 使用的是缺省协议， 采用长连接和 ni...
-            </div>
-            <!-- read more -->
-            
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2024/11/16">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2022/10/22</span>
-                </div>
-                <!-- tags -->
-                
-                    <div class= abstract-tags >
-    
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="Java">Java</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="Dubbo">Dubbo</a>
-    
-</div>
-
-                
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
-    
     <!-- paginator  -->
     
         <nav class="page-nav">
-            <a class="extend prev" rel="prev" href="/">&lt; PREV</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/3/">NEXT &gt;</a>
+            <a class="extend prev" rel="prev" href="/">&lt; PREV</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/3/">NEXT &gt;</a>
         </nav>
     
 </main>
@@ -1358,7 +1358,16 @@ Dubbo 使用的是缺省协议， 采用长连接和 ni...
         
         
         
+        
+        
+        
+        
+        
     
+        
+        
+        
+        
         
         
         
@@ -1919,7 +1928,7 @@ Dubbo 使用的是缺省协议， 采用长连接和 ni...
     
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 60
+        Total : 61
         </div>
         <!-- search  -->
         
@@ -1933,6 +1942,12 @@ Dubbo 使用的是缺省协议， 采用长连接和 ni...
             <div class="archive-year"> 2024 </div>
             <ul class="year-list">
             
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/16</span>
+            <a class="archive-post-title" href="/2024/11/16/Thoughts-on-writes-and-write-Nots/">Thoughts on writes and write-Nots</a>
+        </li>
+    
         
         <li class="archive-post-item">
             <span class="archive-post-date">11/16</span>
@@ -2592,6 +2607,11 @@ Dubbo 使用的是缺省协议， 采用长连接和 ni...
                 微服务
             </span>
         
+            <span class="sidebar-tag-name" data-tags="分享">
+                <span class="iconfont-archer">&#xe606;</span>
+                分享
+            </span>
+        
             <span class="sidebar-tag-name" data-tags="vim">
                 <span class="iconfont-archer">&#xe606;</span>
                 vim
@@ -2620,11 +2640,6 @@ Dubbo 使用的是缺省协议， 采用长连接和 ni...
             <span class="sidebar-tag-name" data-tags="helloworld">
                 <span class="iconfont-archer">&#xe606;</span>
                 helloworld
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="分享">
-                <span class="iconfont-archer">&#xe606;</span>
-                分享
             </span>
         
             <span class="sidebar-tag-name" data-tags="保罗·格雷厄姆（Paul Graham）">
@@ -2696,6 +2711,11 @@ Dubbo 使用的是缺省协议， 采用长连接和 ni...
         <span class="sidebar-category-name" data-categories="计算机基础架构">
             <span class="iconfont-archer">&#xe60a;</span>
             计算机基础架构
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="读后感">
+            <span class="iconfont-archer">&#xe60a;</span>
+            读后感
         </span>
     
         <span class="sidebar-category-name" data-categories="指引">
