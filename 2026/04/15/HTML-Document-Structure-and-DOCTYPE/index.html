@@ -1,0 +1,3182 @@
+<!DOCTYPE html>
+<html lang="*zh-CN*">
+    <!-- title -->
+
+
+    
+
+<!-- keywords -->
+
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="author" content="WinddSnow">
+    <meta name="renderer" content="webkit">
+    <meta name="copyright" content="WinddSnow">
+    
+        <meta name="keywords" content="hexo,hexo-theme,hexo-blog">
+    
+    <meta name="description" content="">
+    <meta name="description" content="第1课：HTML 文档结构与 DOCTYPE前端一切皆始于 HTML 文档。无论使用 React、Vue 还是 Angular，最终输出的都是 HTML 页面。理解 HTML 文档的骨架结构，尤其是 &lt;!DOCTYPE&gt; 的作用，是构建符合标准、行为一致的网页的基石。本课将聚焦于一个看似简单却至关重要的声明：文档类型声明。  1. 什么是 &lt;!DOCTYPE&gt;？&lt;!D">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HTML-Document-Structure-and-DOCTYPE">
+<meta property="og:url" content="https://winddsnow.github.io/2026/04/15/HTML-Document-Structure-and-DOCTYPE/index.html">
+<meta property="og:site_name" content="WinddSnow">
+<meta property="og:description" content="第1课：HTML 文档结构与 DOCTYPE前端一切皆始于 HTML 文档。无论使用 React、Vue 还是 Angular，最终输出的都是 HTML 页面。理解 HTML 文档的骨架结构，尤其是 &lt;!DOCTYPE&gt; 的作用，是构建符合标准、行为一致的网页的基石。本课将聚焦于一个看似简单却至关重要的声明：文档类型声明。  1. 什么是 &lt;!DOCTYPE&gt;？&lt;!D">
+<meta property="og:locale">
+<meta property="article:published_time" content="2026-04-15T05:00:00.000Z">
+<meta property="article:modified_time" content="2026-04-14T18:10:56.923Z">
+<meta property="article:author" content="WinddSnow">
+<meta property="article:tag" content="HTML">
+<meta property="article:tag" content="DOCTYPE">
+<meta property="article:tag" content="文档结构">
+<meta property="article:tag" content="标准模式">
+<meta name="twitter:card" content="summary">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <link rel="icon" href="/assets/favicon.ico">
+    
+    <title>HTML-Document-Structure-and-DOCTYPE · WinddSnow</title>
+    <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
+/* This file is meant as a standalone workflow for
+- testing support for link[rel=preload]
+- enabling async CSS loading in browsers that do not support rel=preload
+- applying rel preload css once loaded, whether supported or not.
+*/ -->
+<script>
+    (function (w) {
+        'use strict'
+        // rel=preload support test
+        if (!w.loadCSS) {
+            w.loadCSS = function () {}
+        }
+        // define on the loadCSS obj
+        var rp = (loadCSS.relpreload = {})
+        // rel=preload feature support test
+        // runs once and returns a function for compat purposes
+        rp.support = (function () {
+            var ret
+            try {
+                ret = w.document.createElement('link').relList.supports('preload')
+            } catch (e) {
+                ret = false
+            }
+            return function () {
+                return ret
+            }
+        })()
+
+        // if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+        // then change that media back to its intended value on load
+        rp.bindMediaToggle = function (link) {
+            // remember existing media attr for ultimate state, or default to 'all'
+            var finalMedia = link.media || 'all'
+
+            function enableStylesheet() {
+                link.media = finalMedia
+            }
+
+            // bind load handlers to enable media
+            if (link.addEventListener) {
+                link.addEventListener('load', enableStylesheet)
+            } else if (link.attachEvent) {
+                link.attachEvent('onload', enableStylesheet)
+            }
+
+            // Set rel and non-applicable media type to start an async request
+            // note: timeout allows this to happen async to let rendering continue in IE
+            setTimeout(function () {
+                link.rel = 'stylesheet'
+                link.media = 'only x'
+            })
+            // also enable media after 3 seconds,
+            // which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+            setTimeout(enableStylesheet, 3000)
+        }
+
+        // loop through link elements in DOM
+        rp.poly = function () {
+            // double check this to prevent external calls from running
+            if (rp.support()) {
+                return
+            }
+            var links = w.document.getElementsByTagName('link')
+            for (var i = 0; i < links.length; i++) {
+                var link = links[i]
+                // qualify links to those with rel=preload and as=style attrs
+                if (
+                    link.rel === 'preload' &&
+                    link.getAttribute('as') === 'style' &&
+                    !link.getAttribute('data-loadcss')
+                ) {
+                    // prevent rerunning on link
+                    link.setAttribute('data-loadcss', true)
+                    // bind listeners to toggle media back
+                    rp.bindMediaToggle(link)
+                }
+            }
+        }
+
+        // if unsupported, run the polyfill
+        if (!rp.support()) {
+            // run once at least
+            rp.poly()
+
+            // rerun poly on an interval until onload
+            var run = w.setInterval(rp.poly, 500)
+            if (w.addEventListener) {
+                w.addEventListener('load', function () {
+                    rp.poly()
+                    w.clearInterval(run)
+                })
+            } else if (w.attachEvent) {
+                w.attachEvent('onload', function () {
+                    rp.poly()
+                    w.clearInterval(run)
+                })
+            }
+        }
+
+        // commonjs
+        if (typeof exports !== 'undefined') {
+            exports.loadCSS = loadCSS
+        } else {
+            w.loadCSS = loadCSS
+        }
+    })(typeof global !== 'undefined' ? global : this)
+</script>
+
+    <style type="text/css">
+    @font-face {
+        font-family: 'Oswald-Regular';
+        src: url("/font/Oswald-Regular.ttf");
+    }
+
+    body {
+        margin: 0;
+    }
+
+    header,
+    footer,
+    .back-top,
+    .sidebar,
+    .container,
+    .site-intro-meta,
+    .toc-wrapper {
+        display: none;
+    }
+
+    .site-intro {
+        position: relative;
+        z-index: 3;
+        width: 100%;
+        /* height: 50vh; */
+        overflow: hidden;
+    }
+
+    .site-intro-placeholder {
+        position: absolute;
+        z-index: -2;
+        top: 0;
+        left: 0;
+        width: calc(100% + 300px);
+        height: 100%;
+        background: repeating-linear-gradient(-45deg, #444 0, #444 80px, #333 80px, #333 160px);
+        background-position: center center;
+        transform: translate3d(-226px, 0, 0);
+        animation: gradient-move 2.5s ease-out 0s infinite;
+    }
+
+    @keyframes gradient-move {
+        0% {
+            transform: translate3d(-226px, 0, 0);
+        }
+        100% {
+            transform: translate3d(0, 0, 0);
+        }
+    }
+</style>
+
+    <link rel="preload" href="/css/style.css?v=20211217" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="/css/dark.css?v=20211217" as="style">
+    <link rel="stylesheet" href="/css/dark.css">
+    <link rel="stylesheet" href="/css/mobile.css?v=20211217" media="(max-width: 960px)">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" as="script">
+    <link rel="preload" href="/scripts/main.js?v=20211217" as="script">
+    <link rel="preload" href="/scripts/dark.js?v=20211217" as="script">
+    <link rel="preload" href="/font/Oswald-Regular.ttf" as="font" crossorigin>
+    <link rel="preload" href="https://at.alicdn.com/t/font_327081_1dta1rlogw17zaor.woff" as="font" crossorigin>
+    <!-- algolia -->
+    
+    <!-- 百度统计  -->
+    
+    <!-- Google tag (gtag.js) -->
+    
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+    <script type="text/javascript">
+        if (typeof window.$ == undefined) {
+            console.warn('jquery load from jsdelivr failed, will load local script')
+            document.write('<script src="/lib/jquery.min.js" />')
+        }
+    </script>
+    
+        <body class="post-body">
+    
+        <!-- header -->
+        <header class="header header-mobile">
+    <!-- top read progress line -->
+    <div class="header-element">
+        <div class="read-progress"></div>
+    </div>
+    <!-- sidebar menu button -->
+    <div class="header-element">
+        
+            <div class="header-sidebar-menu">
+        
+            
+                <div style="padding-left: 1px;">&#xe775;</div>
+            
+        </div>
+    </div>
+    <!-- header actions -->
+    <div class="header-actions">
+        <!-- theme mode switch button -->
+        <span class="header-theme-btn header-element">
+            <i class="fas fa-adjust"></i>
+        </span>
+        <!-- back to home page text -->
+        <span class="home-link header-element">
+            <a href=/>WinddSnow</a>
+        </span>
+    </div>
+    <!-- toggle banner for post layout -->
+    
+        
+            <div class="banner">
+        
+            <div class="blog-title header-element">
+                <a href="/">WinddSnow</a>
+            </div>
+            <div class="post-title header-element">
+                <a href="#" class="post-name">HTML-Document-Structure-and-DOCTYPE</a>
+            </div>
+        </div>
+    
+</header>
+
+        <!-- fixed footer -->
+        <footer class="footer-fixed">
+    <!-- back to top button -->
+    <div class="footer-fixed-element">
+        
+            <div class="back-top back-top-hidden">
+        
+        
+            <div>&#xe639;</div>
+        
+        </div>
+    </div>
+</footer>
+
+        <!-- wrapper -->
+        <div class="wrapper">
+            <div class="site-intro" style="
+
+
+
+
+
+
+
+    height:50vh;
+
+">
+    
+    <!-- 主页  -->
+    
+        
+    <!-- 404页  -->
+    
+    <div class="site-intro-placeholder"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/post.jpg)"></div>
+    <div class="site-intro-meta">
+        <!-- 标题  -->
+        <h1 class="intro-title">
+            <!-- 主页  -->
+            
+                HTML-Document-Structure-and-DOCTYPE
+            <!-- 404 -->
+            
+        </h1>
+        <!-- 副标题 -->
+        <p class="intro-subtitle">
+            <!-- 主页副标题  -->
+            
+                
+            <!-- 404 -->
+            
+        </p>
+        <!-- 文章页 meta -->
+        
+            <div class="post-intros">
+                <!-- 文章页标签  -->
+                
+                    <div class= post-intro-tags >
+    
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="HTML">HTML</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="DOCTYPE">DOCTYPE</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="文档结构">文档结构</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="标准模式">标准模式</a>
+    
+</div>
+
+                
+                <!-- 文章字数统计 -->
+                
+                    <div class="post-intro-read">
+                        <span>字数统计: <span class="post-count word-count">2.8k</span>阅读时长: <span class="post-count reading-time">11 min</span></span>
+                    </div>
+                
+                <div class="post-intro-meta">
+                    <!-- 撰写日期 -->
+                    <span class="iconfont-archer post-intro-calander">&#xe676;</span>
+                    <span class="post-intro-time">2026/04/15</span>
+                    <!-- busuanzi -->
+                    
+                        <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                            <span class="iconfont-archer post-intro-busuanzi">&#xe602;</span>
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    
+                    <!-- 文章分享 -->
+                    <span class="share-wrapper">
+                        <span class="iconfont-archer share-icon">&#xe71d;</span>
+                        <span class="share-text">Share</span>
+                        <ul class="share-list">
+                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                                <div class="share-qrcode"></div>
+                            </li>
+                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
+        
+    </div>
+</div>
+
+            <script>
+  // get user agent
+  function getBrowserVersions() {
+    var u = window.navigator.userAgent
+    return {
+      userAgent: u,
+      trident: u.indexOf('Trident') > -1, //IE内核
+      presto: u.indexOf('Presto') > -1, //opera内核
+      webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+      gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+      mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+      ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+      android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
+      iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者安卓QQ浏览器
+      iPad: u.indexOf('iPad') > -1, //是否为iPad
+      webApp: u.indexOf('Safari') == -1, //是否为web应用程序，没有头部与底部
+      weixin: u.indexOf('MicroMessenger') == -1, //是否为微信浏览器
+      uc: u.indexOf('UCBrowser') > -1, //是否为android下的UC浏览器
+    }
+  }
+  var browser = {
+    versions: getBrowserVersions(),
+  }
+  console.log('userAgent: ' + browser.versions.userAgent)
+
+  // callback
+  function fontLoaded() {
+    console.log('font loaded')
+    if (document.getElementsByClassName('site-intro-meta')) {
+      document
+        .getElementsByClassName('intro-title')[0]
+        .classList.add('intro-fade-in')
+      document
+        .getElementsByClassName('intro-subtitle')[0]
+        .classList.add('intro-fade-in')
+      var postIntros = document.getElementsByClassName('post-intros')[0]
+      if (postIntros) {
+        postIntros.classList.add('post-fade-in')
+      }
+    }
+  }
+
+  // UC不支持跨域，所以直接显示
+  function asyncCb() {
+    if (browser.versions.uc) {
+      console.log('UCBrowser')
+      fontLoaded()
+    } else {
+      WebFont.load({
+        custom: {
+          families: ['Oswald-Regular'],
+        },
+        loading: function () {
+          // 所有字体开始加载
+          // console.log('font loading');
+        },
+        active: function () {
+          // 所有字体已渲染
+          fontLoaded()
+        },
+        inactive: function () {
+          // 字体预加载失败，无效字体或浏览器不支持加载
+          console.log('inactive: timeout')
+          fontLoaded()
+        },
+        timeout: 5000, // Set the timeout to two seconds
+      })
+    }
+  }
+
+  function asyncErr() {
+    console.warn('script load from CDN failed, will load local script')
+  }
+
+  // load webfont-loader async, and add callback function
+  function async(u, cb, err) {
+    var d = document,
+      t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0]
+    o.src = u
+    if (cb) {
+      o.addEventListener(
+        'load',
+        function (e) {
+          cb(null, e)
+        },
+        false
+      )
+    }
+    if (err) {
+      o.addEventListener(
+        'error',
+        function (e) {
+          err(null, e)
+        },
+        false
+      )
+    }
+    s.parentNode.insertBefore(o, s)
+  }
+
+  var asyncLoadWithFallBack = function (arr, success, reject) {
+    var currReject = function () {
+      reject()
+      arr.shift()
+      if (arr.length) async(arr[0], success, currReject)
+    }
+
+    async(arr[0], success, currReject)
+  }
+
+  asyncLoadWithFallBack(
+    [
+      'https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js',
+      'https://cdn.bootcss.com/webfont/1.6.28/webfontloader.js',
+      "/lib/webfontloader.min.js",
+    ],
+    asyncCb,
+    asyncErr
+  )
+</script>
+
+            <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
+            <div class="container container-unloaded">
+                <main class="main post-page">
+    <article class="article-entry">
+        <h1 id="第1课：HTML-文档结构与-DOCTYPE"><a href="#第1课：HTML-文档结构与-DOCTYPE" class="headerlink" title="第1课：HTML 文档结构与 DOCTYPE"></a>第1课：HTML 文档结构与 DOCTYPE</h1><p>前端一切皆始于 HTML 文档。无论使用 React、Vue 还是 Angular，最终输出的都是 HTML 页面。理解 HTML 文档的骨架结构，尤其是 <code>&lt;!DOCTYPE&gt;</code> 的作用，是构建符合标准、行为一致的网页的基石。本课将聚焦于一个看似简单却至关重要的声明：文档类型声明。</p>
+<hr>
+<h2 id="1-什么是-lt-DOCTYPE-gt-？"><a href="#1-什么是-lt-DOCTYPE-gt-？" class="headerlink" title="1. 什么是 &lt;!DOCTYPE&gt;？"></a>1. 什么是 <code>&lt;!DOCTYPE&gt;</code>？</h2><p><code>&lt;!DOCTYPE&gt;</code>（Document Type Declaration，文档类型声明）是 HTML 文档中的<strong>第一条语句</strong>，位于 <code>&lt;html&gt;</code> 标签之前。它不是 HTML 标签，而是一条<strong>指令</strong>，告诉浏览器当前文档使用的是哪个版本的 HTML。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;zh-CN&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">title</span>&gt;</span>文档结构示例<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">h1</span>&gt;</span>Hello World<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="1-1-历史背景：HTML-4-01-与-XHTML-时代"><a href="#1-1-历史背景：HTML-4-01-与-XHTML-时代" class="headerlink" title="1.1 历史背景：HTML 4.01 与 XHTML 时代"></a>1.1 历史背景：HTML 4.01 与 XHTML 时代</h3><p>在 HTML5 之前，<code>DOCTYPE</code> 声明非常冗长且难以记忆。例如，HTML 4.01 Strict 的声明如下：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">HTML</span> <span class="keyword">PUBLIC</span> <span class="string">&quot;-//W3C//DTD HTML 4.01//EN&quot;</span> <span class="string">&quot;http://www.w3.org/TR/html4/strict.dtd&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>这种声明包含两部分：</p>
+<ul>
+<li><strong>公共标识符</strong>：<code>-//W3C//DTD HTML 4.01//EN</code></li>
+<li><strong>系统标识符（DTD 的 URL）</strong>：<code>http://www.w3.org/TR/html4/strict.dtd</code></li>
+</ul>
+<p>浏览器会尝试根据 DTD（文档类型定义）来解析页面，但实际行为非常混乱。</p>
+<h3 id="1-2-HTML5-的简化声明"><a href="#1-2-HTML5-的简化声明" class="headerlink" title="1.2 HTML5 的简化声明"></a>1.2 HTML5 的简化声明</h3><p>W3C 和 WHATWG 意识到开发者无法记住那些冗长的声明，因此在 HTML5 标准中将其简化为：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>大小写不敏感</strong>，<code>&lt;!doctype html&gt;</code>、<code>&lt;!DocType html&gt;</code> 均可，但<strong>推荐全大写</strong>以保持视觉突出。</p>
+<hr>
+<h2 id="2-DOCTYPE-的核心作用：触发标准模式"><a href="#2-DOCTYPE-的核心作用：触发标准模式" class="headerlink" title="2. DOCTYPE 的核心作用：触发标准模式"></a>2. <code>DOCTYPE</code> 的核心作用：触发标准模式</h2><h3 id="2-1-浏览器的三种渲染模式"><a href="#2-1-浏览器的三种渲染模式" class="headerlink" title="2.1 浏览器的三种渲染模式"></a>2.1 浏览器的三种渲染模式</h3><p>为了兼容互联网早期遗留的大量不合规网页，现代浏览器保留了三种渲染模式：</p>
+<table>
+<thead>
+<tr>
+<th>渲染模式</th>
+<th>触发条件</th>
+<th>CSS 盒模型行为</th>
+<th>JavaScript API 行为</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>怪异模式（Quirks Mode）</strong></td>
+<td>未写 <code>DOCTYPE</code> 或写了已废弃的怪异模式触发声明</td>
+<td>盒模型为 IE 5.5 的怪异盒模型（width 包含 padding 和 border）</td>
+<td>某些 API 行为模拟老版本浏览器（如 <code>document.all</code> 可用）</td>
+</tr>
+<tr>
+<td><strong>几乎标准模式（Almost Standards Mode）</strong></td>
+<td>某些过渡性 <code>DOCTYPE</code> 声明（如 HTML 4.01 Transitional）</td>
+<td>与标准模式相同，但表格单元格中的图片垂直对齐方式不同</td>
+<td>与标准模式相同</td>
+</tr>
+<tr>
+<td><strong>标准模式（Standards Mode）</strong></td>
+<td><code>&lt;!DOCTYPE html&gt;</code> 或任何现代标准声明</td>
+<td>严格遵循 W3C 盒模型（<code>box-sizing: content-box</code>）</td>
+<td>遵循现代 Web 标准</td>
+</tr>
+</tbody></table>
+<h3 id="2-2-没有-DOCTYPE-会发生什么？"><a href="#2-2-没有-DOCTYPE-会发生什么？" class="headerlink" title="2.2 没有 DOCTYPE 会发生什么？"></a>2.2 没有 <code>DOCTYPE</code> 会发生什么？</h3><p>如果文档以以下形式开头（缺少 <code>DOCTYPE</code>）：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span>...<span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span>...<span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>浏览器会进入<strong>怪异模式</strong>。在怪异模式下，页面布局将采用非标准的盒模型，导致同一套 CSS 在不同模式下显示效果截然不同，这是前端布局错乱的头号元凶。</p>
+<p><strong>经典案例</strong>：一个固定宽度的容器内放一个 <code>width: 100%</code> 的子元素并加 <code>padding</code>。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="language-css"></span></span><br><span class="line"><span class="language-css">  <span class="selector-class">.parent</span> &#123; <span class="attribute">width</span>: <span class="number">300px</span>; <span class="attribute">border</span>: <span class="number">2px</span> solid black; &#125;</span></span><br><span class="line"><span class="language-css">  <span class="selector-class">.child</span> &#123; <span class="attribute">width</span>: <span class="number">100%</span>; <span class="attribute">padding</span>: <span class="number">10px</span>; <span class="attribute">background</span>: lightblue; &#125;</span></span><br><span class="line"><span class="language-css"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>标准模式</strong>：子元素宽度 &#x3D; 父容器宽度（300px），<code>padding</code> 向内挤压内容，子元素不溢出。</li>
+<li><strong>怪异模式</strong>：子元素宽度 &#x3D; <code>300px + 10px*2 = 320px</code>，子元素溢出父容器。</li>
+</ul>
+<p><strong>验证方式</strong>：在浏览器开发者工具中查看 <code>document.compatMode</code>：</p>
+<ul>
+<li>标准模式：返回 <code>&quot;CSS1Compat&quot;</code></li>
+<li>怪异模式：返回 <code>&quot;BackCompat&quot;</code></li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">document</span>.<span class="property">compatMode</span>); <span class="comment">// &quot;CSS1Compat&quot;</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="3-HTML-文档的标准骨架结构"><a href="#3-HTML-文档的标准骨架结构" class="headerlink" title="3. HTML 文档的标准骨架结构"></a>3. HTML 文档的标准骨架结构</h2><p>一个符合 HTML Living Standard 的完整文档结构如下，每个部分都有其特定作用。</p>
+<h3 id="3-1-lt-html-gt-根元素与-lang-属性"><a href="#3-1-lt-html-gt-根元素与-lang-属性" class="headerlink" title="3.1 &lt;html&gt; 根元素与 lang 属性"></a>3.1 <code>&lt;html&gt;</code> 根元素与 <code>lang</code> 属性</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;zh-CN&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>lang</code> 属性声明页面的<strong>主语言</strong>。</li>
+<li><strong>为什么重要</strong>：<ul>
+<li>屏幕阅读器根据 <code>lang</code> 选择对应的<strong>发音引擎</strong>。若内容为中文但 <code>lang=&quot;en&quot;</code>，读屏软件会用英文发音读中文，完全不可理解。</li>
+<li>搜索引擎利用 <code>lang</code> 判断页面的目标语言区域，影响 SEO。</li>
+<li>浏览器可能据此提供翻译提示。</li>
+</ul>
+</li>
+</ul>
+<p><strong>子语言标签</strong>：<code>zh-CN</code>（中国大陆简体中文）、<code>zh-TW</code>（台湾繁体中文）、<code>en-US</code>（美国英语）。</p>
+<h3 id="3-2-lt-head-gt-区域：元数据容器"><a href="#3-2-lt-head-gt-区域：元数据容器" class="headerlink" title="3.2 &lt;head&gt; 区域：元数据容器"></a>3.2 <code>&lt;head&gt;</code> 区域：元数据容器</h3><p><code>&lt;head&gt;</code> 内的内容不会直接显示在页面上，但包含对浏览器和搜索引擎至关重要的信息。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 字符编码声明：必须在 head 的前 1024 字节内 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">  </span><br><span class="line">  <span class="comment">&lt;!-- 视口配置：移动端适配的根基 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span></span><br><span class="line">  </span><br><span class="line">  <span class="comment">&lt;!-- 文档标题：标签页文字、收藏夹名称、搜索引擎结果主标题 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">title</span>&gt;</span>页面标题 - 网站名称<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">  </span><br><span class="line">  <span class="comment">&lt;!-- SEO 描述：搜索结果片段中的描述文字 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;description&quot;</span> <span class="attr">content</span>=<span class="string">&quot;这是一篇关于 HTML 文档结构的教程。&quot;</span>&gt;</span></span><br><span class="line">  </span><br><span class="line">  <span class="comment">&lt;!-- 可选：引入 CSS --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">&quot;stylesheet&quot;</span> <span class="attr">href</span>=<span class="string">&quot;styles.css&quot;</span>&gt;</span></span><br><span class="line">  </span><br><span class="line">  <span class="comment">&lt;!-- 可选：网站图标 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">&quot;icon&quot;</span> <span class="attr">href</span>=<span class="string">&quot;favicon.ico&quot;</span> <span class="attr">sizes</span>=<span class="string">&quot;any&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="3-3-lt-body-gt-区域：可见内容"><a href="#3-3-lt-body-gt-区域：可见内容" class="headerlink" title="3.3 &lt;body&gt; 区域：可见内容"></a>3.3 <code>&lt;body&gt;</code> 区域：可见内容</h3><p><code>&lt;body&gt;</code> 包含所有在浏览器视口中呈现的 HTML 元素。其内容结构将在后续课程（语义标签、表单等）中详细展开。</p>
+<hr>
+<h2 id="4-常见误区与最佳实践"><a href="#4-常见误区与最佳实践" class="headerlink" title="4. 常见误区与最佳实践"></a>4. 常见误区与最佳实践</h2><h3 id="4-1-误区一：DOCTYPE-之前有空白或注释"><a href="#4-1-误区一：DOCTYPE-之前有空白或注释" class="headerlink" title="4.1 误区一：DOCTYPE 之前有空白或注释"></a>4.1 误区一：<code>DOCTYPE</code> 之前有空白或注释</h3><p>虽然浏览器会容错，但<strong>标准建议 <code>DOCTYPE</code> 必须是文档的第一个内容</strong>。前面的空白或 BOM（字节顺序标记）在某些老浏览器中可能触发怪异模式。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- ❌ 不推荐：注释在 DOCTYPE 之前 --&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 这是一个 HTML5 文档 --&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="4-2-误区二：XML-自闭合语法"><a href="#4-2-误区二：XML-自闭合语法" class="headerlink" title="4.2 误区二：XML 自闭合语法"></a>4.2 误区二：XML 自闭合语法</h3><p>XHTML 时代要求在 <code>&lt;meta&gt;</code> 等空元素末尾加 <code>/</code>，如 <code>&lt;meta charset=&quot;UTF-8&quot; /&gt;</code>。<strong>在 HTML5 中，这是不必要的，但无害</strong>。现代 HTML 解析器会忽略它。</p>
+<h3 id="4-3-最佳实践：全局文档模板"><a href="#4-3-最佳实践：全局文档模板" class="headerlink" title="4.3 最佳实践：全局文档模板"></a>4.3 最佳实践：全局文档模板</h3><p>对于所有现代 Web 项目，推荐使用以下最小化模板：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;zh-CN&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">title</span>&gt;</span>文档标题<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;description&quot;</span> <span class="attr">content</span>=<span class="string">&quot;页面描述&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 页面内容 --&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="课后练习"><a href="#课后练习" class="headerlink" title="课后练习"></a>课后练习</h2><h3 id="一、概念自测（选择题-x2F-填空题）"><a href="#一、概念自测（选择题-x2F-填空题）" class="headerlink" title="一、概念自测（选择题 &#x2F; 填空题）"></a>一、概念自测（选择题 &#x2F; 填空题）</h3><ol>
+<li><p><strong>（单选）</strong> 以下关于 <code>&lt;!DOCTYPE html&gt;</code> 的描述，正确的是？<br>A. 它是 HTML 标签，用于定义文档类型。<br>B. 它必须写在 <code>&lt;html&gt;</code> 标签之后。<br>C. 省略它会导致浏览器进入标准模式。<br>D. 它是 HTML5 唯一需要使用的文档类型声明。</p>
+</li>
+<li><p><strong>（单选）</strong> 在标准模式下，JavaScript 中 <code>document.compatMode</code> 的返回值是？<br>A. <code>&quot;BackCompat&quot;</code><br>B. <code>&quot;CSS1Compat&quot;</code><br>C. <code>&quot;Standards&quot;</code><br>D. <code>&quot;Quirks&quot;</code></p>
+</li>
+<li><p><strong>（填空）</strong> <code>&lt;meta charset=&quot;UTF-8&quot;&gt;</code> 应该出现在 <code>&lt;head&gt;</code> 的前 ______ 字节内，以确保浏览器正确解析字符编码。</p>
+</li>
+<li><p><strong>（判断）</strong> <code>&lt;html lang=&quot;en&quot;&gt;</code> 对于中文内容的页面没有影响，可以省略。<br>A. 正确<br>B. 错误</p>
+</li>
+</ol>
+<h3 id="二、AI-编程任务：编写面向-AI-的提示词"><a href="#二、AI-编程任务：编写面向-AI-的提示词" class="headerlink" title="二、AI 编程任务：编写面向 AI 的提示词"></a>二、AI 编程任务：编写面向 AI 的提示词</h3><p><strong>场景</strong>：你需要为一个新项目创建一个 HTML5 基础模板文件。要求：</p>
+<ul>
+<li>包含所有必需的元数据标签（字符集、视口、标题、描述）。</li>
+<li>语言设置为简体中文。</li>
+<li>添加一个网站图标（favicon）链接。</li>
+<li>在 <code>&lt;body&gt;</code> 中预留注释 <code>&lt;!-- 页面内容开始 --&gt;</code> 和 <code>&lt;!-- 页面内容结束 --&gt;</code>，方便后续填充。</li>
+</ul>
+<p><strong>任务要求</strong>：请写出<strong>一段完整的中文提示词</strong>，发送给 AI，使其生成符合上述要求的完整 HTML 文件代码。</p>
+<h3 id="三、面试真题与参考答案"><a href="#三、面试真题与参考答案" class="headerlink" title="三、面试真题与参考答案"></a>三、面试真题与参考答案</h3><p><strong>题目</strong>（百度前端面试题）：  </p>
+<blockquote>
+<p>请解释什么是“怪异模式（Quirks Mode）”和“标准模式（Standards Mode）”，并说明如何触发它们。为什么现代前端开发中必须使用标准模式？</p>
+</blockquote>
+<p><strong>参考答案</strong>：</p>
+<ol>
+<li><p><strong>定义与区别</strong>：</p>
+<ul>
+<li><strong>标准模式</strong>：浏览器严格按照 W3C 或 WHATWG 的 Web 标准（如 CSS 2.1、HTML5）来渲染页面。盒模型为 <code>content-box</code>（宽度仅指内容区），JavaScript API 行为符合现代规范。</li>
+<li><strong>怪异模式</strong>：为了兼容 1990 年代末到 2000 年代初的旧版网页，浏览器模拟 Netscape Navigator 4 和 Internet Explorer 5 的非标准行为。盒模型为 IE 盒模型（宽度包含 <code>padding</code> 和 <code>border</code>），并且某些 CSS 布局算法存在差异。</li>
+</ul>
+</li>
+<li><p><strong>触发方式</strong>：</p>
+<ul>
+<li><strong>标准模式</strong>：文档以 <code>&lt;!DOCTYPE html&gt;</code>（HTML5 推荐）或任何严格 DTD（如 HTML 4.01 Strict）开头。</li>
+<li><strong>怪异模式</strong>：文档完全省略 <code>DOCTYPE</code>，或使用了触发怪异模式的特定 <code>DOCTYPE</code>（例如 <code>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot;&gt;</code> 在某些浏览器中可能触发几乎标准模式，而非纯粹怪异模式，但无 <code>DOCTYPE</code> 必定怪异）。</li>
+</ul>
+</li>
+<li><p><strong>必须使用标准模式的原因</strong>：</p>
+<ul>
+<li><strong>布局一致性</strong>：怪异模式下的盒模型导致相同的 CSS 代码在不同浏览器（或同一浏览器不同模式）下计算宽度不一致，难以维护。</li>
+<li><strong>现代特性支持</strong>：许多 CSS3 属性（如 Flexbox、Grid）和 HTML5 API 在怪异模式下可能表现异常或完全失效。</li>
+<li><strong>性能与可预测性</strong>：标准模式下的渲染流程经过高度优化，行为可预测，是前端工程化的前提。</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="课后练习答案"><a href="#课后练习答案" class="headerlink" title="课后练习答案"></a>课后练习答案</h2><h3 id="一、概念自测答案"><a href="#一、概念自测答案" class="headerlink" title="一、概念自测答案"></a>一、概念自测答案</h3><ol>
+<li><p><strong>D</strong>  </p>
+<ul>
+<li>解析：A 错，它不是标签而是声明指令；B 错，它必须写在 <code>&lt;html&gt;</code> 之前；C 错，省略它会进入怪异模式。</li>
+</ul>
+</li>
+<li><p><strong>B</strong>  </p>
+<ul>
+<li>解析：<code>document.compatMode</code> 在标准模式下返回 <code>&quot;CSS1Compat&quot;</code>，在怪异模式下返回 <code>&quot;BackCompat&quot;</code>。</li>
+</ul>
+</li>
+<li><p><strong>1024</strong>  </p>
+<ul>
+<li>解析：规范建议字符集声明在 <code>&lt;head&gt;</code> 的前 1024 字节内，以确保浏览器在扫描缓冲区时能尽早确定编码。</li>
+</ul>
+</li>
+<li><p><strong>B（错误）</strong>  </p>
+<ul>
+<li>解析：<code>lang</code> 属性对屏幕阅读器发音和 SEO 至关重要，中文内容应使用 <code>lang=&quot;zh-CN&quot;</code>。</li>
+</ul>
+</li>
+</ol>
+<h3 id="二、AI-编程任务参考答案（提示词示例）"><a href="#二、AI-编程任务参考答案（提示词示例）" class="headerlink" title="二、AI 编程任务参考答案（提示词示例）"></a>二、AI 编程任务参考答案（提示词示例）</h3><blockquote>
+<p><strong>示例提示词</strong>：<br>“请为我生成一个标准的 HTML5 文档模板。要求：</p>
+<ul>
+<li>语言设置为 <code>zh-CN</code>。</li>
+<li>包含完整的 <code>&lt;head&gt;</code> 信息：<code>&lt;meta charset=&quot;UTF-8&quot;&gt;</code>、<code>&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</code>、<code>&lt;title&gt;新项目模板&lt;/title&gt;</code>、<code>&lt;meta name=&quot;description&quot; content=&quot;这是一个符合标准的基础模板&quot;&gt;</code>。</li>
+<li>添加网站图标链接 <code>&lt;link rel=&quot;icon&quot; href=&quot;favicon.ico&quot; sizes=&quot;any&quot;&gt;</code>。</li>
+<li>在 <code>&lt;body&gt;</code> 中放置两行注释：<code>&lt;!-- 页面内容开始 --&gt;</code> 和 <code>&lt;!-- 页面内容结束 --&gt;</code>，中间留空。</li>
+<li>代码整洁，注释清晰。直接输出完整的 HTML 文件内容。”</li>
+</ul>
+</blockquote>
+
+    </article>
+    <!-- license -->
+    
+        <div class="license-wrapper">
+            <p>原文作者：<a href="https://winddsnow.github.io">WinddSnow</a>
+            <p>原文链接：<a href="https://winddsnow.github.io/2026/04/15/HTML-Document-Structure-and-DOCTYPE/">https://winddsnow.github.io/2026/04/15/HTML-Document-Structure-and-DOCTYPE/</a>
+            <p>发表日期：<a href="https://winddsnow.github.io/2026/04/15/HTML-Document-Structure-and-DOCTYPE/">April 15th 2026, 5:00:00 am</a>
+            <p>更新日期：<a href="https://winddsnow.github.io/2026/04/15/HTML-Document-Structure-and-DOCTYPE/">April 14th 2026, 6:10:56 pm</a>
+            <p>版权声明：本文采用<a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
+        </div>
+    
+    <!-- paginator -->
+    <ul class="post-paginator">
+        <li class="next">
+            
+                <div class="nextSlogan">Next Post</div>
+                <a href="/2026/04/15/Head-Metadata-and-SEO-Optimization/" title="Head-Metadata-and-SEO-Optimization">
+                    <div class="nextTitle">Head-Metadata-and-SEO-Optimization</div>
+                </a>
+            
+        </li>
+        <li class="previous">
+            
+                <div class="prevSlogan">Previous Post</div>
+                <a href="/2026/03/24/OpenClaw-Installation-and-WeChat-ClawBot-Connection/" title="OpenClaw-Installation-and-WeChat-ClawBot-Connection">
+                    <div class="prevTitle">OpenClaw-Installation-and-WeChat-ClawBot-Connection</div>
+                </a>
+            
+        </li>
+    </ul>
+    <!-- comment -->
+    
+        <div class="post-comment">
+            <!-- 来必力 City 版安装代码 -->
+
+
+            
+
+            
+
+            
+    <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js"></script>
+    <script>
+        let idOption = '1776229200000'
+        
+            idOption = location.pathname
+        
+        const gitalk = new Gitalk({
+            clientID: '72081952d87ae3ddd54d',
+            clientSecret: 'ec2a4a2d33999931c5639c25a52190c660ee0357',
+            repo: 'winddsnow.github.io',
+            owner: 'winddsnow',
+            admin: "winddsnow",
+            id: idOption,
+            distractionFreeMode: false,
+            createIssueManually: true,
+        })
+        gitalk.render('gitalk-container')
+    </script>
+    <noscript>为正常使用 Gitalk 评论功能，您需要激活 JavaScript</noscript>
+
+
+            <!-- utteranc评论 -->
+
+
+            <!-- partial('_partial/comment/changyan') -->
+            <!--PC版-->
+
+
+            
+            
+
+            
+
+        </div>
+    
+    <!-- timeliness note -->
+    <!-- idea from: https://hexo.fluid-dev.com/posts/hexo-injector/#%E6%96%87%E7%AB%A0%E6%97%B6%E6%95%88%E6%80%A7%E6%8F%90%E7%A4%BA -->
+    
+    <!-- Mathjax -->
+    
+</main>
+
+                <!-- profile -->
+                
+            </div>
+            <footer class="footer footer-unloaded">
+    <!-- social  -->
+    
+        <div class="social">
+            
+    
+        
+            
+                <a href="mailto:winddsnow@163.com" class="iconfont-archer email" title=email ></a>
+            
+        
+    
+        
+            
+                <a href="//github.com/Winddsnow" class="iconfont-archer github" target="_blank" title=github></a>
+            
+        
+    
+        
+            
+                <span class="iconfont-archer wechat" title=wechat>
+                    
+                    <img class="profile-qr" src="/assets/example_qr.png" />
+                </span>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+
+        </div>
+    
+    <!-- powered by Hexo  -->
+    <div class="copyright">
+        <span id="hexo-power">Powered by <a href="https://hexo.io/" target="_blank">Hexo</a></span><span class="iconfont-archer power">&#xe635;</span><span id="theme-info">theme <a href="https://github.com/fi3ework/hexo-theme-archer" target="_blank">Archer</a></span>
+    </div>
+    <!-- website approve for Chinese user -->
+    
+        <div class="website-approve">
+            
+                <span id="icp-approve" class="icp-approve">
+                    <a href="https://beian.miit.gov.cn/" target="_blank">粤ICP备2025511523号</a>
+                </span>
+            
+            
+        </div>
+    
+    <!-- 不蒜子  -->
+    
+        <div class="busuanzi-container">
+            
+             
+                <span id="busuanzi_container_site_pv">PV: <span id="busuanzi_value_site_pv"></span> :)</span>
+            
+        </div>
+    	
+</footer>
+
+        </div>
+        <!-- toc -->
+        
+            <div class="toc-wrapper toc-wrapper-loding" style=
+
+
+
+
+
+
+
+    top:50vh;
+
+>
+                <div class="toc-catalog">
+                    <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+                </div>
+                <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC1%E8%AF%BE%EF%BC%9AHTML-%E6%96%87%E6%A1%A3%E7%BB%93%E6%9E%84%E4%B8%8E-DOCTYPE"><span class="toc-number">1.</span> <span class="toc-text">第1课：HTML 文档结构与 DOCTYPE</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E4%BB%80%E4%B9%88%E6%98%AF-lt-DOCTYPE-gt-%EF%BC%9F"><span class="toc-number">1.1.</span> <span class="toc-text">1. 什么是 &lt;!DOCTYPE&gt;？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-%E5%8E%86%E5%8F%B2%E8%83%8C%E6%99%AF%EF%BC%9AHTML-4-01-%E4%B8%8E-XHTML-%E6%97%B6%E4%BB%A3"><span class="toc-number">1.1.1.</span> <span class="toc-text">1.1 历史背景：HTML 4.01 与 XHTML 时代</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-HTML5-%E7%9A%84%E7%AE%80%E5%8C%96%E5%A3%B0%E6%98%8E"><span class="toc-number">1.1.2.</span> <span class="toc-text">1.2 HTML5 的简化声明</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-DOCTYPE-%E7%9A%84%E6%A0%B8%E5%BF%83%E4%BD%9C%E7%94%A8%EF%BC%9A%E8%A7%A6%E5%8F%91%E6%A0%87%E5%87%86%E6%A8%A1%E5%BC%8F"><span class="toc-number">1.2.</span> <span class="toc-text">2. DOCTYPE 的核心作用：触发标准模式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E4%B8%89%E7%A7%8D%E6%B8%B2%E6%9F%93%E6%A8%A1%E5%BC%8F"><span class="toc-number">1.2.1.</span> <span class="toc-text">2.1 浏览器的三种渲染模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-%E6%B2%A1%E6%9C%89-DOCTYPE-%E4%BC%9A%E5%8F%91%E7%94%9F%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-number">1.2.2.</span> <span class="toc-text">2.2 没有 DOCTYPE 会发生什么？</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-HTML-%E6%96%87%E6%A1%A3%E7%9A%84%E6%A0%87%E5%87%86%E9%AA%A8%E6%9E%B6%E7%BB%93%E6%9E%84"><span class="toc-number">1.3.</span> <span class="toc-text">3. HTML 文档的标准骨架结构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-lt-html-gt-%E6%A0%B9%E5%85%83%E7%B4%A0%E4%B8%8E-lang-%E5%B1%9E%E6%80%A7"><span class="toc-number">1.3.1.</span> <span class="toc-text">3.1 &lt;html&gt; 根元素与 lang 属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-lt-head-gt-%E5%8C%BA%E5%9F%9F%EF%BC%9A%E5%85%83%E6%95%B0%E6%8D%AE%E5%AE%B9%E5%99%A8"><span class="toc-number">1.3.2.</span> <span class="toc-text">3.2 &lt;head&gt; 区域：元数据容器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-lt-body-gt-%E5%8C%BA%E5%9F%9F%EF%BC%9A%E5%8F%AF%E8%A7%81%E5%86%85%E5%AE%B9"><span class="toc-number">1.3.3.</span> <span class="toc-text">3.3 &lt;body&gt; 区域：可见内容</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E5%B8%B8%E8%A7%81%E8%AF%AF%E5%8C%BA%E4%B8%8E%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5"><span class="toc-number">1.4.</span> <span class="toc-text">4. 常见误区与最佳实践</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-%E8%AF%AF%E5%8C%BA%E4%B8%80%EF%BC%9ADOCTYPE-%E4%B9%8B%E5%89%8D%E6%9C%89%E7%A9%BA%E7%99%BD%E6%88%96%E6%B3%A8%E9%87%8A"><span class="toc-number">1.4.1.</span> <span class="toc-text">4.1 误区一：DOCTYPE 之前有空白或注释</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-%E8%AF%AF%E5%8C%BA%E4%BA%8C%EF%BC%9AXML-%E8%87%AA%E9%97%AD%E5%90%88%E8%AF%AD%E6%B3%95"><span class="toc-number">1.4.2.</span> <span class="toc-text">4.2 误区二：XML 自闭合语法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5%EF%BC%9A%E5%85%A8%E5%B1%80%E6%96%87%E6%A1%A3%E6%A8%A1%E6%9D%BF"><span class="toc-number">1.4.3.</span> <span class="toc-text">4.3 最佳实践：全局文档模板</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%BE%E5%90%8E%E7%BB%83%E4%B9%A0"><span class="toc-number">1.5.</span> <span class="toc-text">课后练习</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E6%A6%82%E5%BF%B5%E8%87%AA%E6%B5%8B%EF%BC%88%E9%80%89%E6%8B%A9%E9%A2%98-x2F-%E5%A1%AB%E7%A9%BA%E9%A2%98%EF%BC%89"><span class="toc-number">1.5.1.</span> <span class="toc-text">一、概念自测（选择题 &#x2F; 填空题）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E3%80%81AI-%E7%BC%96%E7%A8%8B%E4%BB%BB%E5%8A%A1%EF%BC%9A%E7%BC%96%E5%86%99%E9%9D%A2%E5%90%91-AI-%E7%9A%84%E6%8F%90%E7%A4%BA%E8%AF%8D"><span class="toc-number">1.5.2.</span> <span class="toc-text">二、AI 编程任务：编写面向 AI 的提示词</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E9%9D%A2%E8%AF%95%E7%9C%9F%E9%A2%98%E4%B8%8E%E5%8F%82%E8%80%83%E7%AD%94%E6%A1%88"><span class="toc-number">1.5.3.</span> <span class="toc-text">三、面试真题与参考答案</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%BE%E5%90%8E%E7%BB%83%E4%B9%A0%E7%AD%94%E6%A1%88"><span class="toc-number">1.6.</span> <span class="toc-text">课后练习答案</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E6%A6%82%E5%BF%B5%E8%87%AA%E6%B5%8B%E7%AD%94%E6%A1%88"><span class="toc-number">1.6.1.</span> <span class="toc-text">一、概念自测答案</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E3%80%81AI-%E7%BC%96%E7%A8%8B%E4%BB%BB%E5%8A%A1%E5%8F%82%E8%80%83%E7%AD%94%E6%A1%88%EF%BC%88%E6%8F%90%E7%A4%BA%E8%AF%8D%E7%A4%BA%E4%BE%8B%EF%BC%89"><span class="toc-number">1.6.2.</span> <span class="toc-text">二、AI 编程任务参考答案（提示词示例）</span></a></li></ol></li></ol></li></ol>
+            </div>
+        
+        <!-- sidebar -->
+        <div class="sidebar sidebar-hide">
+    <ul class="sidebar-tabs sidebar-tabs-active-0">
+        <li class="sidebar-tab-archives"><span class="iconfont-archer">&#xe67d;</span><span class="tab-name">Archive</span></li>
+        <li class="sidebar-tab-tags"><span class="iconfont-archer">&#xe61b;</span><span class="tab-name">Tag</span></li>
+        <li class="sidebar-tab-categories"><span class="iconfont-archer">&#xe666;</span><span class="tab-name">Cate</span></li>
+    </ul>
+    <div class="sidebar-content sidebar-content-show-archive">
+        <div class="sidebar-panel-archives">
+    <!-- 在 ejs 中将 archive 按照时间排序 -->
+    
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    
+    
+    
+    
+    <div class="total-and-search">
+        <div class="total-archive">
+        Total : 76
+        </div>
+        <!-- search  -->
+        
+    </div>
+    
+    <div class="post-archive">
+    
+        
+            
+            
+            <div class="archive-year"> 2026 </div>
+            <ul class="year-list">
+            
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/16</span>
+            <a class="archive-post-title" href="/2026/04/15/HTML-Best-Practices-and-Standards-Evolution/">HTML-Best-Practices-and-Standards-Evolution</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/16</span>
+            <a class="archive-post-title" href="/2026/04/15/iframe-and-Embedded-Content-Security-and-Cross-Origin-Communication/">iframe-and-Embedded-Content-Security-and-Cross-Origin-Communication</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/16</span>
+            <a class="archive-post-title" href="/2026/04/15/Accessibility-Basics-ARIA-Keyboard-Navigation/">Accessibility-Basics-ARIA-Keyboard-Navigation</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/16</span>
+            <a class="archive-post-title" href="/2026/04/15/HTML5-Semantic-Sectioning-Elements/">HTML5-Semantic-Sectioning-Elements</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/16</span>
+            <a class="archive-post-title" href="/2026/04/15/HTML-Forms-Elements-Part2/">HTML-Forms-Elements-Part2</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/16</span>
+            <a class="archive-post-title" href="/2026/04/15/HTML-Forms-Elements-Part1/">HTML-Forms-Elements-Part1</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/16</span>
+            <a class="archive-post-title" href="/2026/04/15/Images-and-Multimedia-HTML-Elements/">Images-and-Multimedia-HTML-Elements</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/16</span>
+            <a class="archive-post-title" href="/2026/04/15/Lists-and-Tables-Structure-and-Semantics/">Lists-and-Tables-Structure-and-Semantics</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/16</span>
+            <a class="archive-post-title" href="/2026/04/15/Hyperlinks-and-Navigation-Best-Practices/">Hyperlinks-and-Navigation-Best-Practices</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/15</span>
+            <a class="archive-post-title" href="/2026/04/15/Text-Level-Semantic-HTML-Tags/">Text-Level-Semantic-HTML-Tags</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/15</span>
+            <a class="archive-post-title" href="/2026/04/15/Head-Metadata-and-SEO-Optimization/">Head-Metadata-and-SEO-Optimization</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/15</span>
+            <a class="archive-post-title" href="/2026/04/15/HTML-Document-Structure-and-DOCTYPE/">HTML-Document-Structure-and-DOCTYPE</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/25</span>
+            <a class="archive-post-title" href="/2026/03/24/OpenClaw-Installation-and-WeChat-ClawBot-Connection/">OpenClaw-Installation-and-WeChat-ClawBot-Connection</a>
+        </li>
+    
+        
+            
+            
+                
+                </ul>
+            
+            <div class="archive-year"> 2025 </div>
+            <ul class="year-list">
+            
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/30</span>
+            <a class="archive-post-title" href="/2025/12/29/A-Little-Certainty-and-Patience/">2025-A Little Certainty and Patience</a>
+        </li>
+    
+        
+            
+            
+                
+                </ul>
+            
+            <div class="archive-year"> 2024 </div>
+            <ul class="year-list">
+            
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/18</span>
+            <a class="archive-post-title" href="/2024/11/17/Thoughts-after-watching-One-Seat/">Thoughts after watching One Seat</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/16</span>
+            <a class="archive-post-title" href="/2024/11/16/Thoughts-on-writes-and-write-Nots/">Thoughts on writes and write-Nots</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/16</span>
+            <a class="archive-post-title" href="/2024/11/15/thinking-about-writes-and-write-nots/">thinking about writes and write-nots</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/11</span>
+            <a class="archive-post-title" href="/2024/11/10/%E5%8C%AE%E4%B9%8F%E5%A4%A7%E8%84%9112%E7%BB%93%E8%AF%AD-%E6%88%91%E4%BB%AC%E7%8E%B0%E5%9C%A8%E5%81%9A%E4%BB%80%E4%B9%88/">匮乏大脑12结语_我们应该怎么做</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/11</span>
+            <a class="archive-post-title" href="/2024/11/10/%E5%8C%AE%E4%B9%8F%E5%A4%A7%E8%84%9111%E5%B9%B8%E7%A6%8F/">匮乏大脑11幸福</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/11</span>
+            <a class="archive-post-title" href="/2024/11/10/%E5%8C%AE%E4%B9%8F%E5%A4%A7%E8%84%91%E2%91%A9%E4%BF%A1%E6%81%AF/">匮乏大脑⑩信息</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/11</span>
+            <a class="archive-post-title" href="/2024/11/10/%E5%8C%AE%E4%B9%8F%E5%A4%A7%E8%84%91%E2%91%A8%E6%9D%82%E7%89%A9/">匮乏大脑⑨杂物</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/11</span>
+            <a class="archive-post-title" href="/2024/11/10/%E5%8C%AE%E4%B9%8F%E5%A4%A7%E8%84%91%E2%91%A7%E9%A3%9F%E7%89%A9/">匮乏大脑⑧食物</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/08</span>
+            <a class="archive-post-title" href="/2024/11/07/%E5%8C%AE%E4%B9%8F%E5%A4%A7%E8%84%91%E2%91%A6%E5%BD%B1%E5%93%8D%E5%8A%9B/">匮乏大脑⑦影响力</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/02</span>
+            <a class="archive-post-title" href="/2024/11/02/%E5%8C%AE%E4%B9%8F%E5%A4%A7%E8%84%91%E2%91%A5%E7%A1%AE%E5%AE%9A%E6%80%A7/">匮乏大脑⑥确定性</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/01</span>
+            <a class="archive-post-title" href="/2024/10/31/%E5%8C%AE%E4%B9%8F%E5%A4%A7%E8%84%91%E2%91%A0-%E2%91%A4/">匮乏大脑翻译①</a>
+        </li>
+    
+        
+            
+            
+                
+                </ul>
+            
+            <div class="archive-year"> 2023 </div>
+            <ul class="year-list">
+            
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/13</span>
+            <a class="archive-post-title" href="/2023/10/13/OpenFeign/">OpenFeign帮我们做了什么</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/13</span>
+            <a class="archive-post-title" href="/2023/10/13/security-HashMap/">自行强化HashMap,使得线程安全</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/24</span>
+            <a class="archive-post-title" href="/2023/07/23/how-to-do-great-work-zhCN/">how_to_do_great_work_zhCN</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/24</span>
+            <a class="archive-post-title" href="/2023/07/23/%E5%81%9C%E6%AD%A2%E7%A9%BA%E6%83%B3/">停止空想</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/03</span>
+            <a class="archive-post-title" href="/2023/04/02/Java-Base/">Java基础</a>
+        </li>
+    
+        
+            
+            
+                
+                </ul>
+            
+            <div class="archive-year"> 2022 </div>
+            <ul class="year-list">
+            
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/23</span>
+            <a class="archive-post-title" href="/2022/10/22/Java-%E5%BC%80%E5%8F%91%E6%89%8B%E5%86%8C-%E5%B5%A9%E5%B1%B1%E7%89%88/">《Java开发手册》嵩山版</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/23</span>
+            <a class="archive-post-title" href="/2022/10/22/Java-03Threads/">Java面试题03多线程</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/23</span>
+            <a class="archive-post-title" href="/2022/10/22/Java-Base02Collection/">Java面试题02集合相关</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/23</span>
+            <a class="archive-post-title" href="/2022/10/22/Java-04JVM/">Java面试题04JVM</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/23</span>
+            <a class="archive-post-title" href="/2022/10/22/Java-Base01/">Java面试题01基础</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/23</span>
+            <a class="archive-post-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9805Web/">Java面试题05Web</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/23</span>
+            <a class="archive-post-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9806%E6%95%B0%E6%8D%AE%E5%BA%93/">Java面试题06数据库</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/23</span>
+            <a class="archive-post-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9807Mybatis%E6%A1%86%E6%9E%B6/">Java面试题07Mybatis框架</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/23</span>
+            <a class="archive-post-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9808Spring%E6%A1%86%E6%9E%B6/">Java面试题08Spring框架</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/23</span>
+            <a class="archive-post-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9809SpringMVC%E6%A1%86%E6%9E%B6/">Java面试题09SpringMVC框架</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/23</span>
+            <a class="archive-post-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9810SpringBoot/">Java面试题10SpringBoot</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/23</span>
+            <a class="archive-post-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9811SpringCloud/">Java面试题11SpringCloud</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/23</span>
+            <a class="archive-post-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9812%E9%98%BF%E9%87%8CDubbo/">Java面试题12阿里Dubbo</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/23</span>
+            <a class="archive-post-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9813Zookeeper/">Java面试题13Zookeeper</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/23</span>
+            <a class="archive-post-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9814MongoDB/">Java面试题14MongoDB</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/23</span>
+            <a class="archive-post-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9815Kafka/">Java面试题15Kafka</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/23</span>
+            <a class="archive-post-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9816JWT/">Java面试题16JWT</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/20</span>
+            <a class="archive-post-title" href="/2022/10/19/MySQL%E4%BC%98%E5%8C%96/">MySQL优化</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/08</span>
+            <a class="archive-post-title" href="/2022/09/08/RabbitMQ/">RabbitMQ</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/08</span>
+            <a class="archive-post-title" href="/2022/09/08/ELK%E6%90%9C%E7%B4%A2/">ELK搜索</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/30</span>
+            <a class="archive-post-title" href="/2022/08/30/Ribbin%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E6%BA%90%E7%A0%81%E5%8E%9F%E7%90%86%E4%B8%8E%E6%BA%90%E7%A0%81%E8%B0%83%E8%AF%95/">Ribbin负载均衡源码原理与源码调试</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/16</span>
+            <a class="archive-post-title" href="/2022/08/15/Yapi%E9%83%A8%E7%BD%B2%E4%B8%8E%E4%BD%BF%E7%94%A8/">Yapi部署与使用</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/15</span>
+            <a class="archive-post-title" href="/2022/08/14/HashMap%E5%8E%9F%E7%90%86/">HashMap原理</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/11</span>
+            <a class="archive-post-title" href="/2022/02/10/Vim%E7%94%A8%E6%B3%95%E7%AE%80%E8%AE%B0/">Vim用法简记</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/11</span>
+            <a class="archive-post-title" href="/2022/02/10/Markdown%E7%A4%BA%E4%BE%8B2/">Markdown示例2</a>
+        </li>
+    
+        
+            
+            
+                
+                </ul>
+            
+            <div class="archive-year"> 2021 </div>
+            <ul class="year-list">
+            
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/21</span>
+            <a class="archive-post-title" href="/2021/12/20/Dead-Line-2021%E6%80%BB%E7%BB%93/">Dead Line--2021总结</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/29</span>
+            <a class="archive-post-title" href="/2021/08/29/SpringCloud%E7%AE%80%E4%BB%8B/">SpringCloud简介</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/14</span>
+            <a class="archive-post-title" href="/2021/08/14/mysql%E8%AF%BB%E5%86%99%E5%88%86%E7%A6%BB-%E4%B8%BB%E4%BB%8E%E5%A4%8D%E5%88%B6%E5%8F%8Asharing-jdbc%E4%BD%BF%E7%94%A8/">mysql读写分离-主从复制及sharing-jdbc使用</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/04</span>
+            <a class="archive-post-title" href="/2021/05/03/Markdown%E8%AF%AD%E6%B3%95%E8%AE%B0%E5%BD%95/">Markdown语法记录</a>
+        </li>
+    
+        
+            
+            
+                
+                </ul>
+            
+            <div class="archive-year"> 2020 </div>
+            <ul class="year-list">
+            
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/29</span>
+            <a class="archive-post-title" href="/2020/08/28/Redis%E7%9B%B8%E5%85%B3%E9%97%AE%E9%A2%98/">Redis相关问题</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/28</span>
+            <a class="archive-post-title" href="/2020/08/28/Redis%E5%88%86%E5%B8%83%E5%BC%8F%E7%BC%93%E5%AD%98/">Redis分布式缓存</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/16</span>
+            <a class="archive-post-title" href="/2020/08/15/Java-Thread%E2%91%A0/">Java多线程-并发</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/16</span>
+            <a class="archive-post-title" href="/2020/08/15/Java-Thread%E2%91%A1/">Java多线程-并发②</a>
+        </li>
+    
+        
+            
+            
+                
+                </ul>
+            
+            <div class="archive-year"> 2019 </div>
+            <ul class="year-list">
+            
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/14</span>
+            <a class="archive-post-title" href="/2019/08/14/nginx%E7%AE%80%E4%BB%8B%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%BF%9B%E9%98%B6/">nginx简介及使用进阶</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/04</span>
+            <a class="archive-post-title" href="/2019/05/04/PVE%E8%99%9A%E6%8B%9F%E5%8C%96/">PVE虚拟化</a>
+        </li>
+    
+        
+            
+            
+                
+                </ul>
+            
+            <div class="archive-year"> 2018 </div>
+            <ul class="year-list">
+            
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/16</span>
+            <a class="archive-post-title" href="/2018/08/15/Java%E6%95%B0%E7%BB%84%E5%9F%BA%E7%A1%80/">Java数组基础</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/16</span>
+            <a class="archive-post-title" href="/2018/08/15/Java%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">Java算法基础-数据结构-设计模式</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/04</span>
+            <a class="archive-post-title" href="/2018/05/03/%E6%9D%82%E8%B0%88%E6%9C%8D%E5%8A%A1%E5%99%A8/">杂谈服务器</a>
+        </li>
+    
+        
+            
+            
+                
+                </ul>
+            
+            <div class="archive-year"> 1970 </div>
+            <ul class="year-list">
+            
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/01</span>
+            <a class="archive-post-title" href="/1970/01/01/hello-world/">Hello World</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/01</span>
+            <a class="archive-post-title" href="/1970/01/01/%E5%83%8F%E7%8B%BC%E4%B8%80%E6%A0%B7%E6%88%98%E6%96%97%EF%BC%81/">像狼一样战斗！</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/01</span>
+            <a class="archive-post-title" href="/1970/01/01/%E5%BD%93%E5%85%B5%E7%9A%84%E6%97%A5%E5%AD%90/">当兵的日子</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/01</span>
+            <a class="archive-post-title" href="/1970/01/01/%E6%88%91%E6%B0%B8%E8%BF%9C%E4%B8%8D%E5%86%8D%E8%87%AA%E6%80%9C%E8%87%AA%E8%B4%B1/">我永远不再自怜自贱</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/01</span>
+            <a class="archive-post-title" href="/1970/01/01/%E7%BE%8A%E7%9A%AE%E5%8D%B7/">羊皮卷</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/01</span>
+            <a class="archive-post-title" href="/1970/01/01/%E8%93%9D%E8%8E%B2%E8%8A%B1/">蓝莲花</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/01</span>
+            <a class="archive-post-title" href="/1970/01/01/%E9%82%A3%E4%B8%80%E9%81%93%E6%9C%A6%E8%83%A7/">那一道朦胧</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/01</span>
+            <a class="archive-post-title" href="/1970/01/01/%E9%9B%A8%E4%B8%8E%E7%AF%AE%E7%90%83/">雨与篮球</a>
+        </li>
+    
+    </div>
+</div>
+
+        <div class="sidebar-panel-tags">
+    <div class="sidebar-tags-name">
+        
+            <span class="sidebar-tag-name" data-tags="年终总结">
+                <span class="iconfont-archer">&#xe606;</span>
+                年终总结
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="碎语">
+                <span class="iconfont-archer">&#xe606;</span>
+                碎语
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="HTML">
+                <span class="iconfont-archer">&#xe606;</span>
+                HTML
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="可访问性">
+                <span class="iconfont-archer">&#xe606;</span>
+                可访问性
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="ARIA">
+                <span class="iconfont-archer">&#xe606;</span>
+                ARIA
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="键盘导航">
+                <span class="iconfont-archer">&#xe606;</span>
+                键盘导航
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="屏幕阅读器">
+                <span class="iconfont-archer">&#xe606;</span>
+                屏幕阅读器
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Java">
+                <span class="iconfont-archer">&#xe606;</span>
+                Java
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="ELK">
+                <span class="iconfont-archer">&#xe606;</span>
+                ELK
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="分布式搜索引擎">
+                <span class="iconfont-archer">&#xe606;</span>
+                分布式搜索引擎
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="elasticsearch">
+                <span class="iconfont-archer">&#xe606;</span>
+                elasticsearch
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Logstash">
+                <span class="iconfont-archer">&#xe606;</span>
+                Logstash
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="kibana">
+                <span class="iconfont-archer">&#xe606;</span>
+                kibana
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="最佳实践">
+                <span class="iconfont-archer">&#xe606;</span>
+                最佳实践
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Web标准">
+                <span class="iconfont-archer">&#xe606;</span>
+                Web标准
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="W3C">
+                <span class="iconfont-archer">&#xe606;</span>
+                W3C
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="WHATWG">
+                <span class="iconfont-archer">&#xe606;</span>
+                WHATWG
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="代码验证">
+                <span class="iconfont-archer">&#xe606;</span>
+                代码验证
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="DOCTYPE">
+                <span class="iconfont-archer">&#xe606;</span>
+                DOCTYPE
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="文档结构">
+                <span class="iconfont-archer">&#xe606;</span>
+                文档结构
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="标准模式">
+                <span class="iconfont-archer">&#xe606;</span>
+                标准模式
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="表单">
+                <span class="iconfont-archer">&#xe606;</span>
+                表单
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="input">
+                <span class="iconfont-archer">&#xe606;</span>
+                input
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="label">
+                <span class="iconfont-archer">&#xe606;</span>
+                label
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="select">
+                <span class="iconfont-archer">&#xe606;</span>
+                select
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="textarea">
+                <span class="iconfont-archer">&#xe606;</span>
+                textarea
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="fieldset">
+                <span class="iconfont-archer">&#xe606;</span>
+                fieldset
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="表单验证">
+                <span class="iconfont-archer">&#xe606;</span>
+                表单验证
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="语义化">
+                <span class="iconfont-archer">&#xe606;</span>
+                语义化
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="区块标签">
+                <span class="iconfont-archer">&#xe606;</span>
+                区块标签
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="SEO">
+                <span class="iconfont-archer">&#xe606;</span>
+                SEO
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Head">
+                <span class="iconfont-archer">&#xe606;</span>
+                Head
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="元数据">
+                <span class="iconfont-archer">&#xe606;</span>
+                元数据
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Open Graph">
+                <span class="iconfont-archer">&#xe606;</span>
+                Open Graph
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="原理">
+                <span class="iconfont-archer">&#xe606;</span>
+                原理
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="超链接">
+                <span class="iconfont-archer">&#xe606;</span>
+                超链接
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="导航">
+                <span class="iconfont-archer">&#xe606;</span>
+                导航
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="rel属性">
+                <span class="iconfont-archer">&#xe606;</span>
+                rel属性
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="图像">
+                <span class="iconfont-archer">&#xe606;</span>
+                图像
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="多媒体">
+                <span class="iconfont-archer">&#xe606;</span>
+                多媒体
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="srcset">
+                <span class="iconfont-archer">&#xe606;</span>
+                srcset
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="响应式图片">
+                <span class="iconfont-archer">&#xe606;</span>
+                响应式图片
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="多线程">
+                <span class="iconfont-archer">&#xe606;</span>
+                多线程
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="42">
+                <span class="iconfont-archer">&#xe606;</span>
+                42
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="集合">
+                <span class="iconfont-archer">&#xe606;</span>
+                集合
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="JVM">
+                <span class="iconfont-archer">&#xe606;</span>
+                JVM
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="基础">
+                <span class="iconfont-archer">&#xe606;</span>
+                基础
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="并发">
+                <span class="iconfont-archer">&#xe606;</span>
+                并发
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="面试题">
+                <span class="iconfont-archer">&#xe606;</span>
+                面试题
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="数组基础">
+                <span class="iconfont-archer">&#xe606;</span>
+                数组基础
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="数据结构">
+                <span class="iconfont-archer">&#xe606;</span>
+                数据结构
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="WEB">
+                <span class="iconfont-archer">&#xe606;</span>
+                WEB
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="数据库">
+                <span class="iconfont-archer">&#xe606;</span>
+                数据库
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="MySql">
+                <span class="iconfont-archer">&#xe606;</span>
+                MySql
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Mybatis">
+                <span class="iconfont-archer">&#xe606;</span>
+                Mybatis
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Spring">
+                <span class="iconfont-archer">&#xe606;</span>
+                Spring
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="SpringMVC">
+                <span class="iconfont-archer">&#xe606;</span>
+                SpringMVC
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="SpringBoot">
+                <span class="iconfont-archer">&#xe606;</span>
+                SpringBoot
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="SpringCloud">
+                <span class="iconfont-archer">&#xe606;</span>
+                SpringCloud
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Dubbo">
+                <span class="iconfont-archer">&#xe606;</span>
+                Dubbo
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Zookeeper">
+                <span class="iconfont-archer">&#xe606;</span>
+                Zookeeper
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="MongoDB">
+                <span class="iconfont-archer">&#xe606;</span>
+                MongoDB
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Kafka">
+                <span class="iconfont-archer">&#xe606;</span>
+                Kafka
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="JWT">
+                <span class="iconfont-archer">&#xe606;</span>
+                JWT
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="token">
+                <span class="iconfont-archer">&#xe606;</span>
+                token
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Markdown">
+                <span class="iconfont-archer">&#xe606;</span>
+                Markdown
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="掘金">
+                <span class="iconfont-archer">&#xe606;</span>
+                掘金
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="列表">
+                <span class="iconfont-archer">&#xe606;</span>
+                列表
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="表格">
+                <span class="iconfont-archer">&#xe606;</span>
+                表格
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="MySQL">
+                <span class="iconfont-archer">&#xe606;</span>
+                MySQL
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="OpenClaw">
+                <span class="iconfont-archer">&#xe606;</span>
+                OpenClaw
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="微信">
+                <span class="iconfont-archer">&#xe606;</span>
+                微信
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="ClawBot">
+                <span class="iconfont-archer">&#xe606;</span>
+                ClawBot
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="安装部署">
+                <span class="iconfont-archer">&#xe606;</span>
+                安装部署
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="聊天机器人">
+                <span class="iconfont-archer">&#xe606;</span>
+                聊天机器人
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="RabbitMQ">
+                <span class="iconfont-archer">&#xe606;</span>
+                RabbitMQ
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="消息队列">
+                <span class="iconfont-archer">&#xe606;</span>
+                消息队列
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="虚拟化">
+                <span class="iconfont-archer">&#xe606;</span>
+                虚拟化
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Proxmox VE">
+                <span class="iconfont-archer">&#xe606;</span>
+                Proxmox VE
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Redis">
+                <span class="iconfont-archer">&#xe606;</span>
+                Redis
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="缓存">
+                <span class="iconfont-archer">&#xe606;</span>
+                缓存
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Ribbon">
+                <span class="iconfont-archer">&#xe606;</span>
+                Ribbon
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="debug调试">
+                <span class="iconfont-archer">&#xe606;</span>
+                debug调试
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="spring">
+                <span class="iconfont-archer">&#xe606;</span>
+                spring
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="springcloud">
+                <span class="iconfont-archer">&#xe606;</span>
+                springcloud
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="微服务">
+                <span class="iconfont-archer">&#xe606;</span>
+                微服务
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="分享">
+                <span class="iconfont-archer">&#xe606;</span>
+                分享
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="文本标签">
+                <span class="iconfont-archer">&#xe606;</span>
+                文本标签
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="vim">
+                <span class="iconfont-archer">&#xe606;</span>
+                vim
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="编辑器之神">
+                <span class="iconfont-archer">&#xe606;</span>
+                编辑器之神
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="前端">
+                <span class="iconfont-archer">&#xe606;</span>
+                前端
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Yapi">
+                <span class="iconfont-archer">&#xe606;</span>
+                Yapi
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="接口管理">
+                <span class="iconfont-archer">&#xe606;</span>
+                接口管理
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="保罗·格雷厄姆（Paul Graham）">
+                <span class="iconfont-archer">&#xe606;</span>
+                保罗·格雷厄姆（Paul Graham）
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="helloworld">
+                <span class="iconfont-archer">&#xe606;</span>
+                helloworld
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="iframe">
+                <span class="iconfont-archer">&#xe606;</span>
+                iframe
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="安全性">
+                <span class="iconfont-archer">&#xe606;</span>
+                安全性
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="跨域通信">
+                <span class="iconfont-archer">&#xe606;</span>
+                跨域通信
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="嵌入内容">
+                <span class="iconfont-archer">&#xe606;</span>
+                嵌入内容
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="数据库操作">
+                <span class="iconfont-archer">&#xe606;</span>
+                数据库操作
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="nginx">
+                <span class="iconfont-archer">&#xe606;</span>
+                nginx
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="http服务器">
+                <span class="iconfont-archer">&#xe606;</span>
+                http服务器
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="高并发">
+                <span class="iconfont-archer">&#xe606;</span>
+                高并发
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="计算机的世界">
+                <span class="iconfont-archer">&#xe606;</span>
+                计算机的世界
+            </span>
+        
+    </div>
+    <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
+    <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
+        缺失模块，请参考主题文档进行安装配置：https://github.com/fi3ework/hexo-theme-archer#%E5%AE%89%E8%A3%85%E4%B8%BB%E9%A2%98
+    </div> 
+    <div class="sidebar-tags-list"></div>
+</div>
+
+        <div class="sidebar-panel-categories">
+    <div class="sidebar-categories-name">
+    
+        <span class="sidebar-category-name" data-categories="生活">
+            <span class="iconfont-archer">&#xe60a;</span>
+            生活
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="前端基础">
+            <span class="iconfont-archer">&#xe60a;</span>
+            前端基础
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="个人生活">
+            <span class="iconfont-archer">&#xe60a;</span>
+            个人生活
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="编程中间件">
+            <span class="iconfont-archer">&#xe60a;</span>
+            编程中间件
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="编程">
+            <span class="iconfont-archer">&#xe60a;</span>
+            编程
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="面试">
+            <span class="iconfont-archer">&#xe60a;</span>
+            面试
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="工具用法">
+            <span class="iconfont-archer">&#xe60a;</span>
+            工具用法
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="技术教程">
+            <span class="iconfont-archer">&#xe60a;</span>
+            技术教程
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="计算机基础架构">
+            <span class="iconfont-archer">&#xe60a;</span>
+            计算机基础架构
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="读后感">
+            <span class="iconfont-archer">&#xe60a;</span>
+            读后感
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="指引">
+            <span class="iconfont-archer">&#xe60a;</span>
+            指引
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="编程与数据库">
+            <span class="iconfont-archer">&#xe60a;</span>
+            编程与数据库
+        </span>
+    
+    </div>
+    <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>
+    <div class="sidebar-categories-list"></div>
+</div>
+
+    </div>
+</div>
+
+        <!-- site-meta -->
+        <script>
+    var siteMetaRoot = "/"
+    if (siteMetaRoot === "undefined") {
+        siteMetaRoot = '/'
+    }
+    var siteMeta = {
+        url: "https://winddsnow.github.io",
+        root: siteMetaRoot,
+        author: "WinddSnow"
+    }
+</script>
+
+        <!-- import experimental options here -->
+        <!-- Custom Font -->
+
+
+        <!-- main func -->
+        <script src="/scripts/main.js?v=20211217"></script>
+        <!-- dark mode -->
+        <script src="/scripts/dark.js?v=20211217"></script>
+        <!-- fancybox -->
+        <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" defer></script>
+        <!-- algolia -->
+        
+        <!-- busuanzi -->
+        
+            <script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+        
+        <!-- CNZZ -->
+        
+        <!-- async load share.js -->
+        
+            <script src="/scripts/share.js?v=20211217" async></script>
+        
+        <!-- mermaid -->
+        
+    </body>
+</html>
