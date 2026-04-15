@@ -19,27 +19,28 @@
         <meta name="keywords" content="hexo,hexo-theme,hexo-blog">
     
     <meta name="description" content="">
-    <meta name="description" content="第9课：HTML5 语义区块标签在 HTML5 之前，开发者只能使用 &lt;div&gt; 来划分页面的各个区域，通过 id 或 class 赋予其含义（如 &lt;div id&#x3D;&quot;header&quot;&gt;）。HTML5 引入了一套全新的语义区块标签，让页面的结构具有内在的含义。这些标签不仅让代码更具可读性，更是搜索引擎优化（SEO）和可访问性（a11y）基础设施的核心。本节课">
+    <meta name="description" content="第12课：HTML 最佳实践与标准演进经过前面 11 节课的学习，我们已经掌握了 HTML 的各个具体领域——从文档结构到语义标签，从表单到多媒体，从可访问性到嵌入内容。本节课作为 HTML 部分的收官之作，将从宏观视角审视 HTML 标准的发展历程、当前生态以及工业级最佳实践。理解 HTML 的标准制定机制和演进方向，将帮助你穿透纷繁的框架与工具，看到 Web 平台的底层脉络，并在长期的技术选型">
 <meta property="og:type" content="article">
-<meta property="og:title" content="HTML5-Semantic-Sectioning-Elements">
-<meta property="og:url" content="https://winddsnow.github.io/2026/04/15/HTML5-Semantic-Sectioning-Elements/index.html">
+<meta property="og:title" content="HTML-Best-Practices-and-Standards-Evolution">
+<meta property="og:url" content="https://winddsnow.github.io/2026/04/15/HTML-Best-Practices/index.html">
 <meta property="og:site_name" content="WinddSnow">
-<meta property="og:description" content="第9课：HTML5 语义区块标签在 HTML5 之前，开发者只能使用 &lt;div&gt; 来划分页面的各个区域，通过 id 或 class 赋予其含义（如 &lt;div id&#x3D;&quot;header&quot;&gt;）。HTML5 引入了一套全新的语义区块标签，让页面的结构具有内在的含义。这些标签不仅让代码更具可读性，更是搜索引擎优化（SEO）和可访问性（a11y）基础设施的核心。本节课">
+<meta property="og:description" content="第12课：HTML 最佳实践与标准演进经过前面 11 节课的学习，我们已经掌握了 HTML 的各个具体领域——从文档结构到语义标签，从表单到多媒体，从可访问性到嵌入内容。本节课作为 HTML 部分的收官之作，将从宏观视角审视 HTML 标准的发展历程、当前生态以及工业级最佳实践。理解 HTML 的标准制定机制和演进方向，将帮助你穿透纷繁的框架与工具，看到 Web 平台的底层脉络，并在长期的技术选型">
 <meta property="og:locale">
-<meta property="article:published_time" content="2026-04-15T13:00:00.000Z">
-<meta property="article:modified_time" content="2026-04-15T00:07:47.391Z">
+<meta property="article:published_time" content="2026-04-15T16:00:00.000Z">
+<meta property="article:modified_time" content="2026-04-15T00:12:51.093Z">
 <meta property="article:author" content="WinddSnow">
 <meta property="article:tag" content="HTML">
-<meta property="article:tag" content="可访问性">
-<meta property="article:tag" content="语义化">
-<meta property="article:tag" content="区块标签">
-<meta property="article:tag" content="SEO">
+<meta property="article:tag" content="最佳实践">
+<meta property="article:tag" content="Web标准">
+<meta property="article:tag" content="W3C">
+<meta property="article:tag" content="WHATWG">
+<meta property="article:tag" content="代码验证">
 <meta name="twitter:card" content="summary">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <link rel="icon" href="/assets/favicon.ico">
     
-    <title>HTML5-Semantic-Sectioning-Elements · WinddSnow</title>
+    <title>HTML-Best-Practices-and-Standards-Evolution · WinddSnow</title>
     <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
 /* This file is meant as a standalone workflow for
 - testing support for link[rel=preload]
@@ -265,7 +266,7 @@
                 <a href="/">WinddSnow</a>
             </div>
             <div class="post-title header-element">
-                <a href="#" class="post-name">HTML5-Semantic-Sectioning-Elements</a>
+                <a href="#" class="post-name">HTML-Best-Practices-and-Standards-Evolution</a>
             </div>
         </div>
     
@@ -311,7 +312,7 @@
         <h1 class="intro-title">
             <!-- 主页  -->
             
-                HTML5-Semantic-Sectioning-Elements
+                HTML-Best-Practices-and-Standards-Evolution
             <!-- 404 -->
             
         </h1>
@@ -333,13 +334,15 @@
     
         <a class="post-tag" href="javascript:void(0);" data-tags="HTML">HTML</a>
     
-        <a class="post-tag" href="javascript:void(0);" data-tags="可访问性">可访问性</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="最佳实践">最佳实践</a>
     
-        <a class="post-tag" href="javascript:void(0);" data-tags="语义化">语义化</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="Web标准">Web标准</a>
     
-        <a class="post-tag" href="javascript:void(0);" data-tags="区块标签">区块标签</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="W3C">W3C</a>
     
-        <a class="post-tag" href="javascript:void(0);" data-tags="SEO">SEO</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="WHATWG">WHATWG</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="代码验证">代码验证</a>
     
 </div>
 
@@ -347,13 +350,13 @@
                 <!-- 文章字数统计 -->
                 
                     <div class="post-intro-read">
-                        <span>字数统计: <span class="post-count word-count">4.8k</span>阅读时长: <span class="post-count reading-time">20 min</span></span>
+                        <span>字数统计: <span class="post-count word-count">4.3k</span>阅读时长: <span class="post-count reading-time">17 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
                     <!-- 撰写日期 -->
                     <span class="iconfont-archer post-intro-calander">&#xe676;</span>
-                    <span class="post-intro-time">2026/04/15</span>
+                    <span class="post-intro-time">2026/04/16</span>
                     <!-- busuanzi -->
                     
                         <span id="busuanzi_container_page_pv" class="busuanzi-pv">
@@ -508,277 +511,395 @@
             <div class="container container-unloaded">
                 <main class="main post-page">
     <article class="article-entry">
-        <h1 id="第9课：HTML5-语义区块标签"><a href="#第9课：HTML5-语义区块标签" class="headerlink" title="第9课：HTML5 语义区块标签"></a>第9课：HTML5 语义区块标签</h1><p>在 HTML5 之前，开发者只能使用 <code>&lt;div&gt;</code> 来划分页面的各个区域，通过 <code>id</code> 或 <code>class</code> 赋予其含义（如 <code>&lt;div id=&quot;header&quot;&gt;</code>）。HTML5 引入了一套全新的<strong>语义区块标签</strong>，让页面的结构具有内在的含义。这些标签不仅让代码更具可读性，更是搜索引擎优化（SEO）和可访问性（a11y）基础设施的核心。本节课将逐一剖析 <code>&lt;header&gt;</code>、<code>&lt;footer&gt;</code>、<code>&lt;main&gt;</code>、<code>&lt;article&gt;</code>、<code>&lt;section&gt;</code>、<code>&lt;aside&gt;</code> 和 <code>&lt;nav&gt;</code> 的精确语义、使用场景以及常见的滥用误区。</p>
+        <h1 id="第12课：HTML-最佳实践与标准演进"><a href="#第12课：HTML-最佳实践与标准演进" class="headerlink" title="第12课：HTML 最佳实践与标准演进"></a>第12课：HTML 最佳实践与标准演进</h1><p>经过前面 11 节课的学习，我们已经掌握了 HTML 的各个具体领域——从文档结构到语义标签，从表单到多媒体，从可访问性到嵌入内容。本节课作为 HTML 部分的收官之作，将从宏观视角审视 HTML 标准的发展历程、当前生态以及工业级最佳实践。理解 HTML 的<strong>标准制定机制</strong>和<strong>演进方向</strong>，将帮助你穿透纷繁的框架与工具，看到 Web 平台的底层脉络，并在长期的技术选型与代码维护中做出更稳健的决策。</p>
 <hr>
-<h2 id="1-lt-header-gt-：介绍性内容容器"><a href="#1-lt-header-gt-：介绍性内容容器" class="headerlink" title="1. &lt;header&gt;：介绍性内容容器"></a>1. <code>&lt;header&gt;</code>：介绍性内容容器</h2><p><code>&lt;header&gt;</code> 表示<strong>一组介绍性内容或导航链接</strong>。它通常出现在页面、文章或区块的顶部，但<strong>不限于顶部</strong>。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">article</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">header</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h2</span>&gt;</span>深入理解 JavaScript 闭包<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>发表于 <span class="tag">&lt;<span class="name">time</span> <span class="attr">datetime</span>=<span class="string">&quot;2026-04-15&quot;</span>&gt;</span>2026年4月15日<span class="tag">&lt;/<span class="name">time</span>&gt;</span>，作者：张三<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">header</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span>闭包是 JavaScript 中最强大的特性之一...<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">article</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="1-1-语义定义与限制"><a href="#1-1-语义定义与限制" class="headerlink" title="1.1 语义定义与限制"></a>1.1 语义定义与限制</h3><ul>
-<li><strong>可以出现多次</strong>：一个页面可以有多个 <code>&lt;header&gt;</code>，例如全局页头、文章页头、区块页头。</li>
-<li><strong>不能嵌套在另一个 <code>&lt;header&gt;</code> 或 <code>&lt;footer&gt;</code> 内部</strong>，也不能是 <code>&lt;address&gt;</code> 元素的子元素。</li>
-<li><strong>通常包含</strong>：标题（<code>&lt;h1&gt;</code>～<code>&lt;h6&gt;</code>）、Logo、作者信息、发布日期、导航菜单（<code>&lt;nav&gt;</code>）。</li>
-</ul>
-<h3 id="1-2-lt-header-gt-与-lt-h1-gt-的关系"><a href="#1-2-lt-header-gt-与-lt-h1-gt-的关系" class="headerlink" title="1.2 &lt;header&gt; 与 &lt;h1&gt; 的关系"></a>1.2 <code>&lt;header&gt;</code> 与 <code>&lt;h1&gt;</code> 的关系</h3><ul>
-<li><code>&lt;header&gt;</code> 是<strong>容器</strong>，<code>&lt;h1&gt;</code> 是<strong>内容</strong>。</li>
-<li>在全局 <code>&lt;header&gt;</code> 中，<code>&lt;h1&gt;</code> 应代表整个页面的核心主题。</li>
-<li>在文章 <code>&lt;header&gt;</code> 中，标题通常是 <code>&lt;h2&gt;</code> 或更低级别，以维护页面的标题层级。</li>
-</ul>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">header</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>前端大师课<span class="tag">&lt;/<span class="name">h1</span>&gt;</span>  <span class="comment">&lt;!-- 页面主标题 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">nav</span>&gt;</span>...<span class="tag">&lt;/<span class="name">nav</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">header</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">main</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">article</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">header</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">h2</span>&gt;</span>第9课：语义区块标签<span class="tag">&lt;/<span class="name">h2</span>&gt;</span>  <span class="comment">&lt;!-- 文章标题 --&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">header</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">article</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">main</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="1-3-常见误用"><a href="#1-3-常见误用" class="headerlink" title="1.3 常见误用"></a>1.3 常见误用</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- ❌ 错误：仅为了包裹一组导航链接而使用 header --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">header</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">nav</span>&gt;</span>...<span class="tag">&lt;/<span class="name">nav</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">header</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 若没有介绍性内容，&lt;nav&gt; 本身已足够 --&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- ❌ 错误：将 header 等同于页面顶部装饰条 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;page-top-banner&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">header</span>&gt;</span>...<span class="tag">&lt;/<span class="name">header</span>&gt;</span>  <span class="comment">&lt;!-- 多余的嵌套 --&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<hr>
-<h2 id="2-lt-footer-gt-：页脚与附属信息"><a href="#2-lt-footer-gt-：页脚与附属信息" class="headerlink" title="2. &lt;footer&gt;：页脚与附属信息"></a>2. <code>&lt;footer&gt;</code>：页脚与附属信息</h2><p><code>&lt;footer&gt;</code> 表示<strong>最近祖先区块（article、section、body 等）的页脚</strong>。它通常包含版权信息、作者、相关链接、文档附录等。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">article</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">h2</span>&gt;</span>文章标题<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span>正文内容...<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">footer</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>© 2026 前端大师课。本文章遵循 CC BY 4.0 协议。<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">address</span>&gt;</span>联系作者：<span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;mailto:author@example.com&quot;</span>&gt;</span>author@example.com<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">address</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">footer</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">article</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="2-1-语义与多重实例"><a href="#2-1-语义与多重实例" class="headerlink" title="2.1 语义与多重实例"></a>2.1 语义与多重实例</h3><ul>
-<li>与 <code>&lt;header&gt;</code> 类似，<code>&lt;footer&gt;</code> 也可在页面内<strong>多次出现</strong>（页面级页脚、文章级页脚、区块级页脚）。</li>
-<li>其内容通常与其所在的<strong>分段内容元素</strong>相关，而非整个页面的版权声明专属。</li>
-</ul>
-<h3 id="2-2-lt-footer-gt-内不应包含的内容"><a href="#2-2-lt-footer-gt-内不应包含的内容" class="headerlink" title="2.2 &lt;footer&gt; 内不应包含的内容"></a>2.2 <code>&lt;footer&gt;</code> 内不应包含的内容</h3><ul>
-<li>不应再嵌套 <code>&lt;header&gt;</code> 或另一个 <code>&lt;footer&gt;</code>。</li>
-<li>不应包含新的主要内容区块（如将 <code>&lt;section&gt;</code> 放入 <code>&lt;footer&gt;</code> 是错误的）。</li>
-</ul>
-<h3 id="2-3-与-lt-address-gt-的配合"><a href="#2-3-与-lt-address-gt-的配合" class="headerlink" title="2.3 与 &lt;address&gt; 的配合"></a>2.3 与 <code>&lt;address&gt;</code> 的配合</h3><p><code>&lt;address&gt;</code> 表示<strong>最近祖先 article 或 body 的联系信息</strong>。将其放在 <code>&lt;footer&gt;</code> 内是常见的语义组合。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">footer</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">address</span>&gt;</span></span><br><span class="line">    如有疑问，请联系 <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;mailto:support@example.com&quot;</span>&gt;</span>支持团队<span class="tag">&lt;/<span class="name">a</span>&gt;</span>。</span><br><span class="line">  <span class="tag">&lt;/<span class="name">address</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">footer</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<hr>
-<h2 id="3-lt-main-gt-：页面的核心内容"><a href="#3-lt-main-gt-：页面的核心内容" class="headerlink" title="3. &lt;main&gt;：页面的核心内容"></a>3. <code>&lt;main&gt;</code>：页面的核心内容</h2><p><code>&lt;main&gt;</code> 表示文档 <code>&lt;body&gt;</code> 中的<strong>主要、独特的内容区域</strong>。每个页面应<strong>仅有一个</strong> <code>&lt;main&gt;</code>。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">header</span>&gt;</span>...<span class="tag">&lt;/<span class="name">header</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">nav</span>&gt;</span>...<span class="tag">&lt;/<span class="name">nav</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">main</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h2</span>&gt;</span>当前页面专有内容<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>这里放置页面的核心信息，而非侧边栏、导航或版权声明。<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">main</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">footer</span>&gt;</span>...<span class="tag">&lt;/<span class="name">footer</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="3-1-关键约束"><a href="#3-1-关键约束" class="headerlink" title="3.1 关键约束"></a>3.1 关键约束</h3><table>
-<thead>
-<tr>
-<th>规则</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><strong>唯一性</strong></td>
-<td>一个文档中<strong>最多只能有一个</strong> <code>&lt;main&gt;</code> 元素（除非其他 <code>&lt;main&gt;</code> 设置了 <code>hidden</code> 属性）。</td>
-</tr>
-<tr>
-<td><strong>不能嵌套</strong></td>
-<td><code>&lt;main&gt;</code> 不能是 <code>&lt;article&gt;</code>、<code>&lt;aside&gt;</code>、<code>&lt;footer&gt;</code>、<code>&lt;header&gt;</code> 或 <code>&lt;nav&gt;</code> 的子元素。</td>
-</tr>
-<tr>
-<td><strong>与 <code>role=&quot;main&quot;</code> 的关系</strong></td>
-<td>ARIA 地标（Landmark）中，<code>&lt;main&gt;</code> 自动映射为 <code>role=&quot;main&quot;</code>，无需额外添加。</td>
-</tr>
-</tbody></table>
-<h3 id="3-2-可访问性价值"><a href="#3-2-可访问性价值" class="headerlink" title="3.2 可访问性价值"></a>3.2 可访问性价值</h3><p>屏幕阅读器用户可以通过快捷键<strong>直接跳转到 <code>&lt;main&gt;</code> 区域</strong>，跳过重复的导航栏和侧边栏，快速访问核心内容。这对于键盘和辅助技术用户至关重要。</p>
-<h3 id="3-3-常见误用"><a href="#3-3-常见误用" class="headerlink" title="3.3 常见误用"></a>3.3 常见误用</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- ❌ 错误：将侧边栏也包裹在 main 中 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">main</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">article</span>&gt;</span>主要内容<span class="tag">&lt;/<span class="name">article</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">aside</span>&gt;</span>相关推荐<span class="tag">&lt;/<span class="name">aside</span>&gt;</span>  <span class="comment">&lt;!-- 侧边栏不应属于核心独特内容 --&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">main</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- ✅ 正确：main 仅包含页面专属内容 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">main</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">article</span>&gt;</span>主要内容<span class="tag">&lt;/<span class="name">article</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">main</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">aside</span>&gt;</span>相关推荐<span class="tag">&lt;/<span class="name">aside</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<hr>
-<h2 id="4-lt-article-gt-：独立、可分发的内容块"><a href="#4-lt-article-gt-：独立、可分发的内容块" class="headerlink" title="4. &lt;article&gt;：独立、可分发的内容块"></a>4. <code>&lt;article&gt;</code>：独立、可分发的内容块</h2><p><code>&lt;article&gt;</code> 表示<strong>独立的、完整的、可独立分发或重用</strong>的内容块。例如一篇博客文章、一个论坛帖子、一条新闻评论、一个交互式小部件。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">article</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">header</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h2</span>&gt;</span>如何优化 React 应用的首屏加载性能<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>发布于 2026-04-15<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">header</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span>首屏加载性能是衡量用户体验的关键指标...<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">footer</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>标签：<span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;#&quot;</span>&gt;</span>React<span class="tag">&lt;/<span class="name">a</span>&gt;</span> <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;#&quot;</span>&gt;</span>性能优化<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">footer</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">article</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="4-1-判断标准：“独立发布测试”"><a href="#4-1-判断标准：“独立发布测试”" class="headerlink" title="4.1 判断标准：“独立发布测试”"></a>4.1 判断标准：“独立发布测试”</h3><p>一个简单的心智模型：<strong>如果将该内容块从当前页面剥离，发布到其他页面或 RSS 阅读器中，是否依然完整且有意义？</strong> 若是，则应使用 <code>&lt;article&gt;</code>。</p>
-<h3 id="4-2-lt-article-gt-的嵌套"><a href="#4-2-lt-article-gt-的嵌套" class="headerlink" title="4.2 &lt;article&gt; 的嵌套"></a>4.2 <code>&lt;article&gt;</code> 的嵌套</h3><p><code>&lt;article&gt;</code> 可以嵌套，用于表示与父文章相关联的子内容，例如博客文章的<strong>评论区</strong>。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">article</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">h2</span>&gt;</span>博客正文<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span>...<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">section</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h3</span>&gt;</span>评论区<span class="tag">&lt;/<span class="name">h3</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">article</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">h4</span>&gt;</span>用户 A<span class="tag">&lt;/<span class="name">h4</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">p</span>&gt;</span>写得太好了！<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">article</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">article</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">h4</span>&gt;</span>用户 B<span class="tag">&lt;/<span class="name">h4</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">p</span>&gt;</span>受益匪浅，感谢分享。<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">article</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">section</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">article</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="4-3-何时不用-lt-article-gt"><a href="#4-3-何时不用-lt-article-gt" class="headerlink" title="4.3 何时不用 &lt;article&gt;"></a>4.3 何时不用 <code>&lt;article&gt;</code></h3><ul>
-<li>仅为了包裹一组样式块而使用 <code>&lt;article&gt;</code> 是错误的，应使用 <code>&lt;div&gt;</code>。</li>
-<li>如果内容不具备“独立完整性”，只是页面的一个分区，应使用 <code>&lt;section&gt;</code>。</li>
-</ul>
-<hr>
-<h2 id="5-lt-section-gt-：主题分组"><a href="#5-lt-section-gt-：主题分组" class="headerlink" title="5. &lt;section&gt;：主题分组"></a>5. <code>&lt;section&gt;</code>：主题分组</h2><p><code>&lt;section&gt;</code> 表示文档或应用中一个<strong>主题性的内容分组</strong>，通常需要包含一个标题（<code>&lt;h1&gt;</code>～<code>&lt;h6&gt;</code>）。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">article</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">h2</span>&gt;</span>Web 前端性能优化指南<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">section</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h3</span>&gt;</span>1. 资源加载优化<span class="tag">&lt;/<span class="name">h3</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>使用懒加载、代码分割、CDN 加速...<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">section</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">section</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h3</span>&gt;</span>2. 渲染性能优化<span class="tag">&lt;/<span class="name">h3</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>避免强制同步布局、使用 CSS contain 属性...<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">section</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">article</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="5-1-lt-section-gt-与-lt-article-gt-的核心区别"><a href="#5-1-lt-section-gt-与-lt-article-gt-的核心区别" class="headerlink" title="5.1 &lt;section&gt; 与 &lt;article&gt; 的核心区别"></a>5.1 <code>&lt;section&gt;</code> 与 <code>&lt;article&gt;</code> 的核心区别</h3><table>
-<thead>
-<tr>
-<th>对比项</th>
-<th><code>&lt;section&gt;</code></th>
-<th><code>&lt;article&gt;</code></th>
-</tr>
-</thead>
-<tbody><tr>
-<td><strong>独立性</strong></td>
-<td>通常依赖上下文，脱离后意义不完整。</td>
-<td><strong>完全独立</strong>，可单独发布。</td>
-</tr>
-<tr>
-<td><strong>标题要求</strong></td>
-<td><strong>强烈建议</strong>包含标题，以形成文档大纲。</td>
-<td>通常包含标题，但非强制。</td>
-</tr>
-<tr>
-<td><strong>典型场景</strong></td>
-<td>长文章分章节、首页的功能分区（热门商品、新闻动态）。</td>
-<td>博客列表中的每篇文章、RSS 条目、评论、产品卡片。</td>
-</tr>
-<tr>
-<td><strong>嵌套关系</strong></td>
-<td>可以包含 <code>&lt;article&gt;</code>（如首页的“最新文章”区块，内含多个 <code>&lt;article&gt;</code>）。</td>
-<td>可以包含 <code>&lt;section&gt;</code>（如将长文章分章节）。</td>
-</tr>
-</tbody></table>
-<h3 id="5-2-警告：勿滥用-lt-section-gt"><a href="#5-2-警告：勿滥用-lt-section-gt" class="headerlink" title="5.2 警告：勿滥用 &lt;section&gt;"></a>5.2 警告：勿滥用 <code>&lt;section&gt;</code></h3><p>一个常见的反模式是<strong>用 <code>&lt;section&gt;</code> 替代 <code>&lt;div&gt;</code> 作为样式钩子或脚本容器</strong>。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- ❌ 错误：无标题、无主题分组的含义 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">section</span> <span class="attr">class</span>=<span class="string">&quot;wrapper&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span>&gt;</span>...<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">section</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- ✅ 正确：使用 div --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;wrapper&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span>&gt;</span>...<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<hr>
-<h2 id="6-lt-aside-gt-：附属内容"><a href="#6-lt-aside-gt-：附属内容" class="headerlink" title="6. &lt;aside&gt;：附属内容"></a>6. <code>&lt;aside&gt;</code>：附属内容</h2><p><code>&lt;aside&gt;</code> 表示<strong>与周围内容只有间接关联</strong>的内容，通常表现为侧边栏、引用、广告、相关链接等。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">article</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">h2</span>&gt;</span>JavaScript 异步编程<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span>正文内容...<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">aside</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h3</span>&gt;</span>相关资料<span class="tag">&lt;/<span class="name">h3</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;#&quot;</span>&gt;</span>MDN 异步 JavaScript<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;#&quot;</span>&gt;</span>事件循环可视化工具<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">aside</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">article</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="6-1-两种典型使用模式"><a href="#6-1-两种典型使用模式" class="headerlink" title="6.1 两种典型使用模式"></a>6.1 两种典型使用模式</h3><table>
-<thead>
-<tr>
-<th>位置</th>
-<th>含义</th>
-<th>示例</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>在 <code>&lt;article&gt;</code> 内部</td>
-<td>与文章内容<strong>相关但非核心</strong>的补充信息（如术语解释、引用来源）。</td>
-<td>文内插入的名词解释框。</td>
-</tr>
-<tr>
-<td>在 <code>&lt;article&gt;</code> 外部</td>
-<td>与<strong>整个页面相关</strong>的侧边栏内容（如导航菜单、广告、作者简介）。</td>
-<td>全局侧边栏、相关文章推荐。</td>
-</tr>
-</tbody></table>
-<h3 id="6-2-可访问性映射"><a href="#6-2-可访问性映射" class="headerlink" title="6.2 可访问性映射"></a>6.2 可访问性映射</h3><p><code>&lt;aside&gt;</code> 自动映射为 ARIA <code>complementary</code> 地标角色，屏幕阅读器可据此快速定位辅助内容区域。</p>
-<hr>
-<h2 id="7-lt-nav-gt-：导航链接集合"><a href="#7-lt-nav-gt-：导航链接集合" class="headerlink" title="7. &lt;nav&gt;：导航链接集合"></a>7. <code>&lt;nav&gt;</code>：导航链接集合</h2><p><code>&lt;nav&gt;</code> 表示页面中的<strong>主导航链接区块</strong>。并非所有链接组都需用 <code>&lt;nav&gt;</code> 包裹——仅用于<strong>主要导航结构</strong>。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">nav</span> <span class="attr">aria-label</span>=<span class="string">&quot;主导航&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;/&quot;</span>&gt;</span>首页<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;/courses&quot;</span>&gt;</span>课程<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;/about&quot;</span>&gt;</span>关于<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">nav</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="7-1-常见导航类型与-aria-label"><a href="#7-1-常见导航类型与-aria-label" class="headerlink" title="7.1 常见导航类型与 aria-label"></a>7.1 常见导航类型与 <code>aria-label</code></h3><p>一个页面可能有多个 <code>&lt;nav&gt;</code>，此时应使用 <code>aria-label</code> 或 <code>aria-labelledby</code> 区分其用途，帮助辅助技术用户理解。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">nav</span> <span class="attr">aria-label</span>=<span class="string">&quot;主导航&quot;</span>&gt;</span>...<span class="tag">&lt;/<span class="name">nav</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">nav</span> <span class="attr">aria-label</span>=<span class="string">&quot;面包屑导航&quot;</span>&gt;</span>...<span class="tag">&lt;/<span class="name">nav</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">nav</span> <span class="attr">aria-label</span>=<span class="string">&quot;页脚链接&quot;</span>&gt;</span>...<span class="tag">&lt;/<span class="name">nav</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="7-2-何时不用-lt-nav-gt"><a href="#7-2-何时不用-lt-nav-gt" class="headerlink" title="7.2 何时不用 &lt;nav&gt;"></a>7.2 何时不用 <code>&lt;nav&gt;</code></h3><ul>
-<li>友情链接区块（若为非核心导航，可用 <code>&lt;footer&gt;</code> 内的普通链接列表）。</li>
-<li>文章内的脚注链接列表。</li>
-<li>分页控件（虽然也是导航，但通常用 <code>&lt;nav&gt;</code> 包裹是合适的）。</li>
-</ul>
-<hr>
-<h2 id="8-综合示例：典型博客页面的语义结构"><a href="#8-综合示例：典型博客页面的语义结构" class="headerlink" title="8. 综合示例：典型博客页面的语义结构"></a>8. 综合示例：典型博客页面的语义结构</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;zh-CN&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">title</span>&gt;</span>语义区块标签综合示例<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">header</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>前端架构师之路<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">nav</span> <span class="attr">aria-label</span>=<span class="string">&quot;主导航&quot;</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;/&quot;</span>&gt;</span>首页<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;/blog&quot;</span>&gt;</span>博客<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;/about&quot;</span>&gt;</span>关于<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">nav</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">header</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="name">main</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">article</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">header</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">h2</span>&gt;</span>深入理解 HTML5 语义化标签<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span>&gt;</span>发表于 <span class="tag">&lt;<span class="name">time</span> <span class="attr">datetime</span>=<span class="string">&quot;2026-04-15&quot;</span>&gt;</span>2026年4月15日<span class="tag">&lt;/<span class="name">time</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">header</span>&gt;</span></span><br><span class="line">      </span><br><span class="line">      <span class="tag">&lt;<span class="name">section</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">h3</span>&gt;</span>什么是语义化？<span class="tag">&lt;/<span class="name">h3</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span>&gt;</span>语义化是指使用正确的 HTML 标签表达内容的含义...<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">section</span>&gt;</span></span><br><span class="line">      </span><br><span class="line">      <span class="tag">&lt;<span class="name">section</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">h3</span>&gt;</span>为什么要使用语义标签？<span class="tag">&lt;/<span class="name">h3</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span>&gt;</span>语义标签对 SEO、可访问性、代码可维护性都有巨大价值...<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">section</span>&gt;</span></span><br><span class="line">      </span><br><span class="line">      <span class="tag">&lt;<span class="name">aside</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">h4</span>&gt;</span>推荐阅读<span class="tag">&lt;/<span class="name">h4</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;#&quot;</span>&gt;</span>HTML5 规范导读<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;#&quot;</span>&gt;</span>Web 可访问性指南<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">aside</span>&gt;</span></span><br><span class="line">      </span><br><span class="line">      <span class="tag">&lt;<span class="name">footer</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span>&gt;</span>作者：张三 | 分类：<span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;#&quot;</span>&gt;</span>HTML<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">footer</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">article</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">main</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="name">aside</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h3</span>&gt;</span>关于作者<span class="tag">&lt;/<span class="name">h3</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>张三，资深前端架构师，拥有 10 年 Web 开发经验。<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">nav</span> <span class="attr">aria-label</span>=<span class="string">&quot;社交链接&quot;</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;#&quot;</span>&gt;</span>GitHub<span class="tag">&lt;/<span class="name">a</span>&gt;</span> | <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;#&quot;</span>&gt;</span>Twitter<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">nav</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">aside</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="name">footer</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="symbol">&amp;copy;</span> 2026 前端架构师之路。保留所有权利。<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">nav</span> <span class="attr">aria-label</span>=<span class="string">&quot;法律信息&quot;</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;#&quot;</span>&gt;</span>隐私政策<span class="tag">&lt;/<span class="name">a</span>&gt;</span> | <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;#&quot;</span>&gt;</span>使用条款<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">nav</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">footer</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<hr>
-<h2 id="课后练习"><a href="#课后练习" class="headerlink" title="课后练习"></a>课后练习</h2><h3 id="一、概念自测（选择题-x2F-填空题）"><a href="#一、概念自测（选择题-x2F-填空题）" class="headerlink" title="一、概念自测（选择题 &#x2F; 填空题）"></a>一、概念自测（选择题 &#x2F; 填空题）</h3><ol>
-<li><p><strong>（单选）</strong> 以下哪个标签最适合表示一篇独立的博客文章？<br>A. <code>&lt;section&gt;</code><br>B. <code>&lt;article&gt;</code><br>C. <code>&lt;div&gt;</code><br>D. <code>&lt;main&gt;</code></p>
-</li>
-<li><p><strong>（单选）</strong> 关于 <code>&lt;main&gt;</code> 元素，下列说法正确的是？<br>A. 一个页面可以有多个 <code>&lt;main&gt;</code> 元素，只要它们位于不同的 <code>&lt;section&gt;</code> 内。<br>B. <code>&lt;main&gt;</code> 可以嵌套在 <code>&lt;article&gt;</code> 内部。<br>C. <code>&lt;main&gt;</code> 自动映射为 ARIA <code>role=&quot;main&quot;</code>，辅助技术可直接跳转。<br>D. <code>&lt;main&gt;</code> 应该包含页面的所有内容，包括侧边栏和导航。</p>
-</li>
-<li><p><strong>（填空）</strong> 要表示文章内部与主题相关但非核心的补充信息（如术语解释框），应使用 <code>______</code> 标签。</p>
-</li>
-<li><p><strong>（判断）</strong> <code>&lt;header&gt;</code> 元素在一个页面中只能出现一次，且必须位于页面顶部。<br>A. 正确<br>B. 错误</p>
-</li>
-</ol>
-<h3 id="二、AI-编程任务：编写面向-AI-的提示词"><a href="#二、AI-编程任务：编写面向-AI-的提示词" class="headerlink" title="二、AI 编程任务：编写面向 AI 的提示词"></a>二、AI 编程任务：编写面向 AI 的提示词</h3><p><strong>场景</strong>：你需要为一个技术文档网站编写<strong>文章详情页</strong>的 HTML 结构。要求如下：</p>
+<h2 id="1-HTML-标准简史：从-W3C-到-WHATWG"><a href="#1-HTML-标准简史：从-W3C-到-WHATWG" class="headerlink" title="1. HTML 标准简史：从 W3C 到 WHATWG"></a>1. HTML 标准简史：从 W3C 到 WHATWG</h2><h3 id="1-1-分道扬镳：XHTML-2-0-的失败与-WHATWG-的诞生"><a href="#1-1-分道扬镳：XHTML-2-0-的失败与-WHATWG-的诞生" class="headerlink" title="1.1 分道扬镳：XHTML 2.0 的失败与 WHATWG 的诞生"></a>1.1 分道扬镳：XHTML 2.0 的失败与 WHATWG 的诞生</h3><p>1990 年代末至 2000 年代初，W3C 主导了 HTML 4.01 和 XHTML 1.0 的制定。随后 W3C 将重心转向 <strong>XHTML 2.0</strong>——一个<strong>不向后兼容</strong>、严格基于 XML 的规范，要求文档必须是“良构的”（Well-formed），任何一处语法错误（如未闭合的标签）都会导致整个页面无法渲染。</p>
+<p>这一理念与 Web 的<strong>容错性</strong>文化产生了剧烈冲突。浏览器厂商和开发者社区认为：Web 的强大之处恰恰在于其对错误的宽容——即使页面有语法瑕疵，用户仍能看到内容。</p>
+<p>2004 年，Apple、Mozilla、Opera 等浏览器厂商成立了独立的标准组织 <strong>WHATWG</strong>（Web Hypertext Application Technology Working Group），开始并行开发 <strong>Web Applications 1.0</strong>，后被重新命名为 <strong>HTML5</strong>。W3C 在 2007 年承认 XHTML 2.0 的失败，转而采纳 WHATWG 的 HTML5 草案作为新的官方标准。</p>
+<h3 id="1-2-双头政治时代：W3C-HTML5-vs-WHATWG-Living-Standard"><a href="#1-2-双头政治时代：W3C-HTML5-vs-WHATWG-Living-Standard" class="headerlink" title="1.2 双头政治时代：W3C HTML5 vs WHATWG Living Standard"></a>1.2 双头政治时代：W3C HTML5 vs WHATWG Living Standard</h3><p>在 2011 年至 2019 年间，W3C 和 WHATWG 并行维护着两份 HTML 标准文档：</p>
 <ul>
-<li>页面需包含全局页头（网站 Logo + 主导航）、页面主体、全局页脚。</li>
-<li>主体部分使用 <code>&lt;main&gt;</code> 包裹一篇 <code>&lt;article&gt;</code>。</li>
-<li><code>&lt;article&gt;</code> 内部包含：<ul>
-<li>文章标题和元数据（作者、发布日期）放在 <code>&lt;header&gt;</code> 中。</li>
-<li>文章正文分为三个 <code>&lt;section&gt;</code>，每个 <code>&lt;section&gt;</code> 有一个 <code>&lt;h3&gt;</code> 标题。</li>
-<li>文内插入一个 <code>&lt;aside&gt;</code>，显示“本文涉及的关键术语”列表。</li>
-<li>文章末尾使用 <code>&lt;footer&gt;</code> 显示版权声明和文章标签。</li>
+<li><strong>W3C HTML5</strong>：发布为带有版本号的“快照”（Snapshot）标准（如 HTML5、HTML 5.1、HTML 5.2）。</li>
+<li><strong>WHATWG HTML Living Standard</strong>：一个<strong>持续更新、永不冻结</strong>的“活标准”，反映浏览器的最新实现共识。</li>
 </ul>
-</li>
-<li>页面右侧使用全局 <code>&lt;aside&gt;</code> 放置“相关文章推荐”列表（至少 3 篇）。</li>
-<li>所有语义标签必须正确使用，不得滥用 <code>&lt;div&gt;</code> 替代。</li>
+<p>这种并行造成了混乱——开发者不确定应该参考哪份文档，浏览器厂商也不清楚哪个才是权威。</p>
+<h3 id="1-3-2019-年《合作备忘录》：WHATWG-成为唯一权威"><a href="#1-3-2019-年《合作备忘录》：WHATWG-成为唯一权威" class="headerlink" title="1.3 2019 年《合作备忘录》：WHATWG 成为唯一权威"></a>1.3 2019 年《合作备忘录》：WHATWG 成为唯一权威</h3><p>2019 年 5 月，W3C 与 WHATWG 签署了一份历史性的合作备忘录，核心协议如下：</p>
+<ul>
+<li><strong>WHATWG 的 HTML Living Standard 成为 HTML 和 DOM 的唯一权威标准</strong>。</li>
+<li>W3C 停止发布独立的 HTML 快照版本，转而将 WHATWG 的 Review Drafts（定期审查草案）作为 W3C 推荐标准发布。</li>
+<li>W3C 将工作重心转向<strong>围绕 HTML 的周边技术</strong>，如 CSS、ARIA、Web 组件、支付请求 API 等。</li>
 </ul>
-<p><strong>任务要求</strong>：请写出<strong>一段完整的中文提示词</strong>，发送给 AI，使其生成符合上述要求的完整 HTML 文档结构。提示词中应明确指定各语义标签的嵌套关系和内容要求。</p>
-<h3 id="三、面试真题与参考答案"><a href="#三、面试真题与参考答案" class="headerlink" title="三、面试真题与参考答案"></a>三、面试真题与参考答案</h3><p><strong>题目</strong>（美团前端面试题）：  </p>
-<blockquote>
-<p>请阐述 HTML5 中 <code>&lt;section&gt;</code> 和 <code>&lt;article&gt;</code> 的区别，并说明各自的适用场景。如果页面中一个内容区块既有独立完整性，又是某个主题的分组，应如何选择？</p>
-</blockquote>
-<p><strong>参考答案</strong>：</p>
-<p><strong>1. 核心区别</strong>：</p>
+<p><strong>今日结论</strong>：当查阅 HTML 规范时，应访问 <strong><code>html.spec.whatwg.org</code></strong> 获取最权威、最实时的定义。</p>
 <table>
 <thead>
 <tr>
-<th>对比维度</th>
-<th><code>&lt;section&gt;</code></th>
-<th><code>&lt;article&gt;</code></th>
+<th>历史阶段</th>
+<th>主导组织</th>
+<th>核心文档</th>
+<th>特点</th>
 </tr>
 </thead>
 <tbody><tr>
-<td><strong>独立性</strong></td>
-<td>内容依赖上下文，脱离后意义可能不完整。</td>
-<td>内容<strong>完全独立</strong>，可被单独聚合、分发、重用。</td>
+<td>1997～2004</td>
+<td>W3C</td>
+<td>HTML 4.01、XHTML 1.0</td>
+<td>版本化发布，强调严格性与可扩展性。</td>
 </tr>
 <tr>
-<td><strong>语义定位</strong></td>
-<td>文档或应用的<strong>主题性分组</strong>，通常需要标题。</td>
-<td>独立的、完整的<strong>内容单元</strong>。</td>
+<td>2004～2011</td>
+<td>双轨并行</td>
+<td>W3C XHTML 2.0（失败） vs WHATWG HTML5</td>
+<td>标准分裂，社区与浏览器厂商推动 WHATWG 路线。</td>
 </tr>
 <tr>
-<td><strong>文档大纲</strong></td>
-<td>是文档大纲的一部分，帮助构建层级结构。</td>
-<td>也是文档大纲的一部分，但其内部的标题层级可以重新开始（HTML5 大纲算法）。</td>
+<td>2011～2019</td>
+<td>双轨并存</td>
+<td>W3C HTML5.x 快照 vs WHATWG Living Standard</td>
+<td>形式统一但文档分裂，开发者困惑。</td>
 </tr>
 <tr>
-<td><strong>RSS 聚合</strong></td>
-<td>不适合被 RSS 阅读器单独抓取。</td>
-<td>是 RSS 阅读器抓取的基本单元。</td>
+<td>2019 至今</td>
+<td>WHATWG</td>
+<td>HTML Living Standard（唯一权威）</td>
+<td>统一为持续更新的活标准，W3C 作为背书方发布审查草案。</td>
 </tr>
 </tbody></table>
-<p><strong>2. 适用场景举例</strong>：</p>
+<hr>
+<h2 id="2-废弃的元素与属性：永远不要在生产代码中使用"><a href="#2-废弃的元素与属性：永远不要在生产代码中使用" class="headerlink" title="2. 废弃的元素与属性：永远不要在生产代码中使用"></a>2. 废弃的元素与属性：永远不要在生产代码中使用</h2><p>HTML Living Standard 明确标记了一批<strong>已废弃</strong>（Obsolete）或<strong>不建议使用</strong>（Non-conforming）的元素和属性。使用它们可能导致：</p>
 <ul>
-<li><p><strong><code>&lt;section&gt;</code> 典型场景</strong>：</p>
-<ul>
-<li>将一篇长文分为“第一章”、“第二章”。</li>
-<li>首页的“热门商品”、“最新资讯”功能区（各区内含多个 <code>&lt;article&gt;</code>）。</li>
-<li>页脚的“联系我们”、“关于我们”栏目分组。</li>
+<li>浏览器解析进入怪异模式。</li>
+<li>样式行为不可预测（不同浏览器表现不一）。</li>
+<li>可访问性严重受损。</li>
+<li>不符合现代 Web 标准，在代码审查中会被视为严重缺陷。</li>
 </ul>
+<h3 id="2-1-彻底废弃的块级元素"><a href="#2-1-彻底废弃的块级元素" class="headerlink" title="2.1 彻底废弃的块级元素"></a>2.1 彻底废弃的块级元素</h3><table>
+<thead>
+<tr>
+<th>废弃元素</th>
+<th>曾经的作用</th>
+<th>现代替代方案</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>&lt;center&gt;</code></td>
+<td>居中内容。</td>
+<td>CSS <code>text-align: center</code> 或 Flexbox&#x2F;Grid 居中。</td>
+</tr>
+<tr>
+<td><code>&lt;font&gt;</code></td>
+<td>设置字体、颜色、大小。</td>
+<td>CSS <code>font-family</code>、<code>color</code>、<code>font-size</code>。</td>
+</tr>
+<tr>
+<td><code>&lt;big&gt;</code></td>
+<td>放大文字。</td>
+<td>CSS <code>font-size: larger</code>。</td>
+</tr>
+<tr>
+<td><code>&lt;strike&gt;</code> &#x2F; <code>&lt;s&gt;</code></td>
+<td>删除线文字。</td>
+<td><code>&lt;del&gt;</code>（表示文档编辑删除）或 CSS <code>text-decoration: line-through</code>。</td>
+</tr>
+<tr>
+<td><code>&lt;u&gt;</code></td>
+<td>下划线（已重新定义为“非文字注释”，如拼写错误标注）。</td>
+<td>普通下划线使用 CSS <code>text-decoration: underline</code>。</td>
+</tr>
+<tr>
+<td><code>&lt;tt&gt;</code></td>
+<td>电报机等宽字体。</td>
+<td><code>&lt;code&gt;</code>、<code>&lt;kbd&gt;</code>、<code>&lt;samp&gt;</code> 或 CSS <code>font-family: monospace</code>。</td>
+</tr>
+<tr>
+<td><code>&lt;frame&gt;</code> &#x2F; <code>&lt;frameset&gt;</code></td>
+<td>将页面分割为多个独立框架。</td>
+<td><code>&lt;iframe&gt;</code> 配合 CSS 布局。</td>
+</tr>
+<tr>
+<td><code>&lt;applet&gt;</code></td>
+<td>嵌入 Java Applet。</td>
+<td><code>&lt;object&gt;</code> 或现代 Web 技术（Java Applet 已彻底消亡）。</td>
+</tr>
+<tr>
+<td><code>&lt;blink&gt;</code></td>
+<td>闪烁文字（Netscape 特有）。</td>
+<td>CSS <code>text-decoration: blink</code>（浏览器已普遍禁用，不推荐任何闪烁效果）。</td>
+</tr>
+<tr>
+<td><code>&lt;marquee&gt;</code></td>
+<td>滚动文字。</td>
+<td>CSS 动画或 JavaScript 滚动实现。</td>
+</tr>
+</tbody></table>
+<h3 id="2-2-已废弃的属性"><a href="#2-2-已废弃的属性" class="headerlink" title="2.2 已废弃的属性"></a>2.2 已废弃的属性</h3><table>
+<thead>
+<tr>
+<th>废弃属性</th>
+<th>曾用于元素</th>
+<th>现代替代方案</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>align</code></td>
+<td>众多块级元素</td>
+<td>CSS <code>text-align</code>、<code>margin: auto</code>、Flexbox&#x2F;Grid 对齐。</td>
+</tr>
+<tr>
+<td><code>bgcolor</code></td>
+<td><code>&lt;body&gt;</code>、<code>&lt;table&gt;</code> 等</td>
+<td>CSS <code>background-color</code>。</td>
+</tr>
+<tr>
+<td><code>border</code></td>
+<td><code>&lt;img&gt;</code>、<code>&lt;table&gt;</code></td>
+<td>CSS <code>border</code>。</td>
+</tr>
+<tr>
+<td><code>cellpadding</code> &#x2F; <code>cellspacing</code></td>
+<td><code>&lt;table&gt;</code></td>
+<td>CSS <code>padding</code> 和 <code>border-spacing</code>。</td>
+</tr>
+<tr>
+<td><code>width</code> &#x2F; <code>height</code>（部分场景）</td>
+<td><code>&lt;table&gt;</code>、<code>&lt;td&gt;</code></td>
+<td>CSS <code>width</code> &#x2F; <code>height</code>（<code>&lt;img&gt;</code> 和 <code>&lt;canvas&gt;</code> 的 width&#x2F;height 仍为合法且推荐）。</td>
+</tr>
+<tr>
+<td><code>valign</code></td>
+<td>表格单元格</td>
+<td>CSS <code>vertical-align</code>。</td>
+</tr>
+<tr>
+<td><code>hspace</code> &#x2F; <code>vspace</code></td>
+<td><code>&lt;img&gt;</code></td>
+<td>CSS <code>margin</code>。</td>
+</tr>
+<tr>
+<td><code>size</code></td>
+<td><code>&lt;font&gt;</code>、<code>&lt;input&gt;</code> 等</td>
+<td>CSS <code>font-size</code>（对于 <code>&lt;input&gt;</code> 仍可用，但推荐 CSS <code>width</code>）。</td>
+</tr>
+<tr>
+<td><code>frameborder</code></td>
+<td><code>&lt;iframe&gt;</code></td>
+<td>CSS <code>border</code>。</td>
+</tr>
+<tr>
+<td><code>scrolling</code></td>
+<td><code>&lt;iframe&gt;</code></td>
+<td>CSS <code>overflow</code>。</td>
+</tr>
+</tbody></table>
+<h3 id="2-3-代码示例：从旧式写法到现代标准的迁移"><a href="#2-3-代码示例：从旧式写法到现代标准的迁移" class="headerlink" title="2.3 代码示例：从旧式写法到现代标准的迁移"></a>2.3 代码示例：从旧式写法到现代标准的迁移</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- ❌ 1990 年代风格的表格布局 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">table</span> <span class="attr">width</span>=<span class="string">&quot;800&quot;</span> <span class="attr">border</span>=<span class="string">&quot;1&quot;</span> <span class="attr">cellpadding</span>=<span class="string">&quot;5&quot;</span> <span class="attr">cellspacing</span>=<span class="string">&quot;0&quot;</span> <span class="attr">bgcolor</span>=<span class="string">&quot;#f0f0f0&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">td</span> <span class="attr">align</span>=<span class="string">&quot;center&quot;</span> <span class="attr">valign</span>=<span class="string">&quot;middle&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">font</span> <span class="attr">size</span>=<span class="string">&quot;4&quot;</span> <span class="attr">color</span>=<span class="string">&quot;red&quot;</span>&gt;</span>标题<span class="tag">&lt;/<span class="name">font</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- ✅ 现代 CSS 驱动的等价实现 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">table</span> <span class="attr">class</span>=<span class="string">&quot;modern-table&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">td</span> <span class="attr">class</span>=<span class="string">&quot;modern-cell&quot;</span>&gt;</span>标题<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="language-css"></span></span><br><span class="line"><span class="language-css"><span class="selector-class">.modern-table</span> &#123;</span></span><br><span class="line"><span class="language-css">  <span class="attribute">width</span>: <span class="built_in">min</span>(<span class="number">100%</span>, <span class="number">800px</span>);</span></span><br><span class="line"><span class="language-css">  <span class="attribute">border-collapse</span>: collapse;</span></span><br><span class="line"><span class="language-css">  <span class="attribute">background-color</span>: <span class="number">#f0f0f0</span>;</span></span><br><span class="line"><span class="language-css">&#125;</span></span><br><span class="line"><span class="language-css"><span class="selector-class">.modern-cell</span> &#123;</span></span><br><span class="line"><span class="language-css">  <span class="attribute">padding</span>: <span class="number">5px</span>;</span></span><br><span class="line"><span class="language-css">  <span class="attribute">text-align</span>: center;</span></span><br><span class="line"><span class="language-css">  <span class="attribute">vertical-align</span>: middle;</span></span><br><span class="line"><span class="language-css">  <span class="attribute">font-size</span>: <span class="number">1.25rem</span>;</span></span><br><span class="line"><span class="language-css">  <span class="attribute">color</span>: red;</span></span><br><span class="line"><span class="language-css">  <span class="attribute">border</span>: <span class="number">1px</span> solid <span class="number">#ccc</span>;</span></span><br><span class="line"><span class="language-css">&#125;</span></span><br><span class="line"><span class="language-css"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="3-HTML-代码验证：工具与工作流集成"><a href="#3-HTML-代码验证：工具与工作流集成" class="headerlink" title="3. HTML 代码验证：工具与工作流集成"></a>3. HTML 代码验证：工具与工作流集成</h2><h3 id="3-1-为什么需要验证？"><a href="#3-1-为什么需要验证？" class="headerlink" title="3.1 为什么需要验证？"></a>3.1 为什么需要验证？</h3><p>即使现代浏览器能“容错”解析错误 HTML，验证仍然至关重要：</p>
+<ul>
+<li><strong>发现潜在渲染 Bug</strong>：某些错误（如未闭合的标签、错误的嵌套）在不同浏览器中的修复策略不同，可能导致布局差异。</li>
+<li><strong>确保可访问性</strong>：验证工具会检测缺失的 <code>alt</code>、错误的 ARIA 用法、标题层级跳跃等问题。</li>
+<li><strong>SEO 优化</strong>：搜索引擎爬虫对格式严重错误的 HTML 可能解析失败。</li>
+<li><strong>团队规范一致性</strong>：自动化验证是代码质量门禁的一部分。</li>
+</ul>
+<h3 id="3-2-在线验证工具：W3C-Nu-Html-Checker"><a href="#3-2-在线验证工具：W3C-Nu-Html-Checker" class="headerlink" title="3.2 在线验证工具：W3C Nu Html Checker"></a>3.2 在线验证工具：W3C Nu Html Checker</h3><p>官方验证器地址：**<code>https://validator.w3.org/nu/</code>**</p>
+<p>支持三种输入方式：</p>
+<ul>
+<li><strong>URL 验证</strong>：直接输入线上页面地址。</li>
+<li><strong>文件上传</strong>：上传本地 HTML 文件。</li>
+<li><strong>直接输入</strong>：粘贴代码片段。</li>
+</ul>
+<p><strong>示例输出</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Error: Element &quot;figcaption&quot; not allowed as child of element &quot;div&quot; in this context.</span><br><span class="line">From line 42, column 5; to line 42, column 17</span><br><span class="line">Context: &lt;div class=&quot;image-wrapper&quot;&gt;&lt;figcaption&gt;↩</span><br><span class="line"></span><br><span class="line">Warning: Section lacks heading. Consider using &quot;h2&quot;-&quot;h6&quot; elements.</span><br><span class="line">From line 28, column 1; to line 28, column 9</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-3-命令行与-CI-x2F-CD-集成：html-validate"><a href="#3-3-命令行与-CI-x2F-CD-集成：html-validate" class="headerlink" title="3.3 命令行与 CI&#x2F;CD 集成：html-validate"></a>3.3 命令行与 CI&#x2F;CD 集成：<code>html-validate</code></h3><p><code>html-validate</code> 是一个基于 Node.js 的命令行工具，可集成到构建流程中。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安装</span></span><br><span class="line">npm install -g html-validate</span><br><span class="line"></span><br><span class="line"><span class="comment"># 验证单个文件</span></span><br><span class="line">html-validate index.html</span><br><span class="line"></span><br><span class="line"><span class="comment"># 验证整个目录</span></span><br><span class="line">html-validate <span class="string">&quot;src/**/*.html&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>配置文件 <code>.htmlvalidate.json</code>：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;extends&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;html-validate:recommended&quot;</span><span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;rules&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;no-inline-style&quot;</span><span class="punctuation">:</span> <span class="string">&quot;error&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;prefer-native-element&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;error&quot;</span><span class="punctuation">,</span> <span class="punctuation">[</span><span class="string">&quot;button&quot;</span><span class="punctuation">,</span> <span class="string">&quot;listbox&quot;</span><span class="punctuation">]</span><span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;long-title&quot;</span><span class="punctuation">:</span> <span class="string">&quot;off&quot;</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="3-4-编辑器实时检查：VS-Code-插件"><a href="#3-4-编辑器实时检查：VS-Code-插件" class="headerlink" title="3.4 编辑器实时检查：VS Code 插件"></a>3.4 编辑器实时检查：VS Code 插件</h3><ul>
+<li><strong>HTMLHint</strong>：基于规则集的实时提示。</li>
+<li><strong>W3C Web Validator</strong>：调用官方 API 进行验证。</li>
+<li><strong>ESLint</strong>（配合 <code>eslint-plugin-html</code>）：在 <code>.html</code> 文件内检查内联 JavaScript。</li>
+</ul>
+<hr>
+<h2 id="4-HTML-编写最佳实践清单"><a href="#4-HTML-编写最佳实践清单" class="headerlink" title="4. HTML 编写最佳实践清单"></a>4. HTML 编写最佳实践清单</h2><h3 id="4-1-文档结构"><a href="#4-1-文档结构" class="headerlink" title="4.1 文档结构"></a>4.1 文档结构</h3><ul>
+<li><input disabled="" type="checkbox"> 始终使用 <code>&lt;!DOCTYPE html&gt;</code> 声明标准模式。</li>
+<li><input disabled="" type="checkbox"> <code>&lt;html&gt;</code> 必须包含 <code>lang</code> 属性（如 <code>lang=&quot;zh-CN&quot;</code>）。</li>
+<li><input disabled="" type="checkbox"> <code>&lt;meta charset=&quot;UTF-8&quot;&gt;</code> 位于 <code>&lt;head&gt;</code> 的前 1024 字节内。</li>
+<li><input disabled="" type="checkbox"> 每个页面有且仅有一个 <code>&lt;h1&gt;</code>，标题层级无跳跃。</li>
+<li><input disabled="" type="checkbox"> 使用 <code>&lt;main&gt;</code> 包裹页面核心内容。</li>
+</ul>
+<h3 id="4-2-语义化与可访问性"><a href="#4-2-语义化与可访问性" class="headerlink" title="4.2 语义化与可访问性"></a>4.2 语义化与可访问性</h3><ul>
+<li><input disabled="" type="checkbox"> 优先使用语义标签（<code>&lt;header&gt;</code>、<code>&lt;footer&gt;</code>、<code>&lt;article&gt;</code>、<code>&lt;section&gt;</code>、<code>&lt;nav&gt;</code>、<code>&lt;aside&gt;</code>）。</li>
+<li><input disabled="" type="checkbox"> 所有 <code>&lt;img&gt;</code> 必须有 <code>alt</code> 属性（装饰性图片设为 <code>alt=&quot;&quot;</code>）。</li>
+<li><input disabled="" type="checkbox"> 所有表单控件必须关联 <code>&lt;label&gt;</code>（显式 <code>for</code> 或隐式嵌套）。</li>
+<li><input disabled="" type="checkbox"> 不为交互元素使用 <code>&lt;div&gt;</code> 或 <code>&lt;span&gt;</code> 模拟，优先使用 <code>&lt;button&gt;</code>、<code>&lt;a&gt;</code>。</li>
+<li><input disabled="" type="checkbox"> 为仅图标按钮提供 <code>aria-label</code>。</li>
+<li><input disabled="" type="checkbox"> 使用 <code>:focus-visible</code> 提供键盘焦点指示，不移除 <code>outline</code>。</li>
+</ul>
+<h3 id="4-3-性能与资源"><a href="#4-3-性能与资源" class="headerlink" title="4.3 性能与资源"></a>4.3 性能与资源</h3><ul>
+<li><input disabled="" type="checkbox"> 为 <code>&lt;img&gt;</code> 设置 <code>width</code> 和 <code>height</code> 属性，防止 CLS。</li>
+<li><input disabled="" type="checkbox"> 非首屏图片使用 <code>loading=&quot;lazy&quot;</code>。</li>
+<li><input disabled="" type="checkbox"> 视频添加 <code>playsinline</code> 属性（移动端）。</li>
+<li><input disabled="" type="checkbox"> 优先使用 <code>&lt;picture&gt;</code> 和 <code>srcset</code> 提供响应式图片。</li>
+<li><input disabled="" type="checkbox"> 避免在 <code>&lt;head&gt;</code> 中放置阻塞渲染的同步脚本。</li>
+</ul>
+<h3 id="4-4-安全"><a href="#4-4-安全" class="headerlink" title="4.4 安全"></a>4.4 安全</h3><ul>
+<li><input disabled="" type="checkbox"> <code>target=&quot;_blank&quot;</code> 链接必须配合 <code>rel=&quot;noopener noreferrer&quot;</code>。</li>
+<li><input disabled="" type="checkbox"> 嵌入不可信内容时使用 <code>sandbox</code> 属性，按需开放令牌。</li>
+<li><input disabled="" type="checkbox"> 使用 <code>postMessage</code> 时严格验证 <code>event.origin</code>。</li>
+<li><input disabled="" type="checkbox"> 避免内联事件处理器（<code>onclick=&quot;...&quot;</code>），改用 <code>addEventListener</code>。</li>
+</ul>
+<h3 id="4-5-代码质量"><a href="#4-5-代码质量" class="headerlink" title="4.5 代码质量"></a>4.5 代码质量</h3><ul>
+<li><input disabled="" type="checkbox"> 标签名和属性名统一使用小写。</li>
+<li><input disabled="" type="checkbox"> 属性值使用双引号包裹。</li>
+<li><input disabled="" type="checkbox"> 空元素（如 <code>&lt;img&gt;</code>、<code>&lt;br&gt;</code>、<code>&lt;input&gt;</code>）不使用自闭合语法（<code>/&gt;</code> 在 HTML5 中可选，推荐省略）。</li>
+<li><input disabled="" type="checkbox"> 嵌套符合规范（如 <code>&lt;p&gt;</code> 内不能放块级元素）。</li>
+<li><input disabled="" type="checkbox"> 使用 W3C 验证器检查无致命错误。</li>
+</ul>
+<hr>
+<h2 id="5-HTML-的现状与未来方向"><a href="#5-HTML-的现状与未来方向" class="headerlink" title="5. HTML 的现状与未来方向"></a>5. HTML 的现状与未来方向</h2><h3 id="5-1-当前稳定特性（广泛支持）"><a href="#5-1-当前稳定特性（广泛支持）" class="headerlink" title="5.1 当前稳定特性（广泛支持）"></a>5.1 当前稳定特性（广泛支持）</h3><p>以下 HTML5 特性已得到所有现代浏览器的全面支持，可放心用于生产：</p>
+<ul>
+<li>语义区块标签（<code>&lt;article&gt;</code>、<code>&lt;section&gt;</code>、<code>&lt;nav&gt;</code>、<code>&lt;aside&gt;</code>）。</li>
+<li>表单验证属性（<code>required</code>、<code>pattern</code>、<code>type=&quot;email&quot;</code> 等）。</li>
+<li>原生音频&#x2F;视频（<code>&lt;audio&gt;</code>、<code>&lt;video&gt;</code>）。</li>
+<li><code>srcset</code> &#x2F; <code>sizes</code> 响应式图片。</li>
+<li><code>loading=&quot;lazy&quot;</code> 原生懒加载。</li>
+<li><code>&lt;dialog&gt;</code> 元素（原生模态对话框）。</li>
+</ul>
+<h3 id="5-2-实验性与新兴特性"><a href="#5-2-实验性与新兴特性" class="headerlink" title="5.2 实验性与新兴特性"></a>5.2 实验性与新兴特性</h3><p>以下特性已写入 Living Standard，但浏览器支持仍在完善中：</p>
+<table>
+<thead>
+<tr>
+<th>特性</th>
+<th>说明</th>
+<th>支持状态</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>&lt;search&gt;</code> 元素</td>
+<td>专门用于搜索表单和筛选区域的语义标签。</td>
+<td>Chrome 118+、Safari 17+、Firefox 开发中</td>
+</tr>
+<tr>
+<td><code>inert</code> 属性</td>
+<td>使元素及其子树对用户输入“惰性”（不可聚焦、不可点击），常用于模态框背景。</td>
+<td>所有现代浏览器（Chrome 102+、Firefox 112+ 等）</td>
+</tr>
+<tr>
+<td><code>popover</code> API</td>
+<td>声明式弹出层（<code>popovertarget</code> 属性），无需 JavaScript 即可实现下拉菜单、提示框。</td>
+<td>Chrome 114+、Safari 17+、Firefox 125+</td>
+</tr>
+<tr>
+<td><code>selectlist</code>（Shoelace 提案）</td>
+<td>完全可样式化的自定义下拉选择组件（<code>&lt;selectmenu&gt;</code> 原型）。</td>
+<td>Chrome 实验性版本，标准讨论中</td>
+</tr>
+<tr>
+<td><code>&lt;model&gt;</code> 元素</td>
+<td>原生 3D 模型嵌入。</td>
+<td>早期提案，仅 Chrome 实验性支持</td>
+</tr>
+</tbody></table>
+<h3 id="5-3-如何跟进-HTML-标准演进"><a href="#5-3-如何跟进-HTML-标准演进" class="headerlink" title="5.3 如何跟进 HTML 标准演进"></a>5.3 如何跟进 HTML 标准演进</h3><ol>
+<li><strong>阅读 WHATWG HTML Living Standard</strong>（<code>html.spec.whatwg.org</code>）的 “New” 标注章节。</li>
+<li><strong>关注浏览器厂商的 Intent to Ship 公告</strong>（Chrome Status、Firefox Release Notes、WebKit Feature Status）。</li>
+<li><strong>订阅 Web 平台博客</strong>：<code>web.dev</code>、<code>developer.chrome.com/blog</code>、<code>hacks.mozilla.org</code>。</li>
+<li><strong>使用 <code>caniuse.com</code></strong> 查询特性支持度后再决定是否采用。</li>
+</ol>
+<hr>
+<h2 id="课后练习"><a href="#课后练习" class="headerlink" title="课后练习"></a>课后练习</h2><h3 id="一、概念自测（选择题-x2F-填空题）"><a href="#一、概念自测（选择题-x2F-填空题）" class="headerlink" title="一、概念自测（选择题 &#x2F; 填空题）"></a>一、概念自测（选择题 &#x2F; 填空题）</h3><ol>
+<li><p><strong>（单选）</strong> 当前 HTML 标准的唯一权威文档是？<br>A. W3C HTML5.3 推荐标准<br>B. WHATWG HTML Living Standard<br>C. MDN Web Docs<br>D. ECMAScript 规范</p>
 </li>
-<li><p><strong><code>&lt;article&gt;</code> 典型场景</strong>：</p>
-<ul>
-<li>博客文章、新闻报道、论坛帖子。</li>
-<li>评论列表中的每条评论。</li>
-<li>产品列表中的每个独立产品卡片。</li>
-</ul>
+<li><p><strong>（单选）</strong> 以下哪个元素在现代 HTML 中<strong>未被废弃</strong>，且仍是合法的语义标签？<br>A. <code>&lt;center&gt;</code><br>B. <code>&lt;font&gt;</code><br>C. <code>&lt;article&gt;</code><br>D. <code>&lt;marquee&gt;</code></p>
 </li>
-</ul>
-<p><strong>3. 模糊边界的处理原则</strong>：</p>
-<p>当一个内容块既像一个独立单元（可被分享），又像是页面的一个主题分组（有标题和段落），应按<strong>“独立发布测试”</strong>决策：</p>
+<li><p><strong>（填空）</strong> 在线验证 HTML 代码是否符合标准，最常用的官方工具是 W3C 的 <code>______</code>。</p>
+</li>
+<li><p><strong>（判断）</strong> HTML5 标准中，空元素（如 <code>&lt;br&gt;</code>、<code>&lt;img&gt;</code>）必须写成自闭合形式 <code>&lt;br /&gt;</code>，否则验证不通过。<br>A. 正确<br>B. 错误</p>
+</li>
+</ol>
+<h3 id="二、AI-编程任务：编写面向-AI-的提示词"><a href="#二、AI-编程任务：编写面向-AI-的提示词" class="headerlink" title="二、AI 编程任务：编写面向 AI 的提示词"></a>二、AI 编程任务：编写面向 AI 的提示词</h3><p><strong>场景</strong>：你接手了一个 2005 年遗留项目的 HTML 页面，需要将其重构为符合现代 HTML Living Standard 的代码。原页面使用了大量废弃标签和属性，包括 <code>&lt;center&gt;</code>、<code>&lt;font&gt;</code>、<code>bgcolor</code>、<code>align</code> 等。重构后的页面必须保持完全相同的视觉外观，但使用 CSS 实现样式，并使用语义化标签。</p>
+<p><strong>任务要求</strong>：请写出<strong>一段完整的中文提示词</strong>，发送给 AI，使其理解你的重构需求，并生成一个从旧式 HTML 迁移到现代标准的具体示例。提示词中应包含一小段旧式 HTML 片段（由你提供），并要求 AI 输出等价的现代 HTML + CSS 代码，同时注释说明每个替换的理由。</p>
+<h3 id="三、面试真题与参考答案"><a href="#三、面试真题与参考答案" class="headerlink" title="三、面试真题与参考答案"></a>三、面试真题与参考答案</h3><p><strong>题目</strong>（蚂蚁集团前端面试题）：  </p>
+<blockquote>
+<p>请阐述你对 Web 标准（Web Standards）的理解。作为一个前端开发者，为什么遵循 Web 标准至关重要？请从开发效率、跨浏览器兼容性、可访问性、SEO 及长期维护成本五个维度进行分析。</p>
+</blockquote>
+<p><strong>参考答案</strong>：</p>
+<p><strong>1. Web 标准的定义与构成</strong>：<br>Web 标准是由 W3C、WHATWG、ECMA、IETF 等国际组织制定的一系列技术规范，用于确保 Web 内容的<strong>互操作性</strong>、<strong>可访问性</strong>和<strong>长期稳定性</strong>。核心标准包括：</p>
 <ul>
-<li>若该内容块可以被完整地摘录到另一个页面、电子邮件或 RSS 中而<strong>不失其意义</strong>，则使用 <code>&lt;article&gt;</code>。</li>
-<li>若摘录后显得<strong>突兀、不完整</strong>（如“第一章”脱离了整本书），则使用 <code>&lt;section&gt;</code>。</li>
+<li><strong>HTML</strong>（WHATWG Living Standard）：定义网页语义和结构。</li>
+<li><strong>CSS</strong>（W3C）：定义视觉呈现和布局。</li>
+<li><strong>JavaScript &#x2F; ECMAScript</strong>（ECMA TC39）：定义脚本语言行为。</li>
+<li><strong>DOM</strong>（WHATWG）：定义文档对象模型和编程接口。</li>
+<li><strong>ARIA</strong>（W3C）：定义可访问性语义增强。</li>
 </ul>
-<p><strong>进阶讨论</strong>：在 HTML5 大纲算法中，<code>&lt;article&gt;</code> 内部可以重新开始 <code>&lt;h1&gt;</code> 层级。但鉴于主流浏览器和辅助工具对此支持不佳，实践中仍建议在整站范围内保持唯一的 <code>&lt;h1&gt;</code>，在 <code>&lt;article&gt;</code> 内使用 <code>&lt;h2&gt;</code> 开始。</p>
+<p><strong>2. 遵循 Web 标准的五个关键价值</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>维度</th>
+<th>具体价值阐述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>开发效率</strong></td>
+<td>标准化的 API 和语义使开发者只需学习一套规则，即可在所有遵循标准的浏览器中工作。标准文档是终极“文档”，减少对第三方库和特定浏览器私有属性的依赖。</td>
+</tr>
+<tr>
+<td><strong>跨浏览器兼容性</strong></td>
+<td>浏览器厂商依据统一标准实现渲染引擎和 JavaScript 引擎。遵循标准可最大程度保证页面在 Chrome、Firefox、Safari、Edge 等浏览器中表现一致，减少 Hacks 和 Polyfills。</td>
+</tr>
+<tr>
+<td><strong>可访问性（a11y）</strong></td>
+<td>语义化 HTML 和 ARIA 标准是屏幕阅读器等辅助技术理解页面结构的基础。正确使用 <code>&lt;button&gt;</code>、<code>&lt;label&gt;</code>、<code>alt</code>、<code>aria-*</code> 直接影响残障用户能否正常使用网站。</td>
+</tr>
+<tr>
+<td><strong>SEO（搜索引擎优化）</strong></td>
+<td>搜索引擎爬虫依赖标准化的 HTML 结构（标题层级、语义标签、<code>meta</code> 信息）来理解页面内容和权重。遵循标准可提升内容在搜索结果中的可见性和排名。</td>
+</tr>
+<tr>
+<td><strong>长期维护成本</strong></td>
+<td>基于标准的代码不依赖特定浏览器的非标准特性，当浏览器版本更新时，标准行为保持向后兼容。这意味着代码库的<strong>技术债务更低</strong>，升级和重构的成本远低于依赖私有 API 的项目。</td>
+</tr>
+</tbody></table>
+<p><strong>3. 补充观点</strong>：</p>
+<ul>
+<li><strong>框架与标准的关系</strong>：React、Vue、Angular 等现代框架本质是对 Web 标准的抽象和增强，它们最终输出的仍是标准 HTML&#x2F;CSS&#x2F;JS。理解底层标准有助于在框架无法满足需求时“逃生”到原生实现，并深入理解框架工作原理。</li>
+<li><strong>Web 标准的开放性</strong>：任何开发者都可以参与标准的讨论和反馈（通过 GitHub Issues、WICG 提案等），推动 Web 平台朝着更健康的方向发展。</li>
+</ul>
 <hr>
 <h2 id="课后练习答案"><a href="#课后练习答案" class="headerlink" title="课后练习答案"></a>课后练习答案</h2><h3 id="一、概念自测答案"><a href="#一、概念自测答案" class="headerlink" title="一、概念自测答案"></a>一、概念自测答案</h3><ol>
 <li><p><strong>B</strong>  </p>
 <ul>
-<li>解析：<code>&lt;article&gt;</code> 专门用于表示独立、可分发的内容单元，如博客文章。</li>
+<li>解析：自 2019 年起，WHATWG HTML Living Standard 是 HTML 规范的唯一权威来源。</li>
 </ul>
 </li>
 <li><p><strong>C</strong>  </p>
 <ul>
-<li>解析：<code>&lt;main&gt;</code> 自动映射为 <code>role=&quot;main&quot;</code>，是屏幕阅读器的重要地标。A 错，页面只能有一个可见 <code>&lt;main&gt;</code>；B 错，<code>&lt;main&gt;</code> 不能嵌套在分段内容中；D 错，<code>&lt;main&gt;</code> 仅包含页面专有核心内容。</li>
+<li>解析：<code>&lt;article&gt;</code> 是 HTML5 新增的语义标签，未被废弃。A、B、D 均为已废弃或非标准元素。</li>
 </ul>
 </li>
-<li><p><strong><code>&lt;aside&gt;</code></strong>  </p>
+<li><p>**<code>Nu Html Checker</code>**（或 <code>validator.w3.org/nu</code>）  </p>
 <ul>
-<li>解析：<code>&lt;aside&gt;</code> 表示与周围内容间接相关的附属信息。</li>
+<li>解析：W3C 的官方 HTML 验证器名为 Nu Html Checker。</li>
 </ul>
 </li>
 <li><p><strong>B（错误）</strong>  </p>
 <ul>
-<li>解析：<code>&lt;header&gt;</code> 可在页面中多次出现（如全局页头、文章页头），且不限于页面顶部。</li>
+<li>解析：HTML5 中空元素的自闭合斜杠是可选的（如 <code>&lt;br&gt;</code> 和 <code>&lt;br /&gt;</code> 均可），无需强制使用。</li>
 </ul>
 </li>
 </ol>
 <h3 id="二、AI-编程任务参考答案（提示词示例）"><a href="#二、AI-编程任务参考答案（提示词示例）" class="headerlink" title="二、AI 编程任务参考答案（提示词示例）"></a>二、AI 编程任务参考答案（提示词示例）</h3><blockquote>
-<p><strong>示例提示词</strong>：<br>“请使用 HTML5 语义标签生成一个技术文档网站的文章详情页完整结构。要求：</p>
+<p><strong>示例提示词</strong>：<br>“请帮我将以下旧式 HTML 代码重构为符合现代 HTML Living Standard 的等价实现：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">center</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">font</span> <span class="attr">size</span>=<span class="string">&quot;5&quot;</span> <span class="attr">color</span>=<span class="string">&quot;blue&quot;</span>&gt;</span>欢迎访问我们的网站<span class="tag">&lt;/<span class="name">font</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">center</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">table</span> <span class="attr">width</span>=<span class="string">&quot;600&quot;</span> <span class="attr">border</span>=<span class="string">&quot;1&quot;</span> <span class="attr">cellpadding</span>=<span class="string">&quot;10&quot;</span> <span class="attr">bgcolor</span>=<span class="string">&quot;#f5f5f5&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">td</span> <span class="attr">align</span>=<span class="string">&quot;center&quot;</span> <span class="attr">valign</span>=<span class="string">&quot;top&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">b</span>&gt;</span>最新公告<span class="tag">&lt;/<span class="name">b</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>要求：</p>
 <ul>
-<li>全局 <code>&lt;header&gt;</code> 包含网站标题（如 <code>技术文档中心</code>）和 <code>&lt;nav&gt;</code> 主导航（首页、文档、关于）。</li>
-<li>页面使用 <code>&lt;main&gt;</code> 包裹核心内容。</li>
-<li><code>&lt;main&gt;</code> 内部为一篇 <code>&lt;article&gt;</code>，包含：<ul>
-<li><code>&lt;header&gt;</code>：文章标题 <code>&lt;h2&gt;</code>、作者和发布日期的 <code>&lt;p&gt;</code>。</li>
-<li>三个 <code>&lt;section&gt;</code>，每个带有 <code>&lt;h3&gt;</code> 标题和若干段落文本（可用占位文本）。</li>
-<li>一个 <code>&lt;aside&gt;</code>，包含一个“关键术语”列表（如 HTML、CSS、JavaScript）。</li>
-<li><code>&lt;footer&gt;</code>：包含版权说明文字和文章标签链接。</li>
-</ul>
-</li>
-<li>在 <code>&lt;main&gt;</code> 外部、页面右侧，使用全局 <code>&lt;aside&gt;</code> 放置“相关文章推荐”列表（至少 3 个链接）。</li>
-<li>页面底部使用全局 <code>&lt;footer&gt;</code> 包含版权信息和法律链接。</li>
-<li>代码需整洁，语义准确。请直接输出完整 HTML。”</li>
+<li>使用语义化标签和 CSS 实现完全相同的视觉效果。</li>
+<li>替换所有废弃标签（<code>&lt;center&gt;</code>、<code>&lt;font&gt;</code>）和废弃属性（<code>width</code>、<code>border</code>、<code>cellpadding</code>、<code>bgcolor</code>、<code>align</code>、<code>valign</code>）。</li>
+<li>用现代 CSS 样式类替代内联样式属性。</li>
+<li>在输出的代码中添加注释，解释每个替换的原因和对应关系。</li>
+<li>代码需独立可运行（包含 <code>&lt;style&gt;</code> 标签），直接输出完整 HTML。”</li>
 </ul>
 </blockquote>
 
@@ -787,9 +908,9 @@
     
         <div class="license-wrapper">
             <p>原文作者：<a href="https://winddsnow.github.io">WinddSnow</a>
-            <p>原文链接：<a href="https://winddsnow.github.io/2026/04/15/HTML5-Semantic-Sectioning-Elements/">https://winddsnow.github.io/2026/04/15/HTML5-Semantic-Sectioning-Elements/</a>
-            <p>发表日期：<a href="https://winddsnow.github.io/2026/04/15/HTML5-Semantic-Sectioning-Elements/">April 15th 2026, 1:00:00 pm</a>
-            <p>更新日期：<a href="https://winddsnow.github.io/2026/04/15/HTML5-Semantic-Sectioning-Elements/">April 15th 2026, 12:07:47 am</a>
+            <p>原文链接：<a href="https://winddsnow.github.io/2026/04/15/HTML-Best-Practices/">https://winddsnow.github.io/2026/04/15/HTML-Best-Practices/</a>
+            <p>发表日期：<a href="https://winddsnow.github.io/2026/04/15/HTML-Best-Practices/">April 15th 2026, 4:00:00 pm</a>
+            <p>更新日期：<a href="https://winddsnow.github.io/2026/04/15/HTML-Best-Practices/">April 15th 2026, 12:12:51 am</a>
             <p>版权声明：本文采用<a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
         </div>
     
@@ -797,17 +918,12 @@
     <ul class="post-paginator">
         <li class="next">
             
-                <div class="nextSlogan">Next Post</div>
-                <a href="/2026/04/15/Accessibility-Basics-ARIA-Keyboard-Navigation/" title="Accessibility-Basics-ARIA-Keyboard-Navigation">
-                    <div class="nextTitle">Accessibility-Basics-ARIA-Keyboard-Navigation</div>
-                </a>
-            
         </li>
         <li class="previous">
             
                 <div class="prevSlogan">Previous Post</div>
-                <a href="/2026/04/15/HTML-Forms-Elements-Part2/" title="HTML-Forms-Elements-Part2">
-                    <div class="prevTitle">HTML-Forms-Elements-Part2</div>
+                <a href="/2026/04/15/iframe-and-Embedded/" title="iframe-and-Embedded-Content-Security-and-Cross-Origin-Communication">
+                    <div class="prevTitle">iframe-and-Embedded-Content-Security-and-Cross-Origin-Communication</div>
                 </a>
             
         </li>
@@ -827,7 +943,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css">
     <script src="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js"></script>
     <script>
-        let idOption = '1776258000000'
+        let idOption = '1776268800000'
         
             idOption = location.pathname
         
@@ -978,7 +1094,7 @@
                 <div class="toc-catalog">
                     <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
                 </div>
-                <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC9%E8%AF%BE%EF%BC%9AHTML5-%E8%AF%AD%E4%B9%89%E5%8C%BA%E5%9D%97%E6%A0%87%E7%AD%BE"><span class="toc-number">1.</span> <span class="toc-text">第9课：HTML5 语义区块标签</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-lt-header-gt-%EF%BC%9A%E4%BB%8B%E7%BB%8D%E6%80%A7%E5%86%85%E5%AE%B9%E5%AE%B9%E5%99%A8"><span class="toc-number">1.1.</span> <span class="toc-text">1. &lt;header&gt;：介绍性内容容器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-%E8%AF%AD%E4%B9%89%E5%AE%9A%E4%B9%89%E4%B8%8E%E9%99%90%E5%88%B6"><span class="toc-number">1.1.1.</span> <span class="toc-text">1.1 语义定义与限制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-lt-header-gt-%E4%B8%8E-lt-h1-gt-%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="toc-number">1.1.2.</span> <span class="toc-text">1.2 &lt;header&gt; 与 &lt;h1&gt; 的关系</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-%E5%B8%B8%E8%A7%81%E8%AF%AF%E7%94%A8"><span class="toc-number">1.1.3.</span> <span class="toc-text">1.3 常见误用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-lt-footer-gt-%EF%BC%9A%E9%A1%B5%E8%84%9A%E4%B8%8E%E9%99%84%E5%B1%9E%E4%BF%A1%E6%81%AF"><span class="toc-number">1.2.</span> <span class="toc-text">2. &lt;footer&gt;：页脚与附属信息</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-%E8%AF%AD%E4%B9%89%E4%B8%8E%E5%A4%9A%E9%87%8D%E5%AE%9E%E4%BE%8B"><span class="toc-number">1.2.1.</span> <span class="toc-text">2.1 语义与多重实例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-lt-footer-gt-%E5%86%85%E4%B8%8D%E5%BA%94%E5%8C%85%E5%90%AB%E7%9A%84%E5%86%85%E5%AE%B9"><span class="toc-number">1.2.2.</span> <span class="toc-text">2.2 &lt;footer&gt; 内不应包含的内容</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-%E4%B8%8E-lt-address-gt-%E7%9A%84%E9%85%8D%E5%90%88"><span class="toc-number">1.2.3.</span> <span class="toc-text">2.3 与 &lt;address&gt; 的配合</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-lt-main-gt-%EF%BC%9A%E9%A1%B5%E9%9D%A2%E7%9A%84%E6%A0%B8%E5%BF%83%E5%86%85%E5%AE%B9"><span class="toc-number">1.3.</span> <span class="toc-text">3. &lt;main&gt;：页面的核心内容</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-%E5%85%B3%E9%94%AE%E7%BA%A6%E6%9D%9F"><span class="toc-number">1.3.1.</span> <span class="toc-text">3.1 关键约束</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-%E5%8F%AF%E8%AE%BF%E9%97%AE%E6%80%A7%E4%BB%B7%E5%80%BC"><span class="toc-number">1.3.2.</span> <span class="toc-text">3.2 可访问性价值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-%E5%B8%B8%E8%A7%81%E8%AF%AF%E7%94%A8"><span class="toc-number">1.3.3.</span> <span class="toc-text">3.3 常见误用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-lt-article-gt-%EF%BC%9A%E7%8B%AC%E7%AB%8B%E3%80%81%E5%8F%AF%E5%88%86%E5%8F%91%E7%9A%84%E5%86%85%E5%AE%B9%E5%9D%97"><span class="toc-number">1.4.</span> <span class="toc-text">4. &lt;article&gt;：独立、可分发的内容块</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-%E5%88%A4%E6%96%AD%E6%A0%87%E5%87%86%EF%BC%9A%E2%80%9C%E7%8B%AC%E7%AB%8B%E5%8F%91%E5%B8%83%E6%B5%8B%E8%AF%95%E2%80%9D"><span class="toc-number">1.4.1.</span> <span class="toc-text">4.1 判断标准：“独立发布测试”</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-lt-article-gt-%E7%9A%84%E5%B5%8C%E5%A5%97"><span class="toc-number">1.4.2.</span> <span class="toc-text">4.2 &lt;article&gt; 的嵌套</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-%E4%BD%95%E6%97%B6%E4%B8%8D%E7%94%A8-lt-article-gt"><span class="toc-number">1.4.3.</span> <span class="toc-text">4.3 何时不用 &lt;article&gt;</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-lt-section-gt-%EF%BC%9A%E4%B8%BB%E9%A2%98%E5%88%86%E7%BB%84"><span class="toc-number">1.5.</span> <span class="toc-text">5. &lt;section&gt;：主题分组</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5-1-lt-section-gt-%E4%B8%8E-lt-article-gt-%E7%9A%84%E6%A0%B8%E5%BF%83%E5%8C%BA%E5%88%AB"><span class="toc-number">1.5.1.</span> <span class="toc-text">5.1 &lt;section&gt; 与 &lt;article&gt; 的核心区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-2-%E8%AD%A6%E5%91%8A%EF%BC%9A%E5%8B%BF%E6%BB%A5%E7%94%A8-lt-section-gt"><span class="toc-number">1.5.2.</span> <span class="toc-text">5.2 警告：勿滥用 &lt;section&gt;</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-lt-aside-gt-%EF%BC%9A%E9%99%84%E5%B1%9E%E5%86%85%E5%AE%B9"><span class="toc-number">1.6.</span> <span class="toc-text">6. &lt;aside&gt;：附属内容</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#6-1-%E4%B8%A4%E7%A7%8D%E5%85%B8%E5%9E%8B%E4%BD%BF%E7%94%A8%E6%A8%A1%E5%BC%8F"><span class="toc-number">1.6.1.</span> <span class="toc-text">6.1 两种典型使用模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-2-%E5%8F%AF%E8%AE%BF%E9%97%AE%E6%80%A7%E6%98%A0%E5%B0%84"><span class="toc-number">1.6.2.</span> <span class="toc-text">6.2 可访问性映射</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-lt-nav-gt-%EF%BC%9A%E5%AF%BC%E8%88%AA%E9%93%BE%E6%8E%A5%E9%9B%86%E5%90%88"><span class="toc-number">1.7.</span> <span class="toc-text">7. &lt;nav&gt;：导航链接集合</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#7-1-%E5%B8%B8%E8%A7%81%E5%AF%BC%E8%88%AA%E7%B1%BB%E5%9E%8B%E4%B8%8E-aria-label"><span class="toc-number">1.7.1.</span> <span class="toc-text">7.1 常见导航类型与 aria-label</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-2-%E4%BD%95%E6%97%B6%E4%B8%8D%E7%94%A8-lt-nav-gt"><span class="toc-number">1.7.2.</span> <span class="toc-text">7.2 何时不用 &lt;nav&gt;</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-%E7%BB%BC%E5%90%88%E7%A4%BA%E4%BE%8B%EF%BC%9A%E5%85%B8%E5%9E%8B%E5%8D%9A%E5%AE%A2%E9%A1%B5%E9%9D%A2%E7%9A%84%E8%AF%AD%E4%B9%89%E7%BB%93%E6%9E%84"><span class="toc-number">1.8.</span> <span class="toc-text">8. 综合示例：典型博客页面的语义结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%BE%E5%90%8E%E7%BB%83%E4%B9%A0"><span class="toc-number">1.9.</span> <span class="toc-text">课后练习</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E6%A6%82%E5%BF%B5%E8%87%AA%E6%B5%8B%EF%BC%88%E9%80%89%E6%8B%A9%E9%A2%98-x2F-%E5%A1%AB%E7%A9%BA%E9%A2%98%EF%BC%89"><span class="toc-number">1.9.1.</span> <span class="toc-text">一、概念自测（选择题 &#x2F; 填空题）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E3%80%81AI-%E7%BC%96%E7%A8%8B%E4%BB%BB%E5%8A%A1%EF%BC%9A%E7%BC%96%E5%86%99%E9%9D%A2%E5%90%91-AI-%E7%9A%84%E6%8F%90%E7%A4%BA%E8%AF%8D"><span class="toc-number">1.9.2.</span> <span class="toc-text">二、AI 编程任务：编写面向 AI 的提示词</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E9%9D%A2%E8%AF%95%E7%9C%9F%E9%A2%98%E4%B8%8E%E5%8F%82%E8%80%83%E7%AD%94%E6%A1%88"><span class="toc-number">1.9.3.</span> <span class="toc-text">三、面试真题与参考答案</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%BE%E5%90%8E%E7%BB%83%E4%B9%A0%E7%AD%94%E6%A1%88"><span class="toc-number">1.10.</span> <span class="toc-text">课后练习答案</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E6%A6%82%E5%BF%B5%E8%87%AA%E6%B5%8B%E7%AD%94%E6%A1%88"><span class="toc-number">1.10.1.</span> <span class="toc-text">一、概念自测答案</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E3%80%81AI-%E7%BC%96%E7%A8%8B%E4%BB%BB%E5%8A%A1%E5%8F%82%E8%80%83%E7%AD%94%E6%A1%88%EF%BC%88%E6%8F%90%E7%A4%BA%E8%AF%8D%E7%A4%BA%E4%BE%8B%EF%BC%89"><span class="toc-number">1.10.2.</span> <span class="toc-text">二、AI 编程任务参考答案（提示词示例）</span></a></li></ol></li></ol></li></ol>
+                <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC12%E8%AF%BE%EF%BC%9AHTML-%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5%E4%B8%8E%E6%A0%87%E5%87%86%E6%BC%94%E8%BF%9B"><span class="toc-number">1.</span> <span class="toc-text">第12课：HTML 最佳实践与标准演进</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-HTML-%E6%A0%87%E5%87%86%E7%AE%80%E5%8F%B2%EF%BC%9A%E4%BB%8E-W3C-%E5%88%B0-WHATWG"><span class="toc-number">1.1.</span> <span class="toc-text">1. HTML 标准简史：从 W3C 到 WHATWG</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-%E5%88%86%E9%81%93%E6%89%AC%E9%95%B3%EF%BC%9AXHTML-2-0-%E7%9A%84%E5%A4%B1%E8%B4%A5%E4%B8%8E-WHATWG-%E7%9A%84%E8%AF%9E%E7%94%9F"><span class="toc-number">1.1.1.</span> <span class="toc-text">1.1 分道扬镳：XHTML 2.0 的失败与 WHATWG 的诞生</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-%E5%8F%8C%E5%A4%B4%E6%94%BF%E6%B2%BB%E6%97%B6%E4%BB%A3%EF%BC%9AW3C-HTML5-vs-WHATWG-Living-Standard"><span class="toc-number">1.1.2.</span> <span class="toc-text">1.2 双头政治时代：W3C HTML5 vs WHATWG Living Standard</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-2019-%E5%B9%B4%E3%80%8A%E5%90%88%E4%BD%9C%E5%A4%87%E5%BF%98%E5%BD%95%E3%80%8B%EF%BC%9AWHATWG-%E6%88%90%E4%B8%BA%E5%94%AF%E4%B8%80%E6%9D%83%E5%A8%81"><span class="toc-number">1.1.3.</span> <span class="toc-text">1.3 2019 年《合作备忘录》：WHATWG 成为唯一权威</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%BA%9F%E5%BC%83%E7%9A%84%E5%85%83%E7%B4%A0%E4%B8%8E%E5%B1%9E%E6%80%A7%EF%BC%9A%E6%B0%B8%E8%BF%9C%E4%B8%8D%E8%A6%81%E5%9C%A8%E7%94%9F%E4%BA%A7%E4%BB%A3%E7%A0%81%E4%B8%AD%E4%BD%BF%E7%94%A8"><span class="toc-number">1.2.</span> <span class="toc-text">2. 废弃的元素与属性：永远不要在生产代码中使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-%E5%BD%BB%E5%BA%95%E5%BA%9F%E5%BC%83%E7%9A%84%E5%9D%97%E7%BA%A7%E5%85%83%E7%B4%A0"><span class="toc-number">1.2.1.</span> <span class="toc-text">2.1 彻底废弃的块级元素</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-%E5%B7%B2%E5%BA%9F%E5%BC%83%E7%9A%84%E5%B1%9E%E6%80%A7"><span class="toc-number">1.2.2.</span> <span class="toc-text">2.2 已废弃的属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-%E4%BB%A3%E7%A0%81%E7%A4%BA%E4%BE%8B%EF%BC%9A%E4%BB%8E%E6%97%A7%E5%BC%8F%E5%86%99%E6%B3%95%E5%88%B0%E7%8E%B0%E4%BB%A3%E6%A0%87%E5%87%86%E7%9A%84%E8%BF%81%E7%A7%BB"><span class="toc-number">1.2.3.</span> <span class="toc-text">2.3 代码示例：从旧式写法到现代标准的迁移</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-HTML-%E4%BB%A3%E7%A0%81%E9%AA%8C%E8%AF%81%EF%BC%9A%E5%B7%A5%E5%85%B7%E4%B8%8E%E5%B7%A5%E4%BD%9C%E6%B5%81%E9%9B%86%E6%88%90"><span class="toc-number">1.3.</span> <span class="toc-text">3. HTML 代码验证：工具与工作流集成</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E9%AA%8C%E8%AF%81%EF%BC%9F"><span class="toc-number">1.3.1.</span> <span class="toc-text">3.1 为什么需要验证？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-%E5%9C%A8%E7%BA%BF%E9%AA%8C%E8%AF%81%E5%B7%A5%E5%85%B7%EF%BC%9AW3C-Nu-Html-Checker"><span class="toc-number">1.3.2.</span> <span class="toc-text">3.2 在线验证工具：W3C Nu Html Checker</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-%E5%91%BD%E4%BB%A4%E8%A1%8C%E4%B8%8E-CI-x2F-CD-%E9%9B%86%E6%88%90%EF%BC%9Ahtml-validate"><span class="toc-number">1.3.3.</span> <span class="toc-text">3.3 命令行与 CI&#x2F;CD 集成：html-validate</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4-%E7%BC%96%E8%BE%91%E5%99%A8%E5%AE%9E%E6%97%B6%E6%A3%80%E6%9F%A5%EF%BC%9AVS-Code-%E6%8F%92%E4%BB%B6"><span class="toc-number">1.3.4.</span> <span class="toc-text">3.4 编辑器实时检查：VS Code 插件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-HTML-%E7%BC%96%E5%86%99%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5%E6%B8%85%E5%8D%95"><span class="toc-number">1.4.</span> <span class="toc-text">4. HTML 编写最佳实践清单</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-%E6%96%87%E6%A1%A3%E7%BB%93%E6%9E%84"><span class="toc-number">1.4.1.</span> <span class="toc-text">4.1 文档结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-%E8%AF%AD%E4%B9%89%E5%8C%96%E4%B8%8E%E5%8F%AF%E8%AE%BF%E9%97%AE%E6%80%A7"><span class="toc-number">1.4.2.</span> <span class="toc-text">4.2 语义化与可访问性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-%E6%80%A7%E8%83%BD%E4%B8%8E%E8%B5%84%E6%BA%90"><span class="toc-number">1.4.3.</span> <span class="toc-text">4.3 性能与资源</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-4-%E5%AE%89%E5%85%A8"><span class="toc-number">1.4.4.</span> <span class="toc-text">4.4 安全</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-5-%E4%BB%A3%E7%A0%81%E8%B4%A8%E9%87%8F"><span class="toc-number">1.4.5.</span> <span class="toc-text">4.5 代码质量</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-HTML-%E7%9A%84%E7%8E%B0%E7%8A%B6%E4%B8%8E%E6%9C%AA%E6%9D%A5%E6%96%B9%E5%90%91"><span class="toc-number">1.5.</span> <span class="toc-text">5. HTML 的现状与未来方向</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5-1-%E5%BD%93%E5%89%8D%E7%A8%B3%E5%AE%9A%E7%89%B9%E6%80%A7%EF%BC%88%E5%B9%BF%E6%B3%9B%E6%94%AF%E6%8C%81%EF%BC%89"><span class="toc-number">1.5.1.</span> <span class="toc-text">5.1 当前稳定特性（广泛支持）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-2-%E5%AE%9E%E9%AA%8C%E6%80%A7%E4%B8%8E%E6%96%B0%E5%85%B4%E7%89%B9%E6%80%A7"><span class="toc-number">1.5.2.</span> <span class="toc-text">5.2 实验性与新兴特性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-3-%E5%A6%82%E4%BD%95%E8%B7%9F%E8%BF%9B-HTML-%E6%A0%87%E5%87%86%E6%BC%94%E8%BF%9B"><span class="toc-number">1.5.3.</span> <span class="toc-text">5.3 如何跟进 HTML 标准演进</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%BE%E5%90%8E%E7%BB%83%E4%B9%A0"><span class="toc-number">1.6.</span> <span class="toc-text">课后练习</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E6%A6%82%E5%BF%B5%E8%87%AA%E6%B5%8B%EF%BC%88%E9%80%89%E6%8B%A9%E9%A2%98-x2F-%E5%A1%AB%E7%A9%BA%E9%A2%98%EF%BC%89"><span class="toc-number">1.6.1.</span> <span class="toc-text">一、概念自测（选择题 &#x2F; 填空题）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E3%80%81AI-%E7%BC%96%E7%A8%8B%E4%BB%BB%E5%8A%A1%EF%BC%9A%E7%BC%96%E5%86%99%E9%9D%A2%E5%90%91-AI-%E7%9A%84%E6%8F%90%E7%A4%BA%E8%AF%8D"><span class="toc-number">1.6.2.</span> <span class="toc-text">二、AI 编程任务：编写面向 AI 的提示词</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E9%9D%A2%E8%AF%95%E7%9C%9F%E9%A2%98%E4%B8%8E%E5%8F%82%E8%80%83%E7%AD%94%E6%A1%88"><span class="toc-number">1.6.3.</span> <span class="toc-text">三、面试真题与参考答案</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%BE%E5%90%8E%E7%BB%83%E4%B9%A0%E7%AD%94%E6%A1%88"><span class="toc-number">1.7.</span> <span class="toc-text">课后练习答案</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E6%A6%82%E5%BF%B5%E8%87%AA%E6%B5%8B%E7%AD%94%E6%A1%88"><span class="toc-number">1.7.1.</span> <span class="toc-text">一、概念自测答案</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E3%80%81AI-%E7%BC%96%E7%A8%8B%E4%BB%BB%E5%8A%A1%E5%8F%82%E8%80%83%E7%AD%94%E6%A1%88%EF%BC%88%E6%8F%90%E7%A4%BA%E8%AF%8D%E7%A4%BA%E4%BE%8B%EF%BC%89"><span class="toc-number">1.7.2.</span> <span class="toc-text">二、AI 编程任务参考答案（提示词示例）</span></a></li></ol></li></ol></li></ol>
             </div>
         
         <!-- sidebar -->
@@ -2077,14 +2193,6 @@
         
         
         
-        
-        
-        
-        
-        
-        
-        
-        
     
     
     
@@ -2108,25 +2216,25 @@
         
         <li class="archive-post-item">
             <span class="archive-post-date">04/16</span>
-            <a class="archive-post-title" href="/2026/04/15/HTML-Best-Practices-and-Standards-Evolution/">HTML-Best-Practices-and-Standards-Evolution</a>
+            <a class="archive-post-title" href="/2026/04/15/HTML-Best-Practices/">HTML-Best-Practices-and-Standards-Evolution</a>
         </li>
     
         
         <li class="archive-post-item">
             <span class="archive-post-date">04/16</span>
-            <a class="archive-post-title" href="/2026/04/15/iframe-and-Embedded-Content-Security/">iframe-and-Embedded-Content-Security-and-Cross-Origin-Communication</a>
+            <a class="archive-post-title" href="/2026/04/15/iframe-and-Embedded/">iframe-and-Embedded-Content-Security-and-Cross-Origin-Communication</a>
         </li>
     
         
         <li class="archive-post-item">
             <span class="archive-post-date">04/16</span>
-            <a class="archive-post-title" href="/2026/04/15/Accessibility-Basics-ARIA-Keyboard-Navigation/">Accessibility-Basics-ARIA-Keyboard-Navigation</a>
+            <a class="archive-post-title" href="/2026/04/15/Accessibility-Basics/">Accessibility-Basics-ARIA-Keyboard-Navigation</a>
         </li>
     
         
         <li class="archive-post-item">
             <span class="archive-post-date">04/16</span>
-            <a class="archive-post-title" href="/2026/04/15/HTML5-Semantic-Sectioning-Elements/">HTML5-Semantic-Sectioning-Elements</a>
+            <a class="archive-post-title" href="/2026/04/15/HTML5-Semantic-Sectioning/">HTML5-Semantic-Sectioning-Elements</a>
         </li>
     
         
@@ -2144,19 +2252,19 @@
         
         <li class="archive-post-item">
             <span class="archive-post-date">04/16</span>
-            <a class="archive-post-title" href="/2026/04/15/Images-and-Multimedia-HTML-Elements/">Images-and-Multimedia-HTML-Elements</a>
+            <a class="archive-post-title" href="/2026/04/15/Images-and-Multimedia-HTML/">Images-and-Multimedia-HTML-Elements</a>
         </li>
     
         
         <li class="archive-post-item">
             <span class="archive-post-date">04/16</span>
-            <a class="archive-post-title" href="/2026/04/15/Lists-and-Tables-Structure-and-Semantics/">Lists-and-Tables-Structure-and-Semantics</a>
+            <a class="archive-post-title" href="/2026/04/15/Lists-and-Tables-Structure/">Lists-and-Tables-Structure-and-Semantics</a>
         </li>
     
         
         <li class="archive-post-item">
             <span class="archive-post-date">04/16</span>
-            <a class="archive-post-title" href="/2026/04/15/Hyperlinks-and-Navigation-Best-Practices/">Hyperlinks-and-Navigation-Best-Practices</a>
+            <a class="archive-post-title" href="/2026/04/15/Hyperlinks/">Hyperlinks-and-Navigation-Best-Practices</a>
         </li>
     
         
@@ -2168,13 +2276,13 @@
         
         <li class="archive-post-item">
             <span class="archive-post-date">04/15</span>
-            <a class="archive-post-title" href="/2026/04/15/Head-Metadata-and-SEO-Optimization/">Head-Metadata-and-SEO-Optimization</a>
+            <a class="archive-post-title" href="/2026/04/15/Head-Metadata-and-SEO/">Head-Metadata-and-SEO-Optimization</a>
         </li>
     
         
         <li class="archive-post-item">
             <span class="archive-post-date">04/15</span>
-            <a class="archive-post-title" href="/2026/04/15/HTML-Document-Structure-and-DOCTYPE/">HTML-Document-Structure-and-DOCTYPE</a>
+            <a class="archive-post-title" href="/2026/04/15/HTML-Document-Structure/">HTML-Document-Structure-and-DOCTYPE</a>
         </li>
     
         
@@ -2408,13 +2516,13 @@
         
         <li class="archive-post-item">
             <span class="archive-post-date">10/23</span>
-            <a class="archive-post-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9815Kafka/">Java面试题15Kafka</a>
+            <a class="archive-post-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9814MongoDB/">Java面试题14MongoDB</a>
         </li>
     
         
         <li class="archive-post-item">
             <span class="archive-post-date">10/23</span>
-            <a class="archive-post-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9814MongoDB/">Java面试题14MongoDB</a>
+            <a class="archive-post-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9815Kafka/">Java面试题15Kafka</a>
         </li>
     
         
@@ -2953,14 +3061,14 @@
                 Zookeeper
             </span>
         
-            <span class="sidebar-tag-name" data-tags="Kafka">
-                <span class="iconfont-archer">&#xe606;</span>
-                Kafka
-            </span>
-        
             <span class="sidebar-tag-name" data-tags="MongoDB">
                 <span class="iconfont-archer">&#xe606;</span>
                 MongoDB
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Kafka">
+                <span class="iconfont-archer">&#xe606;</span>
+                Kafka
             </span>
         
             <span class="sidebar-tag-name" data-tags="JWT">
@@ -3078,14 +3186,14 @@
                 微服务
             </span>
         
-            <span class="sidebar-tag-name" data-tags="分享">
-                <span class="iconfont-archer">&#xe606;</span>
-                分享
-            </span>
-        
             <span class="sidebar-tag-name" data-tags="文本标签">
                 <span class="iconfont-archer">&#xe606;</span>
                 文本标签
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="分享">
+                <span class="iconfont-archer">&#xe606;</span>
+                分享
             </span>
         
             <span class="sidebar-tag-name" data-tags="vim">
@@ -3113,14 +3221,14 @@
                 接口管理
             </span>
         
-            <span class="sidebar-tag-name" data-tags="保罗·格雷厄姆（Paul Graham）">
-                <span class="iconfont-archer">&#xe606;</span>
-                保罗·格雷厄姆（Paul Graham）
-            </span>
-        
             <span class="sidebar-tag-name" data-tags="helloworld">
                 <span class="iconfont-archer">&#xe606;</span>
                 helloworld
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="保罗·格雷厄姆（Paul Graham）">
+                <span class="iconfont-archer">&#xe606;</span>
+                保罗·格雷厄姆（Paul Graham）
             </span>
         
             <span class="sidebar-tag-name" data-tags="iframe">
