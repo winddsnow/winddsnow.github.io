@@ -429,34 +429,34 @@
             
         
         <article class="index-post">
-            <a class="abstract-title" href="/2026/07/31/Git-Hooks/">
+            <a class="abstract-title" href="/2026/07/31/React-Custom/">
                 
-                <span class="abstract-title-text">Git-Hooks-and-Husky-Commitlint-Conventional-Commits</span>
+                <span class="abstract-title-text">React-Custom-Hooks-Design-Patterns</span>
             </a>
             <div class="abstract-content">
-                第85课：Git Hooks 与 Husky——提交前检查、commitlint、规范提交信息版本控制是现代软件工程的基石，而 Git Hooks 是嵌入在 Git 工作流中的自动化脚本机制。利用 Git Hooks，团队可以在代码提交、推送、合并等关键节点自动执行检查——如运行 linter、执行测试、校验提交信息格式。然而，原生 Git Hooks 配置繁琐（需手动编写 shell 脚本并放入 .git/hooks 目录），且无法纳入版本控制与团队共享。Husky 解决了这一问题：它将 Git Hooks 的管理抽象为简单的 npm 配置，使 hooks 可以随项目代码一起提交、安装...
+                第95课：自定义 Hooks 设计模式——封装复用逻辑、命名规范、useLocalStorage、useDebounce 实战React Hooks 的核心价值在于逻辑复用。内置的 useState、useEffect、useRef 等提供了原子能力，而自定义 Hook 让你将这些原子能力组合成可复用的逻辑单元。自定义 Hook 本质上是一个以 use 开头、内部可以调用其他 Hooks 的 JavaScript 函数。它不共享状态，而是共享状态逻辑——每次调用自定义 Hook 都会创建完全独立的状态实例。本节课将深入讲解自定义 Hook 的设计原则、命名规范、如何从组件中提取逻辑、以及...
             </div>
             <!-- read more -->
             
             <div class="abstract-post-meta">
                 <!-- date -->
                 <div class="abstract-date" title="Last updated: 2026/07/28">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2026/07/31</span>
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2026/08/01</span>
                 </div>
                 <!-- tags -->
                 
                     <div class= abstract-tags >
     
     
-        <a class="post-tag" href="javascript:void(0);" data-tags="Husky">Husky</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="React">React</a>
     
-        <a class="post-tag" href="javascript:void(0);" data-tags="Git Hooks">Git Hooks</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="自定义Hook">自定义Hook</a>
     
-        <a class="post-tag" href="javascript:void(0);" data-tags="commitlint">commitlint</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="逻辑复用">逻辑复用</a>
     
-        <a class="post-tag" href="javascript:void(0);" data-tags="提交规范">提交规范</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="useLocalStorage">useLocalStorage</a>
     
-        <a class="post-tag" href="javascript:void(0);" data-tags="conventional commits">conventional commits</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="useDebounce">useDebounce</a>
     
 </div>
 
@@ -472,34 +472,34 @@
             
         
         <article class="index-post">
-            <a class="abstract-title" href="/2026/07/31/Code-Linting/">
+            <a class="abstract-title" href="/2026/07/31/React-useReducer/">
                 
-                <span class="abstract-title-text">Code-Linting-and-Formatting-ESLint-Prettier-Husky-lint-staged</span>
+                <span class="abstract-title-text">React-useReducer-and-State-Logic-Extraction</span>
             </a>
             <div class="abstract-content">
-                第84课：代码规范：ESLint + Prettier——配置、规则、与编辑器集成、lint-staged + Husky高质量的代码不仅在功能上正确，还应该在风格一致、低错误风险和可维护性上达到团队标准。手动审查代码风格既低效又不可靠，因此前端工程化体系引入了两类自动化工具：ESLint 负责代码质量检查与潜在错误发现（逻辑错误、未使用的变量、不安全写法），Prettier 负责代码格式化（缩进、引号、分号等风格统一）。两者分工明确，配合使用可以大幅减少 Code Review 中的风格争议，让团队专注于逻辑和架构。本节课将系统讲解 ESLint 的配置体系、规则集与共享配置、Pret...
+                第94课：useReducer 与状态逻辑抽离——Reducer 模式、与 Redux 的关系、复杂表单状态管理当组件状态逻辑变得复杂——例如包含多个子值需要协调更新、下一次状态依赖上一次状态、或者状态转换涉及多种操作类型——useState 的简单“设置值”模式会变得难以维护。React 提供了 useReducer Hook，它将状态更新逻辑从组件中抽离到一个独立的纯函数（Reducer）中，通过派发 Action 来描述“发生了什么”，由 Reducer 统一决定“状态如何变化”。这种模式与 Redux 的核心思想一脉相承，但在组件级别轻量得多。理解 Reducer 模式不仅能帮助...
             </div>
             <!-- read more -->
             
             <div class="abstract-post-meta">
                 <!-- date -->
                 <div class="abstract-date" title="Last updated: 2026/07/28">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2026/07/31</span>
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2026/08/01</span>
                 </div>
                 <!-- tags -->
                 
                     <div class= abstract-tags >
     
     
-        <a class="post-tag" href="javascript:void(0);" data-tags="ESLint">ESLint</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="表单">表单</a>
     
-        <a class="post-tag" href="javascript:void(0);" data-tags="Prettier">Prettier</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="React">React</a>
     
-        <a class="post-tag" href="javascript:void(0);" data-tags="代码规范">代码规范</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="状态管理">状态管理</a>
     
-        <a class="post-tag" href="javascript:void(0);" data-tags="Husky">Husky</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="useReducer">useReducer</a>
     
-        <a class="post-tag" href="javascript:void(0);" data-tags="lint-staged">lint-staged</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="Reducer">Reducer</a>
     
 </div>
 
@@ -515,79 +515,34 @@
             
         
         <article class="index-post">
-            <a class="abstract-title" href="/2026/07/31/Babel-and-Code/">
+            <a class="abstract-title" href="/2026/07/31/React-Performance-Opt/">
                 
-                <span class="abstract-title-text">Babel-and-Code-Transpilation-Presets-Plugins-Browserslist-Polyfill</span>
+                <span class="abstract-title-text">React-Performance-Optimization-memo-useMemo-useCallback</span>
             </a>
             <div class="abstract-content">
-                第83课：Babel 与代码转译——预设、插件、browserslist、core-js polyfill 策略现代 JavaScript 语法日新月异：ES6+ 引入的箭头函数、模板字符串、Promise、async/await 等特性极大地提升了开发效率，但浏览器对它们的支持进度参差不齐。Babel 是解决这个问题的标准工具：它把使用最新语法编写的代码转译为向后兼容的 JavaScript，让开发者无需等待浏览器支持即可使用新特性。Babel 本身是一个编译平台，核心转译能力由插件（Plugin） 提供，而预设（Preset） 则是插件的集合。本节课将深入讲解 Babel 的工作流程...
+                第93课：性能优化：memo、useMemo、useCallback——记忆化原理、引用相等、正确使用场景React 的渲染模型默认是“自上而下，全量渲染”：当组件的 State 或 Props 变化时，该组件及其所有子组件都会重新渲染。对于小型应用，这完全不是问题；但对于包含大量组件树、昂贵计算或频繁更新的中型到大型应用，不必要的渲染会逐渐侵蚀性能。React 提供了三个核心的 记忆化（Memoization） API 来优化渲染性能：**React.memo** 用于跳过纯展示组件的重渲染；**useMemo** 用于缓存昂贵的计算结果；**useCallback** 用于稳定函数引...
             </div>
             <!-- read more -->
             
             <div class="abstract-post-meta">
                 <!-- date -->
                 <div class="abstract-date" title="Last updated: 2026/07/28">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2026/07/31</span>
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2026/08/01</span>
                 </div>
                 <!-- tags -->
                 
                     <div class= abstract-tags >
     
     
-        <a class="post-tag" href="javascript:void(0);" data-tags="Babel">Babel</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="编译">编译</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="预设">预设</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="polyfill">polyfill</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="browserslist">browserslist</a>
-    
-</div>
-
-                
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
-    
-        
-        
-        
-        
-            
-        
-        <article class="index-post">
-            <a class="abstract-title" href="/2026/07/31/Webpack-Performance/">
-                
-                <span class="abstract-title-text">Webpack-Performance-Optimization-Code-Splitting-Lazy-Loading-SplitChunks-Caching</span>
-            </a>
-            <div class="abstract-content">
-                第82课：Webpack 性能优化——Code Splitting、懒加载、SplitChunksPlugin、缓存策略Webpack 的核心使命之一是将应用打包为浏览器可高效加载的静态资源。默认情况下，所有模块会被打包为一个（或少数几个）巨大的 bundle，导致首屏加载缓慢、缓存失效频繁（任何一处代码变动都会使整个 bundle 的哈希变化）。Webpack 提供了多层优化手段来解决这些问题：Code Splitting 将代码拆分为多个较小的 chunk，懒加载 按需加载非首屏模块，**SplitChunksPlugin** 精细控制公共依赖的提取和合并，缓存策略 利用内容哈希和运...
-            </div>
-            <!-- read more -->
-            
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2026/07/28">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2026/07/31</span>
-                </div>
-                <!-- tags -->
-                
-                    <div class= abstract-tags >
-    
+        <a class="post-tag" href="javascript:void(0);" data-tags="React">React</a>
     
         <a class="post-tag" href="javascript:void(0);" data-tags="性能优化">性能优化</a>
     
-        <a class="post-tag" href="javascript:void(0);" data-tags="Code Splitting">Code Splitting</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="memo">memo</a>
     
-        <a class="post-tag" href="javascript:void(0);" data-tags="缓存">缓存</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="useMemo">useMemo</a>
     
-        <a class="post-tag" href="javascript:void(0);" data-tags="懒加载">懒加载</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="Webpack">Webpack</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="SplitChunksPlugin">SplitChunksPlugin</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="useCallback">useCallback</a>
     
 </div>
 
@@ -603,36 +558,34 @@
             
         
         <article class="index-post">
-            <a class="abstract-title" href="/2026/07/31/Webpack-Common/">
+            <a class="abstract-title" href="/2026/07/31/React-useRef-DOM/">
                 
-                <span class="abstract-title-text">Webpack-Common-Loaders-and-Plugins</span>
+                <span class="abstract-title-text">React-useRef-DOM-Operations-forwardRef-useImperativeHandle</span>
             </a>
             <div class="abstract-content">
-                第81课：Webpack 常用 Loader 与 Plugin——css-loader、babel-loader、HtmlWebpackPlugin、MiniCssExtractPlugin 等上一课我们学习了 Webpack 的五大核心概念。本节课将深入到最常用的 Loader 和 Plugin 的具体配置与工作原理。在日常开发中，你不需要记住所有 Loader 和 Plugin 的细节，但必须熟练掌握以下高频组合：**babel-loader（ES6+ 转译）、css-loader + style-loader &#x2F; MiniCssExtractPlugin（CSS 处理）、...
+                第92课：useRef 与 DOM 操作——ref 对象、forwardRef、useImperativeHandle在 React 的声明式编程模型中，绝大多数场景下你不需要直接操作 DOM——React 通过 State 和 Props 自动保持 UI 与数据同步。但总有例外：聚焦输入框、测量元素尺寸、与第三方非 React 库集成、存储不参与渲染的变量……这些场景需要一个脱离 React 渲染周期的逃生舱。useRef 就是这个逃生舱。它创建的是一个普通的 JavaScript 对象，其 current 属性可以在组件的整个生命周期中持续存在，且修改 current 不会触发重新渲...
             </div>
             <!-- read more -->
             
             <div class="abstract-post-meta">
                 <!-- date -->
                 <div class="abstract-date" title="Last updated: 2026/07/28">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2026/07/31</span>
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2026/08/01</span>
                 </div>
                 <!-- tags -->
                 
                     <div class= abstract-tags >
     
     
-        <a class="post-tag" href="javascript:void(0);" data-tags="Webpack">Webpack</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="React">React</a>
     
-        <a class="post-tag" href="javascript:void(0);" data-tags="Loader">Loader</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="useRef">useRef</a>
     
-        <a class="post-tag" href="javascript:void(0);" data-tags="Plugin">Plugin</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="forwardRef">forwardRef</a>
     
-        <a class="post-tag" href="javascript:void(0);" data-tags="css-loader">css-loader</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="useImperativeHandle">useImperativeHandle</a>
     
-        <a class="post-tag" href="javascript:void(0);" data-tags="babel-loader">babel-loader</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="HtmlWebpackPlugin">HtmlWebpackPlugin</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="DOM操作">DOM操作</a>
     
 </div>
 
@@ -648,12 +601,12 @@
             
         
         <article class="index-post">
-            <a class="abstract-title" href="/2026/07/31/Webpack-Core/">
+            <a class="abstract-title" href="/2026/07/31/React-useEffect/">
                 
-                <span class="abstract-title-text">Webpack-Core-Concepts-Entry-Output-Loader-Plugin-Mode</span>
+                <span class="abstract-title-text">React-useEffect-and-Side-Effects</span>
             </a>
             <div class="abstract-content">
-                第80课：Webpack 核心概念——Entry、Output、Loader、Plugin、ModeWebpack 是现代前端工程化的奠基性工具。自 2014 年发布以来，它定义了“一切皆模块”的打包范式——JavaScript、CSS、图片、字体、HTML 都可以被视为模块，通过 Loader 和 Plugin 进行转换和优化。尽管 Vite 等新一代构建工具在开发体验上有所超越，Webpack 凭借其成熟的生态系统（数以千计的 Loader 和 Plugin）、高度灵活的配置以及对复杂场景的深度支持（微前端、Module Federation、多页应用），仍然是大量企业级项目的核心基...
+                第91课：副作用与 useEffect——依赖数组、清理函数、与生命周期对应关系、闭包陷阱React 组件的主要职责是渲染 UI——根据 Props 和 State 计算并返回 React 元素。但真实世界的应用还需要与外部系统交互：发起网络请求、订阅数据源、操作 DOM、设置定时器。这些操作被称为副作用（Side Effects），因为它们会影响组件之外的世界，且在 React 的纯渲染流程之外执行。useEffect 是函数组件中管理副作用的统一入口——它涵盖了类组件中 componentDidMount、componentDidUpdate 和 componentWillUnmou...
             </div>
             <!-- read more -->
             
@@ -667,15 +620,15 @@
                     <div class= abstract-tags >
     
     
-        <a class="post-tag" href="javascript:void(0);" data-tags="Webpack">Webpack</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="React">React</a>
     
-        <a class="post-tag" href="javascript:void(0);" data-tags="Loader">Loader</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="useEffect">useEffect</a>
     
-        <a class="post-tag" href="javascript:void(0);" data-tags="Plugin">Plugin</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="副作用">副作用</a>
     
-        <a class="post-tag" href="javascript:void(0);" data-tags="打包工具">打包工具</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="生命周期">生命周期</a>
     
-        <a class="post-tag" href="javascript:void(0);" data-tags="模块打包">模块打包</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="闭包陷阱">闭包陷阱</a>
     
 </div>
 
@@ -691,14 +644,12 @@
             
         
         <article class="index-post">
-            <a class="abstract-title" href="/2026/07/31/Vite-Configuration/">
+            <a class="abstract-title" href="/2026/07/31/React-Event/">
                 
-                <span class="abstract-title-text">Vite-Configuration-Environment-Variables-Proxy-Build-Optimization</span>
+                <span class="abstract-title-text">React-Event-Handling-and-Synthetic-Events</span>
             </a>
             <div class="abstract-content">
-                第79课：Vite 配置与环境变量——vite.config.ts、环境变量、代理配置、构建优化上一课我们学习了 Vite 的冷启动原理、HMR 机制和插件系统。本节课将深入 Vite 的配置文件——vite.config.ts 中那些控制开发体验和生产输出的关键选项。我们将逐一拆解 环境变量（.env 文件）的加载与类型安全使用、开发服务器代理（server.proxy）解决跨域问题的配置技巧、以及生产构建优化（代码分割、资源内联、压缩策略）的最佳实践。掌握这些配置，你就能将 Vite 从一个“能跑的开发服务器”调校为“高性能的生产构建流水线”。
-
-1. 环境变量与模式Vite 使用 ...
+                第90课：事件处理与合成事件——事件绑定、传参、阻止默认、React 事件系统React 的事件处理系统被称为合成事件（SyntheticEvent）。它并非将事件处理函数直接绑定到真实 DOM 节点上，而是通过事件委托机制在根节点统一监听，并将原生 DOM 事件包装为跨浏览器兼容的合成事件对象。这种设计不仅消除了浏览器之间的不一致性，还通过事件池（React 17 之前）或持久化事件（React 17+）优化了性能。理解 React 事件与原生 DOM 事件的差异、this 绑定的演变（类组件 vs 函数组件）、以及如何正确传参、阻止默认行为与冒泡，是构建可交互 React 应用的基础...
             </div>
             <!-- read more -->
             
@@ -712,15 +663,15 @@
                     <div class= abstract-tags >
     
     
-        <a class="post-tag" href="javascript:void(0);" data-tags="Vite">Vite</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="React">React</a>
     
-        <a class="post-tag" href="javascript:void(0);" data-tags="环境变量">环境变量</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="事件处理">事件处理</a>
     
-        <a class="post-tag" href="javascript:void(0);" data-tags="代理配置">代理配置</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="合成事件">合成事件</a>
     
-        <a class="post-tag" href="javascript:void(0);" data-tags="构建优化">构建优化</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="this绑定">this绑定</a>
     
-        <a class="post-tag" href="javascript:void(0);" data-tags="代码分割">代码分割</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="事件传参">事件传参</a>
     
 </div>
 
@@ -736,12 +687,14 @@
             
         
         <article class="index-post">
-            <a class="abstract-title" href="/2026/07/31/Vite-Build-Tool/">
+            <a class="abstract-title" href="/2026/07/31/React-State/">
                 
-                <span class="abstract-title-text">Vite-Build-Tool-Getting-Started-Dev-Server-HMR-Plugins</span>
+                <span class="abstract-title-text">React-State-and-useState-Batching-Immutability-Functional-Updates</span>
             </a>
             <div class="abstract-content">
-                第78课：Vite 构建工具入门——项目初始化、开发服务器、HMR 原理、插件机制Vite（法语“快”）是由 Vue.js 作者尤雨溪开发的下一代前端构建工具。它由两部分组成：一个基于浏览器原生 ES Modules 的开发服务器，提供极速的冷启动和热模块替换（HMR）；以及一个基于 Rollup 的生产构建引擎，将代码打包为高度优化的静态资源。Vite 的设计哲学是“利用浏览器已经支持的 ES Modules 来加速开发，仅在打包时才做传统构建”。本节课将系统讲解 Vite 的项目初始化、开发服务器与 HMR 的底层原理、以及插件系统的架构——如何通过 Rollup 插件和 Vite ...
+                第89课：State 与 useState——状态更新、批处理、不可变性、函数式更新State（状态）是 React 组件内部可变的私有数据。与只读的 Props 不同，State 属于组件自身，可以随时间变化，驱动 UI 的重新渲染。在函数组件中，useState 是管理 State 的入口 Hook——它返回一个状态变量和一个更新函数，让你在保持 React 的渲染规则（不可变性、异步批处理）的同时，以声明式的方式更新 UI。理解 State 的不可变性、异步批处理机制以及函数式更新的正确使用场景，是写出无 Bug、高性能 React 组件的关键。
+
+1. useState 的基本用...
             </div>
             <!-- read more -->
             
@@ -755,15 +708,15 @@
                     <div class= abstract-tags >
     
     
-        <a class="post-tag" href="javascript:void(0);" data-tags="插件">插件</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="React">React</a>
     
-        <a class="post-tag" href="javascript:void(0);" data-tags="Vite">Vite</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="状态管理">状态管理</a>
     
-        <a class="post-tag" href="javascript:void(0);" data-tags="构建工具">构建工具</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="useState">useState</a>
     
-        <a class="post-tag" href="javascript:void(0);" data-tags="HMR">HMR</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="批处理">批处理</a>
     
-        <a class="post-tag" href="javascript:void(0);" data-tags="esbuild">esbuild</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="不可变性">不可变性</a>
     
 </div>
 
@@ -779,12 +732,14 @@
             
         
         <article class="index-post">
-            <a class="abstract-title" href="/2026/07/30/Package-Managers-Advanced/">
+            <a class="abstract-title" href="/2026/07/31/React-Function/">
                 
-                <span class="abstract-title-text">Package-Managers-Advanced-Yarn-Pnpm-Workspaces-Hard-Links</span>
+                <span class="abstract-title-text">React-Function-Components-and-Props</span>
             </a>
             <div class="abstract-content">
-                第77课：包管理器进阶：yarn 与 pnpm——workspace、幽灵依赖、硬链接与符号链接、pnpm 优势上一课我们学习了包管理器的核心职责、依赖解析算法、lock 文件和 monorepo workspaces 的基础配置。本节课将深入两个高级主题：yarn 的 Plug’n’Play（PnP）模式（一种完全抛弃 node_modules 的依赖管理方案）、pnpm 的存储与链接机制（硬链接 + 符号链接如何彻底消灭幽灵依赖并极致节省磁盘空间），以及两者在 monorepo 场景下的 workspace 协议 差异。理解这些底层实现原理，能帮助你在中大型项目中正确选型，并在依赖问...
+                第88课：函数组件与 Props——组件定义、Props 只读、children、组合React 应用由组件构成。组件是独立的、可复用的 UI 片段，接收输入数据（称为 Props），返回描述界面外观的 React 元素。在 React 的现代版本中，函数组件是定义组件的推荐方式——它简洁、易于测试，并且与 Hooks 深度集成。理解 Props 的只读性、单向数据流以及如何通过 children 和组合模式构建灵活的可复用组件，是掌握 React 组件化开发的核心。
+
+1. 函数组件：最简单的组件形式函数组件就是一个接收 Props 对象作为参数、返回 React 元素的 JavaSc...
             </div>
             <!-- read more -->
             
@@ -798,15 +753,15 @@
                     <div class= abstract-tags >
     
     
-        <a class="post-tag" href="javascript:void(0);" data-tags="yarn">yarn</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="React">React</a>
     
-        <a class="post-tag" href="javascript:void(0);" data-tags="pnpm">pnpm</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="函数组件">函数组件</a>
     
-        <a class="post-tag" href="javascript:void(0);" data-tags="workspace">workspace</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="Props">Props</a>
     
-        <a class="post-tag" href="javascript:void(0);" data-tags="幽灵依赖">幽灵依赖</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="children">children</a>
     
-        <a class="post-tag" href="javascript:void(0);" data-tags="硬链接">硬链接</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="组合">组合</a>
     
 </div>
 
@@ -822,12 +777,12 @@
             
         
         <article class="index-post">
-            <a class="abstract-title" href="/2026/07/30/Package-Managers/">
+            <a class="abstract-title" href="/2026/07/31/React-Elements/">
                 
-                <span class="abstract-title-text">Package-Managers-npm-yarn-pnpm-Dependency-Resolution-Lock-Files</span>
+                <span class="abstract-title-text">React-Elements-and-JSX-createElement-Virtual-DOM-Fiber</span>
             </a>
             <div class="abstract-content">
-                第76课：包管理器深度：npm、yarn、pnpm——依赖解析、lock 文件、workspaces、幽灵依赖包管理器是前端工程化的枢纽。它们不仅仅下载依赖——它们决定着项目的依赖树结构、安装速度、磁盘占用以及跨环境的一致性。社区中并存着三大主流包管理器：npm（Node 生态标配）、yarn（Facebook 推出的高效替代品）和 pnpm（基于硬链接的磁盘优化方案）。它们在依赖解析算法、lock 文件格式、node_modules 组织结构和monorepo 支持上有着本质的设计差异。理解这些差异，你才能根据项目规模、团队协作和 CI&#x2F;CD 需求做出正确的技术选型，并避免“...
+                第87课：React 元素与 JSX——createElement、JSX 转换、虚拟 DOM、Fiber 架构简介React 的核心哲学是声明式 UI：你描述界面应该是什么样子，React 负责高效地更新 DOM 以匹配你的描述。理解这一哲学的关键，在于理解 React 的元素、JSX 和虚拟 DOM 这三者的关系。JSX 是编写 React 元素最直观的语法，但它并非直接运行在浏览器中的代码——编译工具（如 Babel）会将 JSX 转换为 React.createElement（或 React 17+ 的 jsx 函数）调用，生成轻量的 JavaScript 对象——这就是虚拟 D...
             </div>
             <!-- read more -->
             
@@ -841,19 +796,58 @@
                     <div class= abstract-tags >
     
     
-        <a class="post-tag" href="javascript:void(0);" data-tags="yarn">yarn</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="React">React</a>
     
-        <a class="post-tag" href="javascript:void(0);" data-tags="pnpm">pnpm</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="JSX">JSX</a>
     
-        <a class="post-tag" href="javascript:void(0);" data-tags="幽灵依赖">幽灵依赖</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="createElement">createElement</a>
     
-        <a class="post-tag" href="javascript:void(0);" data-tags="npm">npm</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="虚拟 DOM">虚拟 DOM</a>
     
-        <a class="post-tag" href="javascript:void(0);" data-tags="依赖管理">依赖管理</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="Fiber">Fiber</a>
     
-        <a class="post-tag" href="javascript:void(0);" data-tags="lock文件">lock文件</a>
+</div>
+
+                
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
     
-        <a class="post-tag" href="javascript:void(0);" data-tags="workspaces">workspaces</a>
+        
+        
+        
+        
+            
+        
+        <article class="index-post">
+            <a class="abstract-title" href="/2026/07/31/Frontend-Testing-Basics/">
+                
+                <span class="abstract-title-text">Frontend-Testing-Basics-Jest-Unit-Component-E2E</span>
+            </a>
+            <div class="abstract-content">
+                第86课：前端测试基础——Jest、单元测试、组件测试、E2E 测试简介测试是保障软件质量和可维护性的基石。前端测试体系通常划分为三个层次：单元测试（验证函数、工具方法等最小可测试单元的正确性）、组件测试（验证 UI 组件在给定 Props 和状态下渲染及交互的正确性）、端到端测试（E2E）（模拟真实用户操作，验证整个应用流程在多页面、多系统间的完整性）。本节课将聚焦最流行的测试工具 Jest——一套零配置、快照测试、覆盖率报告集于一体的 JavaScript 测试框架——并分别演示单元测试、React&#x2F;Vue 组件测试的编写方式，最后概述 E2E 测试工具（Cypress&#...
+            </div>
+            <!-- read more -->
+            
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2026/07/28">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2026/07/31</span>
+                </div>
+                <!-- tags -->
+                
+                    <div class= abstract-tags >
+    
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="测试">测试</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="Jest">Jest</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="单元测试">单元测试</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="组件测试">组件测试</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="E2E">E2E</a>
     
 </div>
 
@@ -865,7 +859,7 @@
     <!-- paginator  -->
     
         <nav class="page-nav">
-            <a class="extend prev" rel="prev" href="/archives/2026/page/3/">&lt; PREV</a><a class="page-number" href="/archives/2026/">1</a><a class="page-number" href="/archives/2026/page/2/">2</a><a class="page-number" href="/archives/2026/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/archives/2026/page/5/">5</a><a class="page-number" href="/archives/2026/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/archives/2026/page/12/">12</a><a class="extend next" rel="next" href="/archives/2026/page/5/">NEXT &gt;</a>
+            <a class="extend prev" rel="prev" href="/archives/2026/page/3/">&lt; PREV</a><a class="page-number" href="/archives/2026/">1</a><a class="page-number" href="/archives/2026/page/2/">2</a><a class="page-number" href="/archives/2026/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/archives/2026/page/5/">5</a><a class="page-number" href="/archives/2026/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/archives/2026/page/13/">13</a><a class="extend next" rel="next" href="/archives/2026/page/5/">NEXT &gt;</a>
         </nav>
     
 </main>
@@ -1848,7 +1842,347 @@
         
         
         
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
     
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         
         
         
@@ -3797,7 +4131,7 @@
     
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 174
+        Total : 188
         </div>
         <!-- search  -->
         
@@ -3811,6 +4145,66 @@
             <div class="archive-year"> 2026 </div>
             <ul class="year-list">
             
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/03</span>
+            <a class="archive-post-title" href="/2026/08/02/Frontend-AI-Assisted/">Frontend-AI-Assisted-Development-Prompt-Engineering-Guide</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/03</span>
+            <a class="archive-post-title" href="/2026/08/02/Course-Summary/">Course-Summary-and-Full-Stack-Project-Practice</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/02</span>
+            <a class="archive-post-title" href="/2026/08/02/Engineering-Practice-Angular/">Engineering-Practice-Angular-Project-Initialization-and-Directory-Structure</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/02</span>
+            <a class="archive-post-title" href="/2026/08/02/Engineering-Practice-React/">Engineering-Practice-React-Project-Initialization-and-Directory-Structure</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/02</span>
+            <a class="archive-post-title" href="/2026/08/02/Engineering-Practice-Vue/">Engineering-Practice-Vue-Project-Initialization-and-Directory-Structure</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/02</span>
+            <a class="archive-post-title" href="/2026/08/01/Angular-Forms-Template/">Angular-Forms-Template-Driven-and-Reactive-Forms-Validation-Custom-Validators</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/02</span>
+            <a class="archive-post-title" href="/2026/08/01/Angular-Router/">Angular-Router-Configuration-Navigation-Guards-Lazy-Loading</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/02</span>
+            <a class="archive-post-title" href="/2026/08/01/Angular-RxJS/">Angular-RxJS-and-Reactive-Programming-Observable-Subject-Operators-Async-Pipe</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/02</span>
+            <a class="archive-post-title" href="/2026/08/01/Angular-Services/">Angular-Services-and-Dependency-Injection</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/02</span>
+            <a class="archive-post-title" href="/2026/08/01/Angular-Component/">Angular-Component-and-Template-Syntax</a>
+        </li>
+    
         
         <li class="archive-post-item">
             <span class="archive-post-date">08/02</span>
@@ -4061,6 +4455,12 @@
         <li class="archive-post-item">
             <span class="archive-post-date">07/31</span>
             <a class="archive-post-title" href="/2026/07/30/TypeScript-Integration/">TypeScript-Integration-with-React-and-Vue</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/31</span>
+            <a class="archive-post-title" href="/2026/07/30/TypeScript-Declaration/">TypeScript-Declaration-Files-and-Type-Declarations</a>
         </li>
     
         
@@ -4354,6 +4754,12 @@
         
         <li class="archive-post-item">
             <span class="archive-post-date">07/29</span>
+            <a class="archive-post-title" href="/2026/07/28/CSS-Animations/">CSS-Animations-Keyframes-and-Performance</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/29</span>
             <a class="archive-post-title" href="/2026/07/28/CSS-Transforms/">CSS-Transforms-and-Transitions</a>
         </li>
     
@@ -4361,6 +4767,12 @@
         <li class="archive-post-item">
             <span class="archive-post-date">07/29</span>
             <a class="archive-post-title" href="/2026/07/28/CSS-Backgrounds/">CSS-Backgrounds-Borders-and-Shadows</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/29</span>
+            <a class="archive-post-title" href="/2026/07/28/CSS-Fonts/">CSS-Fonts-and-Text-Styling</a>
         </li>
     
         
@@ -4391,6 +4803,12 @@
         <li class="archive-post-item">
             <span class="archive-post-date">07/29</span>
             <a class="archive-post-title" href="/2026/07/28/CSS-Box-Model/">CSS-Box-Model-and-Box-Sizing</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/29</span>
+            <a class="archive-post-title" href="/2026/07/28/CSS-Selectors-Part2-Pseudo/">CSS-Selectors-Part2-Pseudo-Elements-Specificity-Important</a>
         </li>
     
         
@@ -4624,13 +5042,13 @@
         
         <li class="archive-post-item">
             <span class="archive-post-date">10/23</span>
-            <a class="archive-post-title" href="/2022/10/22/Java-04JVM/">Java面试题04JVM</a>
+            <a class="archive-post-title" href="/2022/10/22/Java-03Threads/">Java面试题03多线程</a>
         </li>
     
         
         <li class="archive-post-item">
             <span class="archive-post-date">10/23</span>
-            <a class="archive-post-title" href="/2022/10/22/Java-03Threads/">Java面试题03多线程</a>
+            <a class="archive-post-title" href="/2022/10/22/Java-04JVM/">Java面试题04JVM</a>
         </li>
     
         
@@ -4660,19 +5078,13 @@
         
         <li class="archive-post-item">
             <span class="archive-post-date">10/23</span>
-            <a class="archive-post-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9808Spring%E6%A1%86%E6%9E%B6/">Java面试题08Spring框架</a>
-        </li>
-    
-        
-        <li class="archive-post-item">
-            <span class="archive-post-date">10/23</span>
-            <a class="archive-post-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9809SpringMVC%E6%A1%86%E6%9E%B6/">Java面试题09SpringMVC框架</a>
-        </li>
-    
-        
-        <li class="archive-post-item">
-            <span class="archive-post-date">10/23</span>
             <a class="archive-post-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9807Mybatis%E6%A1%86%E6%9E%B6/">Java面试题07Mybatis框架</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/23</span>
+            <a class="archive-post-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9808Spring%E6%A1%86%E6%9E%B6/">Java面试题08Spring框架</a>
         </li>
     
         
@@ -4685,6 +5097,12 @@
         <li class="archive-post-item">
             <span class="archive-post-date">10/23</span>
             <a class="archive-post-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9811SpringCloud/">Java面试题11SpringCloud</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/23</span>
+            <a class="archive-post-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9809SpringMVC%E6%A1%86%E6%9E%B6/">Java面试题09SpringMVC框架</a>
         </li>
     
         
@@ -4708,13 +5126,13 @@
         
         <li class="archive-post-item">
             <span class="archive-post-date">10/23</span>
-            <a class="archive-post-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9815Kafka/">Java面试题15Kafka</a>
+            <a class="archive-post-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9816JWT/">Java面试题16JWT</a>
         </li>
     
         
         <li class="archive-post-item">
             <span class="archive-post-date">10/23</span>
-            <a class="archive-post-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9816JWT/">Java面试题16JWT</a>
+            <a class="archive-post-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9815Kafka/">Java面试题15Kafka</a>
         </li>
     
         
@@ -4982,6 +5400,51 @@
                 Angular
             </span>
         
+            <span class="sidebar-tag-name" data-tags="组件">
+                <span class="iconfont-archer">&#xe606;</span>
+                组件
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="模板语法">
+                <span class="iconfont-archer">&#xe606;</span>
+                模板语法
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="数据绑定">
+                <span class="iconfont-archer">&#xe606;</span>
+                数据绑定
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="指令">
+                <span class="iconfont-archer">&#xe606;</span>
+                指令
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="管道">
+                <span class="iconfont-archer">&#xe606;</span>
+                管道
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="表单">
+                <span class="iconfont-archer">&#xe606;</span>
+                表单
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="模板驱动表单">
+                <span class="iconfont-archer">&#xe606;</span>
+                模板驱动表单
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="响应式表单">
+                <span class="iconfont-archer">&#xe606;</span>
+                响应式表单
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="验证器">
+                <span class="iconfont-archer">&#xe606;</span>
+                验证器
+            </span>
+        
             <span class="sidebar-tag-name" data-tags="Angular Material">
                 <span class="iconfont-archer">&#xe606;</span>
                 Angular Material
@@ -5012,14 +5475,79 @@
                 NgModule
             </span>
         
-            <span class="sidebar-tag-name" data-tags="组件">
-                <span class="iconfont-archer">&#xe606;</span>
-                组件
-            </span>
-        
             <span class="sidebar-tag-name" data-tags="模块化">
                 <span class="iconfont-archer">&#xe606;</span>
                 模块化
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="路由">
+                <span class="iconfont-archer">&#xe606;</span>
+                路由
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="导航守卫">
+                <span class="iconfont-archer">&#xe606;</span>
+                导航守卫
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="惰性加载">
+                <span class="iconfont-archer">&#xe606;</span>
+                惰性加载
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Router">
+                <span class="iconfont-archer">&#xe606;</span>
+                Router
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="RxJS">
+                <span class="iconfont-archer">&#xe606;</span>
+                RxJS
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Observable">
+                <span class="iconfont-archer">&#xe606;</span>
+                Observable
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Subject">
+                <span class="iconfont-archer">&#xe606;</span>
+                Subject
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="操作符">
+                <span class="iconfont-archer">&#xe606;</span>
+                操作符
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="async管道">
+                <span class="iconfont-archer">&#xe606;</span>
+                async管道
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="服务">
+                <span class="iconfont-archer">&#xe606;</span>
+                服务
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="依赖注入">
+                <span class="iconfont-archer">&#xe606;</span>
+                依赖注入
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="@Injectable">
+                <span class="iconfont-archer">&#xe606;</span>
+                @Injectable
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="providedIn">
+                <span class="iconfont-archer">&#xe606;</span>
+                providedIn
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="注入器层级">
+                <span class="iconfont-archer">&#xe606;</span>
+                注入器层级
             </span>
         
             <span class="sidebar-tag-name" data-tags="React">
@@ -5142,6 +5670,51 @@
                 主题
             </span>
         
+            <span class="sidebar-tag-name" data-tags="animation">
+                <span class="iconfont-archer">&#xe606;</span>
+                animation
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="keyframes">
+                <span class="iconfont-archer">&#xe606;</span>
+                keyframes
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="性能优化">
+                <span class="iconfont-archer">&#xe606;</span>
+                性能优化
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="will-change">
+                <span class="iconfont-archer">&#xe606;</span>
+                will-change
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="background">
+                <span class="iconfont-archer">&#xe606;</span>
+                background
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="border">
+                <span class="iconfont-archer">&#xe606;</span>
+                border
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="border-radius">
+                <span class="iconfont-archer">&#xe606;</span>
+                border-radius
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="box-shadow">
+                <span class="iconfont-archer">&#xe606;</span>
+                box-shadow
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="outline">
+                <span class="iconfont-archer">&#xe606;</span>
+                outline
+            </span>
+        
             <span class="sidebar-tag-name" data-tags="盒模型">
                 <span class="iconfont-archer">&#xe606;</span>
                 盒模型
@@ -5160,11 +5733,6 @@
             <span class="sidebar-tag-name" data-tags="padding">
                 <span class="iconfont-archer">&#xe606;</span>
                 padding
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="border">
-                <span class="iconfont-archer">&#xe606;</span>
-                border
             </span>
         
             <span class="sidebar-tag-name" data-tags="自定义属性">
@@ -5187,26 +5755,6 @@
                 主题切换
             </span>
         
-            <span class="sidebar-tag-name" data-tags="background">
-                <span class="iconfont-archer">&#xe606;</span>
-                background
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="border-radius">
-                <span class="iconfont-archer">&#xe606;</span>
-                border-radius
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="box-shadow">
-                <span class="iconfont-archer">&#xe606;</span>
-                box-shadow
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="outline">
-                <span class="iconfont-archer">&#xe606;</span>
-                outline
-            </span>
-        
             <span class="sidebar-tag-name" data-tags="display">
                 <span class="iconfont-archer">&#xe606;</span>
                 display
@@ -5225,6 +5773,16 @@
             <span class="sidebar-tag-name" data-tags="弹性布局">
                 <span class="iconfont-archer">&#xe606;</span>
                 弹性布局
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="项目属性">
+                <span class="iconfont-archer">&#xe606;</span>
+                项目属性
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="flex-grow">
+                <span class="iconfont-archer">&#xe606;</span>
+                flex-grow
             </span>
         
             <span class="sidebar-tag-name" data-tags="容器属性">
@@ -5252,14 +5810,24 @@
                 BFC
             </span>
         
-            <span class="sidebar-tag-name" data-tags="项目属性">
+            <span class="sidebar-tag-name" data-tags="字体">
                 <span class="iconfont-archer">&#xe606;</span>
-                项目属性
+                字体
             </span>
         
-            <span class="sidebar-tag-name" data-tags="flex-grow">
+            <span class="sidebar-tag-name" data-tags="文本样式">
                 <span class="iconfont-archer">&#xe606;</span>
-                flex-grow
+                文本样式
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="font-face">
+                <span class="iconfont-archer">&#xe606;</span>
+                font-face
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="line-height">
+                <span class="iconfont-archer">&#xe606;</span>
+                line-height
             </span>
         
             <span class="sidebar-tag-name" data-tags="Grid">
@@ -5317,24 +5885,39 @@
                 层叠上下文
             </span>
         
-            <span class="sidebar-tag-name" data-tags="响应式设计">
+            <span class="sidebar-tag-name" data-tags="选择器">
                 <span class="iconfont-archer">&#xe606;</span>
-                响应式设计
+                选择器
             </span>
         
-            <span class="sidebar-tag-name" data-tags="媒体查询">
+            <span class="sidebar-tag-name" data-tags="属性选择器">
                 <span class="iconfont-archer">&#xe606;</span>
-                媒体查询
+                属性选择器
             </span>
         
-            <span class="sidebar-tag-name" data-tags="移动优先">
+            <span class="sidebar-tag-name" data-tags="伪类">
                 <span class="iconfont-archer">&#xe606;</span>
-                移动优先
+                伪类
             </span>
         
-            <span class="sidebar-tag-name" data-tags="容器查询">
+            <span class="sidebar-tag-name" data-tags="权重">
                 <span class="iconfont-archer">&#xe606;</span>
-                容器查询
+                权重
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="伪元素">
+                <span class="iconfont-archer">&#xe606;</span>
+                伪元素
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Specificity">
+                <span class="iconfont-archer">&#xe606;</span>
+                Specificity
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="important">
+                <span class="iconfont-archer">&#xe606;</span>
+                important
             </span>
         
             <span class="sidebar-tag-name" data-tags="transform">
@@ -5357,24 +5940,44 @@
                 贝塞尔曲线
             </span>
         
-            <span class="sidebar-tag-name" data-tags="选择器">
+            <span class="sidebar-tag-name" data-tags="响应式设计">
                 <span class="iconfont-archer">&#xe606;</span>
-                选择器
+                响应式设计
             </span>
         
-            <span class="sidebar-tag-name" data-tags="属性选择器">
+            <span class="sidebar-tag-name" data-tags="媒体查询">
                 <span class="iconfont-archer">&#xe606;</span>
-                属性选择器
+                媒体查询
             </span>
         
-            <span class="sidebar-tag-name" data-tags="伪类">
+            <span class="sidebar-tag-name" data-tags="移动优先">
                 <span class="iconfont-archer">&#xe606;</span>
-                伪类
+                移动优先
             </span>
         
-            <span class="sidebar-tag-name" data-tags="权重">
+            <span class="sidebar-tag-name" data-tags="容器查询">
                 <span class="iconfont-archer">&#xe606;</span>
-                权重
+                容器查询
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="全栈实战">
+                <span class="iconfont-archer">&#xe606;</span>
+                全栈实战
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="学习路线">
+                <span class="iconfont-archer">&#xe606;</span>
+                学习路线
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="项目架构">
+                <span class="iconfont-archer">&#xe606;</span>
+                项目架构
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Vue">
+                <span class="iconfont-archer">&#xe606;</span>
+                Vue
             </span>
         
             <span class="sidebar-tag-name" data-tags="ESLint">
@@ -5447,11 +6050,6 @@
                 表格
             </span>
         
-            <span class="sidebar-tag-name" data-tags="表单">
-                <span class="iconfont-archer">&#xe606;</span>
-                表单
-            </span>
-        
             <span class="sidebar-tag-name" data-tags="弹窗">
                 <span class="iconfont-archer">&#xe606;</span>
                 弹窗
@@ -5465,6 +6063,86 @@
             <span class="sidebar-tag-name" data-tags="上传">
                 <span class="iconfont-archer">&#xe606;</span>
                 上传
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="按需引入">
+                <span class="iconfont-archer">&#xe606;</span>
+                按需引入
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="项目初始化">
+                <span class="iconfont-archer">&#xe606;</span>
+                项目初始化
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="目录结构">
+                <span class="iconfont-archer">&#xe606;</span>
+                目录结构
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Angular CLI">
+                <span class="iconfont-archer">&#xe606;</span>
+                Angular CLI
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="TypeScript">
+                <span class="iconfont-archer">&#xe606;</span>
+                TypeScript
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Vite">
+                <span class="iconfont-archer">&#xe606;</span>
+                Vite
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="AI辅助开发">
+                <span class="iconfont-archer">&#xe606;</span>
+                AI辅助开发
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Prompt工程">
+                <span class="iconfont-archer">&#xe606;</span>
+                Prompt工程
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="前端术语">
+                <span class="iconfont-archer">&#xe606;</span>
+                前端术语
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="缺陷描述">
+                <span class="iconfont-archer">&#xe606;</span>
+                缺陷描述
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="代码生成">
+                <span class="iconfont-archer">&#xe606;</span>
+                代码生成
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="代码修复">
+                <span class="iconfont-archer">&#xe606;</span>
+                代码修复
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="CommonJS">
+                <span class="iconfont-archer">&#xe606;</span>
+                CommonJS
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="ESM">
+                <span class="iconfont-archer">&#xe606;</span>
+                ESM
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="require">
+                <span class="iconfont-archer">&#xe606;</span>
+                require
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="import">
+                <span class="iconfont-archer">&#xe606;</span>
+                import
             </span>
         
             <span class="sidebar-tag-name" data-tags="测试">
@@ -5490,31 +6168,6 @@
             <span class="sidebar-tag-name" data-tags="E2E">
                 <span class="iconfont-archer">&#xe606;</span>
                 E2E
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="CommonJS">
-                <span class="iconfont-archer">&#xe606;</span>
-                CommonJS
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="ESM">
-                <span class="iconfont-archer">&#xe606;</span>
-                ESM
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="require">
-                <span class="iconfont-archer">&#xe606;</span>
-                require
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="import">
-                <span class="iconfont-archer">&#xe606;</span>
-                import
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="按需引入">
-                <span class="iconfont-archer">&#xe606;</span>
-                按需引入
             </span>
         
             <span class="sidebar-tag-name" data-tags="Git Hooks">
@@ -5577,6 +6230,16 @@
                 标准模式
             </span>
         
+            <span class="sidebar-tag-name" data-tags="input">
+                <span class="iconfont-archer">&#xe606;</span>
+                input
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="label">
+                <span class="iconfont-archer">&#xe606;</span>
+                label
+            </span>
+        
             <span class="sidebar-tag-name" data-tags="select">
                 <span class="iconfont-archer">&#xe606;</span>
                 select
@@ -5612,16 +6275,6 @@
                 SEO
             </span>
         
-            <span class="sidebar-tag-name" data-tags="input">
-                <span class="iconfont-archer">&#xe606;</span>
-                input
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="label">
-                <span class="iconfont-archer">&#xe606;</span>
-                label
-            </span>
-        
             <span class="sidebar-tag-name" data-tags="原理">
                 <span class="iconfont-archer">&#xe606;</span>
                 原理
@@ -5640,21 +6293,6 @@
             <span class="sidebar-tag-name" data-tags="Open Graph">
                 <span class="iconfont-archer">&#xe606;</span>
                 Open Graph
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="超链接">
-                <span class="iconfont-archer">&#xe606;</span>
-                超链接
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="导航">
-                <span class="iconfont-archer">&#xe606;</span>
-                导航
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="rel属性">
-                <span class="iconfont-archer">&#xe606;</span>
-                rel属性
             </span>
         
             <span class="sidebar-tag-name" data-tags="图像">
@@ -5677,14 +6315,29 @@
                 响应式图片
             </span>
         
-            <span class="sidebar-tag-name" data-tags="JVM">
-                <span class="iconfont-archer">&#xe606;</span>
-                JVM
-            </span>
-        
             <span class="sidebar-tag-name" data-tags="多线程">
                 <span class="iconfont-archer">&#xe606;</span>
                 多线程
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="超链接">
+                <span class="iconfont-archer">&#xe606;</span>
+                超链接
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="导航">
+                <span class="iconfont-archer">&#xe606;</span>
+                导航
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="rel属性">
+                <span class="iconfont-archer">&#xe606;</span>
+                rel属性
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="JVM">
+                <span class="iconfont-archer">&#xe606;</span>
+                JVM
             </span>
         
             <span class="sidebar-tag-name" data-tags="42">
@@ -5782,26 +6435,6 @@
                 类型转换
             </span>
         
-            <span class="sidebar-tag-name" data-tags="undefined">
-                <span class="iconfont-archer">&#xe606;</span>
-                undefined
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="symbol">
-                <span class="iconfont-archer">&#xe606;</span>
-                symbol
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="bigint">
-                <span class="iconfont-archer">&#xe606;</span>
-                bigint
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="object">
-                <span class="iconfont-archer">&#xe606;</span>
-                object
-            </span>
-        
             <span class="sidebar-tag-name" data-tags="Date">
                 <span class="iconfont-archer">&#xe606;</span>
                 Date
@@ -5820,6 +6453,26 @@
             <span class="sidebar-tag-name" data-tags="Temporal">
                 <span class="iconfont-archer">&#xe606;</span>
                 Temporal
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="undefined">
+                <span class="iconfont-archer">&#xe606;</span>
+                undefined
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="symbol">
+                <span class="iconfont-archer">&#xe606;</span>
+                symbol
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="bigint">
+                <span class="iconfont-archer">&#xe606;</span>
+                bigint
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="object">
+                <span class="iconfont-archer">&#xe606;</span>
+                object
             </span>
         
             <span class="sidebar-tag-name" data-tags="错误处理">
@@ -5862,6 +6515,26 @@
                 微任务
             </span>
         
+            <span class="sidebar-tag-name" data-tags="函数">
+                <span class="iconfont-archer">&#xe606;</span>
+                函数
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="箭头函数">
+                <span class="iconfont-archer">&#xe606;</span>
+                箭头函数
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="参数">
+                <span class="iconfont-archer">&#xe606;</span>
+                参数
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="默认值">
+                <span class="iconfont-archer">&#xe606;</span>
+                默认值
+            </span>
+        
             <span class="sidebar-tag-name" data-tags="迭代器">
                 <span class="iconfont-archer">&#xe606;</span>
                 迭代器
@@ -5882,24 +6555,24 @@
                 yield
             </span>
         
-            <span class="sidebar-tag-name" data-tags="函数">
+            <span class="sidebar-tag-name" data-tags="JSON">
                 <span class="iconfont-archer">&#xe606;</span>
-                函数
+                JSON
             </span>
         
-            <span class="sidebar-tag-name" data-tags="箭头函数">
+            <span class="sidebar-tag-name" data-tags="localStorage">
                 <span class="iconfont-archer">&#xe606;</span>
-                箭头函数
+                localStorage
             </span>
         
-            <span class="sidebar-tag-name" data-tags="参数">
+            <span class="sidebar-tag-name" data-tags="sessionStorage">
                 <span class="iconfont-archer">&#xe606;</span>
-                参数
+                sessionStorage
             </span>
         
-            <span class="sidebar-tag-name" data-tags="默认值">
+            <span class="sidebar-tag-name" data-tags="数据存储">
                 <span class="iconfont-archer">&#xe606;</span>
-                默认值
+                数据存储
             </span>
         
             <span class="sidebar-tag-name" data-tags="Map">
@@ -5922,16 +6595,6 @@
                 WeakSet
             </span>
         
-            <span class="sidebar-tag-name" data-tags="ES Modules">
-                <span class="iconfont-archer">&#xe606;</span>
-                ES Modules
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="export">
-                <span class="iconfont-archer">&#xe606;</span>
-                export
-            </span>
-        
             <span class="sidebar-tag-name" data-tags="原型链">
                 <span class="iconfont-archer">&#xe606;</span>
                 原型链
@@ -5952,24 +6615,49 @@
                 class
             </span>
         
-            <span class="sidebar-tag-name" data-tags="JSON">
+            <span class="sidebar-tag-name" data-tags="ES Modules">
                 <span class="iconfont-archer">&#xe606;</span>
-                JSON
+                ES Modules
             </span>
         
-            <span class="sidebar-tag-name" data-tags="localStorage">
+            <span class="sidebar-tag-name" data-tags="export">
                 <span class="iconfont-archer">&#xe606;</span>
-                localStorage
+                export
             </span>
         
-            <span class="sidebar-tag-name" data-tags="sessionStorage">
+            <span class="sidebar-tag-name" data-tags="运算符">
                 <span class="iconfont-archer">&#xe606;</span>
-                sessionStorage
+                运算符
             </span>
         
-            <span class="sidebar-tag-name" data-tags="数据存储">
+            <span class="sidebar-tag-name" data-tags="表达式">
                 <span class="iconfont-archer">&#xe606;</span>
-                数据存储
+                表达式
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="优先级">
+                <span class="iconfont-archer">&#xe606;</span>
+                优先级
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="结合性">
+                <span class="iconfont-archer">&#xe606;</span>
+                结合性
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="对象">
+                <span class="iconfont-archer">&#xe606;</span>
+                对象
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="属性描述符">
+                <span class="iconfont-archer">&#xe606;</span>
+                属性描述符
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Object方法">
+                <span class="iconfont-archer">&#xe606;</span>
+                Object方法
             </span>
         
             <span class="sidebar-tag-name" data-tags="Proxy">
@@ -6007,26 +6695,6 @@
                 内存管理
             </span>
         
-            <span class="sidebar-tag-name" data-tags="运算符">
-                <span class="iconfont-archer">&#xe606;</span>
-                运算符
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="表达式">
-                <span class="iconfont-archer">&#xe606;</span>
-                表达式
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="优先级">
-                <span class="iconfont-archer">&#xe606;</span>
-                优先级
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="结合性">
-                <span class="iconfont-archer">&#xe606;</span>
-                结合性
-            </span>
-        
             <span class="sidebar-tag-name" data-tags="严格模式">
                 <span class="iconfont-archer">&#xe606;</span>
                 严格模式
@@ -6040,21 +6708,6 @@
             <span class="sidebar-tag-name" data-tags="模块">
                 <span class="iconfont-archer">&#xe606;</span>
                 模块
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="对象">
-                <span class="iconfont-archer">&#xe606;</span>
-                对象
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="属性描述符">
-                <span class="iconfont-archer">&#xe606;</span>
-                属性描述符
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="Object方法">
-                <span class="iconfont-archer">&#xe606;</span>
-                Object方法
             </span>
         
             <span class="sidebar-tag-name" data-tags="字符串">
@@ -6075,11 +6728,6 @@
             <span class="sidebar-tag-name" data-tags="RegExp">
                 <span class="iconfont-archer">&#xe606;</span>
                 RegExp
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="数组基础">
-                <span class="iconfont-archer">&#xe606;</span>
-                数组基础
             </span>
         
             <span class="sidebar-tag-name" data-tags="变量">
@@ -6112,6 +6760,11 @@
                 暂时性死区
             </span>
         
+            <span class="sidebar-tag-name" data-tags="数组基础">
+                <span class="iconfont-archer">&#xe606;</span>
+                数组基础
+            </span>
+        
             <span class="sidebar-tag-name" data-tags="数据结构">
                 <span class="iconfont-archer">&#xe606;</span>
                 数据结构
@@ -6132,19 +6785,14 @@
                 MySql
             </span>
         
-            <span class="sidebar-tag-name" data-tags="Spring">
-                <span class="iconfont-archer">&#xe606;</span>
-                Spring
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="SpringMVC">
-                <span class="iconfont-archer">&#xe606;</span>
-                SpringMVC
-            </span>
-        
             <span class="sidebar-tag-name" data-tags="Mybatis">
                 <span class="iconfont-archer">&#xe606;</span>
                 Mybatis
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Spring">
+                <span class="iconfont-archer">&#xe606;</span>
+                Spring
             </span>
         
             <span class="sidebar-tag-name" data-tags="SpringBoot">
@@ -6155,6 +6803,11 @@
             <span class="sidebar-tag-name" data-tags="SpringCloud">
                 <span class="iconfont-archer">&#xe606;</span>
                 SpringCloud
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="SpringMVC">
+                <span class="iconfont-archer">&#xe606;</span>
+                SpringMVC
             </span>
         
             <span class="sidebar-tag-name" data-tags="Dubbo">
@@ -6172,11 +6825,6 @@
                 MongoDB
             </span>
         
-            <span class="sidebar-tag-name" data-tags="Kafka">
-                <span class="iconfont-archer">&#xe606;</span>
-                Kafka
-            </span>
-        
             <span class="sidebar-tag-name" data-tags="JWT">
                 <span class="iconfont-archer">&#xe606;</span>
                 JWT
@@ -6187,6 +6835,11 @@
                 token
             </span>
         
+            <span class="sidebar-tag-name" data-tags="Kafka">
+                <span class="iconfont-archer">&#xe606;</span>
+                Kafka
+            </span>
+        
             <span class="sidebar-tag-name" data-tags="列表">
                 <span class="iconfont-archer">&#xe606;</span>
                 列表
@@ -6195,6 +6848,11 @@
             <span class="sidebar-tag-name" data-tags="Markdown">
                 <span class="iconfont-archer">&#xe606;</span>
                 Markdown
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="掘金">
+                <span class="iconfont-archer">&#xe606;</span>
+                掘金
             </span>
         
             <span class="sidebar-tag-name" data-tags="Material UI">
@@ -6217,9 +6875,9 @@
                 sx prop
             </span>
         
-            <span class="sidebar-tag-name" data-tags="掘金">
+            <span class="sidebar-tag-name" data-tags="MySQL">
                 <span class="iconfont-archer">&#xe606;</span>
-                掘金
+                MySQL
             </span>
         
             <span class="sidebar-tag-name" data-tags="OpenClaw">
@@ -6245,11 +6903,6 @@
             <span class="sidebar-tag-name" data-tags="聊天机器人">
                 <span class="iconfont-archer">&#xe606;</span>
                 聊天机器人
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="MySQL">
-                <span class="iconfont-archer">&#xe606;</span>
-                MySQL
             </span>
         
             <span class="sidebar-tag-name" data-tags="虚拟化">
@@ -6337,31 +6990,6 @@
                 Actions
             </span>
         
-            <span class="sidebar-tag-name" data-tags="RabbitMQ">
-                <span class="iconfont-archer">&#xe606;</span>
-                RabbitMQ
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="消息队列">
-                <span class="iconfont-archer">&#xe606;</span>
-                消息队列
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="插件">
-                <span class="iconfont-archer">&#xe606;</span>
-                插件
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="持久化">
-                <span class="iconfont-archer">&#xe606;</span>
-                持久化
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="TypeScript">
-                <span class="iconfont-archer">&#xe606;</span>
-                TypeScript
-            </span>
-        
             <span class="sidebar-tag-name" data-tags="Context">
                 <span class="iconfont-archer">&#xe606;</span>
                 Context
@@ -6380,6 +7008,16 @@
             <span class="sidebar-tag-name" data-tags="性能">
                 <span class="iconfont-archer">&#xe606;</span>
                 性能
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="RabbitMQ">
+                <span class="iconfont-archer">&#xe606;</span>
+                RabbitMQ
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="消息队列">
+                <span class="iconfont-archer">&#xe606;</span>
+                消息队列
             </span>
         
             <span class="sidebar-tag-name" data-tags="自定义Hook">
@@ -6442,6 +7080,16 @@
                 事件传参
             </span>
         
+            <span class="sidebar-tag-name" data-tags="插件">
+                <span class="iconfont-archer">&#xe606;</span>
+                插件
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="持久化">
+                <span class="iconfont-archer">&#xe606;</span>
+                持久化
+            </span>
+        
             <span class="sidebar-tag-name" data-tags="函数组件">
                 <span class="iconfont-archer">&#xe606;</span>
                 函数组件
@@ -6460,11 +7108,6 @@
             <span class="sidebar-tag-name" data-tags="组合">
                 <span class="iconfont-archer">&#xe606;</span>
                 组合
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="性能优化">
-                <span class="iconfont-archer">&#xe606;</span>
-                性能优化
             </span>
         
             <span class="sidebar-tag-name" data-tags="memo">
@@ -6507,6 +7150,16 @@
                 React Router
             </span>
         
+            <span class="sidebar-tag-name" data-tags="BrowserRouter">
+                <span class="iconfont-archer">&#xe606;</span>
+                BrowserRouter
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Routes">
+                <span class="iconfont-archer">&#xe606;</span>
+                Routes
+            </span>
+        
             <span class="sidebar-tag-name" data-tags="嵌套路由">
                 <span class="iconfont-archer">&#xe606;</span>
                 嵌套路由
@@ -6525,21 +7178,6 @@
             <span class="sidebar-tag-name" data-tags="路由守卫">
                 <span class="iconfont-archer">&#xe606;</span>
                 路由守卫
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="路由">
-                <span class="iconfont-archer">&#xe606;</span>
-                路由
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="BrowserRouter">
-                <span class="iconfont-archer">&#xe606;</span>
-                BrowserRouter
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="Routes">
-                <span class="iconfont-archer">&#xe606;</span>
-                Routes
             </span>
         
             <span class="sidebar-tag-name" data-tags="useState">
@@ -6577,6 +7215,16 @@
                 闭包陷阱
             </span>
         
+            <span class="sidebar-tag-name" data-tags="useReducer">
+                <span class="iconfont-archer">&#xe606;</span>
+                useReducer
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Reducer">
+                <span class="iconfont-archer">&#xe606;</span>
+                Reducer
+            </span>
+        
             <span class="sidebar-tag-name" data-tags="useRef">
                 <span class="iconfont-archer">&#xe606;</span>
                 useRef
@@ -6595,16 +7243,6 @@
             <span class="sidebar-tag-name" data-tags="DOM操作">
                 <span class="iconfont-archer">&#xe606;</span>
                 DOM操作
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="useReducer">
-                <span class="iconfont-archer">&#xe606;</span>
-                useReducer
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="Reducer">
-                <span class="iconfont-archer">&#xe606;</span>
-                Reducer
             </span>
         
             <span class="sidebar-tag-name" data-tags="Redis">
@@ -6675,11 +7313,6 @@
             <span class="sidebar-tag-name" data-tags="组件化">
                 <span class="iconfont-archer">&#xe606;</span>
                 组件化
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="Vue">
-                <span class="iconfont-archer">&#xe606;</span>
-                Vue
             </span>
         
             <span class="sidebar-tag-name" data-tags="样式复用">
@@ -6812,6 +7445,26 @@
                 implements
             </span>
         
+            <span class="sidebar-tag-name" data-tags="声明文件">
+                <span class="iconfont-archer">&#xe606;</span>
+                声明文件
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="ts">
+                <span class="iconfont-archer">&#xe606;</span>
+                ts
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="types">
+                <span class="iconfont-archer">&#xe606;</span>
+                types
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="全局声明">
+                <span class="iconfont-archer">&#xe606;</span>
+                全局声明
+            </span>
+        
             <span class="sidebar-tag-name" data-tags="tsconfig">
                 <span class="iconfont-archer">&#xe606;</span>
                 tsconfig
@@ -6932,11 +7585,6 @@
                 字面量类型
             </span>
         
-            <span class="sidebar-tag-name" data-tags="Vite">
-                <span class="iconfont-archer">&#xe606;</span>
-                Vite
-            </span>
-        
             <span class="sidebar-tag-name" data-tags="构建工具">
                 <span class="iconfont-archer">&#xe606;</span>
                 构建工具
@@ -7037,6 +7685,16 @@
                 watchEffect
             </span>
         
+            <span class="sidebar-tag-name" data-tags="vim">
+                <span class="iconfont-archer">&#xe606;</span>
+                vim
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="编辑器之神">
+                <span class="iconfont-archer">&#xe606;</span>
+                编辑器之神
+            </span>
+        
             <span class="sidebar-tag-name" data-tags="模板引用">
                 <span class="iconfont-archer">&#xe606;</span>
                 模板引用
@@ -7082,6 +7740,26 @@
                 ref
             </span>
         
+            <span class="sidebar-tag-name" data-tags="选项式 API">
+                <span class="iconfont-archer">&#xe606;</span>
+                选项式 API
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="组合式 API">
+                <span class="iconfont-archer">&#xe606;</span>
+                组合式 API
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="mixins">
+                <span class="iconfont-archer">&#xe606;</span>
+                mixins
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="迁移">
+                <span class="iconfont-archer">&#xe606;</span>
+                迁移
+            </span>
+        
             <span class="sidebar-tag-name" data-tags="Vue Router 4">
                 <span class="iconfont-archer">&#xe606;</span>
                 Vue Router 4
@@ -7090,11 +7768,6 @@
             <span class="sidebar-tag-name" data-tags="动态路由">
                 <span class="iconfont-archer">&#xe606;</span>
                 动态路由
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="导航守卫">
-                <span class="iconfont-archer">&#xe606;</span>
-                导航守卫
             </span>
         
             <span class="sidebar-tag-name" data-tags="路由元信息">
@@ -7115,26 +7788,6 @@
             <span class="sidebar-tag-name" data-tags="类型安全">
                 <span class="iconfont-archer">&#xe606;</span>
                 类型安全
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="组合式 API">
-                <span class="iconfont-archer">&#xe606;</span>
-                组合式 API
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="选项式 API">
-                <span class="iconfont-archer">&#xe606;</span>
-                选项式 API
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="mixins">
-                <span class="iconfont-archer">&#xe606;</span>
-                mixins
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="迁移">
-                <span class="iconfont-archer">&#xe606;</span>
-                迁移
             </span>
         
             <span class="sidebar-tag-name" data-tags="Webpack">
@@ -7207,14 +7860,14 @@
                 中间件
             </span>
         
-            <span class="sidebar-tag-name" data-tags="保罗·格雷厄姆（Paul Graham）">
-                <span class="iconfont-archer">&#xe606;</span>
-                保罗·格雷厄姆（Paul Graham）
-            </span>
-        
             <span class="sidebar-tag-name" data-tags="helloworld">
                 <span class="iconfont-archer">&#xe606;</span>
                 helloworld
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="保罗·格雷厄姆（Paul Graham）">
+                <span class="iconfont-archer">&#xe606;</span>
+                保罗·格雷厄姆（Paul Graham）
             </span>
         
             <span class="sidebar-tag-name" data-tags="iframe">
@@ -7262,16 +7915,6 @@
                 计算机的世界
             </span>
         
-            <span class="sidebar-tag-name" data-tags="vim">
-                <span class="iconfont-archer">&#xe606;</span>
-                vim
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="编辑器之神">
-                <span class="iconfont-archer">&#xe606;</span>
-                编辑器之神
-            </span>
-        
     </div>
     <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
     <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
@@ -7303,6 +7946,11 @@
             前端工程化
         </span>
     
+        <span class="sidebar-category-name" data-categories="课程总结">
+            <span class="iconfont-archer">&#xe60a;</span>
+            课程总结
+        </span>
+    
         <span class="sidebar-category-name" data-categories="个人生活">
             <span class="iconfont-archer">&#xe60a;</span>
             个人生活
@@ -7311,6 +7959,11 @@
         <span class="sidebar-category-name" data-categories="编程中间件">
             <span class="iconfont-archer">&#xe60a;</span>
             编程中间件
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="前端工程化实践">
+            <span class="iconfont-archer">&#xe60a;</span>
+            前端工程化实践
         </span>
     
         <span class="sidebar-category-name" data-categories="编程">

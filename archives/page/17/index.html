@@ -429,34 +429,27 @@
             
         
         <article class="index-post">
-            <a class="abstract-title" href="/2020/08/15/Java-Thread%E2%91%A0/">
+            <a class="abstract-title" href="/2022/09/08/RabbitMQ/">
                 
-                <span class="abstract-title-text">Java多线程-并发</span>
+                <span class="abstract-title-text">RabbitMQ</span>
             </a>
             <div class="abstract-content">
-                多线程-并发①1.Java中的锁
-乐观锁&#x2F;悲观锁
-共享锁&#x2F;独享锁
-公平锁&#x2F;非公平锁
-互斥锁&#x2F;读写锁
-可重入锁
-自旋锁
-分段锁
-偏向锁&#x2F;轻量级锁&#x2F;重量级锁
+                RabbitMQ微服务通信微服务间通讯有同步和异步两种方式：
 
-2. Java线程的状态|生命周期
-Java的线程状态被定义在公共枚举类java.lang.Thread.state中。一种有六种状态
+同步通讯：就像打电话，需要实时响应。-Feign调用
+异步通讯：就像发邮件，不需要马上回复 -消息队列两种方式各有优劣，打电话可以立即得到响应，但是你却不能跟多个人同时通话。发送邮件可以同时与多个人收发邮件，但是往往响应会有延迟。
 
-
-新建（NEW）：表示线程新建出来还没有被启动的状态，比如：Thread t &#x3D; new MyThread();
-就绪&#x2F;运行（RUNNABLE）：该状态包含了经典线程模型的两种状态：就绪(Ready)、运行(Runnin...
+事件模式
+在事件模式中，支付服务是事件发布者（publisher），在支付完成后只需要发布一个支付成功的事件（event），事件中带上订单id。
+订单服务和物流服务是事件订阅者（Consumer），订阅支付成功的事件，监听到事件后完成自己业务即可。
+为了解除事件发布者与订阅者之间的耦合，两者并不...
             </div>
             <!-- read more -->
             
             <div class="abstract-post-meta">
                 <!-- date -->
                 <div class="abstract-date" title="Last updated: 2026/07/28">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/08/15</span>
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2022/09/08</span>
                 </div>
                 <!-- tags -->
                 
@@ -464,12 +457,12 @@ Java的线程状态被定义在公共枚举类java.lang.Thread.state中。一种
     
     
         <a class="post-tag" href="javascript:void(0);" data-tags="Java">Java</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="多线程">多线程</a>
     
         <a class="post-tag" href="javascript:void(0);" data-tags="并发">并发</a>
     
-        <a class="post-tag" href="javascript:void(0);" data-tags="面试题">面试题</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="RabbitMQ">RabbitMQ</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="消息队列">消息队列</a>
     
 </div>
 
@@ -485,119 +478,27 @@ Java的线程状态被定义在公共枚举类java.lang.Thread.state中。一种
             
         
         <article class="index-post">
-            <a class="abstract-title" href="/2019/08/14/nginx%E7%AE%80%E4%BB%8B%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%BF%9B%E9%98%B6/">
+            <a class="abstract-title" href="/2022/09/08/ELK%E6%90%9C%E7%B4%A2/">
                 
-                <span class="abstract-title-text">nginx简介及使用进阶</span>
+                <span class="abstract-title-text">ELK搜索</span>
             </a>
             <div class="abstract-content">
-                1. nginx介绍
-Nginx是一款轻量级的Web服务器&#x2F;反向代理服务器及电子邮件（IMAP&#x2F;POP3）代理服务器。其特点是占有内存少，并发能力强，事实上nginx的并发能力在同类型的网页服务器中表现较好，中国大陆使用nginx的网站有：百度、京东、新浪、网易、腾讯、淘宝等。
-Nginx是由伊戈尔·赛索耶夫为俄罗斯访问量第二的Rambler.ru站点（俄文：Рамблер）开发的，第一个公开版本0.1.0发布于2004年10月4日。nginx官网
+                ELK技术栈
+elasticsearch结合kibana、Logstash、Beats，也就是elastic stack（ELK）。被广泛应用在日志数据分析、实时监控等领域
+elasticsearch是elastic stack的核心，负责存储、搜索、分析数据-elasticsearch底层是基于lucene来实现的
+以elasticsearch为核心的技术栈，包括beats、Logstash、kibana、elasticsearch
 
-2. 安装一般推荐安装在linux服务器，其他操作系统可查看官网网站
-2.1 联网使用包管理器安装方式最简单即使用包管...
+正向索引和倒排索引正向索引
+用户搜索数据，条件是title符合&quot;%手机%&quot;
+逐行获取数据，比如id为1的数据
+判断数据中的title...
             </div>
             <!-- read more -->
             
             <div class="abstract-post-meta">
                 <!-- date -->
                 <div class="abstract-date" title="Last updated: 2026/07/28">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/08/14</span>
-                </div>
-                <!-- tags -->
-                
-                    <div class= abstract-tags >
-    
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="nginx">nginx</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="http服务器">http服务器</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="高并发">高并发</a>
-    
-</div>
-
-                
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
-    
-        
-        
-        
-        
-            
-        
-        <article class="index-post">
-            <a class="abstract-title" href="/2019/05/04/PVE%E8%99%9A%E6%8B%9F%E5%8C%96/">
-                
-                <span class="abstract-title-text">PVE虚拟化</span>
-            </a>
-            <div class="abstract-content">
-                Proxmox VEProxmox VE（PVE），开源虚拟化解决方案，如果觉得VMware的ESXI过于庞大复杂，可以尝试以下，普通PC就可安装，支持分布式。据说基于KVM，操作系统是万能的Debian。
-官网：https://www.proxmox.com/en/
-中文社区：https://www.proxmox.wiki/
-很多资料都可以在社区找到，安装也及其简单快捷，只需下载镜像，刻录到U盘，在需要安装的主机引导U盘启动，安装镜像的安装指导，一步一步安装即可，安装成功后，在界面会有管理网址弹出，直接web访问管理网址即可。目前的版本是6.4，开源产品，迭代还是很快的，据说是采用的...
-            </div>
-            <!-- read more -->
-            
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2026/07/28">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/05/04</span>
-                </div>
-                <!-- tags -->
-                
-                    <div class= abstract-tags >
-    
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="虚拟化">虚拟化</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="Proxmox VE">Proxmox VE</a>
-    
-</div>
-
-                
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
-    
-        
-        
-        
-        
-            
-        
-        <article class="index-post">
-            <a class="abstract-title" href="/2018/08/15/Java%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
-                
-                <span class="abstract-title-text">Java算法基础-数据结构-设计模式</span>
-            </a>
-            <div class="abstract-content">
-                Java算法基础-数据结构-设计模式1. 动态代理有几种实现？
-java的动态代理技术的实现主要有两种方式：
-
-
-JDK原生动态代理
-CGLIB动态代理
-
-
-JDK原生动态代理是Java原生支持的，不需要任何外部依赖，但是它只能基于接口进行代理（需要代理的对象必须实现于某个接口）
-CGLIB通过继承的方式进行代理（让需要代理的类成为Enhancer的父类），无论目标对象有没有实现接口都可以代理，但是无法处理final的情况。
-
-2. 堆和栈的区别?
-栈内存
-
-
-栈内存首先是一片内存区域，存储的都是局部变量
-凡是定义在方法中的都是局部变量（方法外的是全局变量），for循环内部定义的也是局部...
-            </div>
-            <!-- read more -->
-            
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2026/07/28">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/08/15</span>
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2022/09/08</span>
                 </div>
                 <!-- tags -->
                 
@@ -606,9 +507,15 @@ CGLIB通过继承的方式进行代理（让需要代理的类成为Enhancer的�
     
         <a class="post-tag" href="javascript:void(0);" data-tags="Java">Java</a>
     
-        <a class="post-tag" href="javascript:void(0);" data-tags="面试题">面试题</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="ELK">ELK</a>
     
-        <a class="post-tag" href="javascript:void(0);" data-tags="数据结构">数据结构</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="分布式搜索引擎">分布式搜索引擎</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="elasticsearch">elasticsearch</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="Logstash">Logstash</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="kibana">kibana</a>
     
 </div>
 
@@ -624,27 +531,25 @@ CGLIB通过继承的方式进行代理（让需要代理的类成为Enhancer的�
             
         
         <article class="index-post">
-            <a class="abstract-title" href="/2018/08/15/Java%E6%95%B0%E7%BB%84%E5%9F%BA%E7%A1%80/">
+            <a class="abstract-title" href="/2022/08/30/Ribbin%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E6%BA%90%E7%A0%81%E5%8E%9F%E7%90%86%E4%B8%8E%E6%BA%90%E7%A0%81%E8%B0%83%E8%AF%95/">
                 
-                <span class="abstract-title-text">Java数组基础</span>
+                <span class="abstract-title-text">Ribbin负载均衡源码原理与源码调试</span>
             </a>
             <div class="abstract-content">
-                数组基础1.ArrayList和LinkedList区别?
-都是List接口的实现类
-ArrayList基于数组，LinkedList基于链表
-ArrayList3.1 查询快，增删慢3.2 往数组尾部添加元素的效率高，也就是调用add(obj)，但是还是比LinkedList慢。
-LinkedList4.1 数据添加删除效率高，只需要改变指针指向即可4.2 查询数据的平均效率低，需要对链表进行遍历
-
-2.ArrayList扩容机制怎样？
-ArrayList每次扩容是原来的1.5倍。
-数组进行扩容时，会将老数组中的元素重新拷贝一份到新的数组中，每次数组容量的增长大约是其原容量的1.5倍。...
+                Ribbon负载均衡流程
+发起请求http:&#x2F;&#x2F;服务名xxx&#x2F;服务接口名xxx&#x2F;参数
+被LoadBalancerInterceptor负载均衡拦截器拦截
+LoadBalancerInterceptor调用RibbonLoadBanlancerClient真实执行
+RibbonLoadBanlancerClient获取url中的服务参数与服务接口名
+RibbonLoadBanlancerClient调用DynamicServerListLoadBalancer，从eurekaserver中得到服务列表
+DynamicServerListLoadBal...
             </div>
             <!-- read more -->
             
             <div class="abstract-post-meta">
                 <!-- date -->
                 <div class="abstract-date" title="Last updated: 2026/07/28">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/08/15</span>
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2022/08/30</span>
                 </div>
                 <!-- tags -->
                 
@@ -653,9 +558,11 @@ ArrayList每次扩容是原来的1.5倍。
     
         <a class="post-tag" href="javascript:void(0);" data-tags="Java">Java</a>
     
-        <a class="post-tag" href="javascript:void(0);" data-tags="面试题">面试题</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="Spring">Spring</a>
     
-        <a class="post-tag" href="javascript:void(0);" data-tags="数组基础">数组基础</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="Ribbon">Ribbon</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="debug调试">debug调试</a>
     
 </div>
 
@@ -671,32 +578,254 @@ ArrayList每次扩容是原来的1.5倍。
             
         
         <article class="index-post">
-            <a class="abstract-title" href="/2018/05/03/%E6%9D%82%E8%B0%88%E6%9C%8D%E5%8A%A1%E5%99%A8/">
+            <a class="abstract-title" href="/2022/08/15/Yapi%E9%83%A8%E7%BD%B2%E4%B8%8E%E4%BD%BF%E7%94%A8/">
                 
-                <span class="abstract-title-text">杂谈服务器</span>
+                <span class="abstract-title-text">Yapi部署与使用</span>
             </a>
             <div class="abstract-content">
-                服务器本质上也是就是加强版的计算机，服务器主要对外提供服务。但这有什么好谈论的呢？现代网络条件下，随着物联网的进一步发展，万物互联成为了趋势，那这一切服务的背后，是无数的服务器的支撑。
-我曾经一度很好奇，各种云厂商，如阿里云等，巨量的服务器是如何运维的？他们的服务器安装的是什么系统，不同的架构（如X86或ARM）对前端服务有何影响？网上资料很少，我的见解也是一知半解，只当记录，留作参考。
-磁盘阵列RAID谈论服务器绕不开磁盘阵列，本质上磁盘阵列是硬盘的一种冗余方式，从接触的服务器来看，大多服务器自带raid卡，可以进行硬件层面的磁盘阵列，牺牲性价比的raid1，两个磁盘互备，损失一半容量...
+                Yapi部署与使用1. 环境依赖，部署环境准备
+Yapi依赖：
+
+nodejs（7.6+)–nodejs版本有大问题！一定不能太新，Yapi已经一年没有更新了，新版本不兼容！
+
+mongodb（2.6+）
+
+git
+
+这里使用Debian11来部署，单机部署
+
+注意！注意！注意！这里nodois版本选择v8.17.0！！！使用nvm安装
+1234567891011121314151617181920212223242526//依赖nodejs，安装nodejs，这里安装还有点麻烦，需要官网下载nodejs二进制的包，解压安装#mkdir /usr/local/nodejs#//nodej...
             </div>
             <!-- read more -->
             
             <div class="abstract-post-meta">
                 <!-- date -->
                 <div class="abstract-date" title="Last updated: 2026/07/28">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/05/03</span>
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2022/08/15</span>
                 </div>
                 <!-- tags -->
                 
                     <div class= abstract-tags >
     
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="前端">前端</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="Yapi">Yapi</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="接口管理">接口管理</a>
+    
+</div>
+
+                
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+    
+        
+        
+        
+        
+            
+        
+        <article class="index-post">
+            <a class="abstract-title" href="/2022/08/14/HashMap%E5%8E%9F%E7%90%86/">
+                
+                <span class="abstract-title-text">HashMap原理</span>
+            </a>
+            <div class="abstract-content">
+                HashMap原理
+HashMap内部是基于哈希表实现的键值对存储，继承 AbstractMap 并且实现了 Map 接口。
+HashMap基于hashing原理，我们通过put()和get()方法储存和获取对象。
+当我们将键值对传递给put()方法时，它调用键对象的hashCode()方法来计算hashcode，让后找到bucket位置来储存值对象。
+当获取对象时，通过键对象的equals()方法找到正确的键值对，然后返回值对象。
+HashMap使用LinkedList来解决碰撞问题，当发生碰撞了，对象将会储存在LinkedList的下一个节点中。 
+当两个不同的键对象的hashcod...
+            </div>
+            <!-- read more -->
+            
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2026/07/28">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2022/08/14</span>
+                </div>
+                <!-- tags -->
+                
+                    <div class= abstract-tags >
+    
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="Java">Java</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="原理">原理</a>
+    
+</div>
+
+                
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+    
+        
+        
+        
+        
+            
+        
+        <article class="index-post">
+            <a class="abstract-title" href="/2022/02/10/Vim%E7%94%A8%E6%B3%95%E7%AE%80%E8%AE%B0/">
+                
+                <span class="abstract-title-text">Vim用法简记</span>
+            </a>
+            <div class="abstract-content">
+                简述Vim是从 vi 发展出来的一个文本编辑器。主流linux均自带vi编辑器，在这里简单记录vim用法，vi也基本相同，只是有些功能没有vim丰富。
+模式
+命令模式vim有三大模式，一般你使用vim这个命令打开一个文本，或者新建一个文本时，你进入的是命令模式命令模式是vim打开文件后默认进入的模式，这个模式不能插入字符你无法正常编辑文本，但是可以使用命令来操作文本，例如下面的一些命令。输入冒号“：”，文本的左下角将会出现闪动的光标，你可以在这里输入一些复杂命令。注意vim很重要的退出操作，也是在这里操作的-输入q表示正常退出，前提你没有修改文本，如果文本修改了，将提示你无法正常退出，此...
+            </div>
+            <!-- read more -->
+            
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2026/07/28">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2022/02/10</span>
+                </div>
+                <!-- tags -->
+                
+                    <div class= abstract-tags >
+    
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="vim">vim</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="编辑器之神">编辑器之神</a>
+    
+</div>
+
+                
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+    
+        
+        
+        
+        
+            
+        
+        <article class="index-post">
+            <a class="abstract-title" href="/2022/02/10/Markdown%E7%A4%BA%E4%BE%8B2/">
+                
+                <span class="abstract-title-text">Markdown示例2</span>
+            </a>
+            <div class="abstract-content">
+                标题123456# 这是一级标题## 这是二级标题### 这是三级标题#### 这是四级标题##### 这是五级标题###### 这是六级标题
+效果：
+这是一级标题这是二级标题这是三级标题这是四级标题这是五级标题这是六级标题字体1234**这是加粗的文字***这是倾斜的文字****这是斜体加粗的文字***~~这是加删除线的文字~~
+效果：这是加粗的文字这是倾斜的文字这是斜体加粗的文字这是加删除线的文字
+引用123&gt;这是引用的内容&gt;&gt;&gt;这是引用的内容&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;这是引用的内容...
+            </div>
+            <!-- read more -->
+            
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2026/07/28">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2022/02/10</span>
+                </div>
+                <!-- tags -->
+                
+                    <div class= abstract-tags >
+    
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="Markdown">Markdown</a>
+    
+</div>
+
+                
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+    
+        
+        
+        
+        
+            
+        
+        <article class="index-post">
+            <a class="abstract-title" href="/2021/12/20/Dead-Line-2021%E6%80%BB%E7%BB%93/">
+                
+                <span class="abstract-title-text">Dead Line--2021总结</span>
+            </a>
+            <div class="abstract-content">
+                Dead Line–2021总结
+“当你老了，回顾一生，就会发觉：什么时候出国读书、什么时候决定做第一份职业、何时选定了对象而恋爱、什么时候结婚，其实都是命运的巨变。只是当时站在三岔路口，眼见风云千樯，你作出抉择的那一日，在日记上，相当沉闷和平凡，当时还以为是生命中普通的一天。但一场巨变，已经发生了，地动山移，浑然不觉，当时只道是寻常。”
+陶杰 《杀鹌鹑的少女》
+
+1.消失的2021
+2021年，对我而言，是没有锚点的一个年度，彷佛一切都存在于2020，2020奥运会，2020的节奏，2020的疫情，生活粘稠得像麦芽糖，只有时光一往无前，只有不断收到的朋友结婚请柬，在提醒着我，时间，又过...
+            </div>
+            <!-- read more -->
+            
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2026/07/28">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2021/12/20</span>
+                </div>
+                <!-- tags -->
+                
+                    <div class= abstract-tags >
+    
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="年终总结">年终总结</a>
     
         <a class="post-tag" href="javascript:void(0);" data-tags="碎语">碎语</a>
     
-        <a class="post-tag" href="javascript:void(0);" data-tags="42">42</a>
+</div>
+
+                
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
     
-        <a class="post-tag" href="javascript:void(0);" data-tags="计算机的世界">计算机的世界</a>
+        
+        
+        
+        
+            
+        
+        <article class="index-post">
+            <a class="abstract-title" href="/2021/08/29/SpringCloud%E7%AE%80%E4%BB%8B/">
+                
+                <span class="abstract-title-text">SpringCloud简介</span>
+            </a>
+            <div class="abstract-content">
+                认识微服务
+微服务是系统架构的一种设计风格,将一个原本独立的服务拆分成多个小型服务,每个服务独立运行在在各自的进程中,服务之间通过 HTTP RESTful API 进行通信.每个小型的服务都围绕着系统中的某个耦合度较高的业务进行构建。
+微服务是一种经过良好设计的分布式架构方案，而全球的互联网公司都在积极尝试自己的微服务落地方案。其中在java领域最引人注目的是SpringCloud提供的方案。
+
+
+单一职责:微服务拆分粒度更小，每个服务都应对唯一的业务能力，做到单一职责
+自治:团队独立、技术独立、数据独立，独立部署和交付
+面向服务:服务提供统一标准的接口，与语言无关、与技术无关
+隔离性...
+            </div>
+            <!-- read more -->
+            
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2026/07/28">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2021/08/29</span>
+                </div>
+                <!-- tags -->
+                
+                    <div class= abstract-tags >
+    
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="Java">Java</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="spring">spring</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="springcloud">springcloud</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="微服务">微服务</a>
     
 </div>
 
@@ -712,165 +841,31 @@ ArrayList每次扩容是原来的1.5倍。
             
         
         <article class="index-post">
-            <a class="abstract-title" href="/1970/01/01/hello-world/">
+            <a class="abstract-title" href="/2021/08/14/mysql%E8%AF%BB%E5%86%99%E5%88%86%E7%A6%BB-%E4%B8%BB%E4%BB%8E%E5%A4%8D%E5%88%B6%E5%8F%8Asharing-jdbc%E4%BD%BF%E7%94%A8/">
                 
-                <span class="abstract-title-text">Hello World</span>
+                <span class="abstract-title-text">mysql读写分离-主从复制及sharing-jdbc使用</span>
             </a>
             <div class="abstract-content">
-                这是用GitHub的站点，百度了一番教程，做出来的静态blog。用hexo驱动，主题是 hexo官网里的archer。在本地编写md文件后，由hexo编译，再上传到GitHub上，完成博文更新。
-1. 环境准备
-hexo基于nodejs，所以需要nodejs环境
-python–如果没有，安装nodejs时可以通过npm自动安装
-git
+                1. Mysql主从复制介绍MySQL主从复制是一个异步的复制过程，底层是基于Mysql数据库自带的二进制日志功能。就是一台或多台MySQL数据库（slave，即从库）从另一台MySQL数据库（master，即主库）进行日志的复制然后再解析日志并应用到自身，最终实现从库的数据和主库的数据保持一致。MySQL主从复制是MySQL数据库自带功能，无需借助第三方工具。
 
-nodejs官网npm下载慢的话也可以下载淘宝下载源cnpm
-1npm install -g cnpm --registry=https://registry.npm.taobao.org
-
-
-安装hexo12345npm install -g hexo...
+二进制日志： 
+​	二进制日志（BINLOG）记录了所有的 DDL（数据定义语言）语句和 DML（数据操纵语言）语句，但是不包括数据查询语句。此日志对于灾难时的数据恢复起着极其重要的作用，MySQL的主从复制， 就是通过该bi...
             </div>
             <!-- read more -->
             
             <div class="abstract-post-meta">
                 <!-- date -->
                 <div class="abstract-date" title="Last updated: 2026/07/28">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">1970/01/01</span>
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2021/08/14</span>
                 </div>
                 <!-- tags -->
                 
                     <div class= abstract-tags >
     
     
-        <a class="post-tag" href="javascript:void(0);" data-tags="42">42</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="MySQL">MySQL</a>
     
-        <a class="post-tag" href="javascript:void(0);" data-tags="helloworld">helloworld</a>
-    
-</div>
-
-                
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
-    
-        
-        
-        
-        
-            
-        
-        <article class="index-post">
-            <a class="abstract-title" href="/1970/01/01/%E5%83%8F%E7%8B%BC%E4%B8%80%E6%A0%B7%E6%88%98%E6%96%97%EF%BC%81/">
-                
-                <span class="abstract-title-text">像狼一样战斗！</span>
-            </a>
-            <div class="abstract-content">
-                像狼一样战斗
-“你是一个男孩子，你的义务是让父母，所有关爱你的人为你自豪，而不是让他们一次次失望，在他们面前软弱地掉下眼泪！”
-
-又一次哭了，原来自己是那么的脆弱，让人失望，离Man还有很长的距离！！
-没有信任，没有理解，没有帮助，到处是怀疑的目光，到处是谴责的话语，因而成为另类，在黑暗的角落里，独自慢慢地咀嚼孤独与忧伤………
-却不服输，带着滴血的伤口，继续疯狂地生活…………………..
-终究，一次次软弱地掉下眼泪，却无法改变什么，随着孤独，一同伤怀…………
-“孤独是一种境界，是一种美！”
-有时真的觉得好孤独，外表的快乐和疯狂，挡不住自内心的，无穷无尽的，如落日般的孤独……
-茫然地飙着自行...
-            </div>
-            <!-- read more -->
-            
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2026/07/28">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">1970/01/01</span>
-                </div>
-                <!-- tags -->
-                
-                    <div class= abstract-tags >
-    
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="42">42</a>
-    
-</div>
-
-                
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
-    
-        
-        
-        
-        
-            
-        
-        <article class="index-post">
-            <a class="abstract-title" href="/1970/01/01/%E5%BD%93%E5%85%B5%E7%9A%84%E6%97%A5%E5%AD%90/">
-                
-                <span class="abstract-title-text">当兵的日子</span>
-            </a>
-            <div class="abstract-content">
-                关于兵
-铁打的营盘，流水的兵，老兵要走了，想当年，我们这些热血青年们投身军营，集合在军旗下在部队这所大学校里锻炼成长。经过军营生活练就了我们钢铁般的意志，使我们由新兵变成了老兵。人生最美是军旅，军旅生涯在我们的人生中留下了一段最美好的回忆。若问军营给老兵们留下了什么？我想这是无法用文字来描述的，只有置身于军营里的人才能真正地能够体会得到，军营给我们留下了太多太多。若问军营里最难忘的是什么？我想最难忘的还是战友情。 这些离队的老兵们将已纷纷地踏上了新的征程，老兵们的足迹遍及全国各地，大家在各行各业都能够看到老兵们的身影，他们在不同的工作岗位上继续发挥着老兵的中流砥柱的骨干作用。 
-
-最后祝...
-            </div>
-            <!-- read more -->
-            
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2026/07/28">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">1970/01/01</span>
-                </div>
-                <!-- tags -->
-                
-                    <div class= abstract-tags >
-    
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="42">42</a>
-    
-</div>
-
-                
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
-    
-        
-        
-        
-        
-            
-        
-        <article class="index-post">
-            <a class="abstract-title" href="/1970/01/01/%E6%88%91%E6%B0%B8%E8%BF%9C%E4%B8%8D%E5%86%8D%E8%87%AA%E6%80%9C%E8%87%AA%E8%B4%B1/">
-                
-                <span class="abstract-title-text">我永远不再自怜自贱</span>
-            </a>
-            <div class="abstract-content">
-                我永远不再自怜自贱奥格·曼迪诺
-
-我为成功而生，不为失败而活
-
-我为胜利而来，不为失败低头
-
-我要欢呼庆祝，不要哭泣哀诉
-
-
-可是，不知从何时起，我所有的梦都退色了，不知不觉中我也沦为平庸，和周围的人互相恭维着，自我陶醉着。人，识的破别人的骗术，却逃不脱自己的谎言。懦夫认为自己谨慎，而守财奴也认为自己是节俭的。没有什么比自欺欺人更容易的了，因为我们往往相信我们所希望的事情。在我的生活中，没有哪一个比我自己更能欺骗我了。
-为什么我总是在试图用言语来掩盖自己的渺小，总在试图为自己减轻负担，又总在为自己的低能寻找托词。糟糕的是，我似乎已经相信了自己编造的借口，心安理得，得过且过，安慰自己比上不...
-            </div>
-            <!-- read more -->
-            
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2026/07/28">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">1970/01/01</span>
-                </div>
-                <!-- tags -->
-                
-                    <div class= abstract-tags >
-    
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="42">42</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="数据库操作">数据库操作</a>
     
 </div>
 
@@ -882,7 +877,7 @@ nodejs官网npm下载慢的话也可以下载淘宝下载源cnpm
     <!-- paginator  -->
     
         <nav class="page-nav">
-            <a class="extend prev" rel="prev" href="/archives/page/16/">&lt; PREV</a><a class="page-number" href="/archives/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/15/">15</a><a class="page-number" href="/archives/page/16/">16</a><span class="page-number current">17</span><a class="page-number" href="/archives/page/18/">18</a><a class="extend next" rel="next" href="/archives/page/18/">NEXT &gt;</a>
+            <a class="extend prev" rel="prev" href="/archives/page/16/">&lt; PREV</a><a class="page-number" href="/archives/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/15/">15</a><a class="page-number" href="/archives/page/16/">16</a><span class="page-number current">17</span><a class="page-number" href="/archives/page/18/">18</a><a class="page-number" href="/archives/page/19/">19</a><a class="extend next" rel="next" href="/archives/page/18/">NEXT &gt;</a>
         </nav>
     
 </main>
@@ -1865,7 +1860,347 @@ nodejs官网npm下载慢的话也可以下载淘宝下载源cnpm
         
         
         
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
     
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         
         
         
@@ -3814,7 +4149,7 @@ nodejs官网npm下载慢的话也可以下载淘宝下载源cnpm
     
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 174
+        Total : 188
         </div>
         <!-- search  -->
         
@@ -3828,6 +4163,66 @@ nodejs官网npm下载慢的话也可以下载淘宝下载源cnpm
             <div class="archive-year"> 2026 </div>
             <ul class="year-list">
             
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/03</span>
+            <a class="archive-post-title" href="/2026/08/02/Frontend-AI-Assisted/">Frontend-AI-Assisted-Development-Prompt-Engineering-Guide</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/03</span>
+            <a class="archive-post-title" href="/2026/08/02/Course-Summary/">Course-Summary-and-Full-Stack-Project-Practice</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/02</span>
+            <a class="archive-post-title" href="/2026/08/02/Engineering-Practice-Angular/">Engineering-Practice-Angular-Project-Initialization-and-Directory-Structure</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/02</span>
+            <a class="archive-post-title" href="/2026/08/02/Engineering-Practice-React/">Engineering-Practice-React-Project-Initialization-and-Directory-Structure</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/02</span>
+            <a class="archive-post-title" href="/2026/08/02/Engineering-Practice-Vue/">Engineering-Practice-Vue-Project-Initialization-and-Directory-Structure</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/02</span>
+            <a class="archive-post-title" href="/2026/08/01/Angular-Forms-Template/">Angular-Forms-Template-Driven-and-Reactive-Forms-Validation-Custom-Validators</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/02</span>
+            <a class="archive-post-title" href="/2026/08/01/Angular-Router/">Angular-Router-Configuration-Navigation-Guards-Lazy-Loading</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/02</span>
+            <a class="archive-post-title" href="/2026/08/01/Angular-RxJS/">Angular-RxJS-and-Reactive-Programming-Observable-Subject-Operators-Async-Pipe</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/02</span>
+            <a class="archive-post-title" href="/2026/08/01/Angular-Services/">Angular-Services-and-Dependency-Injection</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/02</span>
+            <a class="archive-post-title" href="/2026/08/01/Angular-Component/">Angular-Component-and-Template-Syntax</a>
+        </li>
+    
         
         <li class="archive-post-item">
             <span class="archive-post-date">08/02</span>
@@ -4078,6 +4473,12 @@ nodejs官网npm下载慢的话也可以下载淘宝下载源cnpm
         <li class="archive-post-item">
             <span class="archive-post-date">07/31</span>
             <a class="archive-post-title" href="/2026/07/30/TypeScript-Integration/">TypeScript-Integration-with-React-and-Vue</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/31</span>
+            <a class="archive-post-title" href="/2026/07/30/TypeScript-Declaration/">TypeScript-Declaration-Files-and-Type-Declarations</a>
         </li>
     
         
@@ -4371,6 +4772,12 @@ nodejs官网npm下载慢的话也可以下载淘宝下载源cnpm
         
         <li class="archive-post-item">
             <span class="archive-post-date">07/29</span>
+            <a class="archive-post-title" href="/2026/07/28/CSS-Animations/">CSS-Animations-Keyframes-and-Performance</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/29</span>
             <a class="archive-post-title" href="/2026/07/28/CSS-Transforms/">CSS-Transforms-and-Transitions</a>
         </li>
     
@@ -4378,6 +4785,12 @@ nodejs官网npm下载慢的话也可以下载淘宝下载源cnpm
         <li class="archive-post-item">
             <span class="archive-post-date">07/29</span>
             <a class="archive-post-title" href="/2026/07/28/CSS-Backgrounds/">CSS-Backgrounds-Borders-and-Shadows</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/29</span>
+            <a class="archive-post-title" href="/2026/07/28/CSS-Fonts/">CSS-Fonts-and-Text-Styling</a>
         </li>
     
         
@@ -4408,6 +4821,12 @@ nodejs官网npm下载慢的话也可以下载淘宝下载源cnpm
         <li class="archive-post-item">
             <span class="archive-post-date">07/29</span>
             <a class="archive-post-title" href="/2026/07/28/CSS-Box-Model/">CSS-Box-Model-and-Box-Sizing</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/29</span>
+            <a class="archive-post-title" href="/2026/07/28/CSS-Selectors-Part2-Pseudo/">CSS-Selectors-Part2-Pseudo-Elements-Specificity-Important</a>
         </li>
     
         
@@ -4641,13 +5060,13 @@ nodejs官网npm下载慢的话也可以下载淘宝下载源cnpm
         
         <li class="archive-post-item">
             <span class="archive-post-date">10/23</span>
-            <a class="archive-post-title" href="/2022/10/22/Java-04JVM/">Java面试题04JVM</a>
+            <a class="archive-post-title" href="/2022/10/22/Java-03Threads/">Java面试题03多线程</a>
         </li>
     
         
         <li class="archive-post-item">
             <span class="archive-post-date">10/23</span>
-            <a class="archive-post-title" href="/2022/10/22/Java-03Threads/">Java面试题03多线程</a>
+            <a class="archive-post-title" href="/2022/10/22/Java-04JVM/">Java面试题04JVM</a>
         </li>
     
         
@@ -4677,19 +5096,13 @@ nodejs官网npm下载慢的话也可以下载淘宝下载源cnpm
         
         <li class="archive-post-item">
             <span class="archive-post-date">10/23</span>
-            <a class="archive-post-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9808Spring%E6%A1%86%E6%9E%B6/">Java面试题08Spring框架</a>
-        </li>
-    
-        
-        <li class="archive-post-item">
-            <span class="archive-post-date">10/23</span>
-            <a class="archive-post-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9809SpringMVC%E6%A1%86%E6%9E%B6/">Java面试题09SpringMVC框架</a>
-        </li>
-    
-        
-        <li class="archive-post-item">
-            <span class="archive-post-date">10/23</span>
             <a class="archive-post-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9807Mybatis%E6%A1%86%E6%9E%B6/">Java面试题07Mybatis框架</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/23</span>
+            <a class="archive-post-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9808Spring%E6%A1%86%E6%9E%B6/">Java面试题08Spring框架</a>
         </li>
     
         
@@ -4702,6 +5115,12 @@ nodejs官网npm下载慢的话也可以下载淘宝下载源cnpm
         <li class="archive-post-item">
             <span class="archive-post-date">10/23</span>
             <a class="archive-post-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9811SpringCloud/">Java面试题11SpringCloud</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/23</span>
+            <a class="archive-post-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9809SpringMVC%E6%A1%86%E6%9E%B6/">Java面试题09SpringMVC框架</a>
         </li>
     
         
@@ -4725,13 +5144,13 @@ nodejs官网npm下载慢的话也可以下载淘宝下载源cnpm
         
         <li class="archive-post-item">
             <span class="archive-post-date">10/23</span>
-            <a class="archive-post-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9815Kafka/">Java面试题15Kafka</a>
+            <a class="archive-post-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9816JWT/">Java面试题16JWT</a>
         </li>
     
         
         <li class="archive-post-item">
             <span class="archive-post-date">10/23</span>
-            <a class="archive-post-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9816JWT/">Java面试题16JWT</a>
+            <a class="archive-post-title" href="/2022/10/22/Java%E9%9D%A2%E8%AF%95%E9%A2%9815Kafka/">Java面试题15Kafka</a>
         </li>
     
         
@@ -4999,6 +5418,51 @@ nodejs官网npm下载慢的话也可以下载淘宝下载源cnpm
                 Angular
             </span>
         
+            <span class="sidebar-tag-name" data-tags="组件">
+                <span class="iconfont-archer">&#xe606;</span>
+                组件
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="模板语法">
+                <span class="iconfont-archer">&#xe606;</span>
+                模板语法
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="数据绑定">
+                <span class="iconfont-archer">&#xe606;</span>
+                数据绑定
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="指令">
+                <span class="iconfont-archer">&#xe606;</span>
+                指令
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="管道">
+                <span class="iconfont-archer">&#xe606;</span>
+                管道
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="表单">
+                <span class="iconfont-archer">&#xe606;</span>
+                表单
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="模板驱动表单">
+                <span class="iconfont-archer">&#xe606;</span>
+                模板驱动表单
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="响应式表单">
+                <span class="iconfont-archer">&#xe606;</span>
+                响应式表单
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="验证器">
+                <span class="iconfont-archer">&#xe606;</span>
+                验证器
+            </span>
+        
             <span class="sidebar-tag-name" data-tags="Angular Material">
                 <span class="iconfont-archer">&#xe606;</span>
                 Angular Material
@@ -5029,14 +5493,79 @@ nodejs官网npm下载慢的话也可以下载淘宝下载源cnpm
                 NgModule
             </span>
         
-            <span class="sidebar-tag-name" data-tags="组件">
-                <span class="iconfont-archer">&#xe606;</span>
-                组件
-            </span>
-        
             <span class="sidebar-tag-name" data-tags="模块化">
                 <span class="iconfont-archer">&#xe606;</span>
                 模块化
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="路由">
+                <span class="iconfont-archer">&#xe606;</span>
+                路由
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="导航守卫">
+                <span class="iconfont-archer">&#xe606;</span>
+                导航守卫
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="惰性加载">
+                <span class="iconfont-archer">&#xe606;</span>
+                惰性加载
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Router">
+                <span class="iconfont-archer">&#xe606;</span>
+                Router
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="RxJS">
+                <span class="iconfont-archer">&#xe606;</span>
+                RxJS
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Observable">
+                <span class="iconfont-archer">&#xe606;</span>
+                Observable
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Subject">
+                <span class="iconfont-archer">&#xe606;</span>
+                Subject
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="操作符">
+                <span class="iconfont-archer">&#xe606;</span>
+                操作符
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="async管道">
+                <span class="iconfont-archer">&#xe606;</span>
+                async管道
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="服务">
+                <span class="iconfont-archer">&#xe606;</span>
+                服务
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="依赖注入">
+                <span class="iconfont-archer">&#xe606;</span>
+                依赖注入
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="@Injectable">
+                <span class="iconfont-archer">&#xe606;</span>
+                @Injectable
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="providedIn">
+                <span class="iconfont-archer">&#xe606;</span>
+                providedIn
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="注入器层级">
+                <span class="iconfont-archer">&#xe606;</span>
+                注入器层级
             </span>
         
             <span class="sidebar-tag-name" data-tags="React">
@@ -5159,6 +5688,51 @@ nodejs官网npm下载慢的话也可以下载淘宝下载源cnpm
                 主题
             </span>
         
+            <span class="sidebar-tag-name" data-tags="animation">
+                <span class="iconfont-archer">&#xe606;</span>
+                animation
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="keyframes">
+                <span class="iconfont-archer">&#xe606;</span>
+                keyframes
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="性能优化">
+                <span class="iconfont-archer">&#xe606;</span>
+                性能优化
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="will-change">
+                <span class="iconfont-archer">&#xe606;</span>
+                will-change
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="background">
+                <span class="iconfont-archer">&#xe606;</span>
+                background
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="border">
+                <span class="iconfont-archer">&#xe606;</span>
+                border
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="border-radius">
+                <span class="iconfont-archer">&#xe606;</span>
+                border-radius
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="box-shadow">
+                <span class="iconfont-archer">&#xe606;</span>
+                box-shadow
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="outline">
+                <span class="iconfont-archer">&#xe606;</span>
+                outline
+            </span>
+        
             <span class="sidebar-tag-name" data-tags="盒模型">
                 <span class="iconfont-archer">&#xe606;</span>
                 盒模型
@@ -5177,11 +5751,6 @@ nodejs官网npm下载慢的话也可以下载淘宝下载源cnpm
             <span class="sidebar-tag-name" data-tags="padding">
                 <span class="iconfont-archer">&#xe606;</span>
                 padding
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="border">
-                <span class="iconfont-archer">&#xe606;</span>
-                border
             </span>
         
             <span class="sidebar-tag-name" data-tags="自定义属性">
@@ -5204,26 +5773,6 @@ nodejs官网npm下载慢的话也可以下载淘宝下载源cnpm
                 主题切换
             </span>
         
-            <span class="sidebar-tag-name" data-tags="background">
-                <span class="iconfont-archer">&#xe606;</span>
-                background
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="border-radius">
-                <span class="iconfont-archer">&#xe606;</span>
-                border-radius
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="box-shadow">
-                <span class="iconfont-archer">&#xe606;</span>
-                box-shadow
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="outline">
-                <span class="iconfont-archer">&#xe606;</span>
-                outline
-            </span>
-        
             <span class="sidebar-tag-name" data-tags="display">
                 <span class="iconfont-archer">&#xe606;</span>
                 display
@@ -5242,6 +5791,16 @@ nodejs官网npm下载慢的话也可以下载淘宝下载源cnpm
             <span class="sidebar-tag-name" data-tags="弹性布局">
                 <span class="iconfont-archer">&#xe606;</span>
                 弹性布局
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="项目属性">
+                <span class="iconfont-archer">&#xe606;</span>
+                项目属性
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="flex-grow">
+                <span class="iconfont-archer">&#xe606;</span>
+                flex-grow
             </span>
         
             <span class="sidebar-tag-name" data-tags="容器属性">
@@ -5269,14 +5828,24 @@ nodejs官网npm下载慢的话也可以下载淘宝下载源cnpm
                 BFC
             </span>
         
-            <span class="sidebar-tag-name" data-tags="项目属性">
+            <span class="sidebar-tag-name" data-tags="字体">
                 <span class="iconfont-archer">&#xe606;</span>
-                项目属性
+                字体
             </span>
         
-            <span class="sidebar-tag-name" data-tags="flex-grow">
+            <span class="sidebar-tag-name" data-tags="文本样式">
                 <span class="iconfont-archer">&#xe606;</span>
-                flex-grow
+                文本样式
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="font-face">
+                <span class="iconfont-archer">&#xe606;</span>
+                font-face
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="line-height">
+                <span class="iconfont-archer">&#xe606;</span>
+                line-height
             </span>
         
             <span class="sidebar-tag-name" data-tags="Grid">
@@ -5334,24 +5903,39 @@ nodejs官网npm下载慢的话也可以下载淘宝下载源cnpm
                 层叠上下文
             </span>
         
-            <span class="sidebar-tag-name" data-tags="响应式设计">
+            <span class="sidebar-tag-name" data-tags="选择器">
                 <span class="iconfont-archer">&#xe606;</span>
-                响应式设计
+                选择器
             </span>
         
-            <span class="sidebar-tag-name" data-tags="媒体查询">
+            <span class="sidebar-tag-name" data-tags="属性选择器">
                 <span class="iconfont-archer">&#xe606;</span>
-                媒体查询
+                属性选择器
             </span>
         
-            <span class="sidebar-tag-name" data-tags="移动优先">
+            <span class="sidebar-tag-name" data-tags="伪类">
                 <span class="iconfont-archer">&#xe606;</span>
-                移动优先
+                伪类
             </span>
         
-            <span class="sidebar-tag-name" data-tags="容器查询">
+            <span class="sidebar-tag-name" data-tags="权重">
                 <span class="iconfont-archer">&#xe606;</span>
-                容器查询
+                权重
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="伪元素">
+                <span class="iconfont-archer">&#xe606;</span>
+                伪元素
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Specificity">
+                <span class="iconfont-archer">&#xe606;</span>
+                Specificity
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="important">
+                <span class="iconfont-archer">&#xe606;</span>
+                important
             </span>
         
             <span class="sidebar-tag-name" data-tags="transform">
@@ -5374,24 +5958,44 @@ nodejs官网npm下载慢的话也可以下载淘宝下载源cnpm
                 贝塞尔曲线
             </span>
         
-            <span class="sidebar-tag-name" data-tags="选择器">
+            <span class="sidebar-tag-name" data-tags="响应式设计">
                 <span class="iconfont-archer">&#xe606;</span>
-                选择器
+                响应式设计
             </span>
         
-            <span class="sidebar-tag-name" data-tags="属性选择器">
+            <span class="sidebar-tag-name" data-tags="媒体查询">
                 <span class="iconfont-archer">&#xe606;</span>
-                属性选择器
+                媒体查询
             </span>
         
-            <span class="sidebar-tag-name" data-tags="伪类">
+            <span class="sidebar-tag-name" data-tags="移动优先">
                 <span class="iconfont-archer">&#xe606;</span>
-                伪类
+                移动优先
             </span>
         
-            <span class="sidebar-tag-name" data-tags="权重">
+            <span class="sidebar-tag-name" data-tags="容器查询">
                 <span class="iconfont-archer">&#xe606;</span>
-                权重
+                容器查询
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="全栈实战">
+                <span class="iconfont-archer">&#xe606;</span>
+                全栈实战
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="学习路线">
+                <span class="iconfont-archer">&#xe606;</span>
+                学习路线
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="项目架构">
+                <span class="iconfont-archer">&#xe606;</span>
+                项目架构
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Vue">
+                <span class="iconfont-archer">&#xe606;</span>
+                Vue
             </span>
         
             <span class="sidebar-tag-name" data-tags="ESLint">
@@ -5464,11 +6068,6 @@ nodejs官网npm下载慢的话也可以下载淘宝下载源cnpm
                 表格
             </span>
         
-            <span class="sidebar-tag-name" data-tags="表单">
-                <span class="iconfont-archer">&#xe606;</span>
-                表单
-            </span>
-        
             <span class="sidebar-tag-name" data-tags="弹窗">
                 <span class="iconfont-archer">&#xe606;</span>
                 弹窗
@@ -5482,6 +6081,86 @@ nodejs官网npm下载慢的话也可以下载淘宝下载源cnpm
             <span class="sidebar-tag-name" data-tags="上传">
                 <span class="iconfont-archer">&#xe606;</span>
                 上传
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="按需引入">
+                <span class="iconfont-archer">&#xe606;</span>
+                按需引入
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="项目初始化">
+                <span class="iconfont-archer">&#xe606;</span>
+                项目初始化
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="目录结构">
+                <span class="iconfont-archer">&#xe606;</span>
+                目录结构
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Angular CLI">
+                <span class="iconfont-archer">&#xe606;</span>
+                Angular CLI
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="TypeScript">
+                <span class="iconfont-archer">&#xe606;</span>
+                TypeScript
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Vite">
+                <span class="iconfont-archer">&#xe606;</span>
+                Vite
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="AI辅助开发">
+                <span class="iconfont-archer">&#xe606;</span>
+                AI辅助开发
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Prompt工程">
+                <span class="iconfont-archer">&#xe606;</span>
+                Prompt工程
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="前端术语">
+                <span class="iconfont-archer">&#xe606;</span>
+                前端术语
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="缺陷描述">
+                <span class="iconfont-archer">&#xe606;</span>
+                缺陷描述
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="代码生成">
+                <span class="iconfont-archer">&#xe606;</span>
+                代码生成
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="代码修复">
+                <span class="iconfont-archer">&#xe606;</span>
+                代码修复
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="CommonJS">
+                <span class="iconfont-archer">&#xe606;</span>
+                CommonJS
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="ESM">
+                <span class="iconfont-archer">&#xe606;</span>
+                ESM
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="require">
+                <span class="iconfont-archer">&#xe606;</span>
+                require
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="import">
+                <span class="iconfont-archer">&#xe606;</span>
+                import
             </span>
         
             <span class="sidebar-tag-name" data-tags="测试">
@@ -5507,31 +6186,6 @@ nodejs官网npm下载慢的话也可以下载淘宝下载源cnpm
             <span class="sidebar-tag-name" data-tags="E2E">
                 <span class="iconfont-archer">&#xe606;</span>
                 E2E
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="CommonJS">
-                <span class="iconfont-archer">&#xe606;</span>
-                CommonJS
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="ESM">
-                <span class="iconfont-archer">&#xe606;</span>
-                ESM
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="require">
-                <span class="iconfont-archer">&#xe606;</span>
-                require
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="import">
-                <span class="iconfont-archer">&#xe606;</span>
-                import
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="按需引入">
-                <span class="iconfont-archer">&#xe606;</span>
-                按需引入
             </span>
         
             <span class="sidebar-tag-name" data-tags="Git Hooks">
@@ -5594,6 +6248,16 @@ nodejs官网npm下载慢的话也可以下载淘宝下载源cnpm
                 标准模式
             </span>
         
+            <span class="sidebar-tag-name" data-tags="input">
+                <span class="iconfont-archer">&#xe606;</span>
+                input
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="label">
+                <span class="iconfont-archer">&#xe606;</span>
+                label
+            </span>
+        
             <span class="sidebar-tag-name" data-tags="select">
                 <span class="iconfont-archer">&#xe606;</span>
                 select
@@ -5629,16 +6293,6 @@ nodejs官网npm下载慢的话也可以下载淘宝下载源cnpm
                 SEO
             </span>
         
-            <span class="sidebar-tag-name" data-tags="input">
-                <span class="iconfont-archer">&#xe606;</span>
-                input
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="label">
-                <span class="iconfont-archer">&#xe606;</span>
-                label
-            </span>
-        
             <span class="sidebar-tag-name" data-tags="原理">
                 <span class="iconfont-archer">&#xe606;</span>
                 原理
@@ -5657,21 +6311,6 @@ nodejs官网npm下载慢的话也可以下载淘宝下载源cnpm
             <span class="sidebar-tag-name" data-tags="Open Graph">
                 <span class="iconfont-archer">&#xe606;</span>
                 Open Graph
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="超链接">
-                <span class="iconfont-archer">&#xe606;</span>
-                超链接
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="导航">
-                <span class="iconfont-archer">&#xe606;</span>
-                导航
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="rel属性">
-                <span class="iconfont-archer">&#xe606;</span>
-                rel属性
             </span>
         
             <span class="sidebar-tag-name" data-tags="图像">
@@ -5694,14 +6333,29 @@ nodejs官网npm下载慢的话也可以下载淘宝下载源cnpm
                 响应式图片
             </span>
         
-            <span class="sidebar-tag-name" data-tags="JVM">
-                <span class="iconfont-archer">&#xe606;</span>
-                JVM
-            </span>
-        
             <span class="sidebar-tag-name" data-tags="多线程">
                 <span class="iconfont-archer">&#xe606;</span>
                 多线程
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="超链接">
+                <span class="iconfont-archer">&#xe606;</span>
+                超链接
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="导航">
+                <span class="iconfont-archer">&#xe606;</span>
+                导航
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="rel属性">
+                <span class="iconfont-archer">&#xe606;</span>
+                rel属性
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="JVM">
+                <span class="iconfont-archer">&#xe606;</span>
+                JVM
             </span>
         
             <span class="sidebar-tag-name" data-tags="42">
@@ -5799,26 +6453,6 @@ nodejs官网npm下载慢的话也可以下载淘宝下载源cnpm
                 类型转换
             </span>
         
-            <span class="sidebar-tag-name" data-tags="undefined">
-                <span class="iconfont-archer">&#xe606;</span>
-                undefined
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="symbol">
-                <span class="iconfont-archer">&#xe606;</span>
-                symbol
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="bigint">
-                <span class="iconfont-archer">&#xe606;</span>
-                bigint
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="object">
-                <span class="iconfont-archer">&#xe606;</span>
-                object
-            </span>
-        
             <span class="sidebar-tag-name" data-tags="Date">
                 <span class="iconfont-archer">&#xe606;</span>
                 Date
@@ -5837,6 +6471,26 @@ nodejs官网npm下载慢的话也可以下载淘宝下载源cnpm
             <span class="sidebar-tag-name" data-tags="Temporal">
                 <span class="iconfont-archer">&#xe606;</span>
                 Temporal
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="undefined">
+                <span class="iconfont-archer">&#xe606;</span>
+                undefined
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="symbol">
+                <span class="iconfont-archer">&#xe606;</span>
+                symbol
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="bigint">
+                <span class="iconfont-archer">&#xe606;</span>
+                bigint
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="object">
+                <span class="iconfont-archer">&#xe606;</span>
+                object
             </span>
         
             <span class="sidebar-tag-name" data-tags="错误处理">
@@ -5879,6 +6533,26 @@ nodejs官网npm下载慢的话也可以下载淘宝下载源cnpm
                 微任务
             </span>
         
+            <span class="sidebar-tag-name" data-tags="函数">
+                <span class="iconfont-archer">&#xe606;</span>
+                函数
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="箭头函数">
+                <span class="iconfont-archer">&#xe606;</span>
+                箭头函数
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="参数">
+                <span class="iconfont-archer">&#xe606;</span>
+                参数
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="默认值">
+                <span class="iconfont-archer">&#xe606;</span>
+                默认值
+            </span>
+        
             <span class="sidebar-tag-name" data-tags="迭代器">
                 <span class="iconfont-archer">&#xe606;</span>
                 迭代器
@@ -5899,24 +6573,24 @@ nodejs官网npm下载慢的话也可以下载淘宝下载源cnpm
                 yield
             </span>
         
-            <span class="sidebar-tag-name" data-tags="函数">
+            <span class="sidebar-tag-name" data-tags="JSON">
                 <span class="iconfont-archer">&#xe606;</span>
-                函数
+                JSON
             </span>
         
-            <span class="sidebar-tag-name" data-tags="箭头函数">
+            <span class="sidebar-tag-name" data-tags="localStorage">
                 <span class="iconfont-archer">&#xe606;</span>
-                箭头函数
+                localStorage
             </span>
         
-            <span class="sidebar-tag-name" data-tags="参数">
+            <span class="sidebar-tag-name" data-tags="sessionStorage">
                 <span class="iconfont-archer">&#xe606;</span>
-                参数
+                sessionStorage
             </span>
         
-            <span class="sidebar-tag-name" data-tags="默认值">
+            <span class="sidebar-tag-name" data-tags="数据存储">
                 <span class="iconfont-archer">&#xe606;</span>
-                默认值
+                数据存储
             </span>
         
             <span class="sidebar-tag-name" data-tags="Map">
@@ -5939,16 +6613,6 @@ nodejs官网npm下载慢的话也可以下载淘宝下载源cnpm
                 WeakSet
             </span>
         
-            <span class="sidebar-tag-name" data-tags="ES Modules">
-                <span class="iconfont-archer">&#xe606;</span>
-                ES Modules
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="export">
-                <span class="iconfont-archer">&#xe606;</span>
-                export
-            </span>
-        
             <span class="sidebar-tag-name" data-tags="原型链">
                 <span class="iconfont-archer">&#xe606;</span>
                 原型链
@@ -5969,24 +6633,49 @@ nodejs官网npm下载慢的话也可以下载淘宝下载源cnpm
                 class
             </span>
         
-            <span class="sidebar-tag-name" data-tags="JSON">
+            <span class="sidebar-tag-name" data-tags="ES Modules">
                 <span class="iconfont-archer">&#xe606;</span>
-                JSON
+                ES Modules
             </span>
         
-            <span class="sidebar-tag-name" data-tags="localStorage">
+            <span class="sidebar-tag-name" data-tags="export">
                 <span class="iconfont-archer">&#xe606;</span>
-                localStorage
+                export
             </span>
         
-            <span class="sidebar-tag-name" data-tags="sessionStorage">
+            <span class="sidebar-tag-name" data-tags="运算符">
                 <span class="iconfont-archer">&#xe606;</span>
-                sessionStorage
+                运算符
             </span>
         
-            <span class="sidebar-tag-name" data-tags="数据存储">
+            <span class="sidebar-tag-name" data-tags="表达式">
                 <span class="iconfont-archer">&#xe606;</span>
-                数据存储
+                表达式
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="优先级">
+                <span class="iconfont-archer">&#xe606;</span>
+                优先级
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="结合性">
+                <span class="iconfont-archer">&#xe606;</span>
+                结合性
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="对象">
+                <span class="iconfont-archer">&#xe606;</span>
+                对象
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="属性描述符">
+                <span class="iconfont-archer">&#xe606;</span>
+                属性描述符
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Object方法">
+                <span class="iconfont-archer">&#xe606;</span>
+                Object方法
             </span>
         
             <span class="sidebar-tag-name" data-tags="Proxy">
@@ -6024,26 +6713,6 @@ nodejs官网npm下载慢的话也可以下载淘宝下载源cnpm
                 内存管理
             </span>
         
-            <span class="sidebar-tag-name" data-tags="运算符">
-                <span class="iconfont-archer">&#xe606;</span>
-                运算符
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="表达式">
-                <span class="iconfont-archer">&#xe606;</span>
-                表达式
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="优先级">
-                <span class="iconfont-archer">&#xe606;</span>
-                优先级
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="结合性">
-                <span class="iconfont-archer">&#xe606;</span>
-                结合性
-            </span>
-        
             <span class="sidebar-tag-name" data-tags="严格模式">
                 <span class="iconfont-archer">&#xe606;</span>
                 严格模式
@@ -6057,21 +6726,6 @@ nodejs官网npm下载慢的话也可以下载淘宝下载源cnpm
             <span class="sidebar-tag-name" data-tags="模块">
                 <span class="iconfont-archer">&#xe606;</span>
                 模块
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="对象">
-                <span class="iconfont-archer">&#xe606;</span>
-                对象
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="属性描述符">
-                <span class="iconfont-archer">&#xe606;</span>
-                属性描述符
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="Object方法">
-                <span class="iconfont-archer">&#xe606;</span>
-                Object方法
             </span>
         
             <span class="sidebar-tag-name" data-tags="字符串">
@@ -6092,11 +6746,6 @@ nodejs官网npm下载慢的话也可以下载淘宝下载源cnpm
             <span class="sidebar-tag-name" data-tags="RegExp">
                 <span class="iconfont-archer">&#xe606;</span>
                 RegExp
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="数组基础">
-                <span class="iconfont-archer">&#xe606;</span>
-                数组基础
             </span>
         
             <span class="sidebar-tag-name" data-tags="变量">
@@ -6129,6 +6778,11 @@ nodejs官网npm下载慢的话也可以下载淘宝下载源cnpm
                 暂时性死区
             </span>
         
+            <span class="sidebar-tag-name" data-tags="数组基础">
+                <span class="iconfont-archer">&#xe606;</span>
+                数组基础
+            </span>
+        
             <span class="sidebar-tag-name" data-tags="数据结构">
                 <span class="iconfont-archer">&#xe606;</span>
                 数据结构
@@ -6149,19 +6803,14 @@ nodejs官网npm下载慢的话也可以下载淘宝下载源cnpm
                 MySql
             </span>
         
-            <span class="sidebar-tag-name" data-tags="Spring">
-                <span class="iconfont-archer">&#xe606;</span>
-                Spring
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="SpringMVC">
-                <span class="iconfont-archer">&#xe606;</span>
-                SpringMVC
-            </span>
-        
             <span class="sidebar-tag-name" data-tags="Mybatis">
                 <span class="iconfont-archer">&#xe606;</span>
                 Mybatis
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Spring">
+                <span class="iconfont-archer">&#xe606;</span>
+                Spring
             </span>
         
             <span class="sidebar-tag-name" data-tags="SpringBoot">
@@ -6172,6 +6821,11 @@ nodejs官网npm下载慢的话也可以下载淘宝下载源cnpm
             <span class="sidebar-tag-name" data-tags="SpringCloud">
                 <span class="iconfont-archer">&#xe606;</span>
                 SpringCloud
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="SpringMVC">
+                <span class="iconfont-archer">&#xe606;</span>
+                SpringMVC
             </span>
         
             <span class="sidebar-tag-name" data-tags="Dubbo">
@@ -6189,11 +6843,6 @@ nodejs官网npm下载慢的话也可以下载淘宝下载源cnpm
                 MongoDB
             </span>
         
-            <span class="sidebar-tag-name" data-tags="Kafka">
-                <span class="iconfont-archer">&#xe606;</span>
-                Kafka
-            </span>
-        
             <span class="sidebar-tag-name" data-tags="JWT">
                 <span class="iconfont-archer">&#xe606;</span>
                 JWT
@@ -6204,6 +6853,11 @@ nodejs官网npm下载慢的话也可以下载淘宝下载源cnpm
                 token
             </span>
         
+            <span class="sidebar-tag-name" data-tags="Kafka">
+                <span class="iconfont-archer">&#xe606;</span>
+                Kafka
+            </span>
+        
             <span class="sidebar-tag-name" data-tags="列表">
                 <span class="iconfont-archer">&#xe606;</span>
                 列表
@@ -6212,6 +6866,11 @@ nodejs官网npm下载慢的话也可以下载淘宝下载源cnpm
             <span class="sidebar-tag-name" data-tags="Markdown">
                 <span class="iconfont-archer">&#xe606;</span>
                 Markdown
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="掘金">
+                <span class="iconfont-archer">&#xe606;</span>
+                掘金
             </span>
         
             <span class="sidebar-tag-name" data-tags="Material UI">
@@ -6234,9 +6893,9 @@ nodejs官网npm下载慢的话也可以下载淘宝下载源cnpm
                 sx prop
             </span>
         
-            <span class="sidebar-tag-name" data-tags="掘金">
+            <span class="sidebar-tag-name" data-tags="MySQL">
                 <span class="iconfont-archer">&#xe606;</span>
-                掘金
+                MySQL
             </span>
         
             <span class="sidebar-tag-name" data-tags="OpenClaw">
@@ -6262,11 +6921,6 @@ nodejs官网npm下载慢的话也可以下载淘宝下载源cnpm
             <span class="sidebar-tag-name" data-tags="聊天机器人">
                 <span class="iconfont-archer">&#xe606;</span>
                 聊天机器人
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="MySQL">
-                <span class="iconfont-archer">&#xe606;</span>
-                MySQL
             </span>
         
             <span class="sidebar-tag-name" data-tags="虚拟化">
@@ -6354,31 +7008,6 @@ nodejs官网npm下载慢的话也可以下载淘宝下载源cnpm
                 Actions
             </span>
         
-            <span class="sidebar-tag-name" data-tags="RabbitMQ">
-                <span class="iconfont-archer">&#xe606;</span>
-                RabbitMQ
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="消息队列">
-                <span class="iconfont-archer">&#xe606;</span>
-                消息队列
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="插件">
-                <span class="iconfont-archer">&#xe606;</span>
-                插件
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="持久化">
-                <span class="iconfont-archer">&#xe606;</span>
-                持久化
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="TypeScript">
-                <span class="iconfont-archer">&#xe606;</span>
-                TypeScript
-            </span>
-        
             <span class="sidebar-tag-name" data-tags="Context">
                 <span class="iconfont-archer">&#xe606;</span>
                 Context
@@ -6397,6 +7026,16 @@ nodejs官网npm下载慢的话也可以下载淘宝下载源cnpm
             <span class="sidebar-tag-name" data-tags="性能">
                 <span class="iconfont-archer">&#xe606;</span>
                 性能
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="RabbitMQ">
+                <span class="iconfont-archer">&#xe606;</span>
+                RabbitMQ
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="消息队列">
+                <span class="iconfont-archer">&#xe606;</span>
+                消息队列
             </span>
         
             <span class="sidebar-tag-name" data-tags="自定义Hook">
@@ -6459,6 +7098,16 @@ nodejs官网npm下载慢的话也可以下载淘宝下载源cnpm
                 事件传参
             </span>
         
+            <span class="sidebar-tag-name" data-tags="插件">
+                <span class="iconfont-archer">&#xe606;</span>
+                插件
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="持久化">
+                <span class="iconfont-archer">&#xe606;</span>
+                持久化
+            </span>
+        
             <span class="sidebar-tag-name" data-tags="函数组件">
                 <span class="iconfont-archer">&#xe606;</span>
                 函数组件
@@ -6477,11 +7126,6 @@ nodejs官网npm下载慢的话也可以下载淘宝下载源cnpm
             <span class="sidebar-tag-name" data-tags="组合">
                 <span class="iconfont-archer">&#xe606;</span>
                 组合
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="性能优化">
-                <span class="iconfont-archer">&#xe606;</span>
-                性能优化
             </span>
         
             <span class="sidebar-tag-name" data-tags="memo">
@@ -6524,6 +7168,16 @@ nodejs官网npm下载慢的话也可以下载淘宝下载源cnpm
                 React Router
             </span>
         
+            <span class="sidebar-tag-name" data-tags="BrowserRouter">
+                <span class="iconfont-archer">&#xe606;</span>
+                BrowserRouter
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Routes">
+                <span class="iconfont-archer">&#xe606;</span>
+                Routes
+            </span>
+        
             <span class="sidebar-tag-name" data-tags="嵌套路由">
                 <span class="iconfont-archer">&#xe606;</span>
                 嵌套路由
@@ -6542,21 +7196,6 @@ nodejs官网npm下载慢的话也可以下载淘宝下载源cnpm
             <span class="sidebar-tag-name" data-tags="路由守卫">
                 <span class="iconfont-archer">&#xe606;</span>
                 路由守卫
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="路由">
-                <span class="iconfont-archer">&#xe606;</span>
-                路由
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="BrowserRouter">
-                <span class="iconfont-archer">&#xe606;</span>
-                BrowserRouter
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="Routes">
-                <span class="iconfont-archer">&#xe606;</span>
-                Routes
             </span>
         
             <span class="sidebar-tag-name" data-tags="useState">
@@ -6594,6 +7233,16 @@ nodejs官网npm下载慢的话也可以下载淘宝下载源cnpm
                 闭包陷阱
             </span>
         
+            <span class="sidebar-tag-name" data-tags="useReducer">
+                <span class="iconfont-archer">&#xe606;</span>
+                useReducer
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Reducer">
+                <span class="iconfont-archer">&#xe606;</span>
+                Reducer
+            </span>
+        
             <span class="sidebar-tag-name" data-tags="useRef">
                 <span class="iconfont-archer">&#xe606;</span>
                 useRef
@@ -6612,16 +7261,6 @@ nodejs官网npm下载慢的话也可以下载淘宝下载源cnpm
             <span class="sidebar-tag-name" data-tags="DOM操作">
                 <span class="iconfont-archer">&#xe606;</span>
                 DOM操作
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="useReducer">
-                <span class="iconfont-archer">&#xe606;</span>
-                useReducer
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="Reducer">
-                <span class="iconfont-archer">&#xe606;</span>
-                Reducer
             </span>
         
             <span class="sidebar-tag-name" data-tags="Redis">
@@ -6692,11 +7331,6 @@ nodejs官网npm下载慢的话也可以下载淘宝下载源cnpm
             <span class="sidebar-tag-name" data-tags="组件化">
                 <span class="iconfont-archer">&#xe606;</span>
                 组件化
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="Vue">
-                <span class="iconfont-archer">&#xe606;</span>
-                Vue
             </span>
         
             <span class="sidebar-tag-name" data-tags="样式复用">
@@ -6829,6 +7463,26 @@ nodejs官网npm下载慢的话也可以下载淘宝下载源cnpm
                 implements
             </span>
         
+            <span class="sidebar-tag-name" data-tags="声明文件">
+                <span class="iconfont-archer">&#xe606;</span>
+                声明文件
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="ts">
+                <span class="iconfont-archer">&#xe606;</span>
+                ts
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="types">
+                <span class="iconfont-archer">&#xe606;</span>
+                types
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="全局声明">
+                <span class="iconfont-archer">&#xe606;</span>
+                全局声明
+            </span>
+        
             <span class="sidebar-tag-name" data-tags="tsconfig">
                 <span class="iconfont-archer">&#xe606;</span>
                 tsconfig
@@ -6949,11 +7603,6 @@ nodejs官网npm下载慢的话也可以下载淘宝下载源cnpm
                 字面量类型
             </span>
         
-            <span class="sidebar-tag-name" data-tags="Vite">
-                <span class="iconfont-archer">&#xe606;</span>
-                Vite
-            </span>
-        
             <span class="sidebar-tag-name" data-tags="构建工具">
                 <span class="iconfont-archer">&#xe606;</span>
                 构建工具
@@ -7054,6 +7703,16 @@ nodejs官网npm下载慢的话也可以下载淘宝下载源cnpm
                 watchEffect
             </span>
         
+            <span class="sidebar-tag-name" data-tags="vim">
+                <span class="iconfont-archer">&#xe606;</span>
+                vim
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="编辑器之神">
+                <span class="iconfont-archer">&#xe606;</span>
+                编辑器之神
+            </span>
+        
             <span class="sidebar-tag-name" data-tags="模板引用">
                 <span class="iconfont-archer">&#xe606;</span>
                 模板引用
@@ -7099,6 +7758,26 @@ nodejs官网npm下载慢的话也可以下载淘宝下载源cnpm
                 ref
             </span>
         
+            <span class="sidebar-tag-name" data-tags="选项式 API">
+                <span class="iconfont-archer">&#xe606;</span>
+                选项式 API
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="组合式 API">
+                <span class="iconfont-archer">&#xe606;</span>
+                组合式 API
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="mixins">
+                <span class="iconfont-archer">&#xe606;</span>
+                mixins
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="迁移">
+                <span class="iconfont-archer">&#xe606;</span>
+                迁移
+            </span>
+        
             <span class="sidebar-tag-name" data-tags="Vue Router 4">
                 <span class="iconfont-archer">&#xe606;</span>
                 Vue Router 4
@@ -7107,11 +7786,6 @@ nodejs官网npm下载慢的话也可以下载淘宝下载源cnpm
             <span class="sidebar-tag-name" data-tags="动态路由">
                 <span class="iconfont-archer">&#xe606;</span>
                 动态路由
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="导航守卫">
-                <span class="iconfont-archer">&#xe606;</span>
-                导航守卫
             </span>
         
             <span class="sidebar-tag-name" data-tags="路由元信息">
@@ -7132,26 +7806,6 @@ nodejs官网npm下载慢的话也可以下载淘宝下载源cnpm
             <span class="sidebar-tag-name" data-tags="类型安全">
                 <span class="iconfont-archer">&#xe606;</span>
                 类型安全
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="组合式 API">
-                <span class="iconfont-archer">&#xe606;</span>
-                组合式 API
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="选项式 API">
-                <span class="iconfont-archer">&#xe606;</span>
-                选项式 API
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="mixins">
-                <span class="iconfont-archer">&#xe606;</span>
-                mixins
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="迁移">
-                <span class="iconfont-archer">&#xe606;</span>
-                迁移
             </span>
         
             <span class="sidebar-tag-name" data-tags="Webpack">
@@ -7224,14 +7878,14 @@ nodejs官网npm下载慢的话也可以下载淘宝下载源cnpm
                 中间件
             </span>
         
-            <span class="sidebar-tag-name" data-tags="保罗·格雷厄姆（Paul Graham）">
-                <span class="iconfont-archer">&#xe606;</span>
-                保罗·格雷厄姆（Paul Graham）
-            </span>
-        
             <span class="sidebar-tag-name" data-tags="helloworld">
                 <span class="iconfont-archer">&#xe606;</span>
                 helloworld
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="保罗·格雷厄姆（Paul Graham）">
+                <span class="iconfont-archer">&#xe606;</span>
+                保罗·格雷厄姆（Paul Graham）
             </span>
         
             <span class="sidebar-tag-name" data-tags="iframe">
@@ -7279,16 +7933,6 @@ nodejs官网npm下载慢的话也可以下载淘宝下载源cnpm
                 计算机的世界
             </span>
         
-            <span class="sidebar-tag-name" data-tags="vim">
-                <span class="iconfont-archer">&#xe606;</span>
-                vim
-            </span>
-        
-            <span class="sidebar-tag-name" data-tags="编辑器之神">
-                <span class="iconfont-archer">&#xe606;</span>
-                编辑器之神
-            </span>
-        
     </div>
     <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
     <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
@@ -7320,6 +7964,11 @@ nodejs官网npm下载慢的话也可以下载淘宝下载源cnpm
             前端工程化
         </span>
     
+        <span class="sidebar-category-name" data-categories="课程总结">
+            <span class="iconfont-archer">&#xe60a;</span>
+            课程总结
+        </span>
+    
         <span class="sidebar-category-name" data-categories="个人生活">
             <span class="iconfont-archer">&#xe60a;</span>
             个人生活
@@ -7328,6 +7977,11 @@ nodejs官网npm下载慢的话也可以下载淘宝下载源cnpm
         <span class="sidebar-category-name" data-categories="编程中间件">
             <span class="iconfont-archer">&#xe60a;</span>
             编程中间件
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="前端工程化实践">
+            <span class="iconfont-archer">&#xe60a;</span>
+            前端工程化实践
         </span>
     
         <span class="sidebar-category-name" data-categories="编程">
